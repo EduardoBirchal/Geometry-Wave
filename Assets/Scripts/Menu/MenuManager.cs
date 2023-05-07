@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
 
-    //[SerializeField] private string nomeDaFase;
+    [SerializeField] private string nomeDaFase;
     [SerializeField] private GameObject menuInicial;
     [SerializeField] private GameObject painelOptions;
     [SerializeField] private GameObject gameplayOptions;
@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
 
     public void Jogar()
     {
-      //  SceneManager.LoadScene(nomeDaFase);
+        SceneManager.LoadScene(nomeDaFase);
     }
 
     public void Options()
