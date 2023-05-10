@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
@@ -23,6 +23,10 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("Singleplayer");
     }
     public void JogarJunto()
+    {
+        SceneManager.LoadScene("Multiplayer");
+    }
+    public void CriarSala()
     {
         SceneManager.LoadScene("Multiplayer");
     }

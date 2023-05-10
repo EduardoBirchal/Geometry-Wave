@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MovePlayer : FuncoesGerais
@@ -7,14 +8,23 @@ public class MovePlayer : FuncoesGerais
     public float vel, velAtual;
     public bool move = true;
     public Vector3 vetorMove;
+    private bool isMp;
+    private PlayerNetwork PlayerNet;
 
     void Start() 
     {
+        isMp = SceneManager.GetActiveScene().name == "Multiplayer";
+        PlayerNet = GetComponent<PlayerNetwork>();
         velAtual = vel;
     }
 
     void Update()
     {
+        if(isMp == true)
+        {
+            PlayerNet.MpUpdate();
+        }
+        
         if (move) {
             velAtual = vel;
         }
