@@ -5,18 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-
-    [SerializeField] private string nomeDaFase;
     [SerializeField] private GameObject menuInicial;
+    [SerializeField] private GameObject menuPreJogo;
     [SerializeField] private GameObject painelOptions;
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject moreOptions;
 
 
-    public void Jogar()
+    public void IrProLobby()
     {
-        SceneManager.LoadScene(nomeDaFase);
+        menuInicial.SetActive(false);
+        menuPreJogo.SetActive(true);
+    }
+    public void JogarSolo()
+    {
+        SceneManager.LoadScene("Singleplayer");
+    }
+    public void JogarJunto()
+    {
+        SceneManager.LoadScene("Multiplayer");
     }
 
     public void Options()
@@ -64,6 +72,12 @@ public class MenuManager : MonoBehaviour
     public void CloseOptions()
     {
         painelOptions.SetActive(false);
+        menuInicial.SetActive(true);
+    }
+
+    public void CloseLobby()
+    {
+        menuPreJogo.SetActive(false);
         menuInicial.SetActive(true);
     }
 
