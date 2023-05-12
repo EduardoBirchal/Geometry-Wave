@@ -20,21 +20,19 @@ public class MovePlayer : FuncoesGerais
 
     void Update()
     {
-        if(isMp == true)
+        if(isMp == false || PlayerNet.isPlayer == true)
         {
-            PlayerNet.MpUpdate();
+            if (move) {
+                velAtual = vel;
+            }
+            else {
+                velAtual = 0;
+            }
+            
+            vetorMove = new Vector3(MoveHorizontal(), MoveVertical(), 0);
+            
+            SegueMouse();
         }
-        
-        if (move) {
-            velAtual = vel;
-        }
-        else {
-            velAtual = 0;
-        }
-        
-        vetorMove = new Vector3(MoveHorizontal(), MoveVertical(), 0);
-        
-        SegueMouse();
     }
 
     float MoveVertical() {

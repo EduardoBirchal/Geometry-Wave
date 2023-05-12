@@ -6,14 +6,13 @@ public class PlayerNetwork : NetworkBehaviour
 {
     public bool isPlayer;
 
-    private void Start()
+    public override void OnNetworkSpawn()
     {
         Debug.Log("###" + IsOwner);
         isPlayer = IsOwner;
     }
-
-    public void MpUpdate()
+    private void Start() 
     {
-        Debug.Log(IsOwner);
+        gameObject.name = "Player";
     }
 }
