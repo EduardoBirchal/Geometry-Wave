@@ -12,11 +12,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject moreOptions;
+    [SerializeField] private GameObject inicio;
 
 
     public void Jogar()
     {
         SceneManager.LoadScene(nomeDaFase);
+    }
+
+    public void Continuar()
+    {
+        menuInicial.SetActive(false);
     }
 
     public void Options()
