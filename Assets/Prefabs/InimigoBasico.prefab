@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4916f17272c8aecbc6772dab015d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   velocidade: 3
-  velVirar: 3
+  velVirar: 200
+  player: {fileID: 0}
   mudaAngulo: 1
   move: 1
   novaDirecao: {x: 0, y: 0, z: 0}
