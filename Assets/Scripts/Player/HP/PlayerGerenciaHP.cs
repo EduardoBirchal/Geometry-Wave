@@ -14,6 +14,7 @@ public class PlayerGerenciaHP : FuncoesGerais
     // Start is called before the first frame update
     void Start()
     {
+        barra = GameObject.Find("VidaBarra").GetComponent<Image>();
         hp = maxHp;
         sprRenderer = GetComponent<SpriteRenderer>();
         colisor = GetComponent<Collider2D>();
