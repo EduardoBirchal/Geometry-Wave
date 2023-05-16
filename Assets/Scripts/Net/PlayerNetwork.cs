@@ -7,6 +7,7 @@ public class PlayerNetwork : NetworkBehaviour
 {
     public bool isPlayer;
     public bool isMp;
+    static bool gameStarted;
 
     public override void OnNetworkSpawn()
     {

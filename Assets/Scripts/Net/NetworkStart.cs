@@ -5,9 +5,9 @@ using Unity.Netcode;
 
 public class NetworkStart : MonoBehaviour
 {
-    [SerializeField] private Button hostBtn;
-    [SerializeField] private Button clientBtn;
-    
+    [SerializeField] private GameObject hostBtn;
+    [SerializeField] private GameObject clientBtn;
+    [SerializeField] private GameObject startBtn;
     private void Start()
     {
         Time.timeScale = 0;
@@ -15,12 +15,20 @@ public class NetworkStart : MonoBehaviour
 
     private void Awake()
     {
-        hostBtn.onClick.AddListener(() => {
+        hostBtn.GetComponent<Button>().onClick.AddListener(() => {
             NetworkManager.Singleton.StartHost();
+            hostBtn.SetActive(false);
+            clientBtn.SetActive(false);
+            startBtn.SetActive(true);
+        });
+        clientBtn.GetComponent<Button>().onClick.AddListener(() => {
+            NetworkManager.Singleton.StartClient();
+            hostBtn.SetActive(false);
+            clientBtn.SetActive(false);
             Time.timeScale = 1;
         });
-        clientBtn.onClick.AddListener(() => {
-            NetworkManager.Singleton.StartClient();
+        startBtn.GetComponent<Button>().onClick.AddListener(() => {
+            startBtn.SetActive(false);
             Time.timeScale = 1;
         });
     }

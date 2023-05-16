@@ -11,6 +11,7 @@ public class IniciaOnda : FuncoesGerais
     private GameObject[][] listaInimigos;
     private GameObject texto;
     private FuncoesTexto funcoesTexto;
+    private NetworkState NetworkInfo;
     
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class IniciaOnda : FuncoesGerais
         // Procura todos os objetos com a tag "Inimigo". Se não tiver inimigos, cria uma nova onda
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
-        if(inimigos.Length == 0) {
+        if(inimigos.Length == 0 && NetworkInfo.gameStarted == true) {
             StartCoroutine(CriaOnda());
         }
         else {
