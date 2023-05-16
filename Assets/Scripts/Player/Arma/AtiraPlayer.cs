@@ -10,9 +10,11 @@ public class AtiraPlayer : Atirador
     private MudaBala mudaBala;
     private TipoBala[] tipos;
     public GameObject objBala;
+    private PlayerNetwork PlayerNet;
 
     void Start() {
         mudaBala = atirador.GetComponent<MudaBala>();
+        PlayerNet = atirador.transform.root.GetComponent<PlayerNetwork>();
 
         tipos = new TipoBala[] {
             
@@ -62,8 +64,11 @@ public class AtiraPlayer : Atirador
     }
 
     void Atira() {
-        if(Input.GetMouseButton(0)) {
-            AtiraBala(tipos[balaAtual]);
+        if(PlayerNet.CheckForClient())
+        {
+            if(Input.GetMouseButton(0)) {
+                AtiraBala(tipos[balaAtual]);
+            }
         }
     }
 }
