@@ -12,17 +12,39 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject moreOptions;
-    [SerializeField] private GameObject inicio;
+
+    void Update(){
+        if(Input.GetKeyDown("escape"))
+        {
+            Esc();
+        }
+        
+
+    }
 
 
     public void Jogar()
     {
+        Continuar();
         SceneManager.LoadScene(nomeDaFase);
+    }
+
+    public void Esc()
+    {
+        if(Time.timeScale == 0){
+            Continuar();
+        }
+        else
+        {
+            Time.timeScale = 0;
+            menuInicial.SetActive(true);
+        }
     }
 
     public void Continuar()
     {
         menuInicial.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Options()

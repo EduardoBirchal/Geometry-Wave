@@ -411,9 +411,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: GamePlayOptions
+        m_MethodName: Continuar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 395263324}
   - component: {fileID: 395263323}
   m_Layer: 5
-  m_Name: ButtonMoreOptions
+  m_Name: ButtonInicio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_PrefixIsLocalizationKey: 0
   m_PrefixIsPostFix: 0
   m_FilterText: 1
-  m_Text: '  Mais Configs'
+  m_Text: '  Inicio'
   m_NameLabel: {fileID: 1723411922}
   m_AdditionalNameLabels: []
   m_TestList: []
@@ -1557,9 +1557,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: MoreOptions
+        m_MethodName: Jogar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2270,7 +2270,7 @@ GameObject:
   - component: {fileID: 563897712}
   - component: {fileID: 563897711}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonESC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2339,7 +2339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 563897712}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 566950212}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: Esc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &563897712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2422,12 +2434,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14671eef2a61221aeaa1d662b2d8db16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeDaFase: 
-  menuInicial: {fileID: 0}
-  painelOptions: {fileID: 0}
-  gameplayOptions: {fileID: 0}
-  soundOptions: {fileID: 0}
-  moreOptions: {fileID: 0}
+  nomeDaFase: Inicio
+  menuInicial: {fileID: 858941364}
+  painelOptions: {fileID: 607825269}
+  gameplayOptions: {fileID: 638484854}
+  soundOptions: {fileID: 1302566227}
+  moreOptions: {fileID: 837130027}
 --- !u!1 &567057562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,7 +2655,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: CloseOptions
         m_Mode: 1
@@ -2768,7 +2780,7 @@ MonoBehaviour:
   m_PrefixIsLocalizationKey: 0
   m_PrefixIsPostFix: 0
   m_FilterText: 1
-  m_Text: '  Mais Configs'
+  m_Text: "  Gr\xE1ficos"
   m_NameLabel: {fileID: 1989004812}
   m_AdditionalNameLabels: []
   m_TestList: []
@@ -2832,7 +2844,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: MoreOptions
         m_Mode: 1
@@ -3868,7 +3880,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: CloseSoundOptions
         m_Mode: 1
@@ -4241,9 +4253,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: SoundOptions
+        m_MethodName: Options
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5525,7 +5537,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: GamePlayOptions
         m_Mode: 1
@@ -7221,7 +7233,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: CloseMoreOptions
         m_Mode: 1
@@ -7946,7 +7958,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: SoundOptions
         m_Mode: 1
@@ -8164,7 +8176,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: CloseGamePlayOptions
         m_Mode: 1
