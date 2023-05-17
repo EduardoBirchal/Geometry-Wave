@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class AtiraInimigo : Atirador
 {
-    public int numBalas;
-    public float velBala, velAtirarMax, velAtirarMin, imprecisaoBala, arcoTiro, danoBala;
+    public float velAtirarMax, velAtirarMin;
     public string nomeBala;
-    public GameObject objBala;
-
-    private TipoBala tipoBala;
+    private int tipoBala;
 
     void Start() 
     {
@@ -20,15 +18,16 @@ public class AtiraInimigo : Atirador
 
         StartCoroutine(Recarrega(velAtirarMin, velAtirarMax));
 
-        tipoBala = new TipoBala(numBalas, danoBala, velBala, velAtirarMax, imprecisaoBala, arcoTiro, nomeBala, objBala);
+        tipoBala = 3;
     }
     
     void Update()
     {
-        AtiraBala(tipoBala);
+        AtiraBalaServerRpc(tipoBala);
     }
 
-    protected new void AtiraBala(TipoBala bala) {
+    [ServerRpc]
+    protected new void AtiraBalaServerRpc(int bala) {
         if(balaCarregada) {
             balaCarregada = false;
 
@@ -46,8 +45,8 @@ public class AtiraInimigo : Atirador
     void GetValores() {
         ValoresSpawn valSpawn = atirador.GetComponent<ValoresSpawn>();
 
-        danoBala = valSpawn.danoBala;
-        velBala = valSpawn.velBala;
+        TipoTiro.tipos[3].danoBala = valSpawn.danoBala;
+        TipoTiro.tipos[3].danoBala = valSpawn.velBala;
         velAtirarMin = valSpawn.velAtirarMin;
         velAtirarMax = valSpawn.velAtirarMax;
     }

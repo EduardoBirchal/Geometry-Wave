@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 // Herdar desta classe pra pegar certas funções gerais
-public class FuncoesGerais : MonoBehaviour
+public class FuncoesGerais : NetworkBehaviour
 {
     // Pega o ângulo entre duas posições.
     protected float GetAngulo(Vector3 pos1, Vector3 pos2) {
