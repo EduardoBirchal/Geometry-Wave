@@ -39,7 +39,7 @@ public class MudaBala : FuncoesGerais
             modoTiro += (int) scroll;
             modoTiro = modoTiro % numTiros;
 
-            if(modoTiro < 0) modoTiro = 2;
+            if(modoTiro < 0) modoTiro = numTiros - 1;
 
             MudaSprite();
         }

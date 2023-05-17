@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 343719744800645536}
   - component: {fileID: -1157766661186971356}
   - component: {fileID: 4621906328334712321}
+  - component: {fileID: 5027342231454481519}
+  - component: {fileID: 88238210807904706}
   m_Layer: 0
   m_Name: BalaTeleguiada
   m_TagString: BalaPlayer
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 343719744800645539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.56887263, y: 0.4344028, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,3 +135,28 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.21133333}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &5027342231454481519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343719744800645539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cce392301de9b84894aba11cc0219ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &88238210807904706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343719744800645539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295ded093bb677ebe83f6e9ee0da4c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempoVida: 5

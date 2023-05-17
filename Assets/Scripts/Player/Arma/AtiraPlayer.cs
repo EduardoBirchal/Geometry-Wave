@@ -30,7 +30,7 @@ public class AtiraPlayer : Atirador
 
             // KILL AURA
             new TipoBala(
-                90,
+                7,
                 100f, 
                 20f, 
                 0f, 
@@ -58,8 +58,8 @@ public class AtiraPlayer : Atirador
                 2f, 
                 6f, 
                 0.3f, 
-                20f, 
-                40f,
+                90f, 
+                90f,
                 "Mísseis", 
                 objTeleguiada
             ),
