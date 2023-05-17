@@ -7,10 +7,12 @@ public class MudaBala : FuncoesGerais
     public int modoTiro = 0, numTiros;
     SpriteRenderer sprRenderer;
     GameObject arma;
-    public Sprite[] spritesPlayer;  
+    public Sprite[] spritesPlayer;
+    private PlayerNetwork PlayerNet;
 
     void Start() 
     {
+        PlayerNet = GetComponent<PlayerNetwork>();
         sprRenderer = GetComponent<SpriteRenderer>();
         arma = transform.GetChild(0).gameObject;
         MudaSprite();
@@ -33,7 +35,7 @@ public class MudaBala : FuncoesGerais
     void GetModo() {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        if (scroll != 0) {
+        if (scroll != 0 && PlayerNet.CheckForClient()) {
             scroll = scroll/Mathf.Abs(scroll);
 
             modoTiro += (int) scroll;

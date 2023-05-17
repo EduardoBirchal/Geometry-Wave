@@ -10,7 +10,6 @@ public class NetworkStart : MonoBehaviour
     [SerializeField] private GameObject startBtn;
     private void Start()
     {
-        Time.timeScale = 0;
     }
 
     private void Awake()
@@ -25,11 +24,10 @@ public class NetworkStart : MonoBehaviour
             NetworkManager.Singleton.StartClient();
             hostBtn.SetActive(false);
             clientBtn.SetActive(false);
-            Time.timeScale = 1;
         });
         startBtn.GetComponent<Button>().onClick.AddListener(() => {
+            GetComponent<NetworkState>().gameStarted = true;
             startBtn.SetActive(false);
-            Time.timeScale = 1;
         });
     }
 }

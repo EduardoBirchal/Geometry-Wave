@@ -16,6 +16,7 @@ public class IniciaOnda : FuncoesGerais
     // Start is called before the first frame update
     void Start()
     {
+        NetworkInfo = GameObject.Find("NetworkManager").GetComponent<NetworkState>();
         StartCoroutine(ChecaInimigos());
         distanciaMargem = new Vector2(larguraTela - tamanhoMargem, alturaTela - tamanhoMargem);
         dificuldadeTotal *= dificuldade;
