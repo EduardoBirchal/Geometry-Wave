@@ -8424,6 +8424,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4668060124426855790, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
+      propertyPath: numTiros
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668060124426855790, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
+      propertyPath: spritesPlayer.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -4668060124426855790, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
+      propertyPath: spritesPlayer.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea314f0b5cec799448f753895f059ff3, type: 3}
     - target: {fileID: 502793455, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
       propertyPath: vel
       value: 1250
@@ -8488,5 +8500,9 @@ PrefabInstance:
       propertyPath: barra
       value: 
       objectReference: {fileID: 567057564}
+    - target: {fileID: 8442710478314260689, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
+      propertyPath: objTeleguiada
+      value: 
+      objectReference: {fileID: 343719744800645539, guid: 10df45d1dcb682b6fa2917cdf9e9e66a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}

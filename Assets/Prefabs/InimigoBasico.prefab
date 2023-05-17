@@ -162,7 +162,6 @@ MonoBehaviour:
   player: {fileID: 0}
   mudaAngulo: 1
   move: 1
-  novaDirecao: {x: 0, y: 0, z: 0}
 --- !u!114 &442041107503138968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2297998ae597b95a089557a76f7b0693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
+  maxHp: 10000
   hp: 0
 --- !u!50 &2888467060585204476
 Rigidbody2D:

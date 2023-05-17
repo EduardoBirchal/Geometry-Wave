@@ -7,15 +7,13 @@ public class MoveInimigo : MoveAutomatico
     public GameObject player;
     public bool mudaAngulo, move = true;
 
-    public Vector3 novaDirecao;
-
     void Start() 
     {
         player = GameObject.Find("Player");
         transform.eulerAngles = AnguloPraVetor(GetAngulo(transform.position, player.transform.position) * Mathf.Rad2Deg * -1); // Vira pro player
 
-        Physics2D.IgnoreLayerCollision(3, 6); // Ignora colisões de inimigos (na camada de colisão 3: inimigo) 
-    }                                         // com balas de inimigo (na camada de colisão 6: balas inimigo)
+        Physics2D.IgnoreLayerCollision(3, 6); // Ignora colisões de inimigos (na camada de colisão 3: inimigo) com balas
+    }                                         // de inimigo (na camada de colisão 6: balas inimigo)
 
     void Update()
     {

@@ -51,4 +51,29 @@ public class FuncoesGerais : MonoBehaviour
     protected float MenorNumeroAbs (float n1, float n2) {
         return Mathf.Abs(n1) < Mathf.Abs(n2) ? n1 : n2;
     }
+
+    // Retorna o GameObject mais próximo, ou null se não achar.
+    protected GameObject ProcuraObjMaisProximo(string tagAlvo) {
+        GameObject[] alvos = GameObject.FindGameObjectsWithTag(tagAlvo);
+
+        if(alvos.Length == 0) {
+            return null;
+        }
+        else {
+            GameObject maisProximo = null;
+            float menorDistancia = Mathf.Infinity;
+
+            foreach (GameObject obj in alvos) {
+                Vector3 diferencaVetorial = obj.transform.position - transform.position;
+                float distancia = diferencaVetorial.sqrMagnitude;
+
+                if (distancia < menorDistancia) {
+                    maisProximo = obj;
+                    menorDistancia = distancia;
+                }
+            }
+
+            return maisProximo;
+        }
+    }
 }

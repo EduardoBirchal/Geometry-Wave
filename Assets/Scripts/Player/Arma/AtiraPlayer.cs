@@ -9,7 +9,7 @@ public class AtiraPlayer : Atirador
     public int balaAtual = 0;
     private MudaBala mudaBala;
     private TipoBala[] tipos;
-    public GameObject objBala;
+    public GameObject objBala, objTeleguiada;
 
     void Start() {
         mudaBala = atirador.GetComponent<MudaBala>();
@@ -37,7 +37,7 @@ public class AtiraPlayer : Atirador
                 0f, 
                 360f,
                 "KillAura", 
-                objBala
+                objTeleguiada
             ), 
 
             // SHOTGUN
@@ -50,6 +50,18 @@ public class AtiraPlayer : Atirador
                 40f,
                 "Espingarda", 
                 objBala
+            ),
+
+            // MISSEIS
+            new TipoBala(
+                1, 
+                2f, 
+                6f, 
+                0.3f, 
+                20f, 
+                40f,
+                "Mísseis", 
+                objTeleguiada
             ),
         };
     }
