@@ -104,7 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047dfa35510f3df4ba31a0aea72f50e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: 5
+  velocidade: 0
+  velVirar: 3000
+  vel: 7
   velAtual: 0
   move: 1
   vetorMove: {x: 0, y: 0, z: 0}
@@ -141,7 +143,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5015847, y: 0.33}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.01, y: 1.01}
     newSize: {x: 1.01, y: 1.01}
     adaptiveTilingThreshold: 0.5
@@ -207,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0683c1c6553c6f2cfaddafa27f19c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: 2000
+  vel: 1250
   tempoCarrega: 1
   tempoParado: 0.001
 --- !u!114 &502793463
