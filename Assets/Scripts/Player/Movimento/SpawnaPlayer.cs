@@ -8,6 +8,7 @@ public class SpawnaPlayer : NetworkBehaviour
 
     private void Start() {
         transform.position = new Vector3(Random.Range(-raioSpawn, raioSpawn), Random.Range(-raioSpawn, raioSpawn), 0);
+        transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 }
 
