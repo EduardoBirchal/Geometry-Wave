@@ -67,8 +67,14 @@ public class AtiraPlayer : Atirador
         if(PlayerNet.CheckForClient())
         {
             if(Input.GetMouseButton(0)) {
-                AtiraBala(tipos[balaAtual]);
+                AtiraServerRpc();
             }
         }
+    }
+
+    [ServerRpc]
+    public void AtiraServerRpc()
+    {
+        AtiraBala(tipos[balaAtual]);
     }
 }
