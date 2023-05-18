@@ -2331,5 +2331,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnerInimigo
       objectReference: {fileID: 0}
+    - target: {fileID: 200394870337230263, guid: 32e27500920bb86388bb58ec3c1e77e3, type: 3}
+      propertyPath: inimigosDif1.Array.data[0]
+      value: 
+      objectReference: {fileID: 5010567226698321705, guid: c987e7a7634bd599a94defc9b47f6746, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32e27500920bb86388bb58ec3c1e77e3, type: 3}

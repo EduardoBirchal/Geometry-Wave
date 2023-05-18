@@ -68,7 +68,7 @@ public class TipoTiro : MonoBehaviour
             1,
             2,
             0.5f,
-            0,
+            2f,
             0,
             40,
             "Matador",

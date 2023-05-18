@@ -13,12 +13,12 @@ public class AtiraInimigo : Atirador
     {
         atirador = transform.parent.gameObject;
         balaCarregada = false;
+        tipoBala = 3;
 
         GetValores();
 
-        StartCoroutine(Recarrega(Random.Range(velAtirarMin, velAtirarMax)));
-
-        tipoBala = 3;
+        StartCoroutine(Recarrega(2.0f));
+        // StartCoroutine(Recarrega(/*Random.Range(velAtirarMin, velAtirarMax)*/2.0f));
     }
     
     void Update()
@@ -26,15 +26,15 @@ public class AtiraInimigo : Atirador
         AtiraBalaServerRpc(tipoBala);
     }
 
-    [ServerRpc]
-    protected new void AtiraBalaServerRpc(int bala) {
-        if(balaCarregada) {
-            balaCarregada = false;
+    // [ServerRpc]
+    // protected void InimigoAtiraServerRpc(int bala) {
+    //     if(balaCarregada) {
+    //         balaCarregada = false;
 
-            CriaBala(bala);
-            StartCoroutine(Recarrega(Random.Range(velAtirarMin, velAtirarMax)));
-        }
-    }
+    //         CriaBala(bala);
+    //         StartCoroutine(Recarrega(/*Random.Range(velAtirarMin, velAtirarMax)*/3));
+    //     }
+    // }
 
     // protected IEnumerator Recarrega(float tempoMin, float tempoMax) {
     //     yield return new WaitForSeconds(Random.Range(tempoMin, tempoMax));
