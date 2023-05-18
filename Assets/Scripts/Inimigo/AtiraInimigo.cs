@@ -16,7 +16,7 @@ public class AtiraInimigo : Atirador
 
         GetValores();
 
-        StartCoroutine(Recarrega(velAtirarMin, velAtirarMax));
+        StartCoroutine(Recarrega(Random.Range(velAtirarMin, velAtirarMax)));
 
         tipoBala = 3;
     }
@@ -32,15 +32,15 @@ public class AtiraInimigo : Atirador
             balaCarregada = false;
 
             CriaBala(bala);
-            StartCoroutine(Recarrega(velAtirarMin, velAtirarMax));
+            StartCoroutine(Recarrega(Random.Range(velAtirarMin, velAtirarMax)));
         }
     }
 
-    protected IEnumerator Recarrega(float tempoMin, float tempoMax) {
-        yield return new WaitForSeconds(Random.Range(tempoMin, tempoMax));
+    // protected IEnumerator Recarrega(float tempoMin, float tempoMax) {
+    //     yield return new WaitForSeconds(Random.Range(tempoMin, tempoMax));
 
-        balaCarregada = true;
-    }
+    //     balaCarregada = true;
+    // }
 
     void GetValores() {
         ValoresSpawn valSpawn = atirador.GetComponent<ValoresSpawn>();
