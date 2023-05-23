@@ -8,7 +8,6 @@ namespace Menus
 {
     public class MenuManager : MonoBehaviour
     {
-
         [SerializeField] private string nomeDaFase;
         [SerializeField] private GameObject menuInicial;
         [SerializeField] private GameObject painelOptions;

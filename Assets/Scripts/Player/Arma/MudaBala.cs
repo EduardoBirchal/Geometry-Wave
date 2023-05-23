@@ -26,10 +26,6 @@ public class MudaBala : FuncoesGerais
         sprRenderer.sprite = spritesPlayer[modoTiro];
     }
 
-    void AtualizaArma() {
-
-    }
-
     void GetModo() {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 

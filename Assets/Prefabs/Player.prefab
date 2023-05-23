@@ -171,11 +171,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modoTiro: 0
-  numTiros: 3
+  numTiros: 4
   spritesPlayer:
   - {fileID: 21300000, guid: e5bd34ef525440e4f8f7749dc4f82a76, type: 3}
   - {fileID: 21300000, guid: 3d3107fa61fc03f48af480a12dbc98ae, type: 3}
   - {fileID: 21300000, guid: 1464c9e8a16364043a97294c59237135, type: 3}
+  - {fileID: 21300000, guid: ea314f0b5cec799448f753895f059ff3, type: 3}
 --- !u!50 &502793457
 Rigidbody2D:
   serializedVersion: 4
@@ -209,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0683c1c6553c6f2cfaddafa27f19c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: 1250
+  vel: 2000
   tempoCarrega: 1
   tempoParado: 0.001
 --- !u!114 &502793463
@@ -247,6 +248,10 @@ PrefabInstance:
       propertyPath: atirador
       value: 
       objectReference: {fileID: 4976682552676660537}
+    - target: {fileID: -8565225797330200331, guid: c370f096daef7054d94f2bf01542a1df, type: 3}
+      propertyPath: objTeleguiada
+      value: 
+      objectReference: {fileID: 343719744800645539, guid: 10df45d1dcb682b6fa2917cdf9e9e66a, type: 3}
     - target: {fileID: 824907516855740175, guid: c370f096daef7054d94f2bf01542a1df, type: 3}
       propertyPath: m_Name
       value: AtiraPlayer

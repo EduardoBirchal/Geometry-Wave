@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuInGame : MonoBehaviour
 {
-
     [SerializeField] private string Fase;
     [SerializeField] private GameObject menu;
 

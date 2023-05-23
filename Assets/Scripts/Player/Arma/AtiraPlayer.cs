@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
 public class AtiraPlayer : Atirador
 {
     public int balaAtual = 0;
@@ -30,14 +29,14 @@ public class AtiraPlayer : Atirador
 
             // KILL AURA
             new TipoBala(
-                7,
+                90,
                 100f, 
                 20f, 
                 0f, 
                 0f, 
                 360f,
                 "KillAura", 
-                objTeleguiada
+                objBala
             ), 
 
             // SHOTGUN
