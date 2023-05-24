@@ -19,14 +19,14 @@ public class AtiraPlayer : Atirador
     void Update()
     {
         balaAtual = mudaBala.modoTiro;
-        Atira();
+        QuerAtirar();
     }
 
-    void Atira() {
+    void QuerAtirar() {
         if(PlayerNet.CheckForClient())
         {
             if(Input.GetMouseButton(0)) {
-                AtiraBalaServerRpc(balaAtual);
+                AtiraServerRpc(balaAtual);
             }
         }
     }

@@ -9,8 +9,8 @@ public class Atirador : FuncoesGerais
     protected bool balaCarregada = true;
 
     // Calcula o ângulo da bala e cria ela no ângulo
-    protected void CriaBala(int balaTipo) {
-        TipoBala bala = TipoTiro.tipos[balaTipo];
+    protected void CriaBala(TipoBala bala)
+    {
         // GameObject prefab = Resources.Load<GameObject>("Assets/Prefabs/" + bala.prefab + ".prefab", typeof(GameObject)) as GameObject;
         for (int i=0; i<bala.numBalas; i++) { // Repete pra cada bala
             float anguloBala = 1f; 
@@ -19,7 +19,6 @@ public class Atirador : FuncoesGerais
             if (bala.numBalas > 1) anguloBala = ((bala.arcoTiro/(bala.numBalas-1)) * i) - (bala.arcoTiro/2); 
             // Subtrai arcoTiro/2 porque desse jeito atira dos dois lados. Se, por exemplo, arcoTiro fosse 90, a primeira bala ia ser criada no ângulo -45 e a última, em +45
 
-            Debug.Log("Criando bala " + balaTipo);
             GameObject balaCriada = Instantiate(bala.prefab, transform.position, atirador.transform.rotation * Quaternion.Euler(new Vector3(0, 0, (anguloBala + Random.Range(bala.imprecisaoBala * -1, bala.imprecisaoBala))))); // Soma ou subtrai um ângulo aleatório de no máximo [imprecisaoBala]
             balaCriada.GetComponent<NetworkObject>().Spawn();
             // Com quaternions, não dá pra somar, mas multiplicação faz o mesmo efeito que soma. Não pergunta.
@@ -34,14 +33,20 @@ public class Atirador : FuncoesGerais
     }
 
     // Checa se a arma está carregada e, se sim, atira, descarrega a arma e chama a função de recarregar
-    [ServerRpc]
-    protected void AtiraBalaServerRpc(int balaTipo) {
+    protected void Atira(int balaTipo)
+    {
         if(balaCarregada)
         {
             balaCarregada = false;
-
-            CriaBala(balaTipo);
-            StartCoroutine(Recarrega(TipoTiro.tipos[balaTipo].cooldownTiro));
+            TipoBala tipo = TipoTiro.tipos[balaTipo];
+            CriaBala(tipo);
+            StartCoroutine(Recarrega(Random.Range(tipo.cooldownTiro_Min, tipo.cooldownTiro_Max)));
         }
+    }
+
+    [ServerRpc]
+    protected void AtiraServerRpc(int balaTipo)
+    {
+        Atira(balaTipo);
     }
 }

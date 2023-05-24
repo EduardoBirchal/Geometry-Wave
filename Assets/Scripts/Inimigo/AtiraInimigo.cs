@@ -17,30 +17,14 @@ public class AtiraInimigo : Atirador
 
         GetValores();
 
-        StartCoroutine(Recarrega(2.0f));
-        // StartCoroutine(Recarrega(/*Random.Range(velAtirarMin, velAtirarMax)*/2.0f));
+        StartCoroutine(Recarrega(Random.Range(velAtirarMin, velAtirarMax)));
     }
     
     void Update()
     {
-        AtiraBalaServerRpc(tipoBala);
+        Atira(tipoBala);
     }
 
-    // [ServerRpc]
-    // protected void InimigoAtiraServerRpc(int bala) {
-    //     if(balaCarregada) {
-    //         balaCarregada = false;
-
-    //         CriaBala(bala);
-    //         StartCoroutine(Recarrega(/*Random.Range(velAtirarMin, velAtirarMax)*/3));
-    //     }
-    // }
-
-    // protected IEnumerator Recarrega(float tempoMin, float tempoMax) {
-    //     yield return new WaitForSeconds(Random.Range(tempoMin, tempoMax));
-
-    //     balaCarregada = true;
-    // }
 
     void GetValores() {
         ValoresSpawn valSpawn = atirador.GetComponent<ValoresSpawn>();
