@@ -11,6 +11,11 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private string Fase;
     [SerializeField] private GameObject menu;
 
+    void Start()
+    {
+        Continuar();
+    }
+
     void Update()
     {
         if(Input.GetKeyDown("escape"))
@@ -21,7 +26,6 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
-        Continuar();
         SceneManager.LoadScene(Fase);
     }
 

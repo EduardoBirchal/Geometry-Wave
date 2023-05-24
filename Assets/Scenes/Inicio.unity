@@ -9000,7 +9000,7 @@ GameObject:
   - component: {fileID: 1430365472}
   - component: {fileID: 1430365473}
   m_Layer: 5
-  m_Name: MoreOptions(Hud)
+  m_Name: Graficos(Hud)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
