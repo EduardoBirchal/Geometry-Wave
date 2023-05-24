@@ -46,7 +46,7 @@ public class AtiraPlayer : Atirador
                 9f, 
                 0.75f, 
                 0f, 
-                40f,
+                20f,
                 "Espingarda", 
                 objBala
             ),
