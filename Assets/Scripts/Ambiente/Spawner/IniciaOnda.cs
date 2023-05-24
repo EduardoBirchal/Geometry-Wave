@@ -32,7 +32,7 @@ public class IniciaOnda : FuncoesGerais
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
         if(inimigos.Length == 0 && NetworkInfo.gameStarted == true) {
-            IniciarOndaClientRpc();
+            StartCoroutine(CriaOnda());
         }
         else {
             // Espera 1 segundo e executa a função de novo. Não está usando Update porque só precisa rodar 1 vez por segundo em vez de 1 vez por frame.
@@ -56,7 +56,8 @@ public class IniciaOnda : FuncoesGerais
         }
 
         Vector3 posicaoSpawn = new Vector3 (posX, posY, 0);
-        Instantiate(inimigo, posicaoSpawn, Quaternion.identity);
+        GameObject novoInimigo = Instantiate(inimigo, posicaoSpawn, Quaternion.identity);
+        novoInimigo.GetComponent<NetworkObject>().Spawn();
     }                                                       
     
     [ClientRpc]
