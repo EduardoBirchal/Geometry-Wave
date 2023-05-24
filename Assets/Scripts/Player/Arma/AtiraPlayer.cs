@@ -18,7 +18,7 @@ public class AtiraPlayer : Atirador
     // Update is called once per frame
     void Update()
     {
-        balaAtual = mudaBala.modoTiro;
+        balaAtual = mudaBala.modoTiro.Value;
         QuerAtirar();
     }
 

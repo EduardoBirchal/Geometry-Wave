@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class MudaBala : FuncoesGerais
 {
-    public int modoTiro = 0, numTiros;
+    public int numTiros;
     SpriteRenderer sprRenderer;
     GameObject arma;
     public Sprite[] spritesPlayer;
     private PlayerNetwork PlayerNet;
+    public NetworkVariable<int> modoTiro = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     void Start() 
     {
@@ -25,25 +27,31 @@ public class MudaBala : FuncoesGerais
     }
 
     void MudaSprite() {
-        sprRenderer.sprite = spritesPlayer[modoTiro];
+        sprRenderer.sprite = spritesPlayer[modoTiro.Value];
     }
 
-    void AtualizaArma() {
-
+    [ClientRpc] 
+    void AtualizarSpriteClientRpc()
+    {
+        Debug.LogWarning("Variavel: " + modoTiro.Value);
+        MudaSprite();
     }
 
     void GetModo() {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        if (scroll != 0 && PlayerNet.CheckForClient()) {
+        if (scroll != 0 && IsOwner)  {
             scroll = scroll/Mathf.Abs(scroll);
 
-            modoTiro += (int) scroll;
-            modoTiro = modoTiro % numTiros;
+            int novoValor = (modoTiro.Value + (int) scroll) % numTiros;
 
-            if(modoTiro < 0) modoTiro = 2;
+            if(novoValor < 0) novoValor= 2;
+            modoTiro.Value = novoValor;
+            
+            Debug.LogWarning("Variavel: " + modoTiro.Value);
 
             MudaSprite();
+            AtualizarSpriteClientRpc();
         }
     }
 }
