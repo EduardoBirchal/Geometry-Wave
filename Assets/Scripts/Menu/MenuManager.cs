@@ -10,21 +10,48 @@ namespace Menus
     {
         [SerializeField] private string nomeDaFase;
         [SerializeField] private GameObject menuInicial;
+        [SerializeField] private GameObject gameModes;
+        [SerializeField] private GameObject dificultSelector;
+        [SerializeField] private GameObject onlineModes;
+        [SerializeField] private GameObject enterOnline;
         [SerializeField] private GameObject painelOptions;
         [SerializeField] private GameObject gameplayOptions;
         [SerializeField] private GameObject soundOptions;
         [SerializeField] private GameObject moreOptions;
 
-
-        public void Jogar()
+        public void Tutorial()
         {
             SceneManager.LoadScene(nomeDaFase);
         }
 
+        public void GameModes()
+        {
+            gameModes.SetActive(true);
+            menuInicial.SetActive(false);
+        }
+
+        public void Solo()
+        {
+            dificultSelector.SetActive(true);
+            gameModes.SetActive(false);
+        }
+
+        public void Online()
+        {
+            onlineModes.SetActive(true);
+            gameModes.SetActive(false);
+        }
+
+        public void EnterOnline()
+        {
+            enterOnline.SetActive(true);
+            onlineModes.SetActive(false);
+        }
+
         public void Options()
         {
-            menuInicial.SetActive(false);
             painelOptions.SetActive(true);
+            menuInicial.SetActive(false);
         }
 
         public void GamePlayOptions()
@@ -43,6 +70,30 @@ namespace Menus
         {
             moreOptions.SetActive(true);
             painelOptions.SetActive(false);
+        }
+
+        public void CloseGameModes()
+        {
+            menuInicial.SetActive(true);
+            gameModes.SetActive(false);
+        }
+
+        public void CloseSolo()
+        {
+            gameModes.SetActive(true);
+            dificultSelector.SetActive(false);
+        }
+
+        public void CloseOnline()
+        {
+            gameModes.SetActive(true);
+            onlineModes.SetActive(false);
+        }
+
+        public void CloseEnterOnline()
+        {
+            onlineModes.SetActive(true);
+            enterOnline.SetActive(false);
         }
 
         public void CloseGamePlayOptions()
