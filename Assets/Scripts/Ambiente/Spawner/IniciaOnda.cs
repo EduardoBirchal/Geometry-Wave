@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class IniciaOnda : FuncoesGerais
 {
@@ -31,7 +32,7 @@ public class IniciaOnda : FuncoesGerais
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
         if(inimigos.Length == 0 && NetworkInfo.gameStarted == true) {
-            StartCoroutine(CriaOnda());
+            IniciarOndaClientRpc();
         }
         else {
             // Espera 1 segundo e executa a função de novo. Não está usando Update porque só precisa rodar 1 vez por segundo em vez de 1 vez por frame.
@@ -58,6 +59,11 @@ public class IniciaOnda : FuncoesGerais
         Instantiate(inimigo, posicaoSpawn, Quaternion.identity);
     }                                                       
     
+    [ClientRpc]
+    void IniciarOndaClientRpc()
+    {
+        StartCoroutine(CriaOnda());
+    }
     IEnumerator CriaOnda() {
         yield return new WaitForSeconds(2);
         int dificuldadeDisponivel = (int) dificuldadeTotal;
