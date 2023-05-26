@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class MenuManager : MonoBehaviour
@@ -15,7 +16,20 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject painelOptions;
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
-    [SerializeField] private GameObject moreOptions;
+    [SerializeField] private GameObject graficoshud;
+    [SerializeField] private CanvasScaler canvasScaler;
+
+    void Start()
+    {
+        canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
+        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
+        //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
+    } 
+
+    void Update()
+    {
+        canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
+    }
 
     public void Tutorial()
     {
@@ -64,10 +78,11 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(false);
     }
 
-    public void MoreOptions()
+    public void GraficosHud()
     {
-        moreOptions.SetActive(true);
+        graficoshud.SetActive(true);
         painelOptions.SetActive(false);
+        GameObject.Find("SliderHudSlide").GetComponent<Slider>().value = PlayerPrefs.GetFloat("HudSizeValue");
     }
 
     public void CloseGameModes()
@@ -106,10 +121,11 @@ public class MenuManager : MonoBehaviour
         soundOptions.SetActive(false);
     }
 
-    public void CloseMoreOptions()
+    public void CloseGraficosHud()
     {
+        PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         painelOptions.SetActive(true);
-        moreOptions.SetActive(false);
+        graficoshud.SetActive(false);
     }
 
     public void CloseOptions()

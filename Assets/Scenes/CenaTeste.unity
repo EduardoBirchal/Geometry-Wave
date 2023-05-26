@@ -3290,7 +3290,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: MoreOptions
+        m_MethodName: GraficosHud
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8846,9 +8846,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 593899205}
   m_Direction: 0
   m_MinValue: 0.4
-  m_MaxValue: 0.8
+  m_MaxValue: 0.7
   m_WholeNumbers: 0
-  m_Value: 0.8
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9003,7 +9003,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 566950212}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: CloseMoreOptions
+        m_MethodName: CloseGraficosHud
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10234,6 +10234,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 201438348}
     - target: {fileID: 2340701521293824579, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: graficoshud
+      value: 
+      objectReference: {fileID: 837130027}
+    - target: {fileID: 2340701521293824579, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: menuInicial
       value: 
       objectReference: {fileID: 858941364}
@@ -10241,6 +10245,10 @@ PrefabInstance:
       propertyPath: moreOptions
       value: 
       objectReference: {fileID: 837130027}
+    - target: {fileID: 2340701521293824579, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: canvasScaler
+      value: 
+      objectReference: {fileID: 646347261}
     - target: {fileID: 2340701521293824579, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: soundOptions
       value: 

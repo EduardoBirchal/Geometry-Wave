@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class MenuInGame : MonoBehaviour
@@ -24,7 +25,7 @@ public class MenuInGame : MonoBehaviour
 
     void Update()
     {
-
+        
 
         if(Input.GetKeyDown("escape") && playerhp.hp > 0)
         {
