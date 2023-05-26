@@ -23,7 +23,6 @@ public class MenuManager : MonoBehaviour
     {
         canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
-        //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     } 
 
     void Update()
