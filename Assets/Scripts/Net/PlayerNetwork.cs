@@ -11,7 +11,6 @@ public class PlayerNetwork : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        Debug.Log("###" + IsOwner);
         isMp = SceneManager.GetActiveScene().name == "Multiplayer";
         isPlayer = IsOwner;
     }

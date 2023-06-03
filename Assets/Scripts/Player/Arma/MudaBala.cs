@@ -3,38 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class MudaBala : FuncoesGerais
+public class MudaBala : NetworkBehaviour
 {
     public int numTiros;
     SpriteRenderer sprRenderer;
     GameObject arma;
     public Sprite[] spritesPlayer;
     private PlayerNetwork PlayerNet;
-    public NetworkVariable<int> modoTiro = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<int> modoTiro = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     void Start() 
     {
         PlayerNet = GetComponent<PlayerNetwork>();
         sprRenderer = GetComponent<SpriteRenderer>();
         arma = transform.GetChild(0).gameObject;
-        MudaSprite();
+        modoTiro.Value = 0;
+        MudaSprite(modoTiro.Value);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(PlayerNet.CheckForClient() == false) return;
         GetModo();
     }
 
-    void MudaSprite() {
-        sprRenderer.sprite = spritesPlayer[modoTiro.Value];
+    void MudaSprite(int novoValor) {
+        sprRenderer.sprite = spritesPlayer[novoValor];
     }
 
-    [ClientRpc] 
-    void AtualizarSpriteClientRpc()
+    [ClientRpc]
+    void ReceberNovoSpriteClientRpc(int novoValor)
     {
-        Debug.LogWarning("Variavel: " + modoTiro.Value);
-        MudaSprite();
+        Debug.Log("Sprite Recebido");
+        sprRenderer.sprite = spritesPlayer[novoValor];
+    }
+
+    [ServerRpc] 
+    void EnviarNovoSpriteServerRpc(int novoValor)
+    {
+        Debug.Log("Sprite Enviado");
+        modoTiro.Value = novoValor;
+        ReceberNovoSpriteClientRpc(novoValor);
     }
 
     void GetModo() {
@@ -46,12 +56,7 @@ public class MudaBala : FuncoesGerais
             int novoValor = (modoTiro.Value + (int) scroll) % numTiros;
 
             if(novoValor < 0) novoValor= 2;
-            modoTiro.Value = novoValor;
-            
-            Debug.LogWarning("Variavel: " + modoTiro.Value);
-
-            MudaSprite();
-            AtualizarSpriteClientRpc();
+            EnviarNovoSpriteServerRpc(novoValor);
         }
     }
 }

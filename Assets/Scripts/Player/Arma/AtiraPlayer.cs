@@ -12,12 +12,12 @@ public class AtiraPlayer : Atirador
     void Start() {
         mudaBala = atirador.GetComponent<MudaBala>();
         PlayerNet = atirador.transform.root.GetComponent<PlayerNetwork>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(PlayerNet.CheckForClient() == false) return;
         balaAtual = mudaBala.modoTiro.Value;
         QuerAtirar();
     }

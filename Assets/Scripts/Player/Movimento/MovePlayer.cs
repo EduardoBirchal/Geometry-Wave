@@ -51,6 +51,8 @@ public class MovePlayer : FuncoesGerais
     }
 
     void SegueMouse() {
+        if(PlayerNet.CheckForClient() == false) return;
+        
         Vector3 posMouse = Input.mousePosition;
         Vector3 posPlayer = Camera.main.WorldToScreenPoint(transform.position);
 
