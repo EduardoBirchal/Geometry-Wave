@@ -8,6 +8,7 @@ public class NetworkStart : MonoBehaviour
     [SerializeField] private GameObject hostBtn;
     [SerializeField] private GameObject clientBtn;
     [SerializeField] private GameObject startBtn;
+    [SerializeField] private GameObject spawner;
     private void Start()
     {
     }
@@ -27,6 +28,7 @@ public class NetworkStart : MonoBehaviour
         });
         startBtn.GetComponent<Button>().onClick.AddListener(() => {
             GetComponent<NetworkState>().gameStarted = true;
+            Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
             startBtn.SetActive(false);
         });
     }

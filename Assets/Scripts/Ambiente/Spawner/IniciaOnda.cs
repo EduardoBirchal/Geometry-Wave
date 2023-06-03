@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using Unity.Netcode;
 
@@ -18,13 +18,16 @@ public class IniciaOnda : FuncoesGerais
     void Start()
     {
         NetworkInfo = GameObject.Find("NetworkManager").GetComponent<NetworkState>();
-        StartCoroutine(ChecaInimigos());
+        gameObject.name = "SpawnerInimigo";
         distanciaMargem = new Vector2(larguraTela - tamanhoMargem, alturaTela - tamanhoMargem);
         dificuldadeTotal *= dificuldade;
         listaInimigos = new GameObject[][] {inimigosDif1};
         
         texto = GameObject.Find("TextoGrandeMapa");
         funcoesTexto = texto.GetComponent<FuncoesTexto>();
+        if(IsServer || IsHost)
+            StartCoroutine(ChecaInimigos());
+        //IniciarChecaInimigosServerRpc();
     }
 
     IEnumerator ChecaInimigos() {
@@ -58,20 +61,27 @@ public class IniciaOnda : FuncoesGerais
         Vector3 posicaoSpawn = new Vector3 (posX, posY, 0);
         GameObject novoInimigo = Instantiate(inimigo, posicaoSpawn, Quaternion.identity);
         novoInimigo.GetComponent<NetworkObject>().Spawn();
-    }                                                       
+    }
+
+    [ServerRpc]
+    void IniciarChecaInimigosServerRpc()
+    {
+        Debug.LogWarning(IsServer);
+        StartCoroutine(ChecaInimigos());
+    }                                                    
     
     [ClientRpc]
-    void IniciarOndaClientRpc()
+    void MostrarOndaClientRpc(int onda)
     {
-        StartCoroutine(CriaOnda());
+        funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
     }
     IEnumerator CriaOnda() {
         yield return new WaitForSeconds(2);
         int dificuldadeDisponivel = (int) dificuldadeTotal;
         onda++;
 
-        string strOnda = "Onda " + onda;
-        funcoesTexto.MostraFade(1.5f, 1.5f, strOnda);
+        Debug.LogWarning(IsServer);
+        MostrarOndaClientRpc(onda);
 
         while (dificuldadeDisponivel > 0) {
             // Escolhe o menor número entre numDificuldades e dificuldadeDisponivel
