@@ -37,6 +37,8 @@ public class Atirador : FuncoesGerais
     {
         if(balaCarregada)
         {
+            Debug.LogWarning(balaTipo);
+            Debug.LogWarning(TipoTiro.tipos[balaTipo]);
             balaCarregada = false;
             TipoBala tipo = TipoTiro.tipos[balaTipo];
             CriaBala(tipo);

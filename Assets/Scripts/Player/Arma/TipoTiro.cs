@@ -87,6 +87,7 @@ public class TipoTiro : MonoBehaviour
             2f, 
             6f, 
             0.3f, 
+            0.3f, 
             90f, 
             90f,
             "Mísseis", 
