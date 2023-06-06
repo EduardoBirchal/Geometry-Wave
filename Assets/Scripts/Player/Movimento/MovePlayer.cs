@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePlayer : FuncoesGerais
+public class MovePlayer : MoveAutomatico
 {
     public float vel, velAtual;
     public bool move = true;
@@ -53,9 +53,13 @@ public class MovePlayer : FuncoesGerais
     void SegueMouse() {
         if(PlayerNet.CheckForClient() == false) return;
         
+        ViraPraObjeto(Camera.main.ScreenToWorldPoint(Input.mousePosition)); 
+
+        /*
         Vector3 posMouse = Input.mousePosition;
         Vector3 posPlayer = Camera.main.WorldToScreenPoint(transform.position);
 
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, GetAngulo(posPlayer, posMouse) * Mathf.Rad2Deg * -1));  
+        */
     }
 }

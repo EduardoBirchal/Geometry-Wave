@@ -27,6 +27,7 @@ public class TipoTiro : MonoBehaviour
 {
     [SerializeField] private GameObject prefab_balaPlayer;
     [SerializeField] private GameObject prefab_balaInimigo;
+    [SerializeField] private GameObject prefab_balaGuiada;
     public static TipoBala[] tipos;
     
     public void Start()
@@ -56,7 +57,7 @@ public class TipoTiro : MonoBehaviour
             "KillAura",
             prefab_balaPlayer 
         ),
-            // SHOTGUN
+        // SHOTGUN
         new TipoBala(
             5, 
             5f, 
@@ -68,6 +69,7 @@ public class TipoTiro : MonoBehaviour
             "Espingarda",
             prefab_balaPlayer
         ),
+        // ENEMY BASE SHOOT
         new TipoBala(
             1,
             2,
@@ -78,7 +80,18 @@ public class TipoTiro : MonoBehaviour
             40,
             "Matador",
             prefab_balaInimigo
-        )};
+        ),
+        // GUIDED
+        new TipoBala(
+            1, 
+            2f, 
+            6f, 
+            0.3f, 
+            90f, 
+            90f,
+            "Mísseis", 
+            prefab_balaGuiada
+        ),};
     }
 }
 

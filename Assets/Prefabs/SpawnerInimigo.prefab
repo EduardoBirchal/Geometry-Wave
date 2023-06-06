@@ -47,11 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onda: 0
   numDificuldades: 1
+  tempoEspera: 3
   dificuldade: 1
   dificuldadeTotal: 6
   tamanhoMargem: 1
-  alturaTela: 5
-  larguraTela: 9
+  alturaTela: 9
+  larguraTela: 21
   inimigosDif1:
   - {fileID: 5010567226698321705, guid: c987e7a7634bd599a94defc9b47f6746, type: 3}
   inimigosDif2: []
