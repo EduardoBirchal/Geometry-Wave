@@ -23,11 +23,23 @@ public class MenuManager : MonoBehaviour
     {
         canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
+        canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
+        ScalingChanger();
     } 
+
+    public void ScalingChanger()
+    {
+        //graficoshud.layer = -20;
+        graficoshud.SetActive(true);
+        GameObject.Find("SliderHudSlide").GetComponent<Slider>().value = PlayerPrefs.GetFloat("HudSizeValue");
+        
+        PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
+        graficoshud.SetActive(false);
+        //graficoshud.layer = 0;
+    }
 
     void Update()
     {
-        canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     }
 
     public void Tutorial()
@@ -79,9 +91,10 @@ public class MenuManager : MonoBehaviour
 
     public void GraficosHud()
     {
+        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         graficoshud.SetActive(true);
+        Debug.Log(GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         painelOptions.SetActive(false);
-        GameObject.Find("SliderHudSlide").GetComponent<Slider>().value = PlayerPrefs.GetFloat("HudSizeValue");
     }
 
     public void CloseGameModes()
