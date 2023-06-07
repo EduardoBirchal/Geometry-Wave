@@ -64,12 +64,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5258545932206690552}
   - component: {fileID: 5258545932206690553}
+  - component: {fileID: 1187362415}
   - component: {fileID: 5258545932206690551}
   - component: {fileID: 442041107503138968}
   - component: {fileID: 2888467060585204476}
   - component: {fileID: 4985828454921511783}
   - component: {fileID: 8303529683723552481}
-  - component: {fileID: 1187362415}
   m_Layer: 3
   m_Name: InimigoBasico
   m_TagString: Inimigo
@@ -145,6 +145,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1187362415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258545932206690554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce1757f0153a38dda32d2039e604926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valorXp: 1
+  maxHp: 10
+  danoBala: 2
+  velBala: 10
+  velAtirarMax: 2
+  velAtirarMin: 3
+  velMovimento: 3
 --- !u!114 &5258545932206690551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,21 +264,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valorXp: 0
---- !u!114 &1187362415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258545932206690554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce1757f0153a38dda32d2039e604926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valorXp: 1
-  maxHp: 10
-  danoBala: 2
-  velBala: 3
-  velAtirarMax: 2
-  velAtirarMin: 3

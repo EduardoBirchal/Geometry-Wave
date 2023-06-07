@@ -20,4 +20,10 @@ public class MoveInimigo : MoveAutomatico
         if (mudaAngulo) ViraPraObjeto(player.transform.position); 
         if (move) MoveFrente();
     }
+
+    void GetValores() {
+        ValoresSpawn valSpawn = GetComponent<ValoresSpawn>();
+
+        velocidade = valSpawn.velMovimento;
+    }
 }
