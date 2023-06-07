@@ -9,6 +9,7 @@ public class MoveInimigo : MoveAutomatico
 
     void Start() 
     {
+        GetValores();
         player = GameObject.Find("Player");
         transform.eulerAngles = AnguloPraVetor(GetAngulo(transform.position, player.transform.position) * Mathf.Rad2Deg * -1); // Vira pro player
 
