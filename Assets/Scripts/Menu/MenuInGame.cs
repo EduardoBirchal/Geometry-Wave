@@ -9,15 +9,17 @@ using UnityEngine.UI;
 
 public class MenuInGame : MonoBehaviour
 {
-    [SerializeField] private string Fase;
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
 
     PlayerGerenciaHP playerhp;
+    SceneFadeAnimation animation;
+
 
     void Start()
     {
+        animation = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
         Continuar();
 
@@ -55,7 +57,8 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
-        SceneManager.LoadScene(Fase);
+        Debug.Log("Passei aqui");
+        animation.FadeToMenu();
     }
 
     public void Esc()

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private string nomeDaFase;
     [SerializeField] private GameObject menuInicial;
     [SerializeField] private GameObject gameModes;
     [SerializeField] private GameObject dificultSelector;
@@ -17,13 +16,16 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
-    [SerializeField] private CanvasScaler canvasScaler;
+    //[SerializeField] private CanvasScaler canvasScaler;
+    
+    SceneFadeAnimation animation;
 
     void Start()
     {
-        canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
+        animation = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        //canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
-        canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
+        //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
         ScalingChanger();
     } 
 
@@ -44,7 +46,8 @@ public class MenuManager : MonoBehaviour
 
     public void Tutorial()
     {
-        SceneManager.LoadScene(nomeDaFase);
+        animation.FadetoNextLevel();
+        //SceneManager.LoadScene(nomeDaFase);
     }
 
     public void GameModes()
