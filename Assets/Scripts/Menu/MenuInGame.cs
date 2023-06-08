@@ -57,7 +57,6 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
-        Debug.Log("Passei aqui");
         animation.FadeToMenu();
     }
 

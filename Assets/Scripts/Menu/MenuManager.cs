@@ -31,13 +31,13 @@ public class MenuManager : MonoBehaviour
 
     public void ScalingChanger()
     {
-        //graficoshud.layer = -20;
+
         graficoshud.SetActive(true);
         GameObject.Find("SliderHudSlide").GetComponent<Slider>().value = PlayerPrefs.GetFloat("HudSizeValue");
-        
         PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
+        PlayerPrefs.Save();
         graficoshud.SetActive(false);
-        //graficoshud.layer = 0;
+
     }
 
     void Update()
@@ -139,6 +139,7 @@ public class MenuManager : MonoBehaviour
     public void CloseGraficosHud()
     {
         PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
+        PlayerPrefs.Save();
         painelOptions.SetActive(true);
         graficoshud.SetActive(false);
     }
