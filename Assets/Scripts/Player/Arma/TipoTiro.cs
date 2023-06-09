@@ -28,11 +28,12 @@ public class TipoTiro : MonoBehaviour
     [SerializeField] private GameObject prefab_balaPlayer;
     [SerializeField] private GameObject prefab_balaInimigo;
     [SerializeField] private GameObject prefab_balaGuiada;
-    public static TipoBala[] tipos;
+    public TipoBala[] player;
+    public TipoBala[] inimigo;
     
     public void Start()
     {
-        tipos = new TipoBala[]{
+        player = new TipoBala[]{
         // METRALHADORA
         new TipoBala(
             1, // Número de balas
@@ -69,18 +70,6 @@ public class TipoTiro : MonoBehaviour
             "Espingarda",
             prefab_balaPlayer
         ),
-        // ENEMY BASE SHOOT
-        new TipoBala(
-            1,
-            2,
-            0.5f,
-            0.75f,
-            2f,
-            0,
-            40,
-            "Matador",
-            prefab_balaInimigo
-        ),
         // GUIDED
         new TipoBala(
             1, 
@@ -92,7 +81,22 @@ public class TipoTiro : MonoBehaviour
             90f,
             "Mísseis", 
             prefab_balaGuiada
-        ),};
+        )};
+
+        inimigo = new TipoBala[]{
+            // ENEMY BASE SHOOT
+            new TipoBala(
+                1,
+                2,
+                0.5f,
+                0.75f,
+                2f,
+                0,
+                40,
+                "Matador",
+                prefab_balaInimigo
+            )
+        };
     }
 }
 

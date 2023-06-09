@@ -9,7 +9,9 @@ public class AtiraPlayer : Atirador
     private MudaBala mudaBala;
     private PlayerNetwork PlayerNet;
 
-    void Start() {
+    void Start() 
+    {
+        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().player;
         mudaBala = atirador.GetComponent<MudaBala>();
         PlayerNet = atirador.transform.root.GetComponent<PlayerNetwork>();
     }
