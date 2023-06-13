@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Collections;
-public class Atirador : FuncoesGerais
+public class Atirador : NetworkBehaviour
 {
     public GameObject atirador;
+    protected TipoBala[] tipos;
     protected bool balaCarregada = true;
 
     // Calcula o ângulo da bala e cria ela no ângulo
@@ -38,9 +39,8 @@ public class Atirador : FuncoesGerais
         if(balaCarregada)
         {
             balaCarregada = false;
-            TipoBala tipo = TipoTiro.tipos[balaTipo];
-            CriaBala(tipo);
-            StartCoroutine(Recarrega(Random.Range(tipo.cooldownTiro_Min, tipo.cooldownTiro_Max)));
+            CriaBala(tipos[balaTipo]);
+            StartCoroutine(Recarrega(Random.Range(tipos[balaTipo].cooldownTiro_Min,tipos[balaTipo].cooldownTiro_Max)));
         }
     }
 

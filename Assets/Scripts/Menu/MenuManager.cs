@@ -36,58 +36,52 @@ public class MenuManager : MonoBehaviour
         menuInicial.SetActive(false);
         painelOptions.SetActive(true);
     }
-
     public void GamePlayOptions()
     {
         gameplayOptions.SetActive(true);
         painelOptions.SetActive(false);
     }
-
     public void SoundOptions()
     {
         soundOptions.SetActive(true);
         painelOptions.SetActive(false);
     }
-
     public void MoreOptions()
     {
         moreOptions.SetActive(true);
         painelOptions.SetActive(false);
     }
-
     public void CloseGamePlayOptions()
     {
         painelOptions.SetActive(true);
         gameplayOptions.SetActive(false);
     }
-
     public void CloseSoundOptions()
     {
         painelOptions.SetActive(true);
         soundOptions.SetActive(false);
     }
-
     public void CloseMoreOptions()
     {
         painelOptions.SetActive(true);
         moreOptions.SetActive(false);
     }
-
     public void CloseOptions()
     {
         painelOptions.SetActive(false);
         menuInicial.SetActive(true);
     }
-
     public void CloseLobby()
     {
         menuPreJogo.SetActive(false);
         menuInicial.SetActive(true);
     }
-
     public void ExitGame()
     {
-        print("Saiu do jogo");
-        Application.Quit();
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else    
+            Application.Quit();
+        #endif
     }
 }

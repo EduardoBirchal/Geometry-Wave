@@ -55,7 +55,7 @@ public class MudaBala : NetworkBehaviour
 
             int novoValor = (modoTiro.Value + (int) scroll) % numTiros;
 
-            if(novoValor < 0) novoValor= 2;
+            if(novoValor < 0) novoValor = numTiros - 1;
             EnviarNovoSpriteServerRpc(novoValor);
         }
     }

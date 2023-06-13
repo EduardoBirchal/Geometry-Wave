@@ -6,7 +6,7 @@ using Unity.Netcode;
 public class IniciaOnda : FuncoesGerais
 {
     public int onda = 0, numDificuldades;
-    public float dificuldade, dificuldadeTotal, tamanhoMargem, alturaTela, larguraTela;
+    public float tempoEspera, dificuldade, dificuldadeTotal, tamanhoMargem, alturaTela, larguraTela;
     public GameObject[] inimigosDif1, inimigosDif2, inimigosDif3;
     private Vector2 distanciaMargem;
     private GameObject[][] listaInimigos;
@@ -41,7 +41,7 @@ public class IniciaOnda : FuncoesGerais
             // Espera 1 segundo e executa a função de novo. Não está usando Update porque só precisa rodar 1 vez por segundo em vez de 1 vez por frame.
             // Não reinicia toda vez porque o CriaOnda() espera um tempo antes de spawnar os inimigos. Se fizesse a checagem durante esse tempo, ia 
             // criar várias ondas antes da primeira spawnar.
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(tempoEspera);
             StartCoroutine(ChecaInimigos());
         }
     }

@@ -11,9 +11,10 @@ public class AtiraInimigo : Atirador
 
     void Start() 
     {
+        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
         atirador = transform.parent.gameObject;
         balaCarregada = false;
-        tipoBala = 3;
+        tipoBala = 0;
 
         GetValores();
 
@@ -29,8 +30,8 @@ public class AtiraInimigo : Atirador
     void GetValores() {
         ValoresSpawn valSpawn = atirador.GetComponent<ValoresSpawn>();
 
-        TipoTiro.tipos[3].danoBala = valSpawn.danoBala;
-        TipoTiro.tipos[3].danoBala = valSpawn.velBala;
+        tipos[tipoBala].danoBala = valSpawn.danoBala;
+        tipos[tipoBala].danoBala = valSpawn.velBala;
         velAtirarMin = valSpawn.velAtirarMin;
         velAtirarMax = valSpawn.velAtirarMax;
     }

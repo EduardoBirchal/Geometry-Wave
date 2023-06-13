@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 2235560352039561470}
   - component: {fileID: 9084313238536961442}
   - component: {fileID: 5936803030163731997}
-  - component: {fileID: 377892746282264854}
+  - component: {fileID: 2030280899248522221}
   m_Layer: 0
   m_Name: BalaPlayer
-  m_TagString: Untagged
+  m_TagString: BalaPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 13
+  velVirar: 0
 --- !u!114 &2235560352039561470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impacto: 500
   dano: 2
---- !u!114 &377892746282264854
+--- !u!114 &2030280899248522221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,5 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 951099334
   AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
