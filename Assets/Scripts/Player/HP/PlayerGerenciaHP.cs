@@ -10,6 +10,7 @@ public class PlayerGerenciaHP : FuncoesGerais
     SpriteRenderer sprRenderer;
     public bool tomaDano = true;
     Collider2D colisor;
+    public bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class PlayerGerenciaHP : FuncoesGerais
     void Update() {
         EsticaBarraHP();
     }
+
 
     public void TomaDano(float dano) {
         hp -= dano;
