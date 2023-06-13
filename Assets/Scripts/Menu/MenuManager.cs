@@ -17,12 +17,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
     //[SerializeField] private CanvasScaler canvasScaler;
-    
-    SceneFadeAnimation animation;
+    private SceneFadeAnimation fade;
 
     void Start()
     {
-        animation = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         //canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
@@ -41,7 +40,7 @@ public class MenuManager : MonoBehaviour
 
     public void Tutorial()
     {
-        animation.FadetoNextLevel();
+        fade.FadetoNextLevel();
         //SceneManager.LoadScene(nomeDaFase);
     }
 

@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneFadeAnimation : MonoBehaviour
 {
-
     public Animator animator;
     public int levelToLoad;
 
@@ -11,7 +10,6 @@ public class SceneFadeAnimation : MonoBehaviour
     {
         levelToLoad = levelIndex;
         animator.SetTrigger("FadeOut");
-    
     }
 
     public void FadetoNextLevel()
@@ -21,7 +19,6 @@ public class SceneFadeAnimation : MonoBehaviour
 
     public void FadeToMenu()
     {
-
         FadeScene(0);
     }
 
@@ -29,5 +26,4 @@ public class SceneFadeAnimation : MonoBehaviour
     {
         SceneManager.LoadScene(levelToLoad);
     }
-
 }
