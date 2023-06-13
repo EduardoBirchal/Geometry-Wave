@@ -1,7 +1,3 @@
-using System;
-using System.Threading;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,13 +9,13 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
 
-    PlayerGerenciaHP playerhp;
-    SceneFadeAnimation animation;
+    public PlayerGerenciaHP playerhp;
+    private SceneFadeAnimation fade;
 
 
     void Start()
     {
-        animation = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
         Continuar();
 
@@ -27,8 +23,6 @@ public class MenuInGame : MonoBehaviour
 
     void Update()
     {
-        
-
         if(Input.GetKeyDown("escape") && playerhp.hp > 0)
         {
             Esc();
@@ -40,7 +34,6 @@ public class MenuInGame : MonoBehaviour
             Time.timeScale = 0;
             diedScreen.SetActive(true);
         }
-
     }
 
     public void QuitConfirmation()
@@ -57,7 +50,7 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
-        animation.FadeToMenu();
+        fade.FadeToMenu();
     }
 
     public void Esc()

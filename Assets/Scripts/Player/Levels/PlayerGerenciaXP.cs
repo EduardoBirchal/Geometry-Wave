@@ -11,6 +11,7 @@ public class PlayerGerenciaXP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        barra = GameObject.Find("XpBarra").GetComponent<Image>();
         xp = 0;
         level = 1;
     }

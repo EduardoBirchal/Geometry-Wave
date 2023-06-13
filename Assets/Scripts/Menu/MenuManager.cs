@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 using UnityEngine.UI;
-
 
 public class MenuManager : MonoBehaviour
 {
+
     [SerializeField] private GameObject menuInicial;
     [SerializeField] private GameObject gameModes;
     [SerializeField] private GameObject dificultSelector;
@@ -17,12 +17,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
     //[SerializeField] private CanvasScaler canvasScaler;
-    
-    SceneFadeAnimation animation;
+    private SceneFadeAnimation fade;
 
     void Start()
     {
-        animation = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         //canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
@@ -37,17 +36,15 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         PlayerPrefs.Save();
         graficoshud.SetActive(false);
-
-    }
-
-    void Update()
-    {
     }
 
     public void Tutorial()
     {
-        animation.FadetoNextLevel();
-        //SceneManager.LoadScene(nomeDaFase);
+        fade.FadetoNextLevel();
+    }
+    public void CriarSalaOnline()
+    {
+        fade.FadeScene(2);
     }
 
     public void GameModes()
@@ -79,13 +76,11 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(true);
         menuInicial.SetActive(false);
     }
-
     public void GamePlayOptions()
     {
         gameplayOptions.SetActive(true);
         painelOptions.SetActive(false);
     }
-
     public void SoundOptions()
     {
         soundOptions.SetActive(true);
@@ -98,6 +93,29 @@ public class MenuManager : MonoBehaviour
         graficoshud.SetActive(true);
         Debug.Log(GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         painelOptions.SetActive(false);
+    }
+
+    public void CloseGamePlayOptions()
+    {
+        painelOptions.SetActive(true);
+        gameplayOptions.SetActive(false);
+    }
+    public void CloseSoundOptions()
+    {
+        painelOptions.SetActive(true);
+        soundOptions.SetActive(false);
+    }
+    public void CloseMoreOptions()
+    {
+        PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
+        PlayerPrefs.Save();
+        painelOptions.SetActive(true);
+        graficoshud.SetActive(false);
+    }
+    public void CloseOptions()
+    {
+        painelOptions.SetActive(false);
+        menuInicial.SetActive(true);
     }
 
     public void CloseGameModes()
@@ -123,33 +141,6 @@ public class MenuManager : MonoBehaviour
         onlineModes.SetActive(true);
         enterOnline.SetActive(false);
     }
-
-    public void CloseGamePlayOptions()
-    {
-        painelOptions.SetActive(true);
-        gameplayOptions.SetActive(false);
-    }
-
-    public void CloseSoundOptions()
-    {
-        painelOptions.SetActive(true);
-        soundOptions.SetActive(false);
-    }
-
-    public void CloseGraficosHud()
-    {
-        PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
-        PlayerPrefs.Save();
-        painelOptions.SetActive(true);
-        graficoshud.SetActive(false);
-    }
-
-    public void CloseOptions()
-    {
-        painelOptions.SetActive(false);
-        menuInicial.SetActive(true);
-    }
-
     public void ExitGame()
     {
         #if UNITY_EDITOR

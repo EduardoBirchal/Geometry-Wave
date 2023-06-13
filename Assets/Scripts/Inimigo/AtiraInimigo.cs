@@ -1,53 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class AtiraInimigo : Atirador
 {
-    public int numBalas;
-    public float velBala, velAtirarMax, velAtirarMin, imprecisaoBala, arcoTiro, danoBala;
+    public float velAtirarMax, velAtirarMin;
     public string nomeBala;
-    public GameObject objBala;
-
-    private TipoBala tipoBala;
+    private int tipoBala;
 
     void Start() 
     {
+        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
         atirador = transform.parent.gameObject;
         balaCarregada = false;
+        tipoBala = 0;
 
         GetValores();
 
-        StartCoroutine(Recarrega(velAtirarMin, velAtirarMax));
-
-        tipoBala = new TipoBala(numBalas, danoBala, velBala, velAtirarMax, imprecisaoBala, arcoTiro, nomeBala, objBala);
+        StartCoroutine(Recarrega(Random.Range(velAtirarMin, velAtirarMax)));
     }
     
     void Update()
     {
-        AtiraBala(tipoBala);
+        if(IsServer)
+            AtiraServerRpc(tipoBala);
     }
 
-    protected new void AtiraBala(TipoBala bala) {
-        if(balaCarregada) {
-            balaCarregada = false;
-
-            CriaBala(bala);
-            StartCoroutine(Recarrega(velAtirarMin, velAtirarMax));
-        }
-    }
-
-    protected IEnumerator Recarrega(float tempoMin, float tempoMax) {
-        yield return new WaitForSeconds(Random.Range(tempoMin, tempoMax));
-
-        balaCarregada = true;
-    }
 
     void GetValores() {
         ValoresSpawn valSpawn = atirador.GetComponent<ValoresSpawn>();
 
-        danoBala = valSpawn.danoBala;
-        velBala = valSpawn.velBala;
+        tipos[tipoBala].danoBala = valSpawn.danoBala;
+        tipos[tipoBala].danoBala = valSpawn.velBala;
         velAtirarMin = valSpawn.velAtirarMin;
         velAtirarMax = valSpawn.velAtirarMax;
     }

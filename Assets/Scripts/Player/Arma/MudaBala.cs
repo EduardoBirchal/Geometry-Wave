@@ -1,43 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class MudaBala : FuncoesGerais
+public class MudaBala : NetworkBehaviour
 {
-    public int modoTiro = 0, numTiros;
+    public int numTiros;
     SpriteRenderer sprRenderer;
     GameObject arma;
-    public Sprite[] spritesPlayer;  
+    public Sprite[] spritesPlayer;
+    private PlayerNetwork PlayerNet;
+    public NetworkVariable<int> modoTiro = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     void Start() 
     {
+        PlayerNet = GetComponent<PlayerNetwork>();
         sprRenderer = GetComponent<SpriteRenderer>();
         arma = transform.GetChild(0).gameObject;
-        MudaSprite();
+        modoTiro.Value = 0;
+        MudaSprite(modoTiro.Value);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(PlayerNet.CheckForClient() == false) return;
         GetModo();
     }
 
-    void MudaSprite() {
-        sprRenderer.sprite = spritesPlayer[modoTiro];
+    void MudaSprite(int novoValor) {
+        sprRenderer.sprite = spritesPlayer[novoValor];
+    }
+
+    [ClientRpc]
+    void ReceberNovoSpriteClientRpc(int novoValor)
+    {
+        Debug.Log("Sprite Recebido");
+        sprRenderer.sprite = spritesPlayer[novoValor];
+    }
+
+    [ServerRpc] 
+    void EnviarNovoSpriteServerRpc(int novoValor)
+    {
+        Debug.Log("Sprite Enviado");
+        modoTiro.Value = novoValor;
+        ReceberNovoSpriteClientRpc(novoValor);
     }
 
     void GetModo() {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        if (scroll != 0) {
+        if (scroll != 0 && IsOwner)  {
             scroll = scroll/Mathf.Abs(scroll);
 
-            modoTiro += (int) scroll;
-            modoTiro = modoTiro % numTiros;
+            int novoValor = (modoTiro.Value + (int) scroll) % numTiros;
 
-            if(modoTiro < 0) modoTiro = numTiros - 1;
-
-            MudaSprite();
+            if(novoValor < 0) novoValor = numTiros - 1;
+            EnviarNovoSpriteServerRpc(novoValor);
         }
     }
 }

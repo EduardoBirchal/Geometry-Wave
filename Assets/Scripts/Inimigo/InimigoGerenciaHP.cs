@@ -23,7 +23,8 @@ public class InimigoGerenciaHP : FuncoesGerais
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0f) morreInimigo.Morre();
+        if (IsHost && hp <= 0f)
+            morreInimigo.MatarInimigoServerRpc();
     }
 
     public void TomaDano(float dano, float impacto, float angulo) {

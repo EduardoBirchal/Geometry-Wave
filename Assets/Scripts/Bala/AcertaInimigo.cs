@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AcertaInimigo : FuncoesGerais
+public class AcertaInimigo : FuncoesBala
 {
     public int impacto;
     public float dano;
@@ -15,15 +13,11 @@ public class AcertaInimigo : FuncoesGerais
         {
             case "Inimigo":
                 outro.GetComponent<InimigoGerenciaHP>().TomaDano(dano, impacto, transform.eulerAngles.z);
-                DestroiBala();
+                if(IsHost) DestroiBalaServerRpc();
             break;
             
             default:
             break;
         }
-    }
-
-    void DestroiBala() {
-        Destroy(gameObject);
     }
 }

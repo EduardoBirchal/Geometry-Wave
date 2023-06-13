@@ -5588,8 +5588,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1508623303}
-        m_TargetAssemblyTypeName: Menus.MenuManager, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: CriarSalaOnline
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

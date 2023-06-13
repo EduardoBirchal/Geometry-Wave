@@ -1,80 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
-
 
 public class AtiraPlayer : Atirador
 {
     public int balaAtual = 0;
     private MudaBala mudaBala;
-    private TipoBala[] tipos;
-    public GameObject objBala, objTeleguiada;
+    private PlayerNetwork PlayerNet;
 
-    void Start() {
+    void Start() 
+    {
+        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().player;
         mudaBala = atirador.GetComponent<MudaBala>();
-
-        tipos = new TipoBala[] {
-            
-            // METRALHADORA
-            new TipoBala(
-                1, // Número de balas
-                1f, // Dano
-                13f, // Velocidade da bala
-                0.1f, // Cooldown (em segundos)
-                20f, // Imprecisão (em graus)
-                40f, // Arco de tiro (em graus)
-                "Metralhadora", // Nome
-                objBala // Objeto da bala
-            ), 
-
-            // KILL AURA
-            new TipoBala(
-                90,
-                100f, 
-                20f, 
-                0f, 
-                0f, 
-                360f,
-                "KillAura", 
-                objBala
-            ), 
-
-            // SHOTGUN
-            new TipoBala(
-                5, 
-                5f, 
-                9f, 
-                0.75f, 
-                0f, 
-                20f,
-                "Espingarda", 
-                objBala
-            ),
-
-            // MISSEIS
-            new TipoBala(
-                1, 
-                2f, 
-                6f, 
-                0.3f, 
-                90f, 
-                90f,
-                "Mísseis", 
-                objTeleguiada
-            ),
-        };
+        PlayerNet = atirador.transform.root.GetComponent<PlayerNetwork>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        balaAtual = mudaBala.modoTiro;
-        Atira();
+        if(PlayerNet.CheckForClient() == false) return;
+        balaAtual = mudaBala.modoTiro.Value;
+        QuerAtirar();
     }
 
-    void Atira() {
-        if(Input.GetMouseButton(0)) {
-            AtiraBala(tipos[balaAtual]);
+    void QuerAtirar() {
+        if(PlayerNet.CheckForClient())
+        {
+            if(Input.GetMouseButton(0)) {
+                AtiraServerRpc(balaAtual);
+            }
         }
     }
 }
