@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2235560352039561470}
   - component: {fileID: 9084313238536961442}
   - component: {fileID: 5936803030163731997}
-  - component: {fileID: 2030280899248522221}
+  - component: {fileID: 597872689269665172}
   m_Layer: 0
   m_Name: BalaPlayer
   m_TagString: BalaPlayer
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impacto: 500
   dano: 2
---- !u!114 &2030280899248522221
+--- !u!114 &597872689269665172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

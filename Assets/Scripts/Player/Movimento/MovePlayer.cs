@@ -52,7 +52,6 @@ public class MovePlayer : MoveAutomatico
 
     void SegueMouse() {
         if(PlayerNet.CheckForClient() == false) return;
-        
         ViraPraObjeto(Camera.main.ScreenToWorldPoint(Input.mousePosition)); 
 
         /*

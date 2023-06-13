@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4621906328334712321}
   - component: {fileID: 5027342231454481519}
   - component: {fileID: 88238210807904706}
-  - component: {fileID: 1829151601737098131}
+  - component: {fileID: 1830748249102809865}
   m_Layer: 0
   m_Name: BalaTeleguiada
   m_TagString: BalaPlayer
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempoVida: 5
---- !u!114 &1829151601737098131
+--- !u!114 &1830748249102809865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
