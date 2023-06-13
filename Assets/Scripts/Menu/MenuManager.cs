@@ -41,7 +41,10 @@ public class MenuManager : MonoBehaviour
     public void Tutorial()
     {
         fade.FadetoNextLevel();
-        //SceneManager.LoadScene(nomeDaFase);
+    }
+    public void CriarSalaOnline()
+    {
+        fade.FadeScene(2);
     }
 
     public void GameModes()
