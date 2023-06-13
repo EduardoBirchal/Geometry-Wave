@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AcertaPlayer : MonoBehaviour
+public class AcertaPlayer : FuncoesBala
 {
     public float dano;
 
@@ -14,15 +12,11 @@ public class AcertaPlayer : MonoBehaviour
         {
             case "Player":
                 outro.GetComponent<PlayerGerenciaHP>().TomaDano(dano);
-                DestroiBala();
+                if(IsHost) DestroiBalaServerRpc();
             break;
             
             default:
             break;
         }
-    }
-
-    void DestroiBala() {
-        Destroy(gameObject);
     }
 }

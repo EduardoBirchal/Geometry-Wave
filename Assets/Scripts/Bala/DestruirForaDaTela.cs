@@ -8,7 +8,7 @@ public class DestruirForaDaTela : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void DestruirBalaServerRpc()
+    protected void DestruirBalaServerRpc()
     {
         Destroy(gameObject);
     }
