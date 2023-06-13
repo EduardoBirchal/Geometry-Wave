@@ -56,17 +56,14 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7173218427032206414}
-  - component: {fileID: 7128290269593085256}
-  - component: {fileID: 2221901808182337652}
-  - component: {fileID: 2763071627428484327}
-  - component: {fileID: 5300620861288615379}
-  - component: {fileID: 263212611821273094}
-  - component: {fileID: 7029141786953404993}
-  - component: {fileID: 3195798752033727797}
-  - component: {fileID: 7578408802247645593}
-  - component: {fileID: -5309380585089397084}
-  - component: {fileID: -7714363866264216217}
+  - component: {fileID: 5258545932206690552}
+  - component: {fileID: 5258545932206690553}
+  - component: {fileID: 1187362415}
+  - component: {fileID: 5258545932206690551}
+  - component: {fileID: 442041107503138968}
+  - component: {fileID: 2888467060585204476}
+  - component: {fileID: 4985828454921511783}
+  - component: {fileID: 8303529683723552481}
   m_Layer: 3
   m_Name: InimigoBasico
   m_TagString: Inimigo
@@ -142,7 +139,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2221901808182337652
+--- !u!114 &1187362415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258545932206690554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce1757f0153a38dda32d2039e604926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valorXp: 1
+  maxHp: 10
+  danoBala: 2
+  velBala: 10
+  velAtirarMax: 2
+  velAtirarMin: 3
+  velMovimento: 3
+--- !u!114 &5258545932206690551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,75 +258,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valorXp: 0
---- !u!114 &3195798752033727797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5010567226698321705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce1757f0153a38dda32d2039e604926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valorXp: 1
-  maxHp: 10
-  danoBala: 2
-  velBala: 3
-  velAtirarMax: 2
-  velAtirarMin: 3
---- !u!114 &7578408802247645593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5010567226698321705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &-5309380585089397084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5010567226698321705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 1
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  InLocalSpace: 0
-  Interpolate: 1
---- !u!114 &-7714363866264216217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5010567226698321705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b54cc1ee752e6338ec90e58b389720, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

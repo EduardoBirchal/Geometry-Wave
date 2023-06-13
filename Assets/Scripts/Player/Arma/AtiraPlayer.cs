@@ -7,6 +7,7 @@ public class AtiraPlayer : Atirador
 {
     public int balaAtual = 0;
     private MudaBala mudaBala;
+    private TipoBala[] tipos;
     private PlayerNetwork PlayerNet;
 
     void Start() 

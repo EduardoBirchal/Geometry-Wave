@@ -23,6 +23,8 @@ public class Atirador : NetworkBehaviour
             GameObject balaCriada = Instantiate(bala.prefab, transform.position, atirador.transform.rotation * Quaternion.Euler(new Vector3(0, 0, (anguloBala + Random.Range(bala.imprecisaoBala * -1, bala.imprecisaoBala))))); // Soma ou subtrai um ângulo aleatório de no máximo [imprecisaoBala]
             balaCriada.GetComponent<NetworkObject>().Spawn();
             // Com quaternions, não dá pra somar, mas multiplicação faz o mesmo efeito que soma. Não pergunta.
+
+            balaCriada.GetComponent<MoveConstante>().velocidade = bala.velBala;
         }
     }
 
