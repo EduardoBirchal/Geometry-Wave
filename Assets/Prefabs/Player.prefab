@@ -113,7 +113,7 @@ MonoBehaviour:
   vel: 7
   velAtual: 0
   move: 1
-  miraAutomatico: 1
+  miraAutomatico: 0
   vetorMove: {x: 0, y: 0, z: 0}
 --- !u!114 &5020625144825689880
 MonoBehaviour:
