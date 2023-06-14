@@ -18,6 +18,7 @@ public class SceneFadeAnimation : MonoBehaviour
         FadeScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+
     public void FadeToMenu()
     {
         NetworkManager.Singleton.Shutdown();

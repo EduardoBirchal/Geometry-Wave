@@ -33,6 +33,8 @@ public class MenuManager : MonoBehaviour
     public void GetIP()
     {
         texto_ip = GameObject.Find("TextIP").GetComponent<Text>().text;
+        NetworkStart.isSingleplayer == false;
+        fade.FadeScene(2);
     }
 
     public void ScalingChanger()
@@ -79,6 +81,8 @@ public class MenuManager : MonoBehaviour
         enterOnline.SetActive(true);
         onlineModes.SetActive(false);
     }
+
+    
 
     public void Options()
     {
