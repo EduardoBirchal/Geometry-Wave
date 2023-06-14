@@ -113,6 +113,7 @@ MonoBehaviour:
   vel: 7
   velAtual: 0
   move: 1
+  miraAutomatico: 1
   vetorMove: {x: 0, y: 0, z: 0}
 --- !u!114 &5020625144825689880
 MonoBehaviour:
@@ -131,6 +132,7 @@ MonoBehaviour:
   tempoIvulneravel: 2
   barra: {fileID: 0}
   tomaDano: 1
+  isDead: 0
 --- !u!60 &-7731543713328102369
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -174,13 +176,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde8b184cfefa0addac4f5477a6a4e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modoTiro: 0
   numTiros: 4
   spritesPlayer:
   - {fileID: 21300000, guid: e5bd34ef525440e4f8f7749dc4f82a76, type: 3}
   - {fileID: 21300000, guid: 3d3107fa61fc03f48af480a12dbc98ae, type: 3}
   - {fileID: 21300000, guid: 1464c9e8a16364043a97294c59237135, type: 3}
   - {fileID: 21300000, guid: ea314f0b5cec799448f753895f059ff3, type: 3}
+  modoTiro:
+    m_InternalValue: 0
 --- !u!50 &502793457
 Rigidbody2D:
   serializedVersion: 4
@@ -261,6 +264,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 951099334
   AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
 --- !u!114 &8212911136221386637
@@ -287,8 +293,12 @@ MonoBehaviour:
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
   InLocalSpace: 0
   Interpolate: 1
+  SlerpPosition: 0
 --- !u!114 &-7036750520366414107
 MonoBehaviour:
   m_ObjectHideFlags: 0
