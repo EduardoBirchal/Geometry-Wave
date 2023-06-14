@@ -40,10 +40,12 @@ public class MenuManager : MonoBehaviour
 
     public void Tutorial()
     {
-        fade.FadetoNextLevel();
+        NetworkStart.isSingleplayer = true;
+        fade.FadeScene(2);
     }
     public void CriarSalaOnline()
     {
+        NetworkStart.isSingleplayer = false;
         fade.FadeScene(2);
     }
 
@@ -94,7 +96,6 @@ public class MenuManager : MonoBehaviour
         Debug.Log(GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         painelOptions.SetActive(false);
     }
-
     public void CloseGamePlayOptions()
     {
         painelOptions.SetActive(true);

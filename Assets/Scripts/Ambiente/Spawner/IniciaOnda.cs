@@ -12,12 +12,12 @@ public class IniciaOnda : FuncoesGerais
     private GameObject[][] listaInimigos;
     private GameObject texto;
     private FuncoesTexto funcoesTexto;
-    private NetworkState NetworkInfo;
+    private NetworkStart NetworkInfo;
     
     // Start is called before the first frame update
     void Start()
     {
-        NetworkInfo = GameObject.Find("NetworkManager").GetComponent<NetworkState>();
+        NetworkInfo = GameObject.Find("NetworkManager").GetComponent<NetworkStart>();
         gameObject.name = "SpawnerInimigo";
         distanciaMargem = new Vector2(larguraTela - tamanhoMargem, alturaTela - tamanhoMargem);
         dificuldadeTotal *= dificuldade;
@@ -25,16 +25,15 @@ public class IniciaOnda : FuncoesGerais
         
         texto = GameObject.Find("TextoGrandeMapa");
         funcoesTexto = texto.GetComponent<FuncoesTexto>();
-        if(IsServer || IsHost)
+        if(IsHost)
             StartCoroutine(ChecaInimigos());
-        //IniciarChecaInimigosServerRpc();
     }
 
     IEnumerator ChecaInimigos() {
         // Procura todos os objetos com a tag "Inimigo". Se não tiver inimigos, cria uma nova onda
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
-        if(inimigos.Length == 0 && NetworkInfo.gameStarted == true) {
+        if(inimigos.Length == 0 && NetworkStart.gameStarted == true) {
             StartCoroutine(CriaOnda());
         }
         else {

@@ -2429,6 +2429,7 @@ MonoBehaviour:
   clientBtn: {fileID: 42124908}
   startBtn: {fileID: 591063873}
   spawner: {fileID: 200394870337230261, guid: 32e27500920bb86388bb58ec3c1e77e3, type: 3}
+  MaxNumPlayers: 0
 --- !u!114 &2120987346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,4 +2442,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb89962c81357e9c9ff1eda89eece0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStarted: 0
