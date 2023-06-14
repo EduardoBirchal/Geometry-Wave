@@ -88,7 +88,7 @@ public class TipoTiro : MonoBehaviour
             new TipoBala(
                 1,
                 2,
-                0.5f,
+                6f,
                 0.75f,
                 2f,
                 0,

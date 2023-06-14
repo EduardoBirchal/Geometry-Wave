@@ -23,7 +23,8 @@ public class AtiraInimigo : Atirador
     
     void Update()
     {
-        Atira(tipoBala);
+        if(IsServer)
+            AtiraServerRpc(tipoBala);
     }
 
 

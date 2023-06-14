@@ -9,6 +9,7 @@ public class MoveInimigo : MoveAutomatico
 
     void Start() 
     {
+        GetValores();
         player = GameObject.Find("Player");
         transform.eulerAngles = AnguloPraVetor(GetAngulo(transform.position, player.transform.position) * Mathf.Rad2Deg * -1); // Vira pro player
 
@@ -19,5 +20,11 @@ public class MoveInimigo : MoveAutomatico
     {
         if (mudaAngulo) ViraPraObjeto(player.transform.position); 
         if (move) MoveFrente();
+    }
+
+    void GetValores() {
+        ValoresSpawn valSpawn = GetComponent<ValoresSpawn>();
+
+        velocidade = valSpawn.velMovimento;
     }
 }

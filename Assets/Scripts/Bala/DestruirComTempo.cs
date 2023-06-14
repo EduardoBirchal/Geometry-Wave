@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestruirComTempo : MonoBehaviour
+public class DestruirComTempo : DestruirForaDaTela
 {
     public float tempoVida;
     private float vidaAtual = 0;
@@ -12,6 +12,7 @@ public class DestruirComTempo : MonoBehaviour
     {
         vidaAtual += Time.deltaTime;
 
-        if (vidaAtual >= tempoVida) Destroy(gameObject);
+        if (vidaAtual >= tempoVida)
+            DestruirBalaServerRpc();
     }
 }
