@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Netcode;
 
 public class SceneFadeAnimation : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class SceneFadeAnimation : MonoBehaviour
 
     public void FadeToMenu()
     {
+        NetworkManager.Singleton.Shutdown();
+        if(NetworkManager.Singleton != null) Destroy(NetworkManager.Singleton.gameObject);
         FadeScene(0);
     }
 

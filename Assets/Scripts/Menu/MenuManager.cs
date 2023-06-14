@@ -16,9 +16,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
+    [SerializeField] public static string texto_ip;
     //[SerializeField] private CanvasScaler canvasScaler;
     private SceneFadeAnimation fade;
 
+    
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
@@ -27,6 +29,11 @@ public class MenuManager : MonoBehaviour
         //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
         ScalingChanger();
     } 
+
+    public void GetIP()
+    {
+        texto_ip = GameObject.Find("TextIP").GetComponent<Text>().text;
+    }
 
     public void ScalingChanger()
     {
@@ -91,9 +98,7 @@ public class MenuManager : MonoBehaviour
 
     public void GraficosHud()
     {
-        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         graficoshud.SetActive(true);
-        Debug.Log(GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         painelOptions.SetActive(false);
     }
     public void CloseGamePlayOptions()
@@ -106,7 +111,7 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(true);
         soundOptions.SetActive(false);
     }
-    public void CloseMoreOptions()
+    public void CloseGraficosHud()
     {
         PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         PlayerPrefs.Save();
