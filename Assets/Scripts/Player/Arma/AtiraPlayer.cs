@@ -6,6 +6,7 @@ using UnityEngine;
 public class AtiraPlayer : Atirador
 {
     public int balaAtual = 0;
+    public bool tiroAutomatico;
     private MudaBala mudaBala;
     private PlayerNetwork PlayerNet;
 
@@ -27,7 +28,7 @@ public class AtiraPlayer : Atirador
     void QuerAtirar() {
         if(PlayerNet.CheckForClient())
         {
-            if(Input.GetMouseButton(0)) {
+            if(Input.GetMouseButton(0) || tiroAutomatico) {
                 AtiraServerRpc(balaAtual);
             }
         }

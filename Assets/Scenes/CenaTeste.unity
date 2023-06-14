@@ -10561,6 +10561,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1850487716486216438, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 988200991
+      objectReference: {fileID: 0}
     - target: {fileID: 502793463, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
       propertyPath: barra
       value: 
@@ -10617,5 +10621,9 @@ PrefabInstance:
       propertyPath: barra
       value: 
       objectReference: {fileID: 567057564}
+    - target: {fileID: 8442710478314260689, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
+      propertyPath: tiroAutomatico
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}

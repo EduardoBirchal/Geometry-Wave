@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovePlayer : MoveAutomatico
 {
     public float vel, velAtual;
-    public bool move = true;
+    public bool move = true, miraAutomatico;
     public Vector3 vetorMove;
     private PlayerNetwork PlayerNet;
 
@@ -28,7 +28,7 @@ public class MovePlayer : MoveAutomatico
             
             vetorMove = new Vector3(MoveHorizontal(), MoveVertical(), 0);
             
-            SegueMouse();
+            ViraPlayer();
         }
     }
 
@@ -48,6 +48,18 @@ public class MovePlayer : MoveAutomatico
         transform.Translate(new Vector2(eixoMove, 0), Space.World);
 
         return eixoMove;
+    }
+
+    void ViraPlayer() {
+        if (miraAutomatico) {
+            GameObject inimigoMaisProximo = ProcuraObjMaisProximo("Inimigo");
+
+            if (inimigoMaisProximo) ViraPraObjeto(inimigoMaisProximo.transform.position); 
+            else print("DEu bosta");
+        } 
+        else {
+            SegueMouse();
+        }
     }
 
     void SegueMouse() {
