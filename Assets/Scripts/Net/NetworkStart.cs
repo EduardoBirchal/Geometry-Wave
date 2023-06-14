@@ -18,10 +18,7 @@ public class NetworkStart : MonoBehaviour
     {
         MaxNumPlayers = isSingleplayer ? 1 : 4;
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
-    }
 
-    private void Awake()
-    {
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
         if(isSingleplayer == true)
         {
@@ -52,7 +49,7 @@ public class NetworkStart : MonoBehaviour
             startBtn.SetActive(false);
         });
     }
-
+    
     private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
     {
         var clientId = request.ClientNetworkId;
