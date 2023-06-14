@@ -40,10 +40,12 @@ public class MenuManager : MonoBehaviour
 
     public void Tutorial()
     {
-        fade.FadetoNextLevel();
+        NetworkStart.isSingleplayer = true;
+        fade.FadeScene(2);
     }
     public void CriarSalaOnline()
     {
+        NetworkStart.isSingleplayer = false;
         fade.FadeScene(2);
     }
 
