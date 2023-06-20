@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class MenuManager : MonoBehaviour
 {
 
@@ -16,9 +16,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
+    [SerializeField] public static string texto_ip;
     //[SerializeField] private CanvasScaler canvasScaler;
     private SceneFadeAnimation fade;
 
+    
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
@@ -27,6 +29,14 @@ public class MenuManager : MonoBehaviour
         //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
         ScalingChanger();
     } 
+
+    public void GetIP()
+    {
+        GameObject a = GameObject.Find("TextIP");
+        texto_ip = a.GetComponent<TMP_InputField>().text;
+        NetworkStart.isSingleplayer = false;
+        fade.FadeScene(2);
+    }
 
     public void ScalingChanger()
     {
@@ -46,6 +56,7 @@ public class MenuManager : MonoBehaviour
     public void CriarSalaOnline()
     {
         NetworkStart.isSingleplayer = false;
+        texto_ip = NetworkStart.GetLocalIPv4();
         fade.FadeScene(2);
     }
 
@@ -73,6 +84,8 @@ public class MenuManager : MonoBehaviour
         onlineModes.SetActive(false);
     }
 
+    
+
     public void Options()
     {
         painelOptions.SetActive(true);
@@ -91,9 +104,7 @@ public class MenuManager : MonoBehaviour
 
     public void GraficosHud()
     {
-        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         graficoshud.SetActive(true);
-        Debug.Log(GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         painelOptions.SetActive(false);
     }
     public void CloseGamePlayOptions()
@@ -106,7 +117,7 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(true);
         soundOptions.SetActive(false);
     }
-    public void CloseMoreOptions()
+    public void CloseGraficosHud()
     {
         PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         PlayerPrefs.Save();
