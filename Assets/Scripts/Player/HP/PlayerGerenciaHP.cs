@@ -12,9 +12,13 @@ public class PlayerGerenciaHP : FuncoesGerais
     Collider2D colisor;
     public bool isDead = false;
 
+    private MenuInGame menuInGame;
+
     // Start is called before the first frame update
     void Start()
     {
+        menuInGame = GameObject.Find("GameManager").GetComponent<MenuInGame>();
+        menuInGame.GetPlayerHP();
         barra = GameObject.Find("VidaBarra").GetComponent<Image>();
         hp = maxHp;
         sprRenderer = GetComponent<SpriteRenderer>();
