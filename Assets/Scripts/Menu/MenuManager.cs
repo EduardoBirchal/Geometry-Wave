@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class MenuManager : MonoBehaviour
 {
 
@@ -32,8 +32,9 @@ public class MenuManager : MonoBehaviour
 
     public void GetIP()
     {
-        texto_ip = GameObject.Find("TextIP").GetComponent<Text>().text;
-        NetworkStart.isSingleplayer == false;
+        GameObject a = GameObject.Find("TextIP");
+        texto_ip = a.GetComponent<TMP_InputField>().text;
+        NetworkStart.isSingleplayer = false;
         fade.FadeScene(2);
     }
 
@@ -55,6 +56,7 @@ public class MenuManager : MonoBehaviour
     public void CriarSalaOnline()
     {
         NetworkStart.isSingleplayer = false;
+        texto_ip = NetworkStart.GetLocalIPv4();
         fade.FadeScene(2);
     }
 

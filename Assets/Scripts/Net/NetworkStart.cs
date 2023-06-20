@@ -3,6 +3,8 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
+using System.Net;
+using System.Linq;
 
 public class NetworkStart : MonoBehaviour
 {
@@ -10,13 +12,14 @@ public class NetworkStart : MonoBehaviour
     [SerializeField] private GameObject clientBtn;
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject spawner;
-    public static bool isSingleplayer = true;
+    public static bool isSingleplayer = false;
     public static bool gameStarted = false;
     public int MaxNumPlayers;
 
     private void Start()
     {
         MaxNumPlayers = isSingleplayer ? 1 : 4;
+        GameObject.Find("NetworkManager").GetComponent<UnityTransport>().ConnectionData.Address = MenuManager.texto_ip;
         if(isSingleplayer == true)
         {
             NetworkManager.Singleton.StartHost();
@@ -28,16 +31,14 @@ public class NetworkStart : MonoBehaviour
             Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
             gameStarted = true;
         }
-        else if(!isSingleplayer && MenuManager.texto_ip == null)
+        else if(MenuManager.texto_ip == GetLocalIPv4())
         {
+            Debug.LogWarning(GetLocalIPv4());
             NetworkManager.Singleton.StartHost();
         }
-
         else
         {
-            GameObject.Find("NetworkManager").GetComponent<UnityTransport>().ConnectionData.Address = MenuManager.texto_ip;
             NetworkManager.Singleton.StartClient();
-
         }
         /*
         hostBtn.GetComponent<Button>().onClick.AddListener(() => {
@@ -59,7 +60,11 @@ public class NetworkStart : MonoBehaviour
 
     }
 
-    private void Awake()
+    public static string GetLocalIPv4()
     {
+        return Dns.GetHostEntry(Dns.GetHostName())
+        .AddressList.First(
+        f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+        .ToString();
     }
 }
