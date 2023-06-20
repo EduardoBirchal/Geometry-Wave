@@ -106,6 +106,7 @@ public class NetworkStart : MonoBehaviour
         }
     }
     
+    /*
     private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
     {
         var clientId = request.ClientNetworkId;
@@ -129,4 +130,5 @@ public class NetworkStart : MonoBehaviour
         // once it transitions from true to false the connection approval response will be processed.
         response.Pending = false;
     }
+    */
 }
