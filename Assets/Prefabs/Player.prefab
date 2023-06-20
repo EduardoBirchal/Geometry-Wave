@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: -1850487716486216438}
   - component: {fileID: 8212911136221386637}
   - component: {fileID: -7036750520366414107}
+  - component: {fileID: 9017880253087090154}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numTiros: 4
   spritesPlayer:
-  - {fileID: 21300000, guid: e5bd34ef525440e4f8f7749dc4f82a76, type: 3}
+  - {fileID: 21300000, guid: 452246a467ad73acbbb3e3602e57adfa, type: 3}
   - {fileID: 21300000, guid: 3d3107fa61fc03f48af480a12dbc98ae, type: 3}
   - {fileID: 21300000, guid: 1464c9e8a16364043a97294c59237135, type: 3}
   - {fileID: 21300000, guid: ea314f0b5cec799448f753895f059ff3, type: 3}
@@ -312,6 +313,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raioSpawn: 2.5
+--- !u!114 &9017880253087090154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976682552676660537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ecce0d5853d68ea99c7dbc66b092eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.8867924, g: 0.1966002, b: 0.1966002, a: 0}
 --- !u!1001 &8937601226480865316
 PrefabInstance:
   m_ObjectHideFlags: 0

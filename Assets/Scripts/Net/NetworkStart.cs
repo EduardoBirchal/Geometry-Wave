@@ -13,17 +13,18 @@ public class NetworkStart : MonoBehaviour
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject spawner;
     private NetworkManager netManager;
-    public static bool isSingleplayer = false;
+    public static bool isSingleplayer = true;
     public static bool gameStarted = false;
     public int MaxNumPlayers;
 
     private void Start()
     {
-        MaxNumPlayers = isSingleplayer ? 2 : 4;
+        MaxNumPlayers = isSingleplayer ? 1 : 4;
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
 
         GameObject.Find("NetworkManager").GetComponent<UnityTransport>().ConnectionData.Address = MenuManager.texto_ip;
+
         if(isSingleplayer == true)
         {
             NetworkManager.Singleton.StartHost();
@@ -103,5 +104,29 @@ public class NetworkStart : MonoBehaviour
         {
             Debug.LogError($"Approval Declined Reason: {netManager.DisconnectReason}");
         }
+    }
+    
+    private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
+    {
+        var clientId = request.ClientNetworkId;
+        var connectionData = request.Payload;
+    
+        if(netManager.ConnectedClientsIds.Count < MaxNumPlayers)
+        {
+            response.Approved = true;
+            response.CreatePlayerObject = true;
+        }
+        else
+        {
+            // TODO: Mostrar a tela de "sala cheia" e "incapaz de conectar"
+            response.Approved = false;
+        }
+    
+        // The prefab hash value of the NetworkPrefab, if null the default NetworkManager player prefab is used
+        response.PlayerPrefabHash = null;
+    
+        // If additional approval steps are needed, set this to true until the additional steps are complete
+        // once it transitions from true to false the connection approval response will be processed.
+        response.Pending = false;
     }
 }
