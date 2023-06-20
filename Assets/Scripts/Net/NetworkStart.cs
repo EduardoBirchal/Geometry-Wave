@@ -101,7 +101,7 @@ public class NetworkStart : MonoBehaviour
     {
         if (!netManager.IsServer && netManager.DisconnectReason != string.Empty)
         {
-            Debug.Log($"Approval Declined Reason: {netManager.DisconnectReason}");
+            Debug.LogError($"Approval Declined Reason: {netManager.DisconnectReason}");
         }
     }
 }

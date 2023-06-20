@@ -6100,7 +6100,7 @@ MonoBehaviour:
   ConnectionData:
     Address: 10.0.0.27
     Port: 7777
-    ServerListenAddress: 127.0.0.1
+    ServerListenAddress: 0.0.0.0
   DebugSimulator:
     PacketDelayMS: 0
     PacketJitterMS: 0
@@ -6128,7 +6128,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: a46050f4a409fb014975fa0f8d343122, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
+    ConnectionApproval: 1
     ConnectionData: 
     EnableTimeResync: 0
     TimeResyncInterval: 30
