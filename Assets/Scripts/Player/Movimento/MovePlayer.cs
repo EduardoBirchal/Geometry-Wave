@@ -8,17 +8,21 @@ public class MovePlayer : MoveAutomatico
     public bool move = true, miraAutomatico;
     public Vector3 vetorMove;
     private PlayerNetwork PlayerNet;
+    private MenuManager menu;
 
     void Start() 
     {
         PlayerNet = GetComponent<PlayerNetwork>();
         velAtual = vel;
+        menu = GameObject.Find("GameManager").GetComponent<MenuManager>();
     }
 
     void Update()
     {
         if(PlayerNet.CheckForClient())
         {
+            miraAutomatico = menu.Get_Toggle_AutoFire();
+
             if (move) {
                 velAtual = vel;
             }

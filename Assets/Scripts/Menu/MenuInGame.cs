@@ -11,30 +11,38 @@ public class MenuInGame : MonoBehaviour
 
     public PlayerGerenciaHP playerhp;
     private SceneFadeAnimation fade;
-
+    public GameObject player;
 
     void Start()
     {
+        player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
-        playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
+        GetPlayerHP();
         Continuar();
 
     }
 
     void Update()
     {
-        if(Input.GetKeyDown("escape") && playerhp.hp > 0)
+        if(Input.GetKeyDown("escape"))
         {
             Esc();
         }
         
-
-        if(playerhp.hp <= 0)
-        {
-            Time.timeScale = 0;
-            diedScreen.SetActive(true);
+        if(player != null){
+            if(playerhp.hp <= 0)
+            {
+                Time.timeScale = 0;
+                diedScreen.SetActive(true);
+            }
         }
     }
+
+    public void GetPlayerHP()
+    {
+        if(player != null) playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
+    }
+
 
     public void QuitConfirmation()
     {

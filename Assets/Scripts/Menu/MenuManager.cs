@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -16,28 +18,63 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
-    //[SerializeField] private CanvasScaler canvasScaler;
+    [SerializeField] public static string texto_ip;
     private SceneFadeAnimation fade;
+    private Slider sliderHud;
+    private Toggle toggle_AutoFire;
+
+    public bool Get_Toggle_AutoFire()
+    {
+        return toggle_AutoFire.isOn;
+    }
+
 
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
-        //canvasScaler = GameObject.Find("Canvas").GetComponent<CanvasScaler>();
+
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
-        //canvasScaler.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
+
         ScalingChanger();
+        AutoFire();
+        PlayerPrefs.Save();
     } 
+
+    //função que adquire o endereço de IP inserido no input field, para assim poder entrar em uma sessão online.
+
+    public void GetIP()
+    {
+        GameObject a = GameObject.Find("TextIP");
+        texto_ip = a.GetComponent<TMP_InputField>().text;
+        NetworkStart.isSingleplayer = false;
+        fade.FadeScene(2);
+    }
+
+    //Funções que carregam os PlayerPrefs
 
     public void ScalingChanger()
     {
-
         graficoshud.SetActive(true);
+        //sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
         GameObject.Find("SliderHudSlide").GetComponent<Slider>().value = PlayerPrefs.GetFloat("HudSizeValue");
         PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
-        PlayerPrefs.Save();
         graficoshud.SetActive(false);
     }
 
+    public void AutoFire()
+    {
+        gameplayOptions.SetActive(true);
+        toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
+        if(PlayerPrefs.GetInt("TiroAutomatico") == 1){
+            toggle_AutoFire.isOn = true;
+        }
+        else toggle_AutoFire.isOn = false;
+        gameplayOptions.SetActive(false);
+        
+    }
+
+
+    //Funções dos butões para carregar os menus
     public void Tutorial()
     {
         NetworkStart.isSingleplayer = true;
@@ -46,6 +83,7 @@ public class MenuManager : MonoBehaviour
     public void CriarSalaOnline()
     {
         NetworkStart.isSingleplayer = false;
+        texto_ip = NetworkStart.GetLocalIPv4();
         fade.FadeScene(2);
     }
 
@@ -91,13 +129,15 @@ public class MenuManager : MonoBehaviour
 
     public void GraficosHud()
     {
-        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         graficoshud.SetActive(true);
-        Debug.Log(GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         painelOptions.SetActive(false);
     }
     public void CloseGamePlayOptions()
     {
+        if(toggle_AutoFire.isOn == false){
+            PlayerPrefs.SetInt("TiroAutomatico", 0);
+        }
+        else PlayerPrefs.SetInt("TiroAutomatico", 1);
         painelOptions.SetActive(true);
         gameplayOptions.SetActive(false);
     }
@@ -106,7 +146,8 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(true);
         soundOptions.SetActive(false);
     }
-    public void CloseMoreOptions()
+
+    public void CloseGraficosHud()
     {
         PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
         PlayerPrefs.Save();
