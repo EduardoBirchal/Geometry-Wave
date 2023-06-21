@@ -25,6 +25,7 @@ public class MudaBala : NetworkBehaviour
     void Update()
     {
         if(PlayerNet.CheckForClient() == false) return;
+        if(TimeManager.paused == true) return;
         GetModo();
     }
 

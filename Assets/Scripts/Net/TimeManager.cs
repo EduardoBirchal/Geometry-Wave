@@ -6,14 +6,17 @@ using System;
 
 public class TimeManager : NetworkBehaviour 
 {
+    public static bool paused = false;
     public void Resume()
     {
         if(PlayerNetwork.isHost == false) return;
+        paused = false;
         PausarJogoServerRpc(1);
     }
     public void Pause()
     {
         if(PlayerNetwork.isHost == false) return;
+        paused = true;
         PausarJogoServerRpc(0);
     }
     
