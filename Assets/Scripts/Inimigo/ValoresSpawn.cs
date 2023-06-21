@@ -13,6 +13,7 @@ public class ValoresSpawn : MonoBehaviour
     }
 
     void DeterminaValores() {
+        // TODO: Transformar a função em server-side only
         GameObject spawner = GameObject.Find("SpawnerInimigo");
         float dificuldade = spawner.GetComponent<IniciaOnda>().dificuldade;
 

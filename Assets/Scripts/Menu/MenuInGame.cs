@@ -68,6 +68,7 @@ public class MenuInGame : MonoBehaviour
         }
         else if(Time.timeScale == 1)
         {
+            // TODO: Impedir o cliente de pausar o tempo
             Time.timeScale = 0;
             menu.SetActive(true);
         }
