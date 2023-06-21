@@ -1,9 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using Unity.Netcode;
-using System;
-
 public class MenuInGame : MonoBehaviour 
 {
     [SerializeField] private GameObject menu;

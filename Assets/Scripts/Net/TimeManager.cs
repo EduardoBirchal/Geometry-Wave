@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Unity.Netcode;
-using System;
-
+// TODO: Forçar o pause no player
+// TODO: Separar o pause da rede do pause do jogador
 public class TimeManager : NetworkBehaviour 
 {
     public static bool paused = false;
