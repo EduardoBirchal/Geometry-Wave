@@ -2,12 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Unity.Netcode;
+using System;
 
-public class MenuInGame : NetworkBehaviour 
+public class MenuInGame : MonoBehaviour 
 {
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
+    private TimeManager timeManager;
 
     public PlayerGerenciaHP playerhp;
     private SceneFadeAnimation fade;
@@ -15,6 +17,7 @@ public class MenuInGame : NetworkBehaviour
 
     void Start()
     {
+        timeManager = GameObject.Find("Funcoes").GetComponent<TimeManager>();
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         GetPlayerHP();
@@ -43,7 +46,6 @@ public class MenuInGame : NetworkBehaviour
         if(player != null) playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
     }
 
-
     public void QuitConfirmation()
     {
         quitConfirmation.SetActive(true);
@@ -63,31 +65,26 @@ public class MenuInGame : NetworkBehaviour
 
     public void Esc()
     {
-        if(Time.timeScale == 0 && menu.activeSelf == true){
+        if(Time.timeScale == 0 && menu.activeSelf == true)
+        {
             Continuar();
         }
         else if(Time.timeScale == 1)
         {
             // TODO: Impedir o cliente de pausar o tempo
-            Debug.LogWarning(IsHost);
-            menu.SetActive(true);
-            if(IsHost)
-            {
-                AlterarTempoClientRpc(0);
-            }
+            AtivarMenu();
         }
+    }
+
+    public void AtivarMenu()
+    {
+        menu.SetActive(true);
+        if(PlayerNetwork.isHost == true) timeManager.Pause();
     }
 
     public void Continuar()
     {
         menu.SetActive(false);
-        if(!IsHost) return;
-        AlterarTempoClientRpc(1);
-    }
-
-    [ClientRpc]
-    public void AlterarTempoClientRpc(int tempo)
-    {
-        Time.timeScale = tempo;
+        if(PlayerNetwork.isHost == true) timeManager.Resume();
     }
 }

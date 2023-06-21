@@ -2294,6 +2294,8 @@ GameObject:
   m_Component:
   - component: {fileID: 566950211}
   - component: {fileID: 566950212}
+  - component: {fileID: 566950214}
+  - component: {fileID: 566950213}
   m_Layer: 0
   m_Name: Funcoes
   m_TagString: Untagged
@@ -2331,6 +2333,37 @@ MonoBehaviour:
   prefab_balaPlayer: {fileID: 6308696435084019001, guid: bd06418c4902fd040ad53f31cef93c30, type: 3}
   prefab_balaInimigo: {fileID: 1900014113000109055, guid: 173f30f4c1270b63088995aefee6202a, type: 3}
   prefab_balaGuiada: {fileID: 343719744800645539, guid: 10df45d1dcb682b6fa2917cdf9e9e66a, type: 3}
+--- !u!114 &566950213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566950210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1419493488
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &566950214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566950210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1feef1e0988981445bb533688544968f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591063873
 GameObject:
   m_ObjectHideFlags: 0
