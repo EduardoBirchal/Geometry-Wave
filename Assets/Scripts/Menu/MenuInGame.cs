@@ -69,10 +69,10 @@ public class MenuInGame : NetworkBehaviour
         else if(Time.timeScale == 1)
         {
             // TODO: Impedir o cliente de pausar o tempo
+            Debug.LogWarning(IsHost);
             menu.SetActive(true);
             if(IsHost)
             {
-                Time.timeScale = 0; 
                 AlterarTempoClientRpc(0);
             }
         }
@@ -81,12 +81,12 @@ public class MenuInGame : NetworkBehaviour
     public void Continuar()
     {
         menu.SetActive(false);
+        if(!IsHost) return;
         AlterarTempoClientRpc(1);
-        Time.timeScale = 1;
     }
 
     [ClientRpc]
-    public void AlterarTempoClientRpc(float tempo)
+    public void AlterarTempoClientRpc(int tempo)
     {
         Time.timeScale = tempo;
     }
