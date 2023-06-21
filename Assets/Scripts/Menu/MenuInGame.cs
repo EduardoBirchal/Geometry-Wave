@@ -21,8 +21,8 @@ public class MenuInGame : MonoBehaviour
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         GetPlayerHP();
-        Continuar();
-
+        menu.SetActive(false);
+        timeManager.Resume();
     }
 
     void Update()
@@ -60,31 +60,21 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
+        Time.timeScale = 1;
         fade.FadeToMenu();
     }
 
     public void Esc()
     {
-        if(Time.timeScale == 0 && menu.activeSelf == true)
+        if(menu.activeSelf == true)
         {
-            Continuar();
+            menu.SetActive(false);
+            timeManager.Resume();
         }
-        else if(Time.timeScale == 1)
+        else
         {
-            // TODO: Impedir o cliente de pausar o tempo
-            AtivarMenu();
+            menu.SetActive(true);
+            timeManager.Pause();
         }
-    }
-
-    public void AtivarMenu()
-    {
-        menu.SetActive(true);
-        if(PlayerNetwork.isHost == true) timeManager.Pause();
-    }
-
-    public void Continuar()
-    {
-        menu.SetActive(false);
-        if(PlayerNetwork.isHost == true) timeManager.Resume();
     }
 }

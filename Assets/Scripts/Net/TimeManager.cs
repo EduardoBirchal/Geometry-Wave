@@ -8,10 +8,12 @@ public class TimeManager : NetworkBehaviour
 {
     public void Resume()
     {
+        if(PlayerNetwork.isHost == false) return;
         PausarJogoServerRpc(1);
     }
     public void Pause()
     {
+        if(PlayerNetwork.isHost == false) return;
         PausarJogoServerRpc(0);
     }
     
