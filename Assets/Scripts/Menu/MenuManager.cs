@@ -19,6 +19,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
     [SerializeField] public static string texto_ip;
+
+    private Canvas canvas;
     private SceneFadeAnimation fade;
     private Slider sliderHud;
     private Toggle toggle_AutoFire;
@@ -28,17 +30,31 @@ public class MenuManager : MonoBehaviour
         return toggle_AutoFire.isOn;
     }
 
+    void Awake()
+    {
+    }
 
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        
+        canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
 
+
+        Debug.Log(canvas.scaleFactor);
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
+        Debug.Log(canvas.scaleFactor);
 
         ScalingChanger();
         AutoFire();
         PlayerPrefs.Save();
     } 
+
+    void Update()
+    {
+        ScalingChanger();
+    }
 
     //função que adquire o endereço de IP inserido no input field, para assim poder entrar em uma sessão online.
 
@@ -54,13 +70,28 @@ public class MenuManager : MonoBehaviour
 
     public void ScalingChanger()
     {
-        graficoshud.SetActive(true);
-        //sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
-        GameObject.Find("SliderHudSlide").GetComponent<Slider>().value = PlayerPrefs.GetFloat("HudSizeValue");
-        PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
-        graficoshud.SetActive(false);
-    }
+        if(graficoshud.activeSelf != false){
+            PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
+            PlayerPrefs.Save();
+            canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
+        }
+        canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
+        Debug.Log(canvas.scaleFactor);
+        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
 
+        //else if(graficoshud.activeSelf == false)
+        //{
+            
+        //  }
+        //graficoshud.SetActive(true);
+
+        //sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
+        //PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
+
+
+        //graficoshud.SetActive(false);
+    }
+    
     public void AutoFire()
     {
         gameplayOptions.SetActive(true);
@@ -72,8 +103,7 @@ public class MenuManager : MonoBehaviour
         gameplayOptions.SetActive(false);
         
     }
-
-
+    
     //Funções dos butões para carregar os menus
     public void Tutorial()
     {
@@ -130,14 +160,20 @@ public class MenuManager : MonoBehaviour
     public void GraficosHud()
     {
         graficoshud.SetActive(true);
+
+        sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
+        sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
+        
         painelOptions.SetActive(false);
     }
+
     public void CloseGamePlayOptions()
     {
         if(toggle_AutoFire.isOn == false){
             PlayerPrefs.SetInt("TiroAutomatico", 0);
         }
         else PlayerPrefs.SetInt("TiroAutomatico", 1);
+
         painelOptions.SetActive(true);
         gameplayOptions.SetActive(false);
     }
@@ -149,8 +185,9 @@ public class MenuManager : MonoBehaviour
 
     public void CloseGraficosHud()
     {
-        PlayerPrefs.SetFloat("HudSizeValue", GameObject.Find("SliderHudSlide").GetComponent<Slider>().value);
+        PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
+
         painelOptions.SetActive(true);
         graficoshud.SetActive(false);
     }
