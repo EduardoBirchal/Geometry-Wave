@@ -6004,7 +6004,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 721392229}
         m_TargetAssemblyTypeName: MenuInGame, Assembly-CSharp
-        m_MethodName: Continuar
+        m_MethodName: Esc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
