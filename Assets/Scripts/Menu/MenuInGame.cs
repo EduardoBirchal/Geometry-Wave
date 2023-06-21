@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-
-public class MenuInGame : MonoBehaviour
+public class MenuInGame : NetworkBehaviour 
 {
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
@@ -69,15 +69,25 @@ public class MenuInGame : MonoBehaviour
         else if(Time.timeScale == 1)
         {
             // TODO: Impedir o cliente de pausar o tempo
-            Time.timeScale = 0;
             menu.SetActive(true);
+            if(IsHost)
+            {
+                Time.timeScale = 0; 
+                AlterarTempoClientRpc(0);
+            }
         }
     }
 
     public void Continuar()
     {
         menu.SetActive(false);
+        AlterarTempoClientRpc(1);
         Time.timeScale = 1;
     }
 
+    [ClientRpc]
+    public void AlterarTempoClientRpc(float tempo)
+    {
+        Time.timeScale = tempo;
+    }
 }
