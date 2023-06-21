@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
@@ -20,7 +21,7 @@ public class Flock : FuncoesGerais
     public FlockAgent agentPrefab;
     List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehavior behavior;
-
+    
 
     [Range(1f, 100f)]
     public float driveFactor = 10f;
@@ -82,17 +83,24 @@ public class Flock : FuncoesGerais
     {
         List<Transform> context = new List<Transform>();
         Collider2D[] contextColliders = Physics2D.OverlapCircleAll(agent.transform.position, neighborRadius);
-        foreach (Collider2D c in contextColliders)
-        {
-            if (c != agent.AgentCollider)
-            {
-                context.Add(c.transform);
+        foreach (Collider2D collider in contextColliders)
+        {   
+            if(collider.transform == null){
+                if (collider != agent.AgentCollider)
+                {
+                    context.Add(collider.transform);
+                }
             }
+            
         }
         return context;
     }
 
+    public void removeAgents(FlockAgent a){
+        
+        agents.Remove(a);
 
+    }
 
 
 
