@@ -20,24 +20,20 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject graficoshud;
     [SerializeField] public static string texto_ip;
 
-    private Canvas canvas;
+    [SerializeField] private Canvas canvas;
     private SceneFadeAnimation fade;
     private Slider sliderHud;
     private Toggle toggle_AutoFire;
 
+    //GET do auto Fire
     public bool Get_Toggle_AutoFire()
     {
         return toggle_AutoFire.isOn;
     }
 
-    void Awake()
-    {
-    }
-
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
 
@@ -46,15 +42,10 @@ public class MenuManager : MonoBehaviour
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         Debug.Log(canvas.scaleFactor);
 
-        ScalingChanger();
         AutoFire();
         PlayerPrefs.Save();
     } 
 
-    void Update()
-    {
-        ScalingChanger();
-    }
 
     //função que adquire o endereço de IP inserido no input field, para assim poder entrar em uma sessão online.
 
@@ -66,30 +57,13 @@ public class MenuManager : MonoBehaviour
         fade.FadeScene(2);
     }
 
-    //Funções que carregam os PlayerPrefs
+    //Funções alteram os PlayerPrefs
 
     public void ScalingChanger()
     {
-        if(graficoshud.activeSelf != false){
-            PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
-            PlayerPrefs.Save();
-            canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
-        }
+        PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
+        PlayerPrefs.Save();
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
-        Debug.Log(canvas.scaleFactor);
-        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
-
-        //else if(graficoshud.activeSelf == false)
-        //{
-            
-        //  }
-        //graficoshud.SetActive(true);
-
-        //sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
-        //PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
-
-
-        //graficoshud.SetActive(false);
     }
     
     public void AutoFire()
@@ -110,6 +84,7 @@ public class MenuManager : MonoBehaviour
         NetworkStart.isSingleplayer = true;
         fade.FadeScene(2);
     }
+
     public void CriarSalaOnline()
     {
         NetworkStart.isSingleplayer = false;
@@ -146,11 +121,13 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(true);
         menuInicial.SetActive(false);
     }
+
     public void GamePlayOptions()
     {
         gameplayOptions.SetActive(true);
         painelOptions.SetActive(false);
     }
+
     public void SoundOptions()
     {
         soundOptions.SetActive(true);
@@ -177,6 +154,7 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(true);
         gameplayOptions.SetActive(false);
     }
+
     public void CloseSoundOptions()
     {
         painelOptions.SetActive(true);
@@ -191,6 +169,7 @@ public class MenuManager : MonoBehaviour
         painelOptions.SetActive(true);
         graficoshud.SetActive(false);
     }
+
     public void CloseOptions()
     {
         painelOptions.SetActive(false);
@@ -220,6 +199,7 @@ public class MenuManager : MonoBehaviour
         onlineModes.SetActive(true);
         enterOnline.SetActive(false);
     }
+    
     public void ExitGame()
     {
         #if UNITY_EDITOR

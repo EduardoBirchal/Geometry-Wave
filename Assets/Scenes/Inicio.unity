@@ -5615,7 +5615,7 @@ MonoBehaviour:
   gameplayOptions: {fileID: 1747433884}
   soundOptions: {fileID: 1989795565}
   graficoshud: {fileID: 1430365471}
-  toggle_AutoFire: {fileID: 0}
+  canvas: {fileID: 191817374}
 --- !u!4 &1508623304
 Transform:
   m_ObjectHideFlags: 0
@@ -8195,7 +8195,7 @@ PrefabInstance:
     - target: {fileID: 3570555214372628422, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 191817374}
+      objectReference: {fileID: 1508623303}
     - target: {fileID: 3570555214548659556, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
