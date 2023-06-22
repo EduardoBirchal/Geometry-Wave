@@ -20,10 +20,13 @@ public class MorreInimigo : NetworkBehaviour
     [ServerRpc]
     public void MatarInimigoServerRpc(ServerRpcParams serverRpcParams = default)
     {
-        // # FICA PRA QUANDO DECIDIRMOS COMO FUNCIONA O XP
-        // ulong clientId = serverRpcParams.Receive.SenderClientId;
-        // GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
-        // player.GetComponent<PlayerGerenciaXP>().xp = valorXp;
+        // TODO: Decidir o sistema de XP
+        // Por enquanto, será xp igual para todos
+        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            player.GetComponent<PlayerGerenciaXP>().xp += valorXp;
+        }
+        
         Destroy(gameObject);
     }
 }
