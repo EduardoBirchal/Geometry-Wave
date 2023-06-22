@@ -12,7 +12,7 @@ public class AtiraPlayer : Atirador
 
     void Start() 
     {
-        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().player;
+        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().balasPlayer;
         mudaBala = atirador.GetComponent<MudaBala>();
         PlayerNet = atirador.transform.root.GetComponent<PlayerNetwork>();
     }

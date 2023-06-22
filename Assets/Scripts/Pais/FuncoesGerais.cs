@@ -53,7 +53,7 @@ public class FuncoesGerais : NetworkBehaviour
         return Mathf.Abs(n1) < Mathf.Abs(n2) ? n1 : n2;
     }
 
-    // Retorna o GameObject mais próximo, ou null se não achar.
+    // Retorna o GameObject mais próximo com uma tag específica, ou null se não achar.
     protected GameObject ProcuraObjMaisProximo(string tagAlvo) {
         GameObject[] alvos = GameObject.FindGameObjectsWithTag(tagAlvo);
 

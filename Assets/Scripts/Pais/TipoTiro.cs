@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 public struct TipoBala
 {
-    public int numBalas;
+    public int numBalas, perfuracaoBala;
     public float velBala, cooldownTiro_Min, cooldownTiro_Max, imprecisaoBala, arcoTiro, danoBala;
     public string nomeTipo;
     public GameObject prefab;
 
-    public TipoBala (int num, float dano, float velB, float cooldownMin, float cooldownMax, float imprec, float arco, string nome, GameObject prefab) { // Bob o construtor
+    public TipoBala (int num, float dano, float velB, float cooldownMin, float cooldownMax, float imprec, float arco, int perfuracao, string nome, GameObject prefab) { // Bob o construtor
         numBalas = num;
         danoBala = dano;
         velBala = velB;
@@ -18,6 +18,7 @@ public struct TipoBala
         cooldownTiro_Min = cooldownMin; // Em segundos
         imprecisaoBala = imprec;        // Em graus
         arcoTiro = arco;                // Em graus
+        perfuracaoBala = perfuracao;    // Em inimigos perfurados
         nomeTipo = nome;
         this.prefab = prefab;
     }
@@ -28,12 +29,12 @@ public class TipoTiro : MonoBehaviour
     [SerializeField] private GameObject prefab_balaPlayer;
     [SerializeField] private GameObject prefab_balaInimigo;
     [SerializeField] private GameObject prefab_balaGuiada;
-    public TipoBala[] player;
-    public TipoBala[] inimigo;
+    public TipoBala[] balasPlayer;
+    public TipoBala[] balasInimigo;
     
     public void Start()
     {
-        player = new TipoBala[]{
+        balasPlayer = new TipoBala[]{
         // METRALHADORA
         new TipoBala(
             1, // Número de balas
@@ -43,6 +44,7 @@ public class TipoTiro : MonoBehaviour
             0.1f, // Cooldown Maximo (em segundos)
             20f, // Imprecisão (em graus)
             40f, // Arco de tiro (em graus)
+            1, // Perfuração
             "Metralhadora", // Nome
             prefab_balaPlayer // Objeto da bala
         ),
@@ -55,6 +57,7 @@ public class TipoTiro : MonoBehaviour
             0f, 
             0f, 
             360f,
+            1,
             "KillAura",
             prefab_balaPlayer 
         ),
@@ -67,6 +70,7 @@ public class TipoTiro : MonoBehaviour
             0.75f, 
             0f, 
             40f,
+            1,
             "Espingarda",
             prefab_balaPlayer
         ),
@@ -79,11 +83,12 @@ public class TipoTiro : MonoBehaviour
             0.3f, 
             90f, 
             90f,
+            1,
             "Mísseis", 
             prefab_balaGuiada
         )};
 
-        inimigo = new TipoBala[]{
+        balasInimigo = new TipoBala[]{
             // ENEMY BASE SHOOT
             new TipoBala(
                 1,
@@ -93,6 +98,7 @@ public class TipoTiro : MonoBehaviour
                 2f,
                 0,
                 40,
+                1,
                 "Matador",
                 prefab_balaInimigo
             )
