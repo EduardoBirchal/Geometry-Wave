@@ -37,12 +37,10 @@ public class MenuManager : MonoBehaviour
         
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
 
-
         Debug.Log(canvas.scaleFactor);
         Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
         Debug.Log(canvas.scaleFactor);
 
-        AutoFire();
         PlayerPrefs.Save();
     } 
 
@@ -66,15 +64,13 @@ public class MenuManager : MonoBehaviour
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     }
     
-    public void AutoFire()
+    public bool AutoFire()
     {
-        gameplayOptions.SetActive(true);
-        toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
+
         if(PlayerPrefs.GetInt("TiroAutomatico") == 1){
-            toggle_AutoFire.isOn = true;
+            return true;
         }
-        else toggle_AutoFire.isOn = false;
-        gameplayOptions.SetActive(false);
+        else return false;
         
     }
     
@@ -125,6 +121,10 @@ public class MenuManager : MonoBehaviour
     public void GamePlayOptions()
     {
         gameplayOptions.SetActive(true);
+        
+        toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
+        toggle_AutoFire.isOn = AutoFire();  
+        
         painelOptions.SetActive(false);
     }
 

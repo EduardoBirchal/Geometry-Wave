@@ -21,7 +21,7 @@ public class MovePlayer : MoveAutomatico
     {
         if(PlayerNet.CheckForClient())
         {
-            miraAutomatico = menu.Get_Toggle_AutoFire();
+            miraAutomatico = menu.AutoFire();
 
             if (move) {
                 velAtual = vel;
