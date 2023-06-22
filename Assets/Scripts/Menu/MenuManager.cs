@@ -19,29 +19,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject soundOptions;
     [SerializeField] private GameObject graficoshud;
     [SerializeField] public static string texto_ip;
-
     [SerializeField] private Canvas canvas;
+
     private SceneFadeAnimation fade;
     private Slider sliderHud;
     private Toggle toggle_AutoFire;
-
-    //GET do auto Fire
-    public bool Get_Toggle_AutoFire()
-    {
-        return toggle_AutoFire.isOn;
-    }
 
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
-
-        Debug.Log(canvas.scaleFactor);
-        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
-        Debug.Log(canvas.scaleFactor);
-
-        PlayerPrefs.Save();
     } 
 
 
@@ -55,7 +43,7 @@ public class MenuManager : MonoBehaviour
         fade.FadeScene(2);
     }
 
-    //Funções alteram os PlayerPrefs
+    //Funções que alteram os PlayerPrefs
 
     public void ScalingChanger()
     {
@@ -66,14 +54,12 @@ public class MenuManager : MonoBehaviour
     
     public bool AutoFire()
     {
-
         if(PlayerPrefs.GetInt("TiroAutomatico") == 1){
             return true;
         }
         else return false;
-        
     }
-    
+
     //Funções dos butões para carregar os menus
     public void Tutorial()
     {
