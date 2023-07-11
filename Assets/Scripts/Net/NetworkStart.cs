@@ -12,6 +12,7 @@ public class NetworkStart : MonoBehaviour
     [SerializeField] private GameObject clientBtn;
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject spawner;
+    [SerializeField] private GameObject errorScreen;
     private NetworkManager netManager;
     public static bool isSingleplayer = true;
     public static bool gameStarted = false;
@@ -19,9 +20,10 @@ public class NetworkStart : MonoBehaviour
 
     private void Start()
     {
-        MaxNumPlayers = isSingleplayer ? 1 : 4;
+        MaxNumPlayers = isSingleplayer ? 1 : 1;
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
+        NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
 
         GameObject.Find("NetworkManager").GetComponent<UnityTransport>().ConnectionData.Address = MenuManager.texto_ip;
 
@@ -68,7 +70,7 @@ public class NetworkStart : MonoBehaviour
         else
         {
             // TODO: Mostrar a tela de "sala cheia" e "incapaz de conectar"
-            response.Reason = "Nao foi";
+            response.Reason = "A sala está cheia";
             response.Approved = false;
         }
     
@@ -93,7 +95,7 @@ public class NetworkStart : MonoBehaviour
     {
         if (!netManager.IsServer && netManager.DisconnectReason != string.Empty)
         {
-            Debug.LogError($"Approval Declined Reason: {netManager.DisconnectReason}");
+            errorScreen.SetActive(true);
         }
     }
 }
