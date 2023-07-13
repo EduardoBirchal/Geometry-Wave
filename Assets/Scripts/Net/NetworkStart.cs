@@ -5,6 +5,7 @@ using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using System.Net;
 using System.Linq;
+using System.Collections;
 
 public class NetworkStart : MonoBehaviour
 {
@@ -14,13 +15,15 @@ public class NetworkStart : MonoBehaviour
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject errorScreen;
     private NetworkManager netManager;
+    private bool connectionStatus;
     public static bool isSingleplayer = true;
     public static bool gameStarted = false;
     public int MaxNumPlayers;
 
     private void Start()
     {
-        MaxNumPlayers = isSingleplayer ? 1 : 1;
+        MaxNumPlayers = isSingleplayer ? 1 : 4;
+        connectionStatus = false;
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
@@ -40,13 +43,21 @@ public class NetworkStart : MonoBehaviour
         }
         else if(MenuManager.texto_ip == GetLocalIPv4())
         {
-            Debug.LogWarning(GetLocalIPv4());
+            Debug.Log("IP para conectar: " + GetLocalIPv4());
             NetworkManager.Singleton.StartHost();
         }
         else
         {
             NetworkManager.Singleton.StartClient();
             startBtn.SetActive(false);
+
+            // StartCoroutine(Count());
+            do
+            {
+                // if(connect)
+            } while (connectionStatus == true);
+            
+            // errorScreen.SetActive(true);
         }
         startBtn.GetComponent<Button>().onClick.AddListener(() => {
             gameStarted = true;
@@ -62,16 +73,20 @@ public class NetworkStart : MonoBehaviour
         var clientId = request.ClientNetworkId;
         var connectionData = request.Payload;
     
-        if(netManager.ConnectedClientsIds.Count < MaxNumPlayers)
+        if(netManager.ConnectedClientsIds.Count >= MaxNumPlayers)
         {
-            response.Approved = true;
-            response.CreatePlayerObject = true;
+            response.Reason = "A sala está cheia";
+            response.Approved = false;
+        }
+        else if(gameStarted == true)
+        {
+            response.Reason = "Jogo em andamento";
+            response.Approved = false;
         }
         else
         {
-            // TODO: Mostrar a tela de "sala cheia" e "incapaz de conectar"
-            response.Reason = "A sala está cheia";
-            response.Approved = false;
+            response.Approved = true;
+            response.CreatePlayerObject = true;
         }
     
         // The prefab hash value of the NetworkPrefab, if null the default NetworkManager player prefab is used
@@ -97,5 +112,16 @@ public class NetworkStart : MonoBehaviour
         {
             errorScreen.SetActive(true);
         }
+    }
+
+    private void Count(float tempo)
+    {
+
+    }
+
+    private IEnumerator Count()
+    {
+        yield return new WaitForSeconds(5.0f);
+        connectionStatus = false;
     }
 }
