@@ -9,26 +9,34 @@ using System.Collections;
 
 public class NetworkStart : MonoBehaviour
 {
+    private enum ConnectionResponse
+    {
+        Waiting,
+        Connected,
+        Offline
+
+    }
     [SerializeField] private GameObject hostBtn;
     [SerializeField] private GameObject clientBtn;
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject errorScreen;
     private NetworkManager netManager;
-    private bool connectionStatus;
+    private ConnectionResponse status;
     public static bool isSingleplayer = true;
     public static bool gameStarted = false;
     public int MaxNumPlayers;
-
+    
     private void Start()
     {
         MaxNumPlayers = isSingleplayer ? 1 : 4;
-        connectionStatus = false;
+        status = ConnectionResponse.Waiting;
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
 
         GameObject.Find("NetworkManager").GetComponent<UnityTransport>().ConnectionData.Address = MenuManager.texto_ip;
+        startBtn.SetActive(false);
 
         if(isSingleplayer == true)
         {
@@ -36,26 +44,32 @@ public class NetworkStart : MonoBehaviour
             
             hostBtn.SetActive(false);
             clientBtn.SetActive(false);
-            startBtn.SetActive(false);
             
             Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
             gameStarted = true;
+            status = ConnectionResponse.Connected;
         }
         else if(MenuManager.texto_ip == GetLocalIPv4())
         {
             Debug.Log("IP para conectar: " + GetLocalIPv4());
             NetworkManager.Singleton.StartHost();
+            status = ConnectionResponse.Connected;
+            startBtn.SetActive(true);
         }
         else
         {
             NetworkManager.Singleton.StartClient();
-            startBtn.SetActive(false);
 
             // StartCoroutine(Count());
             do
             {
-                // if(connect)
-            } while (connectionStatus == true);
+                
+                if(status == ConnectionResponse.Connected)
+                {
+                    return;
+                }
+
+            } while (status == ConnectionResponse.Waiting);
             
             // errorScreen.SetActive(true);
         }
@@ -72,6 +86,7 @@ public class NetworkStart : MonoBehaviour
     {
         var clientId = request.ClientNetworkId;
         var connectionData = request.Payload;
+        response.PlayerPrefabHash = null;
     
         if(netManager.ConnectedClientsIds.Count >= MaxNumPlayers)
         {
@@ -90,7 +105,6 @@ public class NetworkStart : MonoBehaviour
         }
     
         // The prefab hash value of the NetworkPrefab, if null the default NetworkManager player prefab is used
-        response.PlayerPrefabHash = null;
     
         // If additional approval steps are needed, set this to true until the additional steps are complete
         // once it transitions from true to false the connection approval response will be processed.
@@ -122,6 +136,29 @@ public class NetworkStart : MonoBehaviour
     private IEnumerator Count()
     {
         yield return new WaitForSeconds(5.0f);
-        connectionStatus = false;
+        status = ConnectionResponse.Offline;
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    void TestConnectionServerRpc(ulong clientId)
+    {
+        if (!IsServer) return;
+        ClientRpcParams clientRpcParams = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams
+            {
+                TargetClientIds = new ulong[]{clientId}
+            }
+        };
+        TestConnectionClientRpc();
+    }
+
+    [ClientRpc]
+    void TestConnectionClientRpc(ClientRpcParams clientRpcParams = default)
+    {
+        if (IsOwner) return;
+        Debug.Debug.LogWarning("Conectado!");
+        status = ConnectionResponse.Connected;
+    }
+
 }
