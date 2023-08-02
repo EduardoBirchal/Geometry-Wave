@@ -9,20 +9,11 @@ using System.Collections;
 
 public class NetworkStart : MonoBehaviour
 {
-    private enum ConnectionResponse
-    {
-        Waiting,
-        Connected,
-        Offline
-
-    }
-    [SerializeField] private GameObject hostBtn;
-    [SerializeField] private GameObject clientBtn;
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject errorScreen;
     private NetworkManager netManager;
-    private ConnectionResponse status;
+    private NetworkStatus netStatus;
     public static bool isSingleplayer = true;
     public static bool gameStarted = false;
     public int MaxNumPlayers;
@@ -30,7 +21,7 @@ public class NetworkStart : MonoBehaviour
     private void Start()
     {
         MaxNumPlayers = isSingleplayer ? 1 : 4;
-        status = ConnectionResponse.Waiting;
+        netStatus = GameObject.Find("ConnectionHandler").GetComponent<NetworkStatus>();
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
@@ -41,37 +32,24 @@ public class NetworkStart : MonoBehaviour
         if(isSingleplayer == true)
         {
             NetworkManager.Singleton.StartHost();
-            
-            hostBtn.SetActive(false);
-            clientBtn.SetActive(false);
-            
             Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
             gameStarted = true;
-            status = ConnectionResponse.Connected;
         }
         else if(MenuManager.texto_ip == GetLocalIPv4())
         {
             Debug.Log("IP para conectar: " + GetLocalIPv4());
             NetworkManager.Singleton.StartHost();
-            status = ConnectionResponse.Connected;
             startBtn.SetActive(true);
         }
         else
         {
             NetworkManager.Singleton.StartClient();
-
-            // StartCoroutine(Count());
-            do
+            Debug.LogWarning(netManager.IsConnectedClient);
+            if(netManager.IsConnectedClient)
             {
-                
-                if(status == ConnectionResponse.Connected)
-                {
-                    return;
-                }
-
-            } while (status == ConnectionResponse.Waiting);
-            
-            // errorScreen.SetActive(true);
+                Error.customMessage = "Tempo de conexão esgotado";
+                errorScreen.SetActive(true);
+            }
         }
         startBtn.GetComponent<Button>().onClick.AddListener(() => {
             gameStarted = true;
@@ -127,38 +105,4 @@ public class NetworkStart : MonoBehaviour
             errorScreen.SetActive(true);
         }
     }
-
-    private void Count(float tempo)
-    {
-
-    }
-
-    private IEnumerator Count()
-    {
-        yield return new WaitForSeconds(5.0f);
-        status = ConnectionResponse.Offline;
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    void TestConnectionServerRpc(ulong clientId)
-    {
-        if (!IsServer) return;
-        ClientRpcParams clientRpcParams = new ClientRpcParams
-        {
-            Send = new ClientRpcSendParams
-            {
-                TargetClientIds = new ulong[]{clientId}
-            }
-        };
-        TestConnectionClientRpc();
-    }
-
-    [ClientRpc]
-    void TestConnectionClientRpc(ClientRpcParams clientRpcParams = default)
-    {
-        if (IsOwner) return;
-        Debug.Debug.LogWarning("Conectado!");
-        status = ConnectionResponse.Connected;
-    }
-
 }

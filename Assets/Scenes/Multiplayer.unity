@@ -4053,6 +4053,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925825484}
   m_CullTransparentMesh: 1
+--- !u!1 &984566044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984566048}
+  - component: {fileID: 984566047}
+  - component: {fileID: 984566046}
+  - component: {fileID: 984566045}
+  m_Layer: 0
+  m_Name: ConnectionHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &984566045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984566044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2718469448
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &984566046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984566044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52da77da34140ec448c8d1dcec7e628a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &984566047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984566044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52da77da34140ec448c8d1dcec7e628a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &984566048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984566044}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 539.836, y: 301.24292, z: -6.792395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1001715856
 GameObject:
   m_ObjectHideFlags: 0
@@ -4857,7 +4934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4504256888131977023, guid: cbbbf0a5514ce203187f948cc8400c5f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25
+      value: -24.99997
       objectReference: {fileID: 0}
     - target: {fileID: 4504256888131977023, guid: cbbbf0a5514ce203187f948cc8400c5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7006,7 +7083,6 @@ GameObject:
   - component: {fileID: 2120987343}
   - component: {fileID: 2120987342}
   - component: {fileID: 2120987345}
-  - component: {fileID: 2120987346}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -7031,8 +7107,8 @@ MonoBehaviour:
   m_MaxPayloadSize: 6144
   m_HeartbeatTimeoutMS: 500
   m_ConnectTimeoutMS: 1000
-  m_MaxConnectAttempts: 60
-  m_DisconnectTimeoutMS: 30000
+  m_MaxConnectAttempts: 10
+  m_DisconnectTimeoutMS: 1000
   ConnectionData:
     Address: 10.0.0.27
     Port: 7777
@@ -7105,24 +7181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e9d768fdc9306419da79b1bbad14cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hostBtn: {fileID: 1816857652}
-  clientBtn: {fileID: 42124908}
   startBtn: {fileID: 591063873}
   spawner: {fileID: 200394870337230261, guid: 32e27500920bb86388bb58ec3c1e77e3, type: 3}
   errorScreen: {fileID: 737920863}
   MaxNumPlayers: 0
---- !u!114 &2120987346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120987341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdb89962c81357e9c9ff1eda89eece0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2129808307
 GameObject:
   m_ObjectHideFlags: 0
