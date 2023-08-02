@@ -8,15 +8,18 @@ public class MenuInGame : MonoBehaviour
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
-
-    public PlayerGerenciaHP playerhp;
+    
+    private PlayerGerenciaHP playerhp;
     private SceneFadeAnimation fade;
-    public GameObject player;
+    private GameObject player;
+    private MenuLvL_Up lvl_Up;
+    public static bool isOpen = false;
 
     void Start()
     {
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        lvl_Up = GameObject.Find("GameManager").GetComponent<MenuLvL_Up>();
         GetPlayerHP();
         Continuar();
 
@@ -66,8 +69,9 @@ public class MenuInGame : MonoBehaviour
         if(Time.timeScale == 0 && menu.activeSelf == true){
             Continuar();
         }
-        else if(Time.timeScale == 1)
+        else if(Time.timeScale == 1 && lvl_Up.menuLvL_Up.activeSelf == false)
         {
+            isOpen = true;
             Time.timeScale = 0;
             menu.SetActive(true);
         }
@@ -75,6 +79,7 @@ public class MenuInGame : MonoBehaviour
 
     public void Continuar()
     {
+        isOpen = false;
         menu.SetActive(false);
         Time.timeScale = 1;
     }

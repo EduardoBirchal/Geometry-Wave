@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuLvL_Up : MonoBehaviour
 {
     
-    [SerializeField] private GameObject menuLvL_Up;
+    [SerializeField] public GameObject menuLvL_Up;
     
     private bool singlePlayer;
 
@@ -16,12 +16,14 @@ public class MenuLvL_Up : MonoBehaviour
 
     public void Menu()
     {
-        menuLvL_Up.SetActive(true);
-        if(singlePlayer == true)
+        if(MenuInGame.isOpen == false)
         {
-            Time.timeScale = 0;
-        }
-            
+            menuLvL_Up.SetActive(true);
+            if(singlePlayer == true)
+            {
+                Time.timeScale = 0;
+            }
+        }    
     }
 
     public void CloseMenu()

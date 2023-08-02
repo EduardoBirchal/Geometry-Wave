@@ -3748,7 +3748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14671eef2a61221aeaa1d662b2d8db16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &721392231
+--- !u!114 &721392233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4718,7 +4718,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721392231}
+      - m_Target: {fileID: 721392233}
         m_TargetAssemblyTypeName: MenuLvL_Up, Assembly-CSharp
         m_MethodName: Menu
         m_Mode: 1
@@ -5853,7 +5853,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721392231}
+      - m_Target: {fileID: 721392233}
         m_TargetAssemblyTypeName: MenuLvL_Up, Assembly-CSharp
         m_MethodName: CloseMenu
         m_Mode: 1
