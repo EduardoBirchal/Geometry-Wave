@@ -30,7 +30,7 @@ public class NetworkStatus : NetworkBehaviour
         return status == ConnectionResponse.Offline;
     }
 
-    public void OnClientConnectCallback(ulong obj)
+    public void OnClientConnectedCallback(ulong obj)
     {
         status = ConnectionResponse.Connected;
         Debug.LogError("Conectado");
@@ -44,6 +44,7 @@ public class NetworkStatus : NetworkBehaviour
         
         // TODO: Não precisar esperar caso a conexão seja bem-sucedida
         await WaitForConnection;
+        Debug.LogWarning(status);
         if(status == ConnectionResponse.Offline)
         {
             errorScript.state = Error.PopupState.Error;

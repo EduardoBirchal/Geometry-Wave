@@ -27,7 +27,7 @@ public class NetworkStart : MonoBehaviour
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
-        NetworkManager.Singleton.OnClientDisconnectCallback += netStatus.OnClientConnectCallback;
+        NetworkManager.Singleton.OnClientConnectedCallback += netStatus.OnClientConnectedCallback;
 
         GameObject.Find("NetworkManager").GetComponent<UnityTransport>().ConnectionData.Address = MenuManager.texto_ip;
         startBtn.SetActive(false);
