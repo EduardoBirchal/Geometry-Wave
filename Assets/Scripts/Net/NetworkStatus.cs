@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
@@ -13,56 +14,51 @@ public class NetworkStatus : NetworkBehaviour
 
     }
     private NetworkManager networkManager;
-    private ConnectionResponse status;
+    private static ConnectionResponse status;
+    [SerializeField] private GameObject errorScreen;
+    private Error errorScript;
 
     private void Start() 
     {
+        errorScript = errorScreen.GetComponent<Error>();
         if(IsHost) status = ConnectionResponse.Connected;
-        else status = ConnectionResponse.Offline;
+        else status = ConnectionResponse.Waiting;
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
     }
-    public bool PingarServer()
+    public static bool HasTimedOut()
     {
-        status = ConnectionResponse.Waiting;
-        Debug.Log("Pingando...");
-        StartCoroutine(Count());
-        do
-        {
-            PingServerRpc(NetworkManager.Singleton.LocalClientId);
-            if(status == ConnectionResponse.Connected)
-            {
-                Debug.Log("E foi");
-                return true;
-            }
-        } while (status == ConnectionResponse.Waiting);
-        Debug.Log("Falso");
-        return false;
-    }
-    private IEnumerator Count()
-    {
-        yield return new WaitForSeconds(5.0f);
-        status = ConnectionResponse.Offline;
+        return status == ConnectionResponse.Offline;
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    void PingServerRpc(ulong clientId)
+    private void OnClientConnectCallback(ulong obj)
     {
-        if(!IsServer) return;
-        ClientRpcParams clientRpcParams = new ClientRpcParams
-        {
-            Send = new ClientRpcSendParams
-            {
-                TargetClientIds = new ulong[]{clientId}
-            }
-        };
-        PingClientRpc();
-    }
-
-    [ClientRpc]
-    void PingClientRpc(ClientRpcParams clientRpcParams = default)
-    {
-        if(IsOwner) return;
-        Debug.LogWarning("Conectado!");
         status = ConnectionResponse.Connected;
+
+    }
+
+    public async void InitialConnection()
+    {
+        errorScript.state = Error.PopupState.Waiting;
+        errorScript.Update();
+        Task WaitForConnection = Count();
+        
+        // TODO: Não precisar esperar caso a conexão seja bem-sucedida
+        await WaitForConnection;
+        if(status == ConnectionResponse.Offline)
+        {
+            errorScript.state = Error.PopupState.Error;
+        }
+        else
+        {
+            errorScript.state = Error.PopupState.Sucess;
+        }
+        return;
+    }
+    
+    private async Task Count()
+    {
+        await Task.Delay(5 * 1000);
+        if(status != ConnectionResponse.Connected)
+            status = ConnectionResponse.Offline;
     }
 }

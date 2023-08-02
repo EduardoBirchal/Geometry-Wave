@@ -56,7 +56,6 @@ public class MenuInGame : MonoBehaviour
     public void Inicio()
     {
         Time.timeScale = 1;
-        Error.onScreen = false;
         fade.FadeToMenu();
     }
 

@@ -32,8 +32,8 @@ public class NetworkStart : MonoBehaviour
         if(isSingleplayer == true)
         {
             NetworkManager.Singleton.StartHost();
-            Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
             gameStarted = true;
+            Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
         }
         else if(MenuManager.texto_ip == GetLocalIPv4())
         {
@@ -44,13 +44,10 @@ public class NetworkStart : MonoBehaviour
         else
         {
             NetworkManager.Singleton.StartClient();
-            Debug.LogWarning(netManager.IsConnectedClient);
-            if(netManager.IsConnectedClient)
-            {
-                Error.customMessage = "Tempo de conexão esgotado";
-                errorScreen.SetActive(true);
-            }
+            // Debug.LogWarning(netManager.IsConnectedClient);
+            netStatus.InitialConnection();
         }
+
         startBtn.GetComponent<Button>().onClick.AddListener(() => {
             gameStarted = true;
             Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
@@ -92,9 +89,9 @@ public class NetworkStart : MonoBehaviour
     public static string GetLocalIPv4()
     {
         return Dns.GetHostEntry(Dns.GetHostName())
-        .AddressList.First(
-        f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-        .ToString();
+            .AddressList.First(
+            f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            .ToString();
     }
 
     // 
@@ -102,6 +99,7 @@ public class NetworkStart : MonoBehaviour
     {
         if (!netManager.IsServer && netManager.DisconnectReason != string.Empty)
         {
+            errorScreen.gameObject.GetComponent<Error>().state = Error.PopupState.Error;
             errorScreen.SetActive(true);
         }
     }

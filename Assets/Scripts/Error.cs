@@ -4,25 +4,55 @@ using Unity.Netcode;
 
 public class Error : MonoBehaviour
 {
-    [SerializeField] private GameObject objMessage;
-    public static bool onScreen;
-    public static string customMessage = null;
-    
-    private void Awake()
+    public enum PopupState
     {
-        onScreen = true;
-        
+        Error,
+        Waiting,
+        Sucess,
+        Idle
+    }
+    [SerializeField] private GameObject objMessage;
+    [SerializeField] private GameObject objButton;
+    [SerializeField] private GameObject objFlag;
+    public string text = null;
+    public PopupState state = PopupState.Idle;
+
+    public void Start()
+    {
+        objFlag.SetActive(false);
+        objButton.SetActive(false);
+    }
+    public void Update()
+    {
+        switch(state)
+        {
+            case PopupState.Idle:
+                this.gameObject.SetActive(false);
+                break;
+            case PopupState.Sucess:
+                text = "Pronto";
+                this.gameObject.SetActive(true);
+                break;
+            case PopupState.Error:
+                if (NetworkStatus.HasTimedOut())
+                    text = "Tempo esgotado";
+                else
+                {
+                    text = GameObject.Find("NetworkManager")
+                            .GetComponent<NetworkManager>()
+                            .DisconnectReason;
+                }
+                this.gameObject.SetActive(true);
+                objFlag.SetActive(true);
+                objButton.SetActive(true);
+                break;
+            case PopupState.Waiting:
+                text = "Conectando...";
+                this.gameObject.SetActive(true);
+                break;
+        }
+
         TMP_Text message = objMessage.GetComponent<TMP_Text>();
-        if(customMessage != null)
-        {
-            NetworkManager netManager = GameObject.Find("NetworkManager")
-                .GetComponent<NetworkManager>();
-            message.text = netManager.DisconnectReason;
-        }
-        else 
-        {
-            message.text = customMessage;
-            customMessage = null;
-        }
+        message.text = text;
     }
 }
