@@ -43,6 +43,7 @@ public class NetworkStatus : NetworkBehaviour
         Task WaitForConnection = Count();
         
         // TODO: Não precisar esperar caso a conexão seja bem-sucedida
+        // TODO: Não mostrar o Timeout em cima de outros erros
         await WaitForConnection;
         Debug.LogWarning(status);
         if(status == ConnectionResponse.Offline)

@@ -47,7 +47,6 @@ public class NetworkStart : MonoBehaviour
         else
         {
             NetworkManager.Singleton.StartClient();
-            // Debug.LogWarning(netManager.IsConnectedClient);
             netStatus.InitialConnection();
         }
 
@@ -56,7 +55,6 @@ public class NetworkStart : MonoBehaviour
             Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
             startBtn.SetActive(false);
         });
-        // TODO: Corrigir a sincronização dos inimigos
     }
 
     // TODO: Desconectar os players quando o host fecha o jogoy
@@ -81,9 +79,7 @@ public class NetworkStart : MonoBehaviour
             response.Approved = true;
             response.CreatePlayerObject = true;
         }
-    
         // The prefab hash value of the NetworkPrefab, if null the default NetworkManager player prefab is used
-    
         // If additional approval steps are needed, set this to true until the additional steps are complete
         // once it transitions from true to false the connection approval response will be processed.
         response.Pending = false;
