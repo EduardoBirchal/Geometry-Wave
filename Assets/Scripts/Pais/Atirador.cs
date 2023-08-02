@@ -42,8 +42,10 @@ public class Atirador : NetworkBehaviour
     {
         if(balaCarregada)
         {
-            Debug.LogWarning(balaTipo);
             if (fonteAudio) {
+                fonteAudio.PlayOneShot(efeitosArmas[balaTipo], 1);
+            }
+            
             balaCarregada = false;
             CriaBala(tipos[balaTipo]);
             StartCoroutine(Recarrega(Random.Range(tipos[balaTipo].cooldownTiro_Min,tipos[balaTipo].cooldownTiro_Max)));
