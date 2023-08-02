@@ -30,7 +30,7 @@ public class Error : MonoBehaviour
                 this.gameObject.SetActive(false);
                 break;
             case PopupState.Sucess:
-                text = "Pronto";
+                text = NetworkStart.GetLocalIPv4();
                 this.gameObject.SetActive(true);
                 break;
             case PopupState.Error:
