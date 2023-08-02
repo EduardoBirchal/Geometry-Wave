@@ -15,16 +15,19 @@ public class NetworkStart : MonoBehaviour
     private NetworkManager netManager;
     private NetworkStatus netStatus;
     public static bool isSingleplayer = true;
-    public static bool gameStarted = false;
+    public static bool gameStarted;
     public int MaxNumPlayers;
     
     private void Start()
     {
+        gameStarted = false;
+        
         MaxNumPlayers = isSingleplayer ? 1 : 4;
         netStatus = GameObject.Find("ConnectionHandler").GetComponent<NetworkStatus>();
         netManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectCallback;
+        NetworkManager.Singleton.OnClientDisconnectCallback += netStatus.OnClientConnectCallback;
 
         GameObject.Find("NetworkManager").GetComponent<UnityTransport>().ConnectionData.Address = MenuManager.texto_ip;
         startBtn.SetActive(false);

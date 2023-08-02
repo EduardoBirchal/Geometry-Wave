@@ -30,10 +30,10 @@ public class NetworkStatus : NetworkBehaviour
         return status == ConnectionResponse.Offline;
     }
 
-    private void OnClientConnectCallback(ulong obj)
+    public void OnClientConnectCallback(ulong obj)
     {
         status = ConnectionResponse.Connected;
-
+        Debug.LogError("Conectado");
     }
 
     public async void InitialConnection()
