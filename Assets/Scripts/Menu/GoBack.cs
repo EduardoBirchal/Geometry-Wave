@@ -20,20 +20,40 @@ public class GoBack : MonoBehaviour
 
     void Update()
     {
-        // if(Input.GetKeyDown("escape") && gameMenu.menu.activeSelf == false && lvl_UpMenu.menuLvL_Up.activeSelf == false)
-        // {
-        //     MenuInGame.isOpen = true;
-        //     Time.timeScale = 0;
-        //     gameMenu.menu.SetActive(true);
-        // }
-        if(Input.GetKeyDown("escape"))
+        if(GameObject.Find("GameManager").GetComponent<MenuInGame>() != null && menus.Count <= 1){
+            if(Input.GetKeyDown("escape") && gameMenu.menu.activeSelf == false && lvl_UpMenu.menuLvL_Up.activeSelf == false)
+            {
+                MenuInGame.isOpen = true;
+                Time.timeScale = 0;
+                menus.Push(gameMenu.menu);
+                gameMenu.menu.SetActive(true);
+            }
+            else if(Input.GetKeyDown("escape") )
+            {
+                Continuar();
+            }
+        }
+        else if(Input.GetKeyDown("escape"))
         {
-            GoToLastMenu();
+            if(menus.Count > 0)
+            {
+                GoToLastMenu();
+            }
         }
     }
 
-    void GoToLastMenu(){
+    public void GoToLastMenu(){
         menus.Peek().SetActive(false);
         menus.Pop();
+    }
+
+    public void Continuar()
+    {
+        MenuInGame.isOpen = false;
+        Time.timeScale = 1;
+        if(menus.Count > 0){
+            menus.Peek().SetActive(false);
+            menus.Pop();
+        }
     }
 }

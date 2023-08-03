@@ -148,13 +148,13 @@ public class MenuManager : MonoBehaviour
         else PlayerPrefs.SetInt("TiroAutomatico", 1);
 
         painelOptions.SetActive(true);
-        gameplayOptions.SetActive(false);
+        goBack.GoToLastMenu();
     }
 
     public void CloseSoundOptions()
     {
         painelOptions.SetActive(true);
-        soundOptions.SetActive(false);
+        goBack.GoToLastMenu();
     }
 
     public void CloseGraficosHud()
@@ -163,37 +163,37 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.Save();
 
         painelOptions.SetActive(true);
-        graficoshud.SetActive(false);
+        goBack.GoToLastMenu();
     }
 
     public void CloseOptions()
     {
-        painelOptions.SetActive(false);
         menuInicial.SetActive(true);
+        goBack.GoToLastMenu();
     }
 
     public void CloseGameModes()
     {
         menuInicial.SetActive(true);
-        gameModes.SetActive(false);
+        goBack.GoToLastMenu();
     }
 
     public void CloseSolo()
     {
         gameModes.SetActive(true);
-        dificultSelector.SetActive(false);
+        goBack.GoToLastMenu();
     }
 
     public void CloseOnline()
     {
         gameModes.SetActive(true);
-        onlineModes.SetActive(false);
+        goBack.GoToLastMenu();
     }
 
     public void CloseEnterOnline()
     {
         onlineModes.SetActive(true);
-        enterOnline.SetActive(false);
+        goBack.GoToLastMenu();
     }
     
     public void ExitGame()

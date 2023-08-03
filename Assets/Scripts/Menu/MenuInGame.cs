@@ -25,24 +25,24 @@ public class MenuInGame : MonoBehaviour
         //lvl_Up = GameObject.Find("GameManager").GetComponent<MenuLvL_Up>();
         //principalMenu = GameObject.Find("GameManager").GetComponent<MenuManager>();
         GetPlayerHP();
-        Continuar();
+        goBack.Continuar();
 
     }
 
     void Update()
     {
-        if(Input.GetKeyDown("escape"))
-        {
-            //Esc();
-        }
+        // if(Input.GetKeyDown("escape"))
+        // {
+        //     Esc();
+        // }
         
-        if(player != null){
-            if(playerhp.hp <= 0)
-            {
-                Time.timeScale = 0;
-                diedScreen.SetActive(true);
-            }
-        }
+        // if(player != null){
+        //     if(playerhp.hp <= 0)
+        //     {
+        //         Time.timeScale = 0;
+        //         diedScreen.SetActive(true);
+        //     }
+        // }
     }
 
     public void GetPlayerHP()
@@ -85,11 +85,12 @@ public class MenuInGame : MonoBehaviour
     //     // }
     // }
 
-    public void Continuar()
-    {
-        isOpen = false;
-        menu.SetActive(false);
-        Time.timeScale = 1;
-    }
+    // public void Continuar()
+    // {
+    //     isOpen = false;
+    //     menu.SetActive(false);
+    //     Time.timeScale = 1;
+        
+    // }
 
 }
