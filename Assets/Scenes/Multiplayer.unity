@@ -6196,7 +6196,7 @@ MonoBehaviour:
   hostBtn: {fileID: 1816857652}
   clientBtn: {fileID: 42124908}
   startBtn: {fileID: 591063873}
-  spawner: {fileID: 200394870337230261, guid: 32e27500920bb86388bb58ec3c1e77e3, type: 3}
+  spawner: {fileID: 5657181454398760757, guid: 25572ce4fd4f78def8eb5adb671fd87f, type: 3}
   MaxNumPlayers: 0
 --- !u!114 &2120987346
 MonoBehaviour:
