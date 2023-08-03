@@ -18,7 +18,8 @@ public class MoveInimigo : MoveAutomatico
 
     void Update()
     {
-        if (mudaAngulo) ViraPraObjeto(player.transform.position); 
+        if(!IsHost) return;
+        if (mudaAngulo) ViraPraObjeto(player.transform.position);
         if (move) MoveFrente();
     }
 

@@ -21,10 +21,11 @@ public class MorreInimigo : NetworkBehaviour
     [ServerRpc]
     public void MatarInimigoServerRpc(ServerRpcParams serverRpcParams = default)
     {
-        // # FICA PRA QUANDO DECIDIRMOS COMO FUNCIONA O XP
-        // ulong clientId = serverRpcParams.Receive.SenderClientId;
-        // GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
-        // player.GetComponent<PlayerGerenciaXP>().xp = valorXp;
+        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            player.GetComponent<PlayerGerenciaXP>().xp += valorXp;
+        }
+        
 
         inimigoFlock = gameObject.GetComponent<FlockAgent>();
 

@@ -32,9 +32,6 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
-
-        Debug.Log(PlayerPrefs.GetFloat("HudSizeValue"));
-
         ScalingChanger();
         AutoFire();
         PlayerPrefs.Save();

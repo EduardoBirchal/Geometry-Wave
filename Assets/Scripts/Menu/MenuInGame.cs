@@ -1,13 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
-
-public class MenuInGame : MonoBehaviour
+public class MenuInGame : MonoBehaviour 
 {
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
+    private TimeManager timeManager;
 
     public PlayerGerenciaHP playerhp;
     private SceneFadeAnimation fade;
@@ -15,11 +12,12 @@ public class MenuInGame : MonoBehaviour
 
     void Start()
     {
+        timeManager = GameObject.Find("Funcoes").GetComponent<TimeManager>();
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         GetPlayerHP();
-        Continuar();
-
+        menu.SetActive(false);
+        timeManager.Resume();
     }
 
     void Update()
@@ -43,7 +41,6 @@ public class MenuInGame : MonoBehaviour
         if(player != null) playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
     }
 
-
     public void QuitConfirmation()
     {
         quitConfirmation.SetActive(true);
@@ -58,25 +55,21 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
+        Time.timeScale = 1;
         fade.FadeToMenu();
     }
 
     public void Esc()
     {
-        if(Time.timeScale == 0 && menu.activeSelf == true){
-            Continuar();
-        }
-        else if(Time.timeScale == 1)
+        if(menu.activeSelf == true)
         {
-            Time.timeScale = 0;
+            menu.SetActive(false);
+            timeManager.Resume();
+        }
+        else
+        {
             menu.SetActive(true);
+            timeManager.Pause();
         }
     }
-
-    public void Continuar()
-    {
-        menu.SetActive(false);
-        Time.timeScale = 1;
-    }
-
 }
