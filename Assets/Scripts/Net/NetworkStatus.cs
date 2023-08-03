@@ -6,6 +6,7 @@ using Unity.Netcode;
 
 public class NetworkStatus : NetworkBehaviour 
 {
+    const int WAIT_TIME = 1000;
     private enum ConnectionResponse
     {
         Waiting,
@@ -38,29 +39,30 @@ public class NetworkStatus : NetworkBehaviour
 
     public async void InitialConnection()
     {
+        const int TRIES = 5;
         errorScript.state = Error.PopupState.Waiting;
         errorScript.Update();
-        Task WaitForConnection = Count();
+        
+        for(int i = 0; i < TRIES; i++)
+        {
+            Task WaitForConnection = Count();
+            await WaitForConnection;
+            if(status == ConnectionResponse.Connected)
+            {
+                errorScript.state = Error.PopupState.Sucess;
+                return;
+            }
+        }
+        status = ConnectionResponse.Offline;
         
         // TODO: Não precisar esperar caso a conexão seja bem-sucedida
         // TODO: Não mostrar o Timeout em cima de outros erros
-        await WaitForConnection;
-        Debug.LogWarning(status);
-        if(status == ConnectionResponse.Offline)
-        {
-            errorScript.state = Error.PopupState.Error;
-        }
-        else
-        {
-            errorScript.state = Error.PopupState.Sucess;
-        }
+        errorScript.state = Error.PopupState.Error;
         return;
     }
     
     private async Task Count()
     {
-        await Task.Delay(5 * 1000);
-        if(status != ConnectionResponse.Connected)
-            status = ConnectionResponse.Offline;
+        await Task.Delay(WAIT_TIME);
     }
 }
