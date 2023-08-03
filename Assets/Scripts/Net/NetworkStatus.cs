@@ -6,18 +6,17 @@ using Unity.Netcode;
 
 public class NetworkStatus : NetworkBehaviour 
 {
-    const int WAIT_TIME = 1000;
-    private enum ConnectionResponse
+    private const int WAIT_TIME = 1000;
+    public enum ConnectionResponse
     {
         Waiting,
         Connected,
         Offline
-
     }
     private NetworkManager networkManager;
-    private static ConnectionResponse status;
-    [SerializeField] private GameObject errorScreen;
     private Error errorScript;
+    [SerializeField] private GameObject errorScreen;
+    private static ConnectionResponse status;
 
     private void Start() 
     {
@@ -25,10 +24,6 @@ public class NetworkStatus : NetworkBehaviour
         if(IsHost) status = ConnectionResponse.Connected;
         else status = ConnectionResponse.Waiting;
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
-    }
-    public static bool HasTimedOut()
-    {
-        return status == ConnectionResponse.Offline;
     }
 
     public void OnClientConnectedCallback(ulong obj)
@@ -57,7 +52,7 @@ public class NetworkStatus : NetworkBehaviour
         
         // TODO: Não precisar esperar caso a conexão seja bem-sucedida
         // TODO: Não mostrar o Timeout em cima de outros erros
-        errorScript.state = Error.PopupState.Error;
+        errorScript.state = Error.PopupState.Timeout;
         return;
     }
     

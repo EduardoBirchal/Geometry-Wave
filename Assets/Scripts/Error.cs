@@ -7,6 +7,7 @@ public class Error : MonoBehaviour
     public enum PopupState
     {
         Error,
+        Timeout,
         Waiting,
         Sucess,
         Idle
@@ -15,10 +16,12 @@ public class Error : MonoBehaviour
     [SerializeField] private GameObject objButton;
     [SerializeField] private GameObject objFlag;
     public string text = null;
+    private bool lockText;
     public PopupState state = PopupState.Idle;
 
     public void Start()
     {
+        lockText = true;
         objFlag.SetActive(false);
         objButton.SetActive(false);
     }
@@ -34,14 +37,15 @@ public class Error : MonoBehaviour
                 this.gameObject.SetActive(true);
                 break;
             case PopupState.Error:
-                if (NetworkStatus.HasTimedOut())
-                    text = "Tempo esgotado";
-                else
-                {
-                    text = GameObject.Find("NetworkManager")
-                            .GetComponent<NetworkManager>()
-                            .DisconnectReason;
-                }
+                text = GameObject.Find("NetworkManager")
+                        .GetComponent<NetworkManager>()
+                        .DisconnectReason;
+                this.gameObject.SetActive(true);
+                objFlag.SetActive(true);
+                objButton.SetActive(true);
+                break;
+            case PopupState.Timeout:
+                text = "Tempo esgotado";
                 this.gameObject.SetActive(true);
                 objFlag.SetActive(true);
                 objButton.SetActive(true);
