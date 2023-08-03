@@ -21,6 +21,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
 
+    private GoBack goBack;
     private SceneFadeAnimation fade;
     private Slider sliderHud;
     private Toggle toggle_AutoFire;
@@ -28,7 +29,8 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
-        
+        goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
+
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     } 
 
@@ -77,25 +79,29 @@ public class MenuManager : MonoBehaviour
     public void GameModes()
     {
         gameModes.SetActive(true);
-        menuInicial.SetActive(false);
+        goBack.menus.Push(gameModes);
+        //menuInicial.SetActive(false);
     }
 
     public void Solo()
     {
         dificultSelector.SetActive(true);
-        gameModes.SetActive(false);
+        goBack.menus.Push(dificultSelector);
+        //gameModes.SetActive(false);
     }
 
     public void Online()
     {
         onlineModes.SetActive(true);
-        gameModes.SetActive(false);
+        goBack.menus.Push(onlineModes);
+        //gameModes.SetActive(false);
     }
 
     public void EnterOnline()
     {
         enterOnline.SetActive(true);
-        onlineModes.SetActive(false);
+        goBack.menus.Push(enterOnline);
+        //onlineModes.SetActive(false);
     }
 
     public void Options()
