@@ -85,7 +85,7 @@ public class IniciaOnda : FuncoesGerais
         onda++;
 
         Debug.LogWarning(IsServer);
-        MostrarOndaClientRpc(onda, true);
+        MostrarOndaClientRpc(onda, false);
 
         while (dificuldadeDisponivel > 0) {
             // Escolhe o menor número entre numDificuldades e dificuldadeDisponivel
