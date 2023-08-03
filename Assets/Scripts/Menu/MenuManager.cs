@@ -107,7 +107,8 @@ public class MenuManager : MonoBehaviour
     public void Options()
     {
         painelOptions.SetActive(true);
-        menuInicial.SetActive(false);
+        goBack.menus.Push(painelOptions);
+        //menuInicial.SetActive(false);
     }
 
     public void GamePlayOptions()
@@ -117,13 +118,15 @@ public class MenuManager : MonoBehaviour
         toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
         toggle_AutoFire.isOn = AutoFire();  
         
-        painelOptions.SetActive(false);
+        goBack.menus.Push(gameplayOptions);
+        //painelOptions.SetActive(false);
     }
 
     public void SoundOptions()
     {
         soundOptions.SetActive(true);
-        painelOptions.SetActive(false);
+        goBack.menus.Push(soundOptions);
+        //painelOptions.SetActive(false);
     }
 
     public void GraficosHud()
@@ -133,7 +136,8 @@ public class MenuManager : MonoBehaviour
         sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
         sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
         
-        painelOptions.SetActive(false);
+        goBack.menus.Push(graficoshud);
+        //painelOptions.SetActive(false);
     }
 
     public void CloseGamePlayOptions()

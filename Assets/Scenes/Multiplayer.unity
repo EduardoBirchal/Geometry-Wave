@@ -3708,6 +3708,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 808900513}
     - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: menuInicial
+      value: 
+      objectReference: {fileID: 84013002}
+    - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: soundOptions
       value: 
       objectReference: {fileID: 1346623484}

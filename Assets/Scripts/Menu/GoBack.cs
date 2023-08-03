@@ -5,9 +5,9 @@ using UnityEngine;
 public class GoBack : MonoBehaviour
 {
 
-    public MenuLvL_Up lvl_UpMenu;
-    public MenuInGame gameMenu;
-    public MenuManager menuGeral;
+    private MenuLvL_Up lvl_UpMenu;
+    private MenuInGame gameMenu;
+    private MenuManager menuGeral;
 
     public Stack<GameObject> menus = new Stack<GameObject>();
 
@@ -20,13 +20,13 @@ public class GoBack : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown("escape") && gameMenu.menu.activeSelf != true && lvl_Up.menuLvL_Up.activeSelf == false)
-        {
-            gameMenu.isOpen = true;
-            Time.timeScale = 0;
-            menu.SetActive(true);
-        }
-        else if(Input.GetKeyDown("escape"))
+        // if(Input.GetKeyDown("escape") && gameMenu.menu.activeSelf == false && lvl_UpMenu.menuLvL_Up.activeSelf == false)
+        // {
+        //     MenuInGame.isOpen = true;
+        //     Time.timeScale = 0;
+        //     gameMenu.menu.SetActive(true);
+        // }
+        if(Input.GetKeyDown("escape"))
         {
             GoToLastMenu();
         }

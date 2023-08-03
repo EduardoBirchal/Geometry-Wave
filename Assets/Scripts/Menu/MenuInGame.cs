@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MenuInGame : MonoBehaviour
 {
-    [SerializeField] private GameObject menu;
+    [SerializeField] public GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
     
@@ -33,7 +33,7 @@ public class MenuInGame : MonoBehaviour
     {
         if(Input.GetKeyDown("escape"))
         {
-            Esc();
+            //Esc();
         }
         
         if(player != null){
