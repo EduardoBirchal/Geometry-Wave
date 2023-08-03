@@ -13,6 +13,7 @@ public class MenuInGame : MonoBehaviour
     private SceneFadeAnimation fade;
     private GameObject player;
     private MenuLvL_Up lvl_Up;
+    private MenuManager principalMenu;
     public static bool isOpen = false;
 
     void Start()
@@ -20,6 +21,7 @@ public class MenuInGame : MonoBehaviour
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         lvl_Up = GameObject.Find("GameManager").GetComponent<MenuLvL_Up>();
+        principalMenu = GameObject.Find("GameManager").GetComponent<MenuManager>();
         GetPlayerHP();
         Continuar();
 
@@ -75,6 +77,10 @@ public class MenuInGame : MonoBehaviour
             Time.timeScale = 0;
             menu.SetActive(true);
         }
+        // else if(principalMenu.painelOptions.activeSelf == true))
+        // {
+            
+        // }
     }
 
     public void Continuar()
