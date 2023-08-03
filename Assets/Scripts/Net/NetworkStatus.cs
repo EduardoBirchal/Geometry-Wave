@@ -52,9 +52,6 @@ public class NetworkStatus : NetworkBehaviour
         status = ConnectionResponse.Offline;
         if(errorScript.state != Error.PopupState.Error)
             errorScript.state = Error.PopupState.Timeout;
-        
-        // TODO: Não precisar esperar caso a conexão seja bem-sucedida
-        // TODO: Não mostrar o Timeout em cima de outros erros
         return;
     }
     

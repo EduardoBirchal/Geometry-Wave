@@ -7,7 +7,6 @@ public class CorPlayer : MonoBehaviour
     private SpriteRenderer sprRenderer;
     [SerializeField] private Color color;
     
-    // TODO: Sincronizar cor
     void Start()
     {
         sprRenderer = GetComponent<SpriteRenderer>();
