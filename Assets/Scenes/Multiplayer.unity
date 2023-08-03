@@ -3370,14 +3370,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 737920863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8abcfdf6d60665942bab35067bbb29a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7052c9a8ac86b6ef19ab01182ad6ba62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objMessage: {fileID: 1655415348}
   objButton: {fileID: 1256668902}
   objFlag: {fileID: 1037468658}
+  sucessSprite: {fileID: 21300000, guid: 138c1252a1b03658a82c3c96481302f6, type: 3}
+  failSprite: {fileID: 21300000, guid: c8e7d66e9e1b8d249ba7c5df2ed2691f, type: 3}
   text: 
-  state: 3
+  state: 4
 --- !u!1 &758405421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4268,7 +4270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5471698, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7116,6 +7118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startBtn: {fileID: 591063873}
   spawner: {fileID: 5657181454398760757, guid: 25572ce4fd4f78def8eb5adb671fd87f, type: 3}
+  errorScreen: {fileID: 0}
   MaxNumPlayers: 0
 --- !u!1 &2129808307
 GameObject:

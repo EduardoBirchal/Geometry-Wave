@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 using Unity.Netcode;
+using TMPro;
 
 public class Error : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class Error : MonoBehaviour
     [SerializeField] private GameObject objMessage;
     [SerializeField] private GameObject objButton;
     [SerializeField] private GameObject objFlag;
+    [SerializeField] private Sprite sucessSprite;
+    [SerializeField] private Sprite failSprite;
     public string text = null;
     private bool lockText;
     public PopupState state = PopupState.Idle;
@@ -33,8 +37,11 @@ public class Error : MonoBehaviour
                 this.gameObject.SetActive(false);
                 break;
             case PopupState.Sucess:
-                text = NetworkStart.GetLocalIPv4();
+                text = "Pronto";
                 this.gameObject.SetActive(true);
+                objFlag.GetComponent<Image>().sprite = sucessSprite; 
+                objFlag.SetActive(true);
+                StartCoroutine(Fade());
                 break;
             case PopupState.Error:
                 text = GameObject.Find("NetworkManager")
@@ -42,6 +49,7 @@ public class Error : MonoBehaviour
                         .DisconnectReason;
                 this.gameObject.SetActive(true);
                 objFlag.SetActive(true);
+                objFlag.GetComponent<Image>().sprite = failSprite; 
                 objButton.SetActive(true);
                 break;
             case PopupState.Timeout:
@@ -58,5 +66,11 @@ public class Error : MonoBehaviour
 
         TMP_Text message = objMessage.GetComponent<TMP_Text>();
         message.text = text;
+    }
+
+    private IEnumerator Fade()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        this.gameObject.SetActive(false);
     }
 }
