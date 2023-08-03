@@ -5615,7 +5615,6 @@ MonoBehaviour:
   gameplayOptions: {fileID: 1747433884}
   soundOptions: {fileID: 1989795565}
   graficoshud: {fileID: 1430365471}
-  toggle_AutoFire: {fileID: 0}
 --- !u!4 &1508623304
 Transform:
   m_ObjectHideFlags: 0
@@ -6820,6 +6819,10 @@ PrefabInstance:
     - target: {fileID: 123566, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_Name
       value: Accessibility Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 123566, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_HandleUI

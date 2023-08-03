@@ -7,12 +7,14 @@ public class PlayerNetwork : NetworkBehaviour
 {
     public bool isPlayer;
     public bool isMp;
+    public static bool isHost;
     static bool gameStarted;
 
     public override void OnNetworkSpawn()
     {
         isMp = SceneManager.GetActiveScene().name == "Multiplayer";
         isPlayer = IsOwner;
+        isHost = IsHost;
     }
     private void Start() 
     {

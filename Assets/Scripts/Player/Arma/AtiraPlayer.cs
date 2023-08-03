@@ -26,7 +26,7 @@ public class AtiraPlayer : Atirador
     }
 
     void QuerAtirar() {
-        if(PlayerNet.CheckForClient())
+        if(PlayerNet.CheckForClient() && TimeManager.paused == false)
         {
             if(Input.GetMouseButton(0) || tiroAutomatico) {
                 AtiraServerRpc(balaAtual);

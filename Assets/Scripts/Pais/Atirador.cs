@@ -40,8 +40,6 @@ public class Atirador : NetworkBehaviour
     {
         if(balaCarregada)
         {
-            Debug.LogWarning(balaTipo);
-            Debug.LogWarning(tipos[balaTipo]);
             balaCarregada = false;
             CriaBala(tipos[balaTipo]);
             StartCoroutine(Recarrega(Random.Range(tipos[balaTipo].cooldownTiro_Min,tipos[balaTipo].cooldownTiro_Max)));
