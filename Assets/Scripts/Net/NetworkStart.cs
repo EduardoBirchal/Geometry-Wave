@@ -43,6 +43,7 @@ public class NetworkStart : MonoBehaviour
         }
         else
         {
+            startBtn.SetActive(false);
             NetworkManager.Singleton.StartClient();
         }
         /*
