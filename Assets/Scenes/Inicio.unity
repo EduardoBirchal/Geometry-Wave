@@ -5587,6 +5587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508623304}
   - component: {fileID: 1508623303}
+  - component: {fileID: 1508623305}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5615,6 +5616,7 @@ MonoBehaviour:
   gameplayOptions: {fileID: 1747433884}
   soundOptions: {fileID: 1989795565}
   graficoshud: {fileID: 1430365471}
+  canvas: {fileID: 191817374}
 --- !u!4 &1508623304
 Transform:
   m_ObjectHideFlags: 0
@@ -5630,6 +5632,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508623305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508623302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0836f0d35170c5dbb64bc7e7fb43a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1601802672
 GameObject:
   m_ObjectHideFlags: 0
@@ -6820,10 +6834,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Accessibility Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 123566, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 11475380, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_HandleUI
       value: 1
@@ -6855,6 +6865,10 @@ PrefabInstance:
     - target: {fileID: 22474968, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.14300537
+      objectReference: {fileID: 0}
+    - target: {fileID: 22474968, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4973883477652662, guid: 89f4a0ae7ea3fa84ea56c91291d7bd87, type: 3}
       propertyPath: m_RootOrder
@@ -8198,7 +8212,7 @@ PrefabInstance:
     - target: {fileID: 3570555214372628422, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 191817374}
+      objectReference: {fileID: 1508623303}
     - target: {fileID: 3570555214548659556, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

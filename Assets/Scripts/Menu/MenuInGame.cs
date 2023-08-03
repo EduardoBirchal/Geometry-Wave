@@ -1,45 +1,55 @@
 using UnityEngine;
-public class MenuInGame : MonoBehaviour 
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
+public class MenuInGame : MonoBehaviour
 {
-    [SerializeField] private GameObject menu;
+    [SerializeField] public GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
-    private TimeManager timeManager;
-
-    public PlayerGerenciaHP playerhp;
+    
+    private PlayerGerenciaHP playerhp;
     private SceneFadeAnimation fade;
-    public GameObject player;
+    private GameObject player;
+    //private MenuLvL_Up lvl_Up;
+    //private MenuManager principalMenu;
+    private GoBack goBack;
+    public static bool isOpen = false;
 
     void Start()
     {
-        timeManager = GameObject.Find("Funcoes").GetComponent<TimeManager>();
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
+        //lvl_Up = GameObject.Find("GameManager").GetComponent<MenuLvL_Up>();
+        //principalMenu = GameObject.Find("GameManager").GetComponent<MenuManager>();
         GetPlayerHP();
-        menu.SetActive(false);
-        timeManager.Resume();
+        goBack.Continuar();
+
     }
 
     void Update()
     {
-        if(Input.GetKeyDown("escape"))
-        {
-            Esc();
-        }
+        // if(Input.GetKeyDown("escape"))
+        // {
+        //     Esc();
+        // }
         
-        if(player != null){
-            if(playerhp.hp <= 0)
-            {
-                Time.timeScale = 0;
-                diedScreen.SetActive(true);
-            }
-        }
+        // if(player != null){
+        //     if(playerhp.hp <= 0)
+        //     {
+        //         Time.timeScale = 0;
+        //         diedScreen.SetActive(true);
+        //     }
+        // }
     }
 
     public void GetPlayerHP()
     {
         if(player != null) playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
     }
+
 
     public void QuitConfirmation()
     {
@@ -55,21 +65,32 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
-        Time.timeScale = 1;
         fade.FadeToMenu();
     }
 
-    public void Esc()
-    {
-        if(menu.activeSelf == true)
-        {
-            menu.SetActive(false);
-            timeManager.Resume();
-        }
-        else
-        {
-            menu.SetActive(true);
-            timeManager.Pause();
-        }
-    }
+    // public void Esc()
+    // {
+    //     if(Time.timeScale == 0 && menu.activeSelf == true){
+    //         Continuar();
+    //     }
+    //     else if(Time.timeScale == 1 && lvl_Up.menuLvL_Up.activeSelf == false)
+    //     {
+    //         isOpen = true;
+    //         Time.timeScale = 0;
+    //         menu.SetActive(true);
+    //     }
+    //     // else if(principalMenu.painelOptions.activeSelf == true))
+    //     // {
+            
+    //     // }
+    // }
+
+    // public void Continuar()
+    // {
+    //     isOpen = false;
+    //     menu.SetActive(false);
+    //     Time.timeScale = 1;
+        
+    // }
+
 }
