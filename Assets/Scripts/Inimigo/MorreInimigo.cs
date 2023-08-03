@@ -6,6 +6,7 @@ using Unity.Netcode;
 public class MorreInimigo : NetworkBehaviour
 {
     private GameObject player;
+    private FlockAgent inimigoFlock;
     PlayerGerenciaXP playerXp;
     public int valorXp;
 
@@ -27,6 +28,12 @@ public class MorreInimigo : NetworkBehaviour
             player.GetComponent<PlayerGerenciaXP>().xp += valorXp;
         }
         
+
+        inimigoFlock = gameObject.GetComponent<FlockAgent>();
+
+          
+        inimigoFlock.AgentFlock.removeAgents(inimigoFlock);    
+
         Destroy(gameObject);
     }
 }
