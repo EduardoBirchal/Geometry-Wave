@@ -20,6 +20,7 @@ public class TimeManager : NetworkBehaviour
     [ClientRpc]
     private void AlterarTempoClientRpc(int tempo)
     {
+        paused = tempo == 0;
         Time.timeScale = tempo;
     }
     [ServerRpc]

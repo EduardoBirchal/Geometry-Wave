@@ -17,7 +17,7 @@ public class MovePlayer : MoveAutomatico
 
     void Update()
     {
-        if(IsOwner)
+        if(IsOwner && TimeManager.paused == false)
         {
             miraAutomatico = menu.Get_Toggle_AutoFire();
 
@@ -57,7 +57,6 @@ public class MovePlayer : MoveAutomatico
             GameObject inimigoMaisProximo = ProcuraObjMaisProximo("Inimigo");
 
             if (inimigoMaisProximo) ViraPraObjeto(inimigoMaisProximo.transform.position); 
-            else print("DEu bosta");
         } 
         else {
             SegueMouse();
