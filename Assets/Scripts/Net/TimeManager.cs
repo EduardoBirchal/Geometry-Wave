@@ -6,14 +6,14 @@ public class TimeManager : NetworkBehaviour
     public static bool paused = false;
     public void Resume()
     {
-        if(IsHost == false) return;
         paused = false;
+        if(IsHost == false) return;
         PausarJogoServerRpc(1);
     }
     public void Pause()
     {
-        if(IsHost == false) return;
         paused = true;
+        if(IsHost == false) return;
         PausarJogoServerRpc(0);
     }
     
