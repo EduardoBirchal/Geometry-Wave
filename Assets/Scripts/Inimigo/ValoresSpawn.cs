@@ -8,13 +8,13 @@ public class ValoresSpawn : NetworkBehaviour
 
     void Start() 
     {
+        if(!IsHost) return;
         DeterminaValoresServerRpc();
     }
 
     [ServerRpc]
     void DeterminaValoresServerRpc()
     {
-        if(!IsServer) return;
         float dificuldade = GameObject.Find("SpawnerInimigo").GetComponent<Flock>().dificuldade;
 
         maxHp *= dificuldade;
