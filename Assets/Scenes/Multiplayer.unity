@@ -7118,7 +7118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startBtn: {fileID: 591063873}
   spawner: {fileID: 5657181454398760757, guid: 25572ce4fd4f78def8eb5adb671fd87f, type: 3}
-  errorScreen: {fileID: 0}
+  errorScreen: {fileID: 737920863}
   MaxNumPlayers: 0
 --- !u!1 &2129808307
 GameObject:

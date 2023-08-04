@@ -29,7 +29,6 @@ public class NetworkStatus : NetworkBehaviour
     public void OnClientConnectedCallback(ulong obj)
     {
         status = ConnectionResponse.Connected;
-        Debug.LogError("Conectado");
     }
 
     public async void InitialConnection()

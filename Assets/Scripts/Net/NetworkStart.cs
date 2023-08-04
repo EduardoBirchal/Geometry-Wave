@@ -99,7 +99,7 @@ public class NetworkStart : MonoBehaviour
     {
         if (!netManager.IsServer && netManager.DisconnectReason != string.Empty)
         {
-            errorScreen.gameObject.GetComponent<Error>().state = Error.PopupState.Error;
+            errorScreen.GetComponent<Error>().state = Error.PopupState.Error;
             errorScreen.SetActive(true);
         }
     }

@@ -12,12 +12,10 @@ public class IniciaOnda : FuncoesGerais
     private GameObject[][] listaInimigos;
     private GameObject texto;
     private FuncoesTexto funcoesTexto;
-    private NetworkStart NetworkInfo;
     
     // Start is called before the first frame update
     void Start()
     {
-        NetworkInfo = GameObject.Find("NetworkManager").GetComponent<NetworkStart>();
         gameObject.name = "SpawnerInimigo";
         distanciaMargem = new Vector2(larguraTela - tamanhoMargem, alturaTela - tamanhoMargem);
         dificuldadeTotal *= dificuldade;
