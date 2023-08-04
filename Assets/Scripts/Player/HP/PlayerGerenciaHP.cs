@@ -10,7 +10,6 @@ public class PlayerGerenciaHP : FuncoesGerais
     SpriteRenderer sprRenderer;
     public bool tomaDano = true;
     Collider2D colisor;
-    public bool isDead = false;
 
     private MenuInGame menuInGame;
 

@@ -13,7 +13,6 @@ public class NetworkStatus : NetworkBehaviour
         Connected,
         Offline
     }
-    private NetworkManager networkManager;
     private Error errorScript;
     [SerializeField] private GameObject errorScreen;
     private static ConnectionResponse status;
@@ -23,7 +22,6 @@ public class NetworkStatus : NetworkBehaviour
         errorScript = errorScreen.GetComponent<Error>();
         if(IsHost) status = ConnectionResponse.Connected;
         else status = ConnectionResponse.Waiting;
-        networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
     }
 
     public void OnClientConnectedCallback(ulong obj)

@@ -7,19 +7,17 @@ public class MovePlayer : MoveAutomatico
     public float vel, velAtual;
     public bool move = true, miraAutomatico;
     public Vector3 vetorMove;
-    private PlayerNetwork PlayerNet;
     private MenuManager menu;
 
     void Start() 
     {
-        PlayerNet = GetComponent<PlayerNetwork>();
         velAtual = vel;
         menu = GameObject.Find("GameManager").GetComponent<MenuManager>();
     }
 
     void Update()
     {
-        if(PlayerNet.CheckForClient())
+        if(IsOwner)
         {
             miraAutomatico = menu.Get_Toggle_AutoFire();
 
@@ -67,7 +65,7 @@ public class MovePlayer : MoveAutomatico
     }
 
     void SegueMouse() {
-        if(PlayerNet.CheckForClient() == false) return;
+        if(!IsOwner) return;
         ViraPraObjeto(Camera.main.ScreenToWorldPoint(Input.mousePosition)); 
 
         /*
