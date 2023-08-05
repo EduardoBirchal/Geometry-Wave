@@ -3,8 +3,10 @@ using Unity.Netcode;
 
 public class DestruirForaDaTela : NetworkBehaviour
 {
-    private void OnBecameInvisible() {
-       DestruirBalaServerRpc();
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "LimiteTela") {
+            DestruirBalaServerRpc();
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
