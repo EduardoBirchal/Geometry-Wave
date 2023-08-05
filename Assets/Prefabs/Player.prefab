@@ -364,7 +364,7 @@ PrefabInstance:
     - target: {fileID: -8565225797330200331, guid: c370f096daef7054d94f2bf01542a1df, type: 3}
       propertyPath: efeitosArmas.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 7a5304c7f393633ba9f3a9a98ee6798d, type: 3}
+      objectReference: {fileID: 8300000, guid: a298baefb513165e9ba669d13d332fca, type: 3}
     - target: {fileID: -8565225797330200331, guid: c370f096daef7054d94f2bf01542a1df, type: 3}
       propertyPath: efeitosArmas.Array.data[2]
       value: 
