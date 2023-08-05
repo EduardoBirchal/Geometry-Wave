@@ -9,11 +9,13 @@ public class Flock : FuncoesGerais
     public int onda = 0, numDificuldades;
     public float tempoEspera, dificuldade, dificuldadeTotal, tamanhoMargem, alturaTela, larguraTela;
     public GameObject[] inimigosDif1, inimigosDif2, inimigosDif3;
+    public AudioSource fonteAudio;
     private Vector2 distanciaMargem;
     private GameObject[][] listaInimigos;
     private GameObject texto;
     private FuncoesTexto funcoesTexto;
     private NetworkStart NetworkInfo;
+    [SerializeField] private AudioClip[] efeitosOnda;
 
 
 
@@ -154,9 +156,12 @@ public class Flock : FuncoesGerais
     }                                                    
     
     [ClientRpc]
-    void MostrarOndaClientRpc(int onda)
+    void MostrarOndaClientRpc(int onda, bool boss)
     {
         funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
+
+        if (boss) fonteAudio.PlayOneShot(efeitosOnda[1], 1);
+        else fonteAudio.PlayOneShot(efeitosOnda[0], 1);
     }
     IEnumerator CriaOnda() {
         yield return new WaitForSeconds(2);
@@ -164,7 +169,7 @@ public class Flock : FuncoesGerais
         onda++;
 
         Debug.LogWarning(IsServer);
-        MostrarOndaClientRpc(onda);
+        MostrarOndaClientRpc(onda, false);
 
         int i = 0;
         while (dificuldadeDisponivel > 0) {
