@@ -40,7 +40,7 @@ public class NetworkStart : MonoBehaviour
         }
         else if(MenuManager.texto_ip == GetLocalIPv4())
         {
-            Debug.Log("IP para conectar: " + GetLocalIPv4());
+            Debug.LogWarning("IP para conectar: " + GetLocalIPv4());
             NetworkManager.Singleton.StartHost();
             startBtn.SetActive(true);
         }
