@@ -132,6 +132,7 @@ MonoBehaviour:
   tempoIvulneravel: 2
   barra: {fileID: 0}
   tomaDano: 1
+  death_Screen: {fileID: 7622328439096059925, guid: ee8b314f6dbcc3f46a08578ac13b5d99, type: 3}
 --- !u!60 &-7731543713328102369
 PolygonCollider2D:
   m_ObjectHideFlags: 0

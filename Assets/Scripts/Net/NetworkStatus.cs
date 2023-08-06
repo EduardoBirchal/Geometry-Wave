@@ -6,12 +6,16 @@ using Unity.Netcode;
 
 public class NetworkStatus : NetworkBehaviour 
 {
-    private const int WAIT_TIME = 1000;
     public enum ConnectionResponse
     {
         Waiting,
         Connected,
         Offline
+    }
+    private const int WAIT_TIME = 1000;
+    public static int numPlayers {
+        get;
+        private set;
     }
     private Error errorScript;
     [SerializeField] private GameObject errorScreen;
@@ -19,6 +23,7 @@ public class NetworkStatus : NetworkBehaviour
 
     private void Start() 
     {
+        numPlayers = 1;
         errorScript = errorScreen.GetComponent<Error>();
         if(IsHost) status = ConnectionResponse.Connected;
         else status = ConnectionResponse.Waiting;
@@ -28,6 +33,10 @@ public class NetworkStatus : NetworkBehaviour
     {
         status = ConnectionResponse.Connected;
     }
+    public void OnClientConnect()
+    { numPlayers++; }
+    public void OnClientDisconnect()
+    { numPlayers--; }
 
     public async void InitialConnection()
     {
