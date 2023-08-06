@@ -32,7 +32,7 @@ public class PlayerGerenciaHP : NetworkBehaviour
 
     public async void TomaDano(float dano) {
         hp -= dano;
-        if(hp <= 0)
+        if(hp <= 0 && IsOwner)
         {
             RemovePlayerServerRpc();
             await GameObject.Find("GameManager").GetComponent<DeathManager>().KillPlayer();
