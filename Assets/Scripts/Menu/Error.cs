@@ -20,12 +20,10 @@ public class Error : MonoBehaviour
     [SerializeField] private Sprite sucessSprite;
     [SerializeField] private Sprite failSprite;
     public string text = null;
-    private bool lockText;
     public PopupState state = PopupState.Idle;
 
     public void Start()
     {
-        lockText = true;
         objFlag.SetActive(false);
         objButton.SetActive(false);
     }

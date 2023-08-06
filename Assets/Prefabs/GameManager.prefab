@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2340701521293824580}
-  - component: {fileID: 2340701521293824579}
   - component: {fileID: 2340701521293824578}
+  - component: {fileID: 721392233}
+  - component: {fileID: 8916536695633339301}
+  - component: {fileID: 721392231}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -33,24 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2340701521293824579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2340701521293824581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14671eef2a61221aeaa1d662b2d8db16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nomeDaFase: 
-  menuInicial: {fileID: 0}
-  painelOptions: {fileID: 0}
-  gameplayOptions: {fileID: 0}
-  soundOptions: {fileID: 0}
-  moreOptions: {fileID: 0}
 --- !u!114 &2340701521293824578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,5 +47,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5672edaa905cfc42b9856bb1062e678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fase: Inicio
   menu: {fileID: 0}
+  quitConfirmation: {fileID: 0}
+  diedScreen: {fileID: 0}
+--- !u!114 &721392233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340701521293824581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b350d8cea3031fe679678a9b8afbd2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuLvL_Up: {fileID: 0}
+--- !u!114 &8916536695633339301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340701521293824581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14671eef2a61221aeaa1d662b2d8db16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuInicial: {fileID: 0}
+  gameModes: {fileID: 0}
+  dificultSelector: {fileID: 0}
+  onlineModes: {fileID: 0}
+  enterOnline: {fileID: 0}
+  painelOptions: {fileID: 0}
+  gameplayOptions: {fileID: 0}
+  soundOptions: {fileID: 0}
+  graficoshud: {fileID: 0}
+  canvas: {fileID: 0}
+--- !u!114 &721392231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340701521293824581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0836f0d35170c5dbb64bc7e7fb43a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class PlayerGerenciaHP : FuncoesGerais
+public class PlayerGerenciaHP : NetworkBehaviour
 {
     public float maxHp, hp, tempoIvulneravel;
-    public Image barra; 
+    public Image barra;
     SpriteRenderer sprRenderer;
     public bool tomaDano = true;
     Collider2D colisor;
-    public bool isDead = false;
+    [SerializeField] private GameObject death_Screen;
 
     private MenuInGame menuInGame;
 
@@ -29,17 +30,25 @@ public class PlayerGerenciaHP : FuncoesGerais
         EsticaBarraHP();
     }
 
-
-    public void TomaDano(float dano) {
+    public async void TomaDano(float dano) {
         hp -= dano;
-        StartCoroutine(Ivulneravel());
+        if(hp <= 0 && IsOwner)
+        {
+            RemovePlayerServerRpc();
+            await GameObject.Find("GameManager").GetComponent<DeathManager>().KillPlayer();
+        }
+        else StartCoroutine(Invulneravel());
     }
+
+    [ServerRpc]
+    public void RemovePlayerServerRpc()
+    { NetworkObject.Despawn(true); }
 
     void EsticaBarraHP() {
         barra.fillAmount = Mathf.Clamp(hp/maxHp, 0, 1f); 
     }
 
-    IEnumerator Ivulneravel() {
+    IEnumerator Invulneravel() {
         // Torna objeto transparente (temp.a é a opacidade)
         Color temp = sprRenderer.color;
         temp.a = 0.25f;

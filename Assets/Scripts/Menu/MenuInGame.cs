@@ -1,75 +1,53 @@
 using UnityEngine;
-public class MenuInGame : MonoBehaviour 
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
+public class MenuInGame : MonoBehaviour
 {
-    [SerializeField] private GameObject menu;
+    [SerializeField] public GameObject menu;
     [SerializeField] private GameObject quitConfirmation;
     [SerializeField] private GameObject diedScreen;
-    private TimeManager timeManager;
-
-    public PlayerGerenciaHP playerhp;
+    
+    private PlayerGerenciaHP playerhp;
     private SceneFadeAnimation fade;
-    public GameObject player;
+    private GameObject player;
+    private GoBack goBack;
+    public static bool isOpen = false;
 
     void Start()
     {
-        timeManager = GameObject.Find("Funcoes").GetComponent<TimeManager>();
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
+        goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
         GetPlayerHP();
-        menu.SetActive(false);
-        timeManager.Resume();
+        goBack.Continuar();
+
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown("escape"))
-        {
-            Esc();
-        }
-        
-        if(player != null){
-            if(playerhp.hp <= 0)
-            {
-                Time.timeScale = 0;
-                diedScreen.SetActive(true);
-            }
-        }
-    }
+
 
     public void GetPlayerHP()
     {
         if(player != null) playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
     }
 
+
     public void QuitConfirmation()
     {
         quitConfirmation.SetActive(true);
-        menu.SetActive(false);
+        goBack.menus.Push(quitConfirmation);
     }
 
     public void CloseQuitConfirmation()
     {
         menu.SetActive(true);
-        quitConfirmation.SetActive(false);
+        goBack.GoToLastMenu();
     }
 
     public void Inicio()
     {
-        Time.timeScale = 1;
         fade.FadeToMenu();
     }
 
-    public void Esc()
-    {
-        if(menu.activeSelf == true)
-        {
-            menu.SetActive(false);
-            timeManager.Resume();
-        }
-        else
-        {
-            menu.SetActive(true);
-            timeManager.Pause();
-        }
-    }
 }

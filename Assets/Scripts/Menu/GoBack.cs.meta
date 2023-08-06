@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Menu/GoBack.cs.meta
+guid: 0a0836f0d35170c5dbb64bc7e7fb43a0
+========
+guid: 64215ff4c7a55b74bb7fd391f7fb0abc
+>>>>>>>> origin/PlayerDeath:Assets/Scripts/Player/HP/DeathManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
