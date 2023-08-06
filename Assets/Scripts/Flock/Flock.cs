@@ -54,9 +54,7 @@ public class Flock : FuncoesGerais
         texto = GameObject.Find("TextoGrandeMapa");
         funcoesTexto = texto.GetComponent<FuncoesTexto>();
         if(IsHost)
-            StartCoroutine(ChecaInimigos());
-
-        
+            IniciarChecaInimigosServerRpc();
     }
 
     // Update is called once per frame
@@ -102,10 +100,6 @@ public class Flock : FuncoesGerais
 
     }
 
-
-
-
-
     IEnumerator ChecaInimigos() {
         // Procura todos os objetos com a tag "Inimigo". Se não tiver inimigos, cria uma nova onda
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
@@ -144,18 +138,16 @@ public class Flock : FuncoesGerais
 
     }
 
-    
-
     [ServerRpc]
     void IniciarChecaInimigosServerRpc()
     {
-        Debug.LogWarning(IsServer);
         StartCoroutine(ChecaInimigos());
     }                                                    
     
     [ClientRpc]
     void MostrarOndaClientRpc(int onda)
     {
+        Debug.LogError("Nova Onda");
         funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
     }
     IEnumerator CriaOnda() {
@@ -163,7 +155,6 @@ public class Flock : FuncoesGerais
         int dificuldadeDisponivel = (int) dificuldadeTotal;
         onda++;
 
-        Debug.LogWarning(IsServer);
         MostrarOndaClientRpc(onda);
 
         int i = 0;
