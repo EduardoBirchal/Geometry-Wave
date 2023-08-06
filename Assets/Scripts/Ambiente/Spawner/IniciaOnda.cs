@@ -19,7 +19,6 @@ public class IniciaOnda : FuncoesGerais
     // Start is called before the first frame update
     void Start()
     {
-        NetworkInfo = GameObject.Find("NetworkManager").GetComponent<NetworkStart>();
         gameObject.name = "SpawnerInimigo";
         distanciaMargem = new Vector2(larguraTela - tamanhoMargem, alturaTela - tamanhoMargem);
         dificuldadeTotal *= dificuldade;
@@ -28,7 +27,7 @@ public class IniciaOnda : FuncoesGerais
         texto = GameObject.Find("TextoGrandeMapa");
         funcoesTexto = texto.GetComponent<FuncoesTexto>();
         if(IsHost)
-            StartCoroutine(ChecaInimigos());
+            IniciarChecaInimigosServerRpc();
     }
 
     IEnumerator ChecaInimigos() {
@@ -67,7 +66,6 @@ public class IniciaOnda : FuncoesGerais
     [ServerRpc]
     void IniciarChecaInimigosServerRpc()
     {
-        Debug.LogWarning(IsServer);
         StartCoroutine(ChecaInimigos());
     }                                                    
     
@@ -84,7 +82,6 @@ public class IniciaOnda : FuncoesGerais
         int dificuldadeDisponivel = (int) dificuldadeTotal;
         onda++;
 
-        Debug.LogWarning(IsServer);
         MostrarOndaClientRpc(onda, false);
 
         while (dificuldadeDisponivel > 0) {

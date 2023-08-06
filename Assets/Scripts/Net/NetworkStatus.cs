@@ -6,31 +6,37 @@ using Unity.Netcode;
 
 public class NetworkStatus : NetworkBehaviour 
 {
-    private const int WAIT_TIME = 1000;
     public enum ConnectionResponse
     {
         Waiting,
         Connected,
         Offline
     }
-    private NetworkManager networkManager;
+    private const int WAIT_TIME = 1000;
+    public static int numPlayers {
+        get;
+        private set;
+    }
     private Error errorScript;
     [SerializeField] private GameObject errorScreen;
     private static ConnectionResponse status;
 
     private void Start() 
     {
+        numPlayers = 1;
         errorScript = errorScreen.GetComponent<Error>();
         if(IsHost) status = ConnectionResponse.Connected;
         else status = ConnectionResponse.Waiting;
-        networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
     }
 
     public void OnClientConnectedCallback(ulong obj)
     {
         status = ConnectionResponse.Connected;
-        Debug.LogError("Conectado");
     }
+    public void OnClientConnect()
+    { numPlayers++; }
+    public void OnClientDisconnect()
+    { numPlayers--; }
 
     public async void InitialConnection()
     {

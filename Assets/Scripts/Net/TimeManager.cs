@@ -6,20 +6,21 @@ public class TimeManager : NetworkBehaviour
     public static bool paused = false;
     public void Resume()
     {
-        if(PlayerNetwork.isHost == false) return;
         paused = false;
+        if(IsHost == false) return;
         PausarJogoServerRpc(1);
     }
     public void Pause()
     {
-        if(PlayerNetwork.isHost == false) return;
         paused = true;
+        if(IsHost == false) return;
         PausarJogoServerRpc(0);
     }
     
     [ClientRpc]
     private void AlterarTempoClientRpc(int tempo)
     {
+        paused = tempo == 0;
         Time.timeScale = tempo;
     }
     [ServerRpc]

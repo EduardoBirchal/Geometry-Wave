@@ -14,7 +14,8 @@ public class FollowPlayerBehavior : FilteredFlockBehavior
 
         player = GameObject.Find("Player");
 
-        followMove = player.transform.position;
+        if(player == null) followMove = new Vector2(0, 0);
+        else followMove = player.transform.position;
 
         followMove -= (Vector2)agent.transform.position;
 

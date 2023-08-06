@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 502793457}
   - component: {fileID: 502793455}
   - component: {fileID: 502793463}
-  - component: {fileID: -6446175148729921033}
   - component: {fileID: -1850487716486216438}
   - component: {fileID: 8212911136221386637}
   - component: {fileID: -7036750520366414107}
@@ -133,7 +132,7 @@ MonoBehaviour:
   tempoIvulneravel: 2
   barra: {fileID: 0}
   tomaDano: 1
-  isDead: 0
+  death_Screen: {fileID: 7622328439096059925, guid: ee8b314f6dbcc3f46a08578ac13b5d99, type: 3}
 --- !u!60 &-7731543713328102369
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -237,20 +236,6 @@ MonoBehaviour:
   maxXp: 4
   level: 0
   barra: {fileID: 0}
---- !u!114 &-6446175148729921033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976682552676660537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd3cac944d740ce8ba2f9f7aaa92400, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 0
-  isMp: 0
 --- !u!114 &-1850487716486216438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,9 +269,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SyncPositionX: 1
   SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
+  SyncPositionZ: 0
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
   SyncRotAngleZ: 1
   SyncScaleX: 0
   SyncScaleY: 0

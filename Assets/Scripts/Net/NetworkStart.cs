@@ -40,7 +40,7 @@ public class NetworkStart : MonoBehaviour
         }
         else if(MenuManager.texto_ip == GetLocalIPv4())
         {
-            Debug.Log("IP para conectar: " + GetLocalIPv4());
+            Debug.LogWarning("IP para conectar: " + GetLocalIPv4());
             NetworkManager.Singleton.StartHost();
             startBtn.SetActive(true);
         }
@@ -99,7 +99,7 @@ public class NetworkStart : MonoBehaviour
     {
         if (!netManager.IsServer && netManager.DisconnectReason != string.Empty)
         {
-            errorScreen.gameObject.GetComponent<Error>().state = Error.PopupState.Error;
+            errorScreen.GetComponent<Error>().state = Error.PopupState.Error;
             errorScreen.SetActive(true);
         }
     }
