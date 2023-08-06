@@ -24,7 +24,7 @@ public class IniciaOnda : FuncoesGerais
         texto = GameObject.Find("TextoGrandeMapa");
         funcoesTexto = texto.GetComponent<FuncoesTexto>();
         if(IsHost)
-            StartCoroutine(ChecaInimigos());
+            IniciarChecaInimigosServerRpc();
     }
 
     IEnumerator ChecaInimigos() {
@@ -63,7 +63,6 @@ public class IniciaOnda : FuncoesGerais
     [ServerRpc]
     void IniciarChecaInimigosServerRpc()
     {
-        Debug.LogWarning(IsServer);
         StartCoroutine(ChecaInimigos());
     }                                                    
     
@@ -77,7 +76,6 @@ public class IniciaOnda : FuncoesGerais
         int dificuldadeDisponivel = (int) dificuldadeTotal;
         onda++;
 
-        Debug.LogWarning(IsServer);
         MostrarOndaClientRpc(onda);
 
         while (dificuldadeDisponivel > 0) {
