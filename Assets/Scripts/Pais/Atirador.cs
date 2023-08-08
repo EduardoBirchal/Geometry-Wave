@@ -6,6 +6,8 @@ using Unity.Collections;
 public class Atirador : NetworkBehaviour
 {
     public GameObject atirador;
+    public AudioSource fonteAudio;
+    [SerializeField] private AudioClip[] efeitosArmas;
     protected TipoBala[] tipos;
     protected bool balaCarregada = true;
 
@@ -40,6 +42,10 @@ public class Atirador : NetworkBehaviour
     {
         if(balaCarregada)
         {
+            if (fonteAudio) {
+                fonteAudio.PlayOneShot(efeitosArmas[balaTipo], 1);
+            }
+            
             balaCarregada = false;
             CriaBala(tipos[balaTipo]);
             StartCoroutine(Recarrega(Random.Range(tipos[balaTipo].cooldownTiro_Min,tipos[balaTipo].cooldownTiro_Max)));
