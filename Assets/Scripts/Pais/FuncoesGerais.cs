@@ -54,7 +54,7 @@ public class FuncoesGerais : NetworkBehaviour
     }
 
     // Retorna o GameObject mais próximo, ou null se não achar.
-    protected GameObject ProcuraObjMaisProximo(string tagAlvo) {
+    public GameObject ProcuraObjMaisProximo(string tagAlvo) {
         GameObject[] alvos = GameObject.FindGameObjectsWithTag(tagAlvo);
 
         if(alvos.Length == 0) {
