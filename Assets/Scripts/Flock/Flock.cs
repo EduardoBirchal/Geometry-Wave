@@ -152,8 +152,8 @@ public class Flock : FuncoesGerais
         Debug.LogError("Nova Onda");
         funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
 
-        if (boss) fonteAudio.PlayOneShot(efeitosOnda[1], 1);
-        else fonteAudio.PlayOneShot(efeitosOnda[0], 1);
+        if (boss) fonteAudio.PlayOneShot(efeitosOnda[1]);
+        else fonteAudio.PlayOneShot(efeitosOnda[0]);
     }
     IEnumerator CriaOnda() {
         yield return new WaitForSeconds(2);

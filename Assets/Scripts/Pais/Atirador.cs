@@ -43,7 +43,7 @@ public class Atirador : NetworkBehaviour
         if(balaCarregada)
         {
             if (fonteAudio) {
-                fonteAudio.PlayOneShot(efeitosArmas[balaTipo], 1);
+                fonteAudio.PlayOneShot(efeitosArmas[balaTipo]);
             }
             
             balaCarregada = false;

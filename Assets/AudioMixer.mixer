@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-7562465156307533775
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: aa51e04e9a6d0379683fc8e8aa613e17
+  m_EffectName: Attenuation
+  m_MixLevel: 97ef4d5e4f9f044f9b03dbd12e322847
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-5426994182410507353
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Wave
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e59ae9a373be6be379b77ae33f559663
+  m_Children: []
+  m_Volume: 93ed279f37d741075a9c86576fcc2d90
+  m_Pitch: 3e85e3662be4215b49a92068ed348291
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -700506884117007283}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &-700506884117007283
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 859f54d8c91550aa2b8a148371a2c236
+  m_EffectName: Attenuation
+  m_MixLevel: 3109101ce10b80145b28f34777261467
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AudioMixer
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters:
+  - guid: 9b24cd887f66c63ffbe0a0a4dd987b72
+    name: VolMaster
+  - guid: 72724a236bfec3a6d851898d0bc8f950
+    name: VolTiro
+  - guid: 93ed279f37d741075a9c86576fcc2d90
+    name: VolWave
+  m_AudioMixerGroupViews:
+  - guids:
+    - 5d53dc1bba6aefe8c89c7970df6b7605
+    - e59ae9a373be6be379b77ae33f559663
+    - 280db8e6bc6567aed9908527638eb920
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 5d53dc1bba6aefe8c89c7970df6b7605
+  m_Children:
+  - {fileID: -5426994182410507353}
+  - {fileID: 7757446993208440772}
+  m_Volume: 9b24cd887f66c63ffbe0a0a4dd987b72
+  m_Pitch: 81ec41d43924fddd1a4deb7caa45cdc5
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400004}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 7253357b4823fb09ea5e791a23c805f1
+  m_EffectName: Attenuation
+  m_MixLevel: 2f87481345746c857b36266459648cdd
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 636f99fc674ff05abb24320f40e404f6
+  m_FloatValues:
+    72724a236bfec3a6d851898d0bc8f950: -30
+    9b24cd887f66c63ffbe0a0a4dd987b72: -9.960263
+  m_TransitionOverrides: {}
+--- !u!244 &1369970700919460143
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: eaca6c9c17826bad88808cdf235dde0c
+  m_EffectName: Receive
+  m_MixLevel: d52b2bc3a10ec275fbe2d1aeb0237f44
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &7757446993208440772
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tiro
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 280db8e6bc6567aed9908527638eb920
+  m_Children: []
+  m_Volume: 72724a236bfec3a6d851898d0bc8f950
+  m_Pitch: b3e011610121ddb9b9a43f3891ca0fa7
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -7562465156307533775}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
