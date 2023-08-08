@@ -3959,10 +3959,14 @@ PrefabInstance:
     - target: {fileID: 4612731117540330869, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 436252571}
+      objectReference: {fileID: 1579562833}
     - target: {fileID: 4612731117540330869, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Inicio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612731117540330869, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuInGame, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4612731118682672854, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
