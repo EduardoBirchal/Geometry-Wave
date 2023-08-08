@@ -4448,7 +4448,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1579562833}
         m_TargetAssemblyTypeName: MenuInGame, Assembly-CSharp
         m_MethodName: Inicio
         m_Mode: 1
@@ -5228,6 +5228,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b350d8cea3031fe679678a9b8afbd2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1579562836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436252571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71d247013b38f642bc4aaeca0c01a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_Obj: {fileID: 1234522770}
+  death_Screen: {fileID: 1136904813}
 --- !u!1 &1616091709
 GameObject:
   m_ObjectHideFlags: 0

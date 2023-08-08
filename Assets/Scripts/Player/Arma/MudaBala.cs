@@ -15,8 +15,7 @@ public class MudaBala : NetworkBehaviour
     {
         sprRenderer = GetComponent<SpriteRenderer>();
         arma = transform.GetChild(0).gameObject;
-        modoTiro.Value = 0;
-        MudaSprite(modoTiro.Value);
+        EnviarNovoSpriteServerRpc(modoTiro.Value);
     }
 
     // Update is called once per frame
@@ -25,10 +24,6 @@ public class MudaBala : NetworkBehaviour
         if(!IsOwner) return;
         if(TimeManager.paused == true) return;
         GetModo();
-    }
-
-    void MudaSprite(int novoValor) {
-        sprRenderer.sprite = spritesPlayer[novoValor];
     }
 
     [ClientRpc]

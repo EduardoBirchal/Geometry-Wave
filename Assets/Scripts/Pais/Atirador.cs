@@ -43,7 +43,7 @@ public class Atirador : NetworkBehaviour
         if(balaCarregada)
         {
             if (fonteAudio) {
-                fonteAudio.PlayOneShot(efeitosArmas[balaTipo], 1);
+                PlayGunSoundClientRpc(balaTipo);
             }
             
             balaCarregada = false;
@@ -54,7 +54,9 @@ public class Atirador : NetworkBehaviour
 
     [ServerRpc]
     protected void AtiraServerRpc(int balaTipo)
-    {
-        Atira(balaTipo);
-    }
+    { Atira(balaTipo); }
+    
+    [ClientRpc]
+    private void PlayGunSoundClientRpc(int balaTipo)
+    { fonteAudio.PlayOneShot(efeitosArmas[balaTipo], 1); }
 }
