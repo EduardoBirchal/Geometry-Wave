@@ -149,7 +149,6 @@ public class Flock : FuncoesGerais
     [ClientRpc]
     void MostrarOndaClientRpc(int onda, bool boss)
     {
-        Debug.LogError("Nova Onda");
         funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
 
         if (boss) fonteAudio.PlayOneShot(efeitosOnda[1], 1);
