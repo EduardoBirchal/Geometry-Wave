@@ -30,6 +30,14 @@ public class Atirador : NetworkBehaviour
         }
     }
 
+    protected void ConfiguraEstatisticasBala(GameObject balaCriada, TipoBala tipo) {
+        balaCriada.dano = tipo.danoBala;
+    }
+
+    protected MonoBehaviour GetScriptAcerto() {
+        
+    }
+
     // Espera um tempo e recarrega a arma
     protected IEnumerator Recarrega(float tempo) {
         yield return new WaitForSeconds(tempo);
