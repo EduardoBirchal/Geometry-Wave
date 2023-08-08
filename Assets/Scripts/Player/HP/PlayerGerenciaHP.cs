@@ -13,13 +13,10 @@ public class PlayerGerenciaHP : NetworkBehaviour
     Collider2D colisor;
     [SerializeField] private GameObject death_Screen;
 
-    private MenuInGame menuInGame;
 
     // Start is called before the first frame update
     void Start()
     {
-        menuInGame = GameObject.Find("GameManager").GetComponent<MenuInGame>();
-        menuInGame.GetPlayerHP();
         barra = GameObject.Find("VidaBarra").GetComponent<Image>();
         hp = maxHp;
         sprRenderer = GetComponent<SpriteRenderer>();

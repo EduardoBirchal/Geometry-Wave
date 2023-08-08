@@ -15,16 +15,17 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject onlineModes;
     [SerializeField] private GameObject enterOnline;
     [SerializeField] private GameObject painelOptions;
-    [SerializeField] private GameObject gameplayOptions;
+    [SerializeField] public GameObject gameplayOptions;
     [SerializeField] private GameObject soundOptions;
-    [SerializeField] private GameObject graficoshud;
+    [SerializeField] public GameObject graficoshud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
 
     private GoBack goBack;
     private SceneFadeAnimation fade;
-    private Slider sliderHud;
-    private Toggle toggle_AutoFire;
+    public Slider sliderHud;
+    public Slider VolGeral, VolWave, VolTiro;
+    public Toggle toggle_AutoFire;
 
     void Start()
     {
@@ -125,6 +126,10 @@ public class MenuManager : MonoBehaviour
     public void SoundOptions()
     {
         soundOptions.SetActive(true);
+
+        VolGeral =  GameObject.Find("VolumeGeral").GetComponent<Slider>();
+        VolGeral.value = PlayerPrefs.GetFloat("SliderVolGeral");
+
         goBack.menus.Push(soundOptions);
         //painelOptions.SetActive(false);
     }
@@ -147,13 +152,17 @@ public class MenuManager : MonoBehaviour
         }
         else PlayerPrefs.SetInt("TiroAutomatico", 1);
 
-        painelOptions.SetActive(true);
+        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseSoundOptions()
     {
-        painelOptions.SetActive(true);
+
+        PlayerPrefs.SetFloat("SliderVolGeral", VolGeral.value);
+        PlayerPrefs.Save();
+
+        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
@@ -162,37 +171,37 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
 
-        painelOptions.SetActive(true);
+        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseOptions()
     {
-        menuInicial.SetActive(true);
+        //menuInicial.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseGameModes()
     {
-        menuInicial.SetActive(true);
+        //menuInicial.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseSolo()
     {
-        gameModes.SetActive(true);
+        //gameModes.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseOnline()
     {
-        gameModes.SetActive(true);
+        //gameModes.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseEnterOnline()
     {
-        onlineModes.SetActive(true);
+        //onlineModes.SetActive(true);
         goBack.GoToLastMenu();
     }
     
