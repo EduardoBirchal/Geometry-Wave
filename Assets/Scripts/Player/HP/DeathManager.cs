@@ -14,10 +14,12 @@ public class DeathManager : MonoBehaviour
     {
         time_Script = GameObject.Find("Funcoes").GetComponent<TimeManager>();
         text_Obj.GetComponent<TextMeshProUGUI>().text = "";
+        text_Obj.SetActive(false);
     }
 
     public async Task KillPlayer()
     {
+        text_Obj.SetActive(true);
         text_Obj.GetComponent<FuncoesTexto>().MostraFade(2, 2, "Você morreu");
         await Task.Delay(5 * 1000);
         
