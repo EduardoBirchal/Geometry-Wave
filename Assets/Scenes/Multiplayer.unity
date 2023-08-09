@@ -3959,10 +3959,14 @@ PrefabInstance:
     - target: {fileID: 4612731117540330869, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 436252571}
+      objectReference: {fileID: 1579562837}
     - target: {fileID: 4612731117540330869, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Continuar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612731117540330871, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4612731118682672854, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5242,6 +5246,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_Obj: {fileID: 1234522770}
   death_Screen: {fileID: 1136904813}
+--- !u!114 &1579562837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 721392231, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+  m_PrefabInstance: {fileID: 1579562832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436252571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a0836f0d35170c5dbb64bc7e7fb43a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1616091709
 GameObject:
   m_ObjectHideFlags: 0
