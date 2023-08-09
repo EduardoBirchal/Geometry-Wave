@@ -91,76 +91,59 @@ public class MenuManager : MonoBehaviour
     {
         gameModes.SetActive(true);
         goBack.menus.Push(gameModes);
-        //menuInicial.SetActive(false);
     }
 
     public void Solo()
     {
         dificultSelector.SetActive(true);
         goBack.menus.Push(dificultSelector);
-        //gameModes.SetActive(false);
     }
 
     public void Online()
     {
         onlineModes.SetActive(true);
         goBack.menus.Push(onlineModes);
-        //gameModes.SetActive(false);
     }
 
     public void EnterOnline()
     {
         enterOnline.SetActive(true);
         goBack.menus.Push(enterOnline);
-        //onlineModes.SetActive(false);
     }
 
     public void Options()
     {
         painelOptions.SetActive(true);
         goBack.menus.Push(painelOptions);
-        //menuInicial.SetActive(false);
     }
 
     public void GamePlayOptions()
     {
         gameplayOptions.SetActive(true);
         
-        //toggle_AutoAim = GameObject.Find("ToggleAutoAim").GetComponent<Toggle>();
-        //toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
-        toggle_AutoAim.isOn = AutoAim();  
         toggle_AutoFire.isOn = AutoFire();
 
-
-        
         goBack.menus.Push(gameplayOptions);
-        //painelOptions.SetActive(false);
     }
 
     public void SoundOptions()
     {
         soundOptions.SetActive(true);
 
-        //VolGeral =  GameObject.Find("VolumeGeral").GetComponent<Slider>();
         VolGeral.value = PlayerPrefs.GetFloat("SliderVolGeral");
-        //VolTiro = GameObject.Find("VolumeTiro").GetComponent<Slider>();
         VolTiro.value = PlayerPrefs.GetFloat("SliderVolTiro");
-        //VolWave = GameObject.Find("VolumeWave").GetComponent<Slider>();
         VolWave.value = PlayerPrefs.GetFloat("SliderVolWave");
 
         goBack.menus.Push(soundOptions);
-        //painelOptions.SetActive(false);
     }
 
     public void GraficosHud()
     {
         graficoshud.SetActive(true);
 
-        //sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
         sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
         
         goBack.menus.Push(graficoshud);
-        //painelOptions.SetActive(false);
     }
 
     public void CloseGamePlayOptions()
@@ -175,7 +158,6 @@ public class MenuManager : MonoBehaviour
         }
         else PlayerPrefs.SetInt("AutoFire", 1);
 
-        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
@@ -187,7 +169,6 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("SliderVolWave", VolWave.value);
         PlayerPrefs.Save();
 
-        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
@@ -196,37 +177,31 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
 
-        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseOptions()
     {
-        //menuInicial.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseGameModes()
     {
-        //menuInicial.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseSolo()
     {
-        //gameModes.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseOnline()
     {
-        //gameModes.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseEnterOnline()
     {
-        //onlineModes.SetActive(true);
         goBack.GoToLastMenu();
     }
     
