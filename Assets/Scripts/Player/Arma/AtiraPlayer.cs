@@ -8,11 +8,13 @@ public class AtiraPlayer : Atirador
     public int balaAtual = 0;
     public bool tiroAutomatico;
     private MudaBala mudaBala;
+    private MenuManager menu;
 
     void Start() 
     {
         tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().player;
         mudaBala = atirador.GetComponent<MudaBala>();
+        menu = GameObject.Find("GameManager").GetComponent<MenuManager>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class AtiraPlayer : Atirador
         if(!IsOwner) return;
         balaAtual = mudaBala.modoTiro.Value;
         QuerAtirar();
+        tiroAutomatico = menu.AutoFire();
     }
 
     void QuerAtirar() {

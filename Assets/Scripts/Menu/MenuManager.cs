@@ -25,7 +25,9 @@ public class MenuManager : MonoBehaviour
     private SceneFadeAnimation fade;
     public Slider sliderHud;
     public Slider VolGeral, VolWave, VolTiro;
+    public Toggle toggle_AutoAim;
     public Toggle toggle_AutoFire;
+
 
     void Start()
     {
@@ -55,10 +57,18 @@ public class MenuManager : MonoBehaviour
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     }
     
+    public bool AutoAim()
+    {
+        if(PlayerPrefs.GetInt("AutoAim") == 1){
+            return true;
+        }
+        else return false;
+    }
+
     public bool AutoFire()
     {
-        if(PlayerPrefs.GetInt("TiroAutomatico") == 1){
-            return true;
+        if(PlayerPrefs.GetInt("AutoFire") == 1){
+           return true;
         }
         else return false;
     }
@@ -116,8 +126,12 @@ public class MenuManager : MonoBehaviour
     {
         gameplayOptions.SetActive(true);
         
-        toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
-        toggle_AutoFire.isOn = AutoFire();  
+        //toggle_AutoAim = GameObject.Find("ToggleAutoAim").GetComponent<Toggle>();
+        //toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
+        toggle_AutoAim.isOn = AutoAim();  
+        toggle_AutoFire.isOn = AutoFire();
+
+
         
         goBack.menus.Push(gameplayOptions);
         //painelOptions.SetActive(false);
@@ -127,13 +141,12 @@ public class MenuManager : MonoBehaviour
     {
         soundOptions.SetActive(true);
 
-        VolGeral =  GameObject.Find("VolumeGeral").GetComponent<Slider>();
+        //VolGeral =  GameObject.Find("VolumeGeral").GetComponent<Slider>();
         VolGeral.value = PlayerPrefs.GetFloat("SliderVolGeral");
-        VolTiro = GameObject.Find("VolumeTiro").GetComponent<Slider>();
+        //VolTiro = GameObject.Find("VolumeTiro").GetComponent<Slider>();
         VolTiro.value = PlayerPrefs.GetFloat("SliderVolTiro");
-        VolWave = GameObject.Find("VolumeWave").GetComponent<Slider>();
+        //VolWave = GameObject.Find("VolumeWave").GetComponent<Slider>();
         VolWave.value = PlayerPrefs.GetFloat("SliderVolWave");
-
 
         goBack.menus.Push(soundOptions);
         //painelOptions.SetActive(false);
@@ -143,7 +156,7 @@ public class MenuManager : MonoBehaviour
     {
         graficoshud.SetActive(true);
 
-        sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
+        //sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
         sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
         
         goBack.menus.Push(graficoshud);
@@ -152,10 +165,15 @@ public class MenuManager : MonoBehaviour
 
     public void CloseGamePlayOptions()
     {
-        if(toggle_AutoFire.isOn == false){
-            PlayerPrefs.SetInt("TiroAutomatico", 0);
+        if(toggle_AutoAim.isOn == false){
+            PlayerPrefs.SetInt("AutoAim", 0);
         }
-        else PlayerPrefs.SetInt("TiroAutomatico", 1);
+        else PlayerPrefs.SetInt("AutoAim", 1);
+
+        if(toggle_AutoFire.isOn == false){
+            PlayerPrefs.SetInt("AutoFire", 0);
+        }
+        else PlayerPrefs.SetInt("AutoFire", 1);
 
         //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
