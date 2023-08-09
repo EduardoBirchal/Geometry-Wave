@@ -25,7 +25,8 @@ public class Atirador : NetworkBehaviour
             // Com quaternions, não dá pra somar, mas multiplicação faz o mesmo efeito que soma. Não pergunta.
             GameObject balaCriada = Instantiate(bala.prefab, transform.position, atirador.transform.rotation * Quaternion.Euler(new Vector3(0, 0, (anguloBala + Random.Range(bala.imprecisaoBala * -1, bala.imprecisaoBala))))); // Soma ou subtrai um ângulo aleatório de no máximo [imprecisaoBala]
             balaCriada.GetComponent<NetworkObject>().Spawn();
-            
+            balaCriada.GetComponent<MoveConstante>().CorrectPositionClientRpc(transform.parent.GetComponent<NetworkObject>());
+
             balaCriada.GetComponent<MoveConstante>().velocidade = bala.velBala;
         }
     }
@@ -43,7 +44,7 @@ public class Atirador : NetworkBehaviour
         if(balaCarregada)
         {
             if (fonteAudio) {
-                fonteAudio.PlayOneShot(efeitosArmas[balaTipo]);
+                PlayGunSoundClientRpc(balaTipo);
             }
             
             balaCarregada = false;
@@ -54,7 +55,11 @@ public class Atirador : NetworkBehaviour
 
     [ServerRpc]
     protected void AtiraServerRpc(int balaTipo)
-    {
+    {   
         Atira(balaTipo);
     }
+    
+    [ClientRpc]
+    private void PlayGunSoundClientRpc(int balaTipo)
+    { fonteAudio.PlayOneShot(efeitosArmas[balaTipo], 1); }
 }
