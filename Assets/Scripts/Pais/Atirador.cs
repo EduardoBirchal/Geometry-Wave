@@ -26,16 +26,23 @@ public class Atirador : NetworkBehaviour
             GameObject balaCriada = Instantiate(bala.prefab, transform.position, atirador.transform.rotation * Quaternion.Euler(new Vector3(0, 0, (anguloBala + Random.Range(bala.imprecisaoBala * -1, bala.imprecisaoBala))))); // Soma ou subtrai um ângulo aleatório de no máximo [imprecisaoBala]
             balaCriada.GetComponent<NetworkObject>().Spawn();
             
-            balaCriada.GetComponent<MoveConstante>().velocidade = bala.velBala;
+            ConfiguraEstatisticasBala(balaCriada, bala);
         }
     }
 
     protected void ConfiguraEstatisticasBala(GameObject balaCriada, TipoBala tipo) {
-        balaCriada.dano = tipo.danoBala;
+        AcertaAlvo scriptAcerto = GetScriptAcerto(balaCriada);
+
+        balaCriada.GetComponent<MoveConstante>().velocidade = tipo.velBala;
+        scriptAcerto.dano = tipo.danoBala;
+        scriptAcerto.perfuracaoBala = tipo.perfuracao;
     }
 
-    protected MonoBehaviour GetScriptAcerto() {
-        
+    protected AcertaAlvo GetScriptAcerto(GameObject bala) {
+        AcertaAlvo scriptAcerto = bala.GetComponent<AcertaInimigo>();
+
+        if (scriptAcerto) return scriptAcerto;
+        else return bala.GetComponent<AcertaPlayer>();
     }
 
     // Espera um tempo e recarrega a arma
