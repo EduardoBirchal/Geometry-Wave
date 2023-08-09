@@ -52,7 +52,7 @@ public class TipoTiro : MonoBehaviour
         new TipoBala(
             1, // Número de balas
             10f, // Dano
-            26f, // Velocidade da bala
+            50f, // Velocidade da bala
             1f, // Cooldown Minimo (em segundos)
             1f, // Cooldown Maximo (em segundos)
             5f, // Imprecisão (em graus)

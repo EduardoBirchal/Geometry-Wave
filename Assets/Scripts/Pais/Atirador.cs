@@ -23,7 +23,7 @@ public class Atirador : NetworkBehaviour
             // Subtrai arcoTiro/2 porque desse jeito atira dos dois lados. Se, por exemplo, arcoTiro fosse 90, a primeira bala ia ser criada no ângulo -45 e a última, em +45
 
             // Com quaternions, não dá pra somar, mas multiplicação faz o mesmo efeito que soma. Não pergunta.
-            GameObject balaCriada = Instantiate(bala.prefab, transform.position, atirador.transform.rotation * Quaternion.Euler(new Vector3(0, 0, (anguloBala + Random.Range(bala.imprecisaoBala * -1, bala.imprecisaoBala))))); // Soma ou subtrai um ângulo aleatório de no máximo [imprecisaoBala]
+            GameObject balaCriada = Instantiate(bala.prefab, transform.position, transform.rotation * Quaternion.Euler(new Vector3(0, 0, (anguloBala + Random.Range(bala.imprecisaoBala * -1, bala.imprecisaoBala))))); // Soma ou subtrai um ângulo aleatório de no máximo [imprecisaoBala]
             
             balaCriada.GetComponent<NetworkObject>().Spawn();
             balaCriada.GetComponent<MoveConstante>().CorrectPositionClientRpc(transform.parent.GetComponent<NetworkObject>());
