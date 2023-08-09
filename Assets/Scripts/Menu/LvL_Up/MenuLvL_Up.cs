@@ -26,10 +26,10 @@ public class MenuLvL_Up : MonoBehaviour
 
     public void Menu()
     {
-        if(MenuInGame.isOpen == false)
+        if(MenuInGame.isOpen == false && menuLvL_Up.activeSelf == false)
         {
-            menuLvL_Up.SetActive(true);
             goBack.menus.Push(menuLvL_Up);
+            menuLvL_Up.SetActive(true);
             if(singlePlayer == true)
             {
                 Time.timeScale = 0;
@@ -37,9 +37,4 @@ public class MenuLvL_Up : MonoBehaviour
         }    
     }
 
-    // public void CloseMenu()
-    // {
-    //     goBack.Continuar();
-    //     Time.timeScale
-    // }
 }

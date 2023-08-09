@@ -27,6 +27,8 @@ public class AtiraPlayer : Atirador
         if(IsOwner && TimeManager.paused == false)
         {
             if(Input.GetMouseButton(0) || tiroAutomatico) {
+                // Vector3 direc = transform.parent.gameObject.GetComponent<MovePlayer>().vetorMove;
+                // if(IsHost) direc *= -1;
                 AtiraServerRpc(balaAtual);
             }
         }

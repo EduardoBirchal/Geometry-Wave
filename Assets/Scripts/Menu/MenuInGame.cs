@@ -20,17 +20,9 @@ public class MenuInGame : MonoBehaviour
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
-        GetPlayerHP();
         goBack.Continuar();
-
     }
 
-
-
-    public void GetPlayerHP()
-    {
-        if(player != null) playerhp = GameObject.Find("Player").GetComponent<PlayerGerenciaHP>();
-    }
 
 
     public void QuitConfirmation()
@@ -47,6 +39,7 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
+        GameObject.Find("Funcoes").GetComponent<TimeManager>().Resume();
         fade.FadeToMenu();
     }
 

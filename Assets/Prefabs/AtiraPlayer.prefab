@@ -45,4 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atirador: {fileID: 0}
+  fonteAudio: {fileID: 0}
+  efeitosArmas: []
   balaAtual: 0
+  tiroAutomatico: 0
