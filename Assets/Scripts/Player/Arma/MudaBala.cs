@@ -23,7 +23,8 @@ public class MudaBala : NetworkBehaviour
     {
         if(!IsOwner) return;
         if(TimeManager.paused == true) return;
-        GetModo();
+        GetValorScroll();
+        GetValorTeclado();
     }
 
     [ClientRpc]
@@ -39,16 +40,25 @@ public class MudaBala : NetworkBehaviour
         ReceberNovoSpriteClientRpc(novoValor);
     }
 
-    void GetModo() {
+    void GetValorScroll() {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         if (scroll != 0 && IsOwner)  {
             scroll = scroll/Mathf.Abs(scroll);
 
-            int novoValor = (modoTiro.Value + (int) scroll) % numTiros;
-
-            if(novoValor < 0) novoValor = numTiros - 1;
-            EnviarNovoSpriteServerRpc(novoValor);
+            MudaArma((int) scroll);
         }
+    }
+
+    void GetValorTeclado() {
+        if (Input.GetKeyDown("q") || Input.GetKeyDown("left ctrl"))
+            MudaArma(1);
+    }
+
+    void MudaArma(int valorSoma) {
+        int novoValor = (modoTiro.Value + valorSoma) % numTiros;
+
+        if(novoValor < 0) novoValor = numTiros - 1;
+        EnviarNovoSpriteServerRpc(novoValor);
     }
 }

@@ -38,7 +38,7 @@ public class TipoTiro : MonoBehaviour
         // METRALHADORA
         new TipoBala(
             1, // Número de balas
-            1f, // Dano
+            2f, // Dano
             13f, // Velocidade da bala
             0.1f, // Cooldown Minimo (em segundos)
             0.1f, // Cooldown Maximo (em segundos)
