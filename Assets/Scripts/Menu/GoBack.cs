@@ -56,6 +56,13 @@ public class GoBack : MonoBehaviour
             PlayerPrefs.SetFloat("HudSizeValue", menuGeral.sliderHud.value);
             PlayerPrefs.Save();
         }
+        else if(menus.Peek() == menuGeral.soundOptions)
+        {
+            PlayerPrefs.SetFloat("SliderVolGeral", menuGeral.VolGeral.value);
+            PlayerPrefs.SetFloat("SliderVolTiro", menuGeral.VolTiro.value);
+            PlayerPrefs.SetFloat("SliderVolWave", menuGeral.VolWave.value);
+            PlayerPrefs.Save();
+        }
     }
 
     public void GoToLastMenu(){

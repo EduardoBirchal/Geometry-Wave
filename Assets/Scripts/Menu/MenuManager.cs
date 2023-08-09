@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject enterOnline;
     [SerializeField] private GameObject painelOptions;
     [SerializeField] public GameObject gameplayOptions;
-    [SerializeField] private GameObject soundOptions;
+    [SerializeField] public GameObject soundOptions;
     [SerializeField] public GameObject graficoshud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
@@ -129,6 +129,11 @@ public class MenuManager : MonoBehaviour
 
         VolGeral =  GameObject.Find("VolumeGeral").GetComponent<Slider>();
         VolGeral.value = PlayerPrefs.GetFloat("SliderVolGeral");
+        VolTiro = GameObject.Find("VolumeTiro").GetComponent<Slider>();
+        VolTiro.value = PlayerPrefs.GetFloat("SliderVolTiro");
+        VolWave = GameObject.Find("VolumeWave").GetComponent<Slider>();
+        VolWave.value = PlayerPrefs.GetFloat("SliderVolWave");
+
 
         goBack.menus.Push(soundOptions);
         //painelOptions.SetActive(false);
@@ -160,6 +165,8 @@ public class MenuManager : MonoBehaviour
     {
 
         PlayerPrefs.SetFloat("SliderVolGeral", VolGeral.value);
+        PlayerPrefs.SetFloat("SliderVolTiro", VolTiro.value);
+        PlayerPrefs.SetFloat("SliderVolWave", VolWave.value);
         PlayerPrefs.Save();
 
         //painelOptions.SetActive(true);
