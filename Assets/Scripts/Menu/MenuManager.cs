@@ -42,7 +42,7 @@ public class MenuManager : MonoBehaviour
     {
         GameObject a = GameObject.Find("TextIP");
         texto_ip = a.GetComponent<TMP_InputField>().text;
-        NetworkStart.isSingleplayer = false;
+        NetStatus.isSingleplayer = false;
         fade.FadeScene(2);
     }
 
@@ -66,14 +66,14 @@ public class MenuManager : MonoBehaviour
     //Funções dos butões para carregar os menus
     public void Tutorial()
     {
-        NetworkStart.isSingleplayer = true;
+        NetStatus.isSingleplayer = true;
         fade.FadeScene(2);
     }
 
     public void CriarSalaOnline()
     {
-        NetworkStart.isSingleplayer = false;
-        texto_ip = NetworkStart.GetLocalIPv4();
+        NetStatus.isSingleplayer = false;
+        texto_ip = NetHandler.GetLocalIPv4();
         fade.FadeScene(2);
     }
 

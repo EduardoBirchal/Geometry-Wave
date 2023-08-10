@@ -12,6 +12,8 @@ public class FuncoesTexto : MonoBehaviour
     void Start()
     {
         texto = GetComponent<TextMeshProUGUI>();
+        if(texto == null)
+            Debug.Log("FUCK");
         texto.color = new Color(texto.color.r, texto.color.g, texto.color.b, 0);
     }
 
@@ -41,7 +43,7 @@ public class FuncoesTexto : MonoBehaviour
         StartCoroutine(MostraFadeCorotina(demoraFade, tempoAtivo, str));
     }
 
-    IEnumerator MostraFadeCorotina(float demoraFade, float tempoAtivo, string str) {
+    public IEnumerator MostraFadeCorotina(float demoraFade, float tempoAtivo, string str) {
         texto.text = str;
         yield return StartCoroutine(FadeInCorotina(demoraFade));
         yield return new WaitForSeconds(tempoAtivo);

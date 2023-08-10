@@ -8,12 +8,10 @@ public class MenuLvL_Up : MonoBehaviour
     [SerializeField] public GameObject menuLvL_Up;
     
     private GoBack goBack;
-    private bool singlePlayer;
 
     void Start()
     {
         goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
-        singlePlayer = NetworkStart.isSingleplayer;
     }
 
     void Update()
@@ -30,7 +28,7 @@ public class MenuLvL_Up : MonoBehaviour
         {
             goBack.menus.Push(menuLvL_Up);
             menuLvL_Up.SetActive(true);
-            if(singlePlayer == true)
+            if(NetStatus.isSingleplayer == true)
             {
                 Time.timeScale = 0;
             }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 721392233}
   - component: {fileID: 8916536695633339301}
   - component: {fileID: 721392231}
+  - component: {fileID: 1579562837}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -85,6 +86,11 @@ MonoBehaviour:
   soundOptions: {fileID: 0}
   graficoshud: {fileID: 0}
   canvas: {fileID: 0}
+  sliderHud: {fileID: 0}
+  VolGeral: {fileID: 0}
+  VolWave: {fileID: 0}
+  VolTiro: {fileID: 0}
+  toggle_AutoFire: {fileID: 0}
 --- !u!114 &721392231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,3 +103,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0836f0d35170c5dbb64bc7e7fb43a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1579562837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340701521293824581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71d247013b38f642bc4aaeca0c01a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_Obj: {fileID: 0}
+  death_Screen: {fileID: 0}
