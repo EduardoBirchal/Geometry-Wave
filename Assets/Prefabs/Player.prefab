@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidade: 0
   velVirar: 3000
+  movement: {fileID: 3798351805891817684, guid: 3dfd8bbb382c9659587cc2f49292e495, type: 3}
   vel: 7
   velAtual: 0
   move: 1

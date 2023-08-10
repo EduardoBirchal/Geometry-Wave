@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovePlayer : MoveAutomatico
 {
+
+    [SerializeField] private InputActionReference movement;
+
     public float vel, velAtual;
     public bool move = true, miraAutomatico;
     public Vector3 vetorMove;
+    private Vector2 movimento;
     private MenuManager menu;
 
     void Start() 
@@ -19,8 +24,9 @@ public class MovePlayer : MoveAutomatico
     {
         if(IsOwner && TimeManager.paused == false)
         {
+            movimento = movement.action.ReadValue<Vector2>();
             miraAutomatico = menu.AutoAim();
-
+            
             if (move) {
                 velAtual = vel;
             }
@@ -35,7 +41,7 @@ public class MovePlayer : MoveAutomatico
     }
 
     float MoveVertical() {
-        float dir = Input.GetAxis("Vertical");
+        float dir = movimento.y;
         float eixoMove = dir * Time.deltaTime * velAtual;
 
         transform.Translate(new Vector2(0, eixoMove), Space.World);
@@ -44,7 +50,7 @@ public class MovePlayer : MoveAutomatico
     }
 
     float MoveHorizontal() {
-        float dir = Input.GetAxis("Horizontal");
+        float dir = movimento.x;
         float eixoMove = dir * Time.deltaTime * velAtual;
         
         transform.Translate(new Vector2(eixoMove, 0), Space.World);
