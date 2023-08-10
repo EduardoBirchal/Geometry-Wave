@@ -1616,7 +1616,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &566950212
 MonoBehaviour:
@@ -2879,7 +2879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3847566325157138722, guid: d7e7ed30b9db4c9118f669e0e73c12aa, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3847566325157138722, guid: d7e7ed30b9db4c9118f669e0e73c12aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4283,6 +4283,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1491654535}
+    - target: {fileID: 1303985370852690700, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1579562834}
+    - target: {fileID: 1303985370852690700, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AudioReturnWave
+      objectReference: {fileID: 0}
     - target: {fileID: 3273957486451817056, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_Name
       value: VolumeTiro
@@ -4411,6 +4419,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1491654535}
+    - target: {fileID: 6387421457075337068, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1579562834}
+    - target: {fileID: 6387421457075337068, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AudioReturnTiro
+      objectReference: {fileID: 0}
     - target: {fileID: 6387421457197685065, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.4994995
@@ -4436,9 +4452,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6752470535479495169, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752470535479495169, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1491654535}
+    - target: {fileID: 6752470535479495169, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1579562834}
+    - target: {fileID: 6752470535479495169, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AudioReturnTiro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752470535479495169, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8587903264352975988, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.49995
@@ -4461,6 +4493,21 @@ RectTransform:
 --- !u!1 &1346623484 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6387421456641416404, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+  m_PrefabInstance: {fileID: 1346623482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1346623485 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1989795569, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+  m_PrefabInstance: {fileID: 1346623482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1346623486 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1989795567, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+  m_PrefabInstance: {fileID: 1346623482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1346623487 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1989795570, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
   m_PrefabInstance: {fileID: 1346623482}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1360824111
@@ -5500,7 +5547,7 @@ PrefabInstance:
       objectReference: {fileID: 529428887}
     - target: {fileID: 2340701521293824580, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2340701521293824580, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5559,13 +5606,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1044851967}
     - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: somTiro
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a5304c7f393633ba9f3a9a98ee6798d, type: 3}
+    - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: somWave
+      value: 
+      objectReference: {fileID: 8300000, guid: b3a25977c7f3d05aa80906b6601a6fae, type: 3}
+    - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: VolGeral
       value: 
       objectReference: {fileID: 1713983698}
     - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: audioTiro
+      value: 
+      objectReference: {fileID: 1346623486}
+    - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: audioWave
+      value: 
+      objectReference: {fileID: 1346623485}
+    - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: sliderHud
       value: 
       objectReference: {fileID: 1905097712}
+    - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: audioGeral
+      value: 
+      objectReference: {fileID: 1346623487}
     - target: {fileID: 8916536695633339301, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: graficoshud
       value: 

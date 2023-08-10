@@ -23,6 +23,8 @@ public class MenuManager : MonoBehaviour
 
     private GoBack goBack;
     private SceneFadeAnimation fade;
+    public AudioSource audioGeral, audioTiro, audioWave;
+    public AudioClip somTiro, somWave;
     public Slider sliderHud;
     public Slider VolGeral, VolWave, VolTiro;
     public Toggle toggle_AutoAim;
@@ -124,6 +126,16 @@ public class MenuManager : MonoBehaviour
         toggle_AutoFire.isOn = AutoFire();
 
         goBack.menus.Push(gameplayOptions);
+    }
+
+    public void AudioReturnTiro()
+    {
+        audioTiro.PlayOneShot(somTiro);
+    }
+
+    public void AudioReturnWave()
+    {
+        audioWave.PlayOneShot(somWave);
     }
 
     public void SoundOptions()
