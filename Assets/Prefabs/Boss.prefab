@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: velocidadeAngular
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
@@ -392,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: velocidadeAngular
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
