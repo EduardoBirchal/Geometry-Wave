@@ -10,6 +10,10 @@ public class MoveAutomatico : FuncoesGerais
         transform.Translate(new Vector2(0, velocidade * Time.deltaTime));
     }
 
+    protected void MoveDireita() {
+        transform.Translate(new Vector2(velocidade * Time.deltaTime, 0));
+    }
+
     protected void ViraPraObjeto(Vector3 posAlvo) {
         Vector3 posInimigo = transform.position;
 
