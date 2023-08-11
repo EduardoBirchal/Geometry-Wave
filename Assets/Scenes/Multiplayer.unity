@@ -5403,6 +5403,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1654944186662164646, guid: 67b1bc7aac1540e9e83d3ab00cafefae, type: 3}
   m_PrefabInstance: {fileID: 1578455174}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1578455177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 606590548, guid: 67b1bc7aac1540e9e83d3ab00cafefae, type: 3}
+  m_PrefabInstance: {fileID: 1578455174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1616091709
 GameObject:
   m_ObjectHideFlags: 0
@@ -6588,8 +6599,8 @@ MonoBehaviour:
   VolGeral: {fileID: 1713983698}
   VolWave: {fileID: 1044851967}
   VolTiro: {fileID: 1911700561}
-  toggle_AutoAim: {fileID: 0}
-  toggle_AutoFire: {fileID: 1720319738}
+  toggle_AutoAim: {fileID: 1720319738}
+  toggle_AutoFire: {fileID: 1578455177}
 --- !u!114 &8916536697208165622
 MonoBehaviour:
   m_ObjectHideFlags: 0
