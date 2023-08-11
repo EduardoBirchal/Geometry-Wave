@@ -21,7 +21,9 @@ public class MoveInimigo : MoveAutomatico
         if(!IsHost ) return;
         
         player = ProcuraObjMaisProximo("Player");
-        
+        if(player == null)
+        player = this.gameObject;
+
         if (mudaAngulo) ViraPraObjeto(player.transform.position);
         if (move) MoveFrente();
     }

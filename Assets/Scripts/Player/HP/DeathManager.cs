@@ -14,20 +14,42 @@ public class DeathManager : MonoBehaviour
     {
         time_Script = GameObject.Find("Funcoes").GetComponent<TimeManager>();
         text_Obj.GetComponent<TextMeshProUGUI>().text = "";
-        text_Obj.SetActive(false);
     }
 
     public async Task KillPlayer()
     {
-        text_Obj.SetActive(true);
         text_Obj.GetComponent<FuncoesTexto>().MostraFade(2, 2, "Você morreu");
         await Task.Delay(5 * 1000);
         
         // TODO: Quando implementar o fim de jogo no MP, adicionar a condição aqui
         if(NetStatus.isSingleplayer == true || NetStatus.PlayersAlive == 1)
             time_Script.Pause();
+        else if (NetStatus.PlayersAlive > 1)
+        {
+            text_Obj.GetComponent<FuncoesTexto>().SetText("Esperando o fim da onda");
+            bool passedWave = await WaitForWave();
+            if(passedWave == true)
+            {
+                text_Obj.GetComponent<FuncoesTexto>().MostraFade(0.1f, 0.1f, "");
+                return;
+            }
+        }
         
+        TimeManager.localDead = true;
         death_Screen.SetActive(true);
         return;
+    }
+
+    private async Task<bool> WaitForWave()
+    {
+        GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
+        while(inimigos.Length > 0)
+        {
+            GameObject.FindGameObjectsWithTag("Inimigo");
+            await Task.Delay(1 * 1000);
+            if(NetStatus.PlayersAlive < 1)
+                return false;
+        }
+        return true;
     }
 }

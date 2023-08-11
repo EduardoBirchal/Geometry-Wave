@@ -9,13 +9,17 @@ public class TimeManager : NetworkBehaviour
         NetworkVariableWritePermission.Server
     );
     public static bool localPause;
+    public static bool localDead;
 
     private void Start()
     {
+        localDead = false;
         localPause = false;
     }
+
     public void Resume()
     {
+        if(localDead == true) return;
         localPause = false;
         
         if(IsHost == false) return;

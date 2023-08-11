@@ -21,6 +21,9 @@ public class FuncoesTexto : MonoBehaviour
         StartCoroutine(FadeInCorotina(tempo));
     }
 
+    public void SetText(string str)
+    { texto.text = str; }
+
     IEnumerator FadeInCorotina(float tempo) {
         while (texto.color.a < alphaMax) {
             texto.color = new Color(texto.color.r, texto.color.g, texto.color.b, texto.color.a + (Time.deltaTime / tempo));
