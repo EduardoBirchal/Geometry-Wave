@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 9177768288690348636}
   - component: {fileID: 1664344203588933658}
   - component: {fileID: 3459115289087993757}
-  - component: {fileID: -7809107785030782484}
+  - component: {fileID: 5555578955336784721}
+  - component: {fileID: 8942614878424403940}
   m_Layer: 3
   m_Name: OrbeBoss
   m_TagString: Untagged
@@ -98,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae715df63c9f551faf471b2682a3654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 3
-  velVirar: 3
---- !u!114 &-7809107785030782484
+  anguloInicial: 90
+  velocidadeAngular: 100
+  raioOrbita: {x: 0, y: 4, z: 0}
+--- !u!114 &5555578955336784721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,13 +111,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 6329273828479441967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 75ca21eb851d7e78780f708b87bc5ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  atirador: {fileID: 0}
+  fonteAudio: {fileID: 0}
+  efeitosArmas: []
+  childIndex: 0
+  tipoBala: 1
+  tempoRecarregaRajada: 2
+  numTirosRajada: 4
+--- !u!114 &8942614878424403940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6329273828479441967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4916f17272c8aecbc6772dab015d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidade: 0
+  velVirar: 300
+  player: {fileID: 0}
+  mudaAngulo: 1
+  move: 0

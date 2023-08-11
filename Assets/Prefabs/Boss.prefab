@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7029141786953404993}
   - component: {fileID: 4359165456613868317}
   - component: {fileID: 8919938143576646937}
+  - component: {fileID: 1885773893}
   m_Layer: 3
   m_Name: Boss
   m_TagString: Inimigo
@@ -55,7 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valorXp: 1
-  maxHp: 10
+  maxHp: 50
   multiplicadorDanoBala: 0
   multiplicadorVelBala: 0
   velAtirarMax: 2
@@ -202,12 +203,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5010567226698321705}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d16df1a96c331bce8ba25a2980c88f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valorXp: 0
+  valorXp: 10
 --- !u!114 &4359165456613868317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +258,25 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &1885773893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5010567226698321705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce1757f0153a38dda32d2039e604926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valorXp: 1
+  maxHp: 1
+  multiplicadorDanoBala: 1
+  multiplicadorVelBala: 1
+  velAtirarMax: 1
+  velAtirarMin: 1
+  velMovimento: 1
 --- !u!1001 &1963576607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -292,6 +312,18 @@ PrefabInstance:
       propertyPath: velocidadeAngular
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
+      propertyPath: tipoBala
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
+      propertyPath: childIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
+      propertyPath: tempoRecarregaRajada
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
       value: Orbe2
@@ -314,7 +346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9177768288690348636, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 9177768288690348636, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -366,34 +398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7173218427032206414}
     m_Modifications:
-    - target: {fileID: -7809107785030782484, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: GlobalObjectIdHash
-      value: 951099334
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: planeta
-      value: 
-      objectReference: {fileID: 5010567226698321705}
-    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: velVirar
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: velocidade
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: raioOrbita.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: anguloInicial
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: velocidadeAngular
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
       value: Orbe1

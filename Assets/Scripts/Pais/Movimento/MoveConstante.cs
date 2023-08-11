@@ -12,11 +12,11 @@ public class MoveConstante : MoveAutomatico
     }
 
     [ClientRpc]
-    public void CorrectPositionClientRpc(NetworkObjectReference parent)
+    public void CorrectPositionClientRpc(NetworkObjectReference parent, int myIndex)
     {
         if(parent.TryGet(out NetworkObject dereferParent))
         {
-            transform.position = dereferParent.gameObject.transform.GetChild(0).transform.position;
+            transform.position = dereferParent.gameObject.transform.GetChild(myIndex).transform.position;
         }
     }
 }
