@@ -39,7 +39,9 @@ public class PlayerGerenciaHP : NetworkBehaviour
 
     [ServerRpc]
     public void RemovePlayerServerRpc()
-    { NetworkObject.Despawn(true); }
+    { 
+        NetworkObject.Despawn(true);
+    }
 
     void EsticaBarraHP() {
         barra.fillAmount = Mathf.Clamp(hp/maxHp, 0, 1f); 

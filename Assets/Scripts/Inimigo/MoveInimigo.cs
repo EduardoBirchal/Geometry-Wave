@@ -31,7 +31,7 @@ public class MoveInimigo : MoveAutomatico
     void GetValores() {
         ValoresSpawn valSpawn = GetComponent<ValoresSpawn>();
 
-        if (valSpawn)
-            velocidade = valSpawn.velMovimento;
+        if (valSpawn && IsHost)
+            velocidade.Value = valSpawn.velMovimento;
     }
 }

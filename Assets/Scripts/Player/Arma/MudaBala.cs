@@ -20,9 +20,9 @@ public class MudaBala : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateSprite();
         if(!IsOwner) return;
         if(TimeManager.localPause == true) return;
-        UpdateSprite();
         GetValorScroll();
         GetValorTeclado();
     }

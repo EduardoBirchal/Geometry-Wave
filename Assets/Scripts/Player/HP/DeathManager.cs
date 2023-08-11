@@ -4,15 +4,17 @@ using UnityEngine;
 using TMPro;
 using Unity.Netcode;
 
-public class DeathManager : MonoBehaviour
+public class DeathManager : NetworkBehaviour
 {
     [SerializeField] private GameObject text_Obj;
     [SerializeField] private GameObject death_Screen;
     private TimeManager time_Script;
+    private NetStatus net_Status;
 
     private void Start() 
     {
-        time_Script = GameObject.Find("Funcoes").GetComponent<TimeManager>();
+        time_Script = GameObject.Find("GameManager").GetComponent<TimeManager>();
+        net_Status = GameObject.Find("Network").GetComponent<NetStatus>();
         text_Obj.GetComponent<TextMeshProUGUI>().text = "";
     }
 
@@ -22,9 +24,9 @@ public class DeathManager : MonoBehaviour
         await Task.Delay(5 * 1000);
         
         // TODO: Quando implementar o fim de jogo no MP, adicionar a condição aqui
-        if(NetStatus.isSingleplayer == true || NetStatus.PlayersAlive == 1)
+        if(NetStatus.isSingleplayer == true || net_Status.PlayersAlive.Value == 1)
             time_Script.Pause();
-        else if (NetStatus.PlayersAlive > 1)
+        else if (net_Status.PlayersAlive.Value > 1)
         {
             text_Obj.GetComponent<FuncoesTexto>().SetText("Esperando o fim da onda");
             bool passedWave = await WaitForWave();
@@ -47,7 +49,7 @@ public class DeathManager : MonoBehaviour
         {
             GameObject.FindGameObjectsWithTag("Inimigo");
             await Task.Delay(1 * 1000);
-            if(NetStatus.PlayersAlive < 1)
+            if(net_Status.PlayersAlive.Value < 1)
                 return false;
         }
         return true;

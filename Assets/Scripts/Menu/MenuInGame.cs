@@ -39,7 +39,7 @@ public class MenuInGame : MonoBehaviour
 
     public void Inicio()
     {
-        GameObject.Find("Funcoes").GetComponent<TimeManager>().Resume();
+        GameObject.Find("GameManager").GetComponent<TimeManager>().Resume();
         fade.FadeToMenu();
     }
 

@@ -12,9 +12,10 @@ public class AtiraPlayer : Atirador
 
     void Start() 
     {
-        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().player;
+        GameObject game_Manager = GameObject.Find("GameManager");
+        tipos = game_Manager.GetComponent<TipoTiro>().player;
+        menu = game_Manager.GetComponent<MenuManager>();
         mudaBala = atirador.GetComponent<MudaBala>();
-        menu = GameObject.Find("GameManager").GetComponent<MenuManager>();
     }
 
     // Update is called once per frame
@@ -30,8 +31,6 @@ public class AtiraPlayer : Atirador
     void QuerAtirar()
     {
         if(Input.GetMouseButton(0) || tiroAutomatico) {
-            // Vector3 direc = transform.parent.gameObject.GetComponent<MovePlayer>().vetorMove;
-            // if(IsHost) direc *= -1;
             AtiraServerRpc(balaAtual);
         }
     }

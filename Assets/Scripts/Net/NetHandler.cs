@@ -7,12 +7,14 @@ using System.Collections;
 
 public class NetHandler : NetworkBehaviour
 {
-    [SerializeField] private NetworkManager NetManager;
     [SerializeField] private GameObject screen_Error;
+    private NetworkManager NetManager;
+    private NetStatus net_Status;
 
     private void Start()
     {
         NetManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        net_Status = GameObject.Find("Network").GetComponent<NetStatus>();
     }
     public void OnClientConnectedCallback(ulong obj)
     {
@@ -21,7 +23,7 @@ public class NetHandler : NetworkBehaviour
 
         if(NetManager.ConnectedClientsIds.Count > NetStatus.MaxNumPlayers)
             Debug.LogError("Numero de players exedido. Revise seu código!");
-        NetStatus.PlayersAlive++;
+        net_Status.PlayersAlive.Value++;
     }
     
     public void OnClientDisconnectCallback(ulong obj)
@@ -36,8 +38,8 @@ public class NetHandler : NetworkBehaviour
 
         if(NetManager.ConnectedClientsIds.Count < 0)
             Debug.LogError("Numero negativo de players. Revise seu código!");
-        NetStatus.PlayersAlive--;
-        if(NetStatus.PlayersAlive < 0)
+        net_Status.PlayersAlive.Value--;
+        if(net_Status.PlayersAlive.Value < 0)
             Debug.LogWarning("Todos os players estão mortos!");
     }
     public void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)

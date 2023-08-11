@@ -3,7 +3,7 @@ using Unity.Netcode;
 
 public class TimeManager : NetworkBehaviour 
 {
-    public static NetworkVariable<bool> globalPause = new(
+    public NetworkVariable<bool> globalPause = new(
         value:false,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server

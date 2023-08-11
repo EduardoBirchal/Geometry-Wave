@@ -11,7 +11,7 @@ public class AtiraInimigo : Atirador
 
     void Start() 
     {
-        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
+        tipos = GameObject.Find("GameManager").GetComponent<TipoTiro>().inimigo;
         atirador = transform.parent.gameObject;
         balaCarregada = false;
         tipoBala = 0;

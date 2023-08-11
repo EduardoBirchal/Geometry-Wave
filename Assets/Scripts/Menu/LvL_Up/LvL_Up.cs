@@ -6,23 +6,14 @@ using TMPro;
 public class LvL_Up : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI points;
-    
     private GameObject player;
     private PlayerDash playerDash;
     private PlayerGerenciaHP playerHp;
     private PlayerGerenciaXP playerXp;
-
-
     private int qntUpgrades = 0;
-
-    void Start()
-    {
-        GetPlayerComponents();
-    }
 
     void Update()
     {
-        GetPlayerComponents();
         if(MaxUpgrades())
         {
             points.text = "Pontos de level up disponíveis: " +  (playerXp.level - qntUpgrades);
@@ -37,21 +28,13 @@ public class LvL_Up : MonoBehaviour
             return true;
         }
         else return false;
-
     }
 
-    public void GetPlayerComponents()
+    public void GetPlayerComponents(GameObject player)
     {
-        if(player == null)
-        {
-            player = GameObject.Find("Player");
-        }
-        if(player != null)
-        {
-            playerHp = player.GetComponent<PlayerGerenciaHP>();
-            playerXp = player.GetComponent<PlayerGerenciaXP>();
-            playerDash = player.GetComponent<PlayerDash>();
-        }
+        playerHp = player.GetComponent<PlayerGerenciaHP>();
+        playerXp = player.GetComponent<PlayerGerenciaXP>();
+        playerDash = player.GetComponent<PlayerDash>();
     }
 
     public void AumentaHP()
@@ -70,7 +53,4 @@ public class LvL_Up : MonoBehaviour
             qntUpgrades++;
         }
     }
-
-
-
 }

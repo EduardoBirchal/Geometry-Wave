@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class MoveAutomatico : FuncoesGerais
 {
-    public float velocidade, velVirar;
+    public float velVirar;
+    public NetworkVariable<float> velocidade = new(
+        value:1,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server
+    );
 
     protected void MoveFrente() {
-        transform.Translate(new Vector2(0, velocidade * Time.deltaTime));
+        transform.Translate(new Vector2(0, velocidade.Value * Time.deltaTime));
     }
 
     protected void ViraPraObjeto(Vector3 posAlvo) {

@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76b95fe5b45d064ab896576ef0d5c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalPause:
+    m_InternalValue: 0
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,7 +1648,6 @@ GameObject:
   - component: {fileID: 566950211}
   - component: {fileID: 566950212}
   - component: {fileID: 566950213}
-  - component: {fileID: 566950215}
   m_Layer: 0
   m_Name: Funcoes
   m_TagString: Untagged
@@ -1703,18 +1704,6 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &566950215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566950210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76b95fe5b45d064ab896576ef0d5c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &591063873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 2718469448
   AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
+  SynchronizeTransform: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 1
   DontDestroyWithOwner: 0
@@ -2973,6 +2962,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58787711c50b0a3ae918423f9ba8eb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayersAlive:
+    m_InternalValue: 0
 --- !u!114 &984566050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2985,7 +2976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046701afbfea40bd88c4fddf726b6763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NetManager: {fileID: 0}
   screen_Error: {fileID: 737920863}
 --- !u!1 &1024353736
 GameObject:
@@ -6347,7 +6337,6 @@ GameObject:
   - component: {fileID: 2120987344}
   - component: {fileID: 2120987343}
   - component: {fileID: 2120987342}
-  - component: {fileID: 2120987345}
   - component: {fileID: 2120987346}
   m_Layer: 0
   m_Name: NetworkManager
@@ -6435,18 +6424,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2120987345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120987341}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0e9d768fdc9306419da79b1bbad14cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2120987346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6508,6 +6485,7 @@ GameObject:
   - component: {fileID: 6}
   - component: {fileID: 10}
   - component: {fileID: 8916536697208165622}
+  - component: {fileID: 8916536697208165623}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6618,6 +6596,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 614298337}
+--- !u!114 &8916536697208165623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340701520318260501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7718dd02240cfaabb56e0f9f31045d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab_balaPlayer: {fileID: 6308696435084019001, guid: bd06418c4902fd040ad53f31cef93c30, type: 3}
+  prefab_balaInimigo: {fileID: 1900014113000109055, guid: 173f30f4c1270b63088995aefee6202a, type: 3}
+  prefab_balaGuiada: {fileID: 343719744800645539, guid: 10df45d1dcb682b6fa2917cdf9e9e66a, type: 3}
 --- !u!1001 &9095538916316106276
 PrefabInstance:
   m_ObjectHideFlags: 0

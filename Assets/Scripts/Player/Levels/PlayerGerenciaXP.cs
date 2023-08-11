@@ -8,6 +8,12 @@ public class PlayerGerenciaXP : MonoBehaviour
     public float xp, maxXp;
     public int level;
     public Image barra;
+
+    private void Awake()
+    {
+        GameObject.Find("GameManager").GetComponent<LvL_Up>().GetPlayerComponents(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

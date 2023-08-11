@@ -35,7 +35,7 @@ public class Atirador : NetworkBehaviour
     protected void ConfiguraEstatisticasBala(GameObject balaCriada, TipoBala tipo) {
         AcertaAlvo scriptAcerto = GetScriptAcerto(balaCriada);
 
-        balaCriada.GetComponent<MoveConstante>().velocidade = tipo.velBala;
+        balaCriada.GetComponent<MoveConstante>().velocidade.Value = tipo.velBala;
         scriptAcerto.dano = tipo.danoBala;
         scriptAcerto.perfuracaoBala = tipo.perfuracao;
     }
@@ -71,9 +71,7 @@ public class Atirador : NetworkBehaviour
 
     [ServerRpc]
     protected void AtiraServerRpc(int balaTipo)
-    {   
-        Atira(balaTipo);
-    }
+    { Atira(balaTipo); }
     
     [ClientRpc]
     private void PlayGunSoundClientRpc(int balaTipo)

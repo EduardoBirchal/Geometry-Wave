@@ -17,7 +17,7 @@ public class GoBack : MonoBehaviour
         lvl_UpMenu = gameObject.GetComponent<MenuLvL_Up>();
         gameMenu = gameObject.GetComponent<MenuInGame>();
         menuGeral = gameObject.GetComponent<MenuManager>();
-        timeManager = GameObject.Find("Funcoes")?.GetComponent<TimeManager>();
+        timeManager = GameObject.Find("GameManager").GetComponent<TimeManager>();
     }
 
     void Update()

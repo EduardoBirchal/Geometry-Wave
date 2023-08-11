@@ -20,19 +20,28 @@ public class NetStatus : NetworkBehaviour
     public static bool isSingleplayer = true;
     public static bool gameStarted;
     public static ConnectionResponse status;
-    public static int PlayersAlive;
+    public NetworkVariable<int> PlayersAlive;
+    private TimeManager time_Script;
 
+    private void OnNetworkStart()
+    { 
+        PlayersAlive = new(
+        value:1,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server
+        );
+    }
     private void Start()
     {
-        PlayersAlive = 1;
         gameStarted = false;
-        status = ConnectionResponse.Waiting;
         MaxNumPlayers = isSingleplayer ? 1 : 4;
+        time_Script = GameObject.Find("GameManager").GetComponent<TimeManager>();
+        status = ConnectionResponse.Waiting;
     }
 
     private void Update()
     {
-        if(TimeManager.globalPause.Value == true)
+        if(time_Script.globalPause.Value == true)
             Time.timeScale = 0;
         else Time.timeScale = 1;
     }
