@@ -17,7 +17,7 @@ public class GoBack : MonoBehaviour
         lvl_UpMenu = gameObject.GetComponent<MenuLvL_Up>();
         gameMenu = gameObject.GetComponent<MenuInGame>();
         menuGeral = gameObject.GetComponent<MenuManager>();
-        timeManager = gameObject.GetComponent<TimeManager>();
+        timeManager = GameObject.Find("Funcoes")?.GetComponent<TimeManager>();
     }
 
     void Update()
@@ -76,7 +76,7 @@ public class GoBack : MonoBehaviour
     public void Continuar()
     {
         MenuInGame.isOpen = false;
-        timeManager.Resume();
+        timeManager?.Resume();
         if(menus.Count > 0){
             menus.Peek().SetActive(false);
             menus.Pop();

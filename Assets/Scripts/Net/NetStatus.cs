@@ -18,12 +18,14 @@ public class NetStatus : NetworkBehaviour
 {
     public static int MaxNumPlayers;
     public static bool isSingleplayer = true;
-    public static bool gameStarted = false;
+    public static bool gameStarted;
     public static ConnectionResponse status;
-    public static int PlayersAlive = 1;
+    public static int PlayersAlive;
 
     private void Start()
     {
+        PlayersAlive = 1;
+        gameStarted = false;
         status = ConnectionResponse.Waiting;
         MaxNumPlayers = isSingleplayer ? 1 : 4;
     }
