@@ -38,7 +38,7 @@ public class TipoTiro : MonoBehaviour
         // METRALHADORA
         new TipoBala(
             1, // Número de balas
-            1f, // Dano
+            2f, // Dano
             13f, // Velocidade da bala
             0.1f, // Cooldown Minimo (em segundos)
             0.1f, // Cooldown Maximo (em segundos)
@@ -50,40 +50,40 @@ public class TipoTiro : MonoBehaviour
         ),
         // SNIPER
         new TipoBala(
-            1,
-            10f, 
-            26f, 
-            1f, 
-            1f, 
-            5f, 
-            40f,
-            3,
+            1, // Número de balas
+            10f, // Dano
+            50f, // Velocidade da bala
+            1f, // Cooldown Minimo (em segundos)
+            1f, // Cooldown Maximo (em segundos)
+            5f, // Imprecisão (em graus)
+            40f, // Arco de tiro (em graus)
+            3, // Perfuração (em número de inimigos)
             "Sniper",
             prefab_balaPlayer 
         ),
         // SHOTGUN
         new TipoBala(
-            5, 
-            5f, 
-            9f, 
-            0.75f, 
-            0.75f, 
-            0f, 
-            40f,
-            1,
+            5, // Número de balas
+            5f, // Dano
+            9f, // Velocidade da bala
+            0.75f, // Cooldown Minimo (em segundos)
+            0.75f, // Cooldown Maximo (em segundos)
+            0f, // Imprecisão (em graus)
+            40f, // Arco de tiro (em graus)
+            1, // Perfuração (em número de inimigos)
             "Espingarda",
             prefab_balaPlayer
         ),
         // GUIDED
         new TipoBala(
-            1, 
-            2f, 
-            6f, 
-            0.3f, 
-            0.3f, 
-            90f, 
-            90f,
-            1,
+            1, // Número de balas
+            2f, // Dano
+            6f, // Velocidade da bala
+            0.3f, // Cooldown Minimo (em segundos)
+            0.3f, // Cooldown Maximo (em segundos)
+            90f, // Imprecisão (em graus)
+            90f, // Arco de tiro (em graus)
+            1, // Perfuração (em número de inimigos)
             "Mísseis", 
             prefab_balaGuiada
         )};
@@ -91,14 +91,14 @@ public class TipoTiro : MonoBehaviour
         inimigo = new TipoBala[]{
             // ENEMY BASE SHOOT
             new TipoBala(
-                1,
-                2,
-                6f,
-                0.75f,
-                2f,
-                0,
-                40,
-                1,
+                1, // Número de balas
+                2f, // Dano
+                6f, // Velocidade da bala
+                0.75f, // Cooldown Minimo (em segundos)
+                2f, // Cooldown Maximo (em segundos)
+                0f, // Imprecisão (em graus)
+                40f, // Arco de tiro (em graus)
+                1, // Perfuração (em número de inimigos)
                 "Matador",
                 prefab_balaInimigo
             )

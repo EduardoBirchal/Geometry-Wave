@@ -173,6 +173,5 @@ public class Flock : FuncoesGerais
 
         dificuldadeTotal++;
         StartCoroutine(ChecaInimigos());                                                                         
-    } 
-
+    }
 }

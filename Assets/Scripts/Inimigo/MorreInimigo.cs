@@ -18,17 +18,20 @@ public class MorreInimigo : NetworkBehaviour
         valorXp = GetComponent<ValoresSpawn>().valorXp;
     }
 
-    [ServerRpc]
-    public void MatarInimigoServerRpc(ServerRpcParams serverRpcParams = default)
+    [ClientRpc] void GivePlayerXpClientRpc(int xp)
     {
         foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            player.GetComponent<PlayerGerenciaXP>().xp += valorXp;
+            player.GetComponent<PlayerGerenciaXP>().xp += xp;
         }
-        
+    }
+
+    [ServerRpc]
+    public void MatarInimigoServerRpc(ServerRpcParams serverRpcParams = default)
+    {
+        GivePlayerXpClientRpc(valorXp);
 
         inimigoFlock = gameObject.GetComponent<FlockAgent>();
-
           
         inimigoFlock.AgentFlock.removeAgents(inimigoFlock);    
 

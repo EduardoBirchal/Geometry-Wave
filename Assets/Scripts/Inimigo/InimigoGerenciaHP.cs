@@ -27,21 +27,20 @@ public class InimigoGerenciaHP : FuncoesGerais
             morreInimigo.MatarInimigoServerRpc();
     }
 
-    public void TomaDano(float dano, float impacto, float angulo) {
+    public void TomaDano(float dano) {
         hp -= dano;
-        //Knockback(angulo, impacto);
     }
 
-    void Knockback(float angulo, float impacto) {
-        mvInimigo.move = false;
+    // void Knockback(float angulo, float impacto) {
+    //     mvInimigo.move = false;
 
-        rb.AddForce(AnguloPraVetor(angulo + 90) * impacto);
-        StartCoroutine(VoltaVelocidade(0.4f));
-    }
+    //     rb.AddForce(AnguloPraVetor(angulo + 90) * impacto);
+    //     StartCoroutine(VoltaVelocidade(0.4f));
+    // }
 
-    IEnumerator VoltaVelocidade(float duracao) {
-        yield return new WaitForSeconds(duracao);
+    // IEnumerator VoltaVelocidade(float duracao) {
+    //     yield return new WaitForSeconds(duracao);
 
-        mvInimigo.move = true;
-    }
+    //     mvInimigo.move = true;
+    // }
 }

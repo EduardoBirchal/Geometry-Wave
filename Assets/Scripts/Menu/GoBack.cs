@@ -48,10 +48,15 @@ public class GoBack : MonoBehaviour
     {
         if(menus.Peek() == menuGeral.gameplayOptions)
         {
-            if(menuGeral.toggle_AutoFire.isOn == false){
-                PlayerPrefs.SetInt("TiroAutomatico", 0);
+            if(menuGeral.toggle_AutoAim.isOn == false){
+                PlayerPrefs.SetInt("AutoAim", 0);
             }
-            else PlayerPrefs.SetInt("TiroAutomatico", 1);  
+            else PlayerPrefs.SetInt("AutoAim", 1); 
+
+            if(menuGeral.toggle_AutoFire.isOn == false){
+                PlayerPrefs.SetInt("AutoFire", 0);
+            }
+            else PlayerPrefs.SetInt("AutoFire", 1);
         }
         else if(menus.Peek() == menuGeral.graficoshud)
         {

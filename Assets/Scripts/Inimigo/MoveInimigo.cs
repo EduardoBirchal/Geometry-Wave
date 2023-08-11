@@ -5,12 +5,12 @@ using UnityEngine;
 public class MoveInimigo : MoveAutomatico
 {
     public GameObject player;
-    public bool mudaAngulo, move = true;
+    public bool mudaAngulo, move;
 
     void Start() 
     {
         GetValores();
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
         transform.eulerAngles = AnguloPraVetor(GetAngulo(transform.position, player.transform.position) * Mathf.Rad2Deg * -1); // Vira pro player
 
         Physics2D.IgnoreLayerCollision(3, 6); // Ignora colisões de inimigos (na camada de colisão 3: inimigo) com balas
@@ -19,6 +19,9 @@ public class MoveInimigo : MoveAutomatico
     void Update()
     {
         if(!IsHost ) return;
+        
+        player = ProcuraObjMaisProximo("Player");
+        
         if (mudaAngulo) ViraPraObjeto(player.transform.position);
         if (move) MoveFrente();
     }
@@ -26,6 +29,7 @@ public class MoveInimigo : MoveAutomatico
     void GetValores() {
         ValoresSpawn valSpawn = GetComponent<ValoresSpawn>();
 
-        velocidade = valSpawn.velMovimento;
+        if (valSpawn)
+            velocidade = valSpawn.velMovimento;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3444161812712832090}
   - component: {fileID: 1426264773296543303}
+  - component: {fileID: 2595209105721176908}
   m_Layer: 3
   m_Name: AtiraInimigo
   m_TagString: Untagged
@@ -45,9 +46,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atirador: {fileID: 0}
+  fonteAudio: {fileID: 0}
+  efeitosArmas: []
   velAtirarMax: 4
   velAtirarMin: 1
   nomeBala: '"Bala Inimigo Basica"'
+--- !u!114 &2595209105721176908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3351200968888066478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4916f17272c8aecbc6772dab015d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidade: 0
+  velVirar: 300
+  player: {fileID: 0}
+  mudaAngulo: 1
+  move: 0
 --- !u!1 &5010567226698321705
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valorXp: 1
   maxHp: 10
-  danoBala: 2
-  velBala: 50
+  multiplicadorDanoBala: 0
+  multiplicadorVelBala: 0
   velAtirarMax: 2
   velAtirarMin: 3
   velMovimento: 3

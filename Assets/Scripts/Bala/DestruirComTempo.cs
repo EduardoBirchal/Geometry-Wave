@@ -13,6 +13,6 @@ public class DestruirComTempo : DestruirForaDaTela
         vidaAtual += Time.deltaTime;
 
         if (vidaAtual >= tempoVida)
-            DestruirBalaServerRpc();
+            DestroiBala();
     }
 }

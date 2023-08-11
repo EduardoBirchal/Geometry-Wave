@@ -19,7 +19,7 @@ public class MovePlayer : MoveAutomatico
     {
         if(IsOwner && TimeManager.localPause == false)
         {
-            miraAutomatico = menu.AutoFire();
+            miraAutomatico = menu.AutoAim();
 
             if (move) {
                 velAtual = vel;

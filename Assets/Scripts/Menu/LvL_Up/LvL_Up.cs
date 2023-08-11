@@ -1,19 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LvL_Up : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI points;
+    
     private GameObject player;
     private PlayerDash playerDash;
     private PlayerGerenciaHP playerHp;
     private PlayerGerenciaXP playerXp;
+
 
     private int qntUpgrades = 0;
 
     void Start()
     {
         GetPlayerComponents();
+    }
+
+    void Update()
+    {
+        GetPlayerComponents();
+        if(MaxUpgrades())
+        {
+            points.text = "Pontos de level up disponíveis: " +  (playerXp.level - qntUpgrades);
+
+        }
     }
 
     public bool MaxUpgrades()
@@ -42,7 +56,6 @@ public class LvL_Up : MonoBehaviour
 
     public void AumentaHP()
     {
-        GetPlayerComponents();
         if(playerHp != null && MaxUpgrades()){
             playerHp.hp +=2;
             playerHp.maxHp += 2;
@@ -52,7 +65,6 @@ public class LvL_Up : MonoBehaviour
 
     public void DashCooldown()
     {
-        GetPlayerComponents();
         if(playerDash != null && MaxUpgrades()){
             playerDash.tempoCarrega -= 0.05f;
             qntUpgrades++;

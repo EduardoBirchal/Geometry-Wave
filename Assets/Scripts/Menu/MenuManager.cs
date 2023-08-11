@@ -23,9 +23,13 @@ public class MenuManager : MonoBehaviour
 
     private GoBack goBack;
     private SceneFadeAnimation fade;
+    public AudioSource audioGeral, audioTiro, audioWave;
+    public AudioClip somTiro, somWave;
     public Slider sliderHud;
     public Slider VolGeral, VolWave, VolTiro;
+    public Toggle toggle_AutoAim;
     public Toggle toggle_AutoFire;
+
 
     void Start()
     {
@@ -55,10 +59,18 @@ public class MenuManager : MonoBehaviour
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     }
     
+    public bool AutoAim()
+    {
+        if(PlayerPrefs.GetInt("AutoAim") == 1){
+            return true;
+        }
+        else return false;
+    }
+
     public bool AutoFire()
     {
-        if(PlayerPrefs.GetInt("TiroAutomatico") == 1){
-            return true;
+        if(PlayerPrefs.GetInt("AutoFire") == 1){
+           return true;
         }
         else return false;
     }
@@ -81,83 +93,83 @@ public class MenuManager : MonoBehaviour
     {
         gameModes.SetActive(true);
         goBack.menus.Push(gameModes);
-        //menuInicial.SetActive(false);
     }
 
     public void Solo()
     {
         dificultSelector.SetActive(true);
         goBack.menus.Push(dificultSelector);
-        //gameModes.SetActive(false);
     }
 
     public void Online()
     {
         onlineModes.SetActive(true);
         goBack.menus.Push(onlineModes);
-        //gameModes.SetActive(false);
     }
 
     public void EnterOnline()
     {
         enterOnline.SetActive(true);
         goBack.menus.Push(enterOnline);
-        //onlineModes.SetActive(false);
     }
 
     public void Options()
     {
         painelOptions.SetActive(true);
         goBack.menus.Push(painelOptions);
-        //menuInicial.SetActive(false);
     }
 
     public void GamePlayOptions()
     {
         gameplayOptions.SetActive(true);
         
-        toggle_AutoFire = GameObject.Find("ToggleAutoFire").GetComponent<Toggle>();
-        toggle_AutoFire.isOn = AutoFire();  
-        
+        toggle_AutoFire.isOn = AutoFire();
+
         goBack.menus.Push(gameplayOptions);
-        //painelOptions.SetActive(false);
+    }
+
+    public void AudioReturnTiro()
+    {
+        audioTiro.PlayOneShot(somTiro);
+    }
+
+    public void AudioReturnWave()
+    {
+        audioWave.PlayOneShot(somWave);
     }
 
     public void SoundOptions()
     {
         soundOptions.SetActive(true);
 
-        VolGeral =  GameObject.Find("VolumeGeral").GetComponent<Slider>();
         VolGeral.value = PlayerPrefs.GetFloat("SliderVolGeral");
-        VolTiro = GameObject.Find("VolumeTiro").GetComponent<Slider>();
         VolTiro.value = PlayerPrefs.GetFloat("SliderVolTiro");
-        VolWave = GameObject.Find("VolumeWave").GetComponent<Slider>();
         VolWave.value = PlayerPrefs.GetFloat("SliderVolWave");
 
-
         goBack.menus.Push(soundOptions);
-        //painelOptions.SetActive(false);
     }
 
     public void GraficosHud()
     {
         graficoshud.SetActive(true);
 
-        sliderHud =  GameObject.Find("SliderHudSlide").GetComponent<Slider>();
         sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
         
         goBack.menus.Push(graficoshud);
-        //painelOptions.SetActive(false);
     }
 
     public void CloseGamePlayOptions()
     {
-        if(toggle_AutoFire.isOn == false){
-            PlayerPrefs.SetInt("TiroAutomatico", 0);
+        if(toggle_AutoAim.isOn == false){
+            PlayerPrefs.SetInt("AutoAim", 0);
         }
-        else PlayerPrefs.SetInt("TiroAutomatico", 1);
+        else PlayerPrefs.SetInt("AutoAim", 1);
 
-        //painelOptions.SetActive(true);
+        if(toggle_AutoFire.isOn == false){
+            PlayerPrefs.SetInt("AutoFire", 0);
+        }
+        else PlayerPrefs.SetInt("AutoFire", 1);
+
         goBack.GoToLastMenu();
     }
 
@@ -169,7 +181,6 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("SliderVolWave", VolWave.value);
         PlayerPrefs.Save();
 
-        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
@@ -178,37 +189,31 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
 
-        //painelOptions.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseOptions()
     {
-        //menuInicial.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseGameModes()
     {
-        //menuInicial.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseSolo()
     {
-        //gameModes.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseOnline()
     {
-        //gameModes.SetActive(true);
         goBack.GoToLastMenu();
     }
 
     public void CloseEnterOnline()
     {
-        //onlineModes.SetActive(true);
         goBack.GoToLastMenu();
     }
     

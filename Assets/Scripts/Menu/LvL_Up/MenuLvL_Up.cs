@@ -21,6 +21,7 @@ public class MenuLvL_Up : MonoBehaviour
         {
             Menu();
         }
+
     }
 
     public void Menu()
