@@ -27,4 +27,11 @@ public class NetStatus : NetworkBehaviour
         status = ConnectionResponse.Waiting;
         MaxNumPlayers = isSingleplayer ? 1 : 4;
     }
+
+    private void Update()
+    {
+        if(TimeManager.globalPause.Value == true)
+            Time.timeScale = 0;
+        else Time.timeScale = 1;
+    }
 }

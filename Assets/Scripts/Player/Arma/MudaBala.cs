@@ -9,34 +9,25 @@ public class MudaBala : NetworkBehaviour
     SpriteRenderer sprRenderer;
     GameObject arma;
     public Sprite[] spritesPlayer;
-    public NetworkVariable<int> modoTiro = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<int> modoTiro = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     void Start() 
     {
         sprRenderer = GetComponent<SpriteRenderer>();
         arma = transform.GetChild(0).gameObject;
-        EnviarNovoSpriteServerRpc(modoTiro.Value);
     }
 
     // Update is called once per frame
     void Update()
     {
         if(!IsOwner) return;
-        if(TimeManager.paused == true) return;
+        if(TimeManager.localPause == true) return;
         GetModo();
+        UpdateSprite();
     }
-
-    [ClientRpc]
-    void ReceberNovoSpriteClientRpc(int novoValor)
+    void UpdateSprite()
     {
-        sprRenderer.sprite = spritesPlayer[novoValor];
-    }
-
-    [ServerRpc] 
-    void EnviarNovoSpriteServerRpc(int novoValor)
-    {
-        modoTiro.Value = novoValor;
-        ReceberNovoSpriteClientRpc(novoValor);
+        sprRenderer.sprite = spritesPlayer[modoTiro.Value];
     }
 
     void GetModo() {
@@ -48,7 +39,7 @@ public class MudaBala : NetworkBehaviour
             int novoValor = (modoTiro.Value + (int) scroll) % numTiros;
 
             if(novoValor < 0) novoValor = numTiros - 1;
-            EnviarNovoSpriteServerRpc(novoValor);
+            modoTiro.Value = novoValor;
         }
     }
 }

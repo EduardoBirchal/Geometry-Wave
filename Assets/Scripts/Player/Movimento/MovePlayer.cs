@@ -17,7 +17,7 @@ public class MovePlayer : MoveAutomatico
 
     void Update()
     {
-        if(IsOwner && TimeManager.paused == false)
+        if(IsOwner && TimeManager.localPause == false)
         {
             miraAutomatico = menu.AutoFire();
 

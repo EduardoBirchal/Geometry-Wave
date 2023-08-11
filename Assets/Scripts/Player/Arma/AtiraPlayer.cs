@@ -19,18 +19,17 @@ public class AtiraPlayer : Atirador
     void Update()
     {
         if(!IsOwner) return;
+        if(TimeManager.localPause == true) return; 
         balaAtual = mudaBala.modoTiro.Value;
         QuerAtirar();
     }
 
-    void QuerAtirar() {
-        if(IsOwner && TimeManager.paused == false)
-        {
-            if(Input.GetMouseButton(0) || tiroAutomatico) {
-                // Vector3 direc = transform.parent.gameObject.GetComponent<MovePlayer>().vetorMove;
-                // if(IsHost) direc *= -1;
-                AtiraServerRpc(balaAtual);
-            }
+    void QuerAtirar()
+    {
+        if(Input.GetMouseButton(0) || tiroAutomatico) {
+            // Vector3 direc = transform.parent.gameObject.GetComponent<MovePlayer>().vetorMove;
+            // if(IsHost) direc *= -1;
+            AtiraServerRpc(balaAtual);
         }
     }
 }

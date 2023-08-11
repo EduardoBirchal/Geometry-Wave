@@ -6,11 +6,12 @@ public class MenuLvL_Up : MonoBehaviour
 {
     
     [SerializeField] public GameObject menuLvL_Up;
-    
+    private TimeManager timeManager;
     private GoBack goBack;
 
     void Start()
     {
+        timeManager = GameObject.Find("GameManager").GetComponent<TimeManager>();
         goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
     }
 
@@ -29,9 +30,7 @@ public class MenuLvL_Up : MonoBehaviour
             goBack.menus.Push(menuLvL_Up);
             menuLvL_Up.SetActive(true);
             if(NetStatus.isSingleplayer == true)
-            {
-                Time.timeScale = 0;
-            }
+                timeManager.Pause();
         }    
     }
 

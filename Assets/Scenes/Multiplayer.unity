@@ -1943,7 +1943,7 @@ PrefabInstance:
     - target: {fileID: 486612228098618579, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1579562836}
+      objectReference: {fileID: 0}
     - target: {fileID: 486612228098618579, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Continuar
@@ -2201,8 +2201,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuInGame, Assembly-CSharp
-        m_MethodName: Esc
+        m_TargetAssemblyTypeName: GoBack, Assembly-CSharp
+        m_MethodName: GoToLastMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4071,7 +4071,7 @@ PrefabInstance:
     - target: {fileID: 4612731117540330869, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1579562836}
+      objectReference: {fileID: 0}
     - target: {fileID: 4612731117540330869, guid: f4195bd62635bff4dbb1b9eefbf8aefb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Continuar
@@ -5403,6 +5403,18 @@ PrefabInstance:
       propertyPath: death_Screen
       value: 
       objectReference: {fileID: 1136904813}
+    - target: {fileID: 1579562838, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579562839, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 41597741
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579562842, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2340701521293824578, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
       propertyPath: menu
       value: 
@@ -5540,17 +5552,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b350d8cea3031fe679678a9b8afbd2af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1579562836 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 721392231, guid: f53253fe9e12aa69a84c4a92172f611a, type: 3}
-  m_PrefabInstance: {fileID: 1579562832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0836f0d35170c5dbb64bc7e7fb43a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1616091709
@@ -6569,12 +6570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e9d768fdc9306419da79b1bbad14cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startBtn: {fileID: 591063873}
-  spawner: {fileID: 5657181454398760757, guid: 25572ce4fd4f78def8eb5adb671fd87f, type: 3}
-  errorScreen: {fileID: 737920863}
-  netManager: {fileID: 0}
-  netStatus: {fileID: 0}
-  MaxNumPlayers: 0
 --- !u!114 &2120987346
 MonoBehaviour:
   m_ObjectHideFlags: 0
