@@ -14,11 +14,7 @@ public class Flock : FuncoesGerais
     private GameObject[][] listaInimigos;
     private GameObject texto;
     private FuncoesTexto funcoesTexto;
-    private NetworkStart NetworkInfo;
     [SerializeField] private AudioClip[] efeitosOnda;
-
-
-
 
     public FlockAgent agentPrefab;
     List<FlockAgent> agents = new List<FlockAgent>();
@@ -46,8 +42,6 @@ public class Flock : FuncoesGerais
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
 
-
-        NetworkInfo = GameObject.Find("NetworkManager").GetComponent<NetworkStart>();
         gameObject.name = "SpawnerInimigo";
         distanciaMargem = new Vector2(larguraTela - tamanhoMargem, alturaTela - tamanhoMargem);
         dificuldadeTotal *= dificuldade;
@@ -106,7 +100,7 @@ public class Flock : FuncoesGerais
         // Procura todos os objetos com a tag "Inimigo". Se não tiver inimigos, cria uma nova onda
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
-        if(inimigos.Length == 0 && NetworkStart.gameStarted == true) {
+        if(inimigos.Length == 0 && NetStatus.gameStarted == true) {
             StartCoroutine(CriaOnda());
         }
         else {

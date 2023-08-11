@@ -8,14 +8,16 @@ public class GoBack : MonoBehaviour
     private MenuLvL_Up lvl_UpMenu;
     private MenuInGame gameMenu;
     private MenuManager menuGeral;
+    private TimeManager timeManager;
 
     public Stack<GameObject> menus = new Stack<GameObject>();
 
     void Start()
     {
-        lvl_UpMenu = GameObject.Find("GameManager").GetComponent<MenuLvL_Up>();
-        gameMenu = GameObject.Find("GameManager").GetComponent<MenuInGame>();
-        menuGeral = GameObject.Find("GameManager").GetComponent<MenuManager>();
+        lvl_UpMenu = gameObject.GetComponent<MenuLvL_Up>();
+        gameMenu = gameObject.GetComponent<MenuInGame>();
+        menuGeral = gameObject.GetComponent<MenuManager>();
+        timeManager = GameObject.Find("Funcoes")?.GetComponent<TimeManager>();
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class GoBack : MonoBehaviour
             if(Input.GetKeyDown("escape") && gameMenu.menu.activeSelf == false && lvl_UpMenu.menuLvL_Up.activeSelf == false)
             {
                 MenuInGame.isOpen = true;
-                Time.timeScale = 0;
+                timeManager.Pause();
                 menus.Push(gameMenu.menu);
                 gameMenu.menu.SetActive(true);
             }
@@ -79,7 +81,7 @@ public class GoBack : MonoBehaviour
     public void Continuar()
     {
         MenuInGame.isOpen = false;
-        Time.timeScale = 1;
+        timeManager?.Resume();
         if(menus.Count > 0){
             menus.Peek().SetActive(false);
             menus.Pop();

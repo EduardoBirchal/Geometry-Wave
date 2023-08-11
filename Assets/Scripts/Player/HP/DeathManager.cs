@@ -24,7 +24,7 @@ public class DeathManager : MonoBehaviour
         await Task.Delay(5 * 1000);
         
         // TODO: Quando implementar o fim de jogo no MP, adicionar a condição aqui
-        if(NetworkStart.isSingleplayer == true || NetworkStatus.numPlayers == 1)
+        if(NetStatus.isSingleplayer == true || NetStatus.PlayersAlive == 1)
             time_Script.Pause();
         
         death_Screen.SetActive(true);

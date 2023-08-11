@@ -27,7 +27,7 @@ public class Error : MonoBehaviour
         objFlag.SetActive(false);
         objButton.SetActive(false);
     }
-    public void Update()
+    public void UpdateState()
     {
         switch(state)
         {
@@ -42,18 +42,10 @@ public class Error : MonoBehaviour
                 StartCoroutine(Fade());
                 break;
             case PopupState.Error:
-                text = GameObject.Find("NetworkManager")
-                        .GetComponent<NetworkManager>()
-                        .DisconnectReason;
+            case PopupState.Timeout:
                 this.gameObject.SetActive(true);
                 objFlag.SetActive(true);
                 objFlag.GetComponent<Image>().sprite = failSprite; 
-                objButton.SetActive(true);
-                break;
-            case PopupState.Timeout:
-                text = "Tempo esgotado";
-                this.gameObject.SetActive(true);
-                objFlag.SetActive(true);
                 objButton.SetActive(true);
                 break;
             case PopupState.Waiting:
@@ -69,6 +61,7 @@ public class Error : MonoBehaviour
     private IEnumerator Fade()
     {
         yield return new WaitForSecondsRealtime(2);
+        this.state = PopupState.Idle;
         this.gameObject.SetActive(false);
     }
 }
