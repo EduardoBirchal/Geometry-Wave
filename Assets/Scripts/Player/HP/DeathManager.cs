@@ -8,6 +8,7 @@ public class DeathManager : NetworkBehaviour
 {
     [SerializeField] private GameObject text_Obj;
     [SerializeField] private GameObject death_Screen;
+    [SerializeField] private GameObject player_Prefab;
     private TimeManager time_Script;
     private NetStatus net_Status;
 
@@ -24,15 +25,16 @@ public class DeathManager : NetworkBehaviour
         await Task.Delay(5 * 1000);
         
         // TODO: Quando implementar o fim de jogo no MP, adicionar a condição aqui
-        if(NetStatus.isSingleplayer == true || net_Status.PlayersAlive.Value == 1)
+        if(NetStatus.isSingleplayer == true || net_Status.PlayersAlive.Value == 0)
             time_Script.Pause();
-        else if (net_Status.PlayersAlive.Value > 1)
+        else if (net_Status.PlayersAlive.Value > 0)
         {
             text_Obj.GetComponent<FuncoesTexto>().SetText("Esperando o fim da onda");
             bool passedWave = await WaitForWave();
             if(passedWave == true)
             {
                 text_Obj.GetComponent<FuncoesTexto>().MostraFade(0.1f, 0.1f, "");
+                RespawnServerRpc(NetworkManager.Singleton.LocalClientId);
                 return;
             }
         }
@@ -42,16 +44,25 @@ public class DeathManager : NetworkBehaviour
         return;
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    void RespawnServerRpc(ulong clientId)
+    {
+        Instantiate(player_Prefab).GetComponent<NetworkObject>().SpawnWithOwnership(clientId);
+        net_Status.PlayersAlive.Value++;
+    }
+
     private async Task<bool> WaitForWave()
     {
-        GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
-        while(inimigos.Length > 0)
+        GameObject[] inimigos;
+        do
         {
-            GameObject.FindGameObjectsWithTag("Inimigo");
+            inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
             await Task.Delay(1 * 1000);
             if(net_Status.PlayersAlive.Value < 1)
                 return false;
         }
+        while(inimigos.Length > 0);
+
         return true;
     }
 }

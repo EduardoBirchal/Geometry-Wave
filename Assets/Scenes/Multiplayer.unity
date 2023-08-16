@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_Obj: {fileID: 1234522770}
   death_Screen: {fileID: 1136904813}
+  player_Prefab: {fileID: 4976682552676660537, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 0

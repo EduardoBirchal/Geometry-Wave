@@ -22,7 +22,10 @@ public class FuncoesTexto : MonoBehaviour
     }
 
     public void SetText(string str)
-    { texto.text = str; }
+    { 
+        texto.color = new Color(texto.color.r, texto.color.g, texto.color.b, 1);
+        texto.text = str;
+    }
 
     IEnumerator FadeInCorotina(float tempo) {
         while (texto.color.a < alphaMax) {

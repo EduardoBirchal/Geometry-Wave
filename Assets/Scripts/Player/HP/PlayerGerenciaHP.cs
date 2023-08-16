@@ -41,6 +41,7 @@ public class PlayerGerenciaHP : NetworkBehaviour
     public void RemovePlayerServerRpc()
     { 
         NetworkObject.Despawn(true);
+        GameObject.Find("Network").GetComponent<NetStatus>().PlayersAlive.Value--;
     }
 
     void EsticaBarraHP() {
