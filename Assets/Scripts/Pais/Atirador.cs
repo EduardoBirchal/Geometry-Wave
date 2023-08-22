@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Collections;
-public class Atirador : NetworkBehaviour
+public class Atirador : FuncoesGerais
 {
     public GameObject atirador;
     public AudioSource fonteAudio;

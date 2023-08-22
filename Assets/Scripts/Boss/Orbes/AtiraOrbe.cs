@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class AtiraOrbe : AtiraInimigo
 {
+    public bool rajadaAtivada;
     [SerializeField] private float tempoRecarregaRajada;
     [SerializeField] private int numTirosRajada;
     private int rajadaCarregada = 0;
+
+    private const int idRajada = 1;
+    private const int idRaio = 2;
 
     void Start() {
         tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
@@ -20,28 +24,37 @@ public class AtiraOrbe : AtiraInimigo
         StartCoroutine(AtiraRajada());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private IEnumerator AtiraRajada() {
         while (true) {
-            rajadaCarregada = numTirosRajada;
+            if  (rajadaAtivada) {
+                tipoBala = idRajada;
 
-            while (rajadaCarregada > 0) {
-                if (balaCarregada) {
-                    print("Tiros sobrando na rajada: " + rajadaCarregada);
-                    AtiraServerRpc(tipoBala);
-                    rajadaCarregada--;
-                }
+                rajadaCarregada = numTirosRajada;
 
-                yield return null;
-            } 
-        
-            print("Recarregando...");
-            yield return new WaitForSeconds(tempoRecarregaRajada);
+                while (rajadaCarregada > 0) {
+                    if (balaCarregada) {
+                        AtiraServerRpc(tipoBala);
+                        rajadaCarregada--;
+                    }
+
+                    yield return null;
+                } 
+
+                yield return new WaitForSeconds(tempoRecarregaRajada);
+            }
+            else {
+                ViraPraObjeto(atirador.transform.position);
+
+                tipoBala = idRaio;
+                AtiraServerRpc(tipoBala);
+            }
+
+            yield return null;
         }
+    }
+
+    private Vector3 OlhaPraForaDoCentro() {
+        print (transform.position - atirador.transform.position);
+        return transform.position - atirador.transform.position;
     }
 }

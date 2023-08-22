@@ -115,6 +115,19 @@ public class TipoTiro : MonoBehaviour
                 1, // Perfuração (em número de inimigos)
                 "Metralhadora de Rajada",
                 prefab_balaInimigo
+            ),
+            // BOSS BEAM WEAPON
+            new TipoBala(
+                1, // Número de balas
+                3f, // Dano
+                30f, // Velocidade da bala
+                0.02f, // Cooldown Minimo (em segundos)
+                0.02f, // Cooldown Maximo (em segundos)
+                0f, // Imprecisão (em graus)
+                40f, // Arco de tiro (em graus)
+                1, // Perfuração (em número de inimigos)
+                "Raio de Energia",
+                prefab_balaInimigo
             )
         };
     }
