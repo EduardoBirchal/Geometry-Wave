@@ -9,6 +9,7 @@ public class GoBack : MonoBehaviour
     private MenuInGame gameMenu;
     private MenuManager menuGeral;
 
+    [SerializeField] private GameObject rebindingPanel;
     public Stack<GameObject> menus = new Stack<GameObject>();
 
     void Start()
@@ -33,7 +34,7 @@ public class GoBack : MonoBehaviour
                 Continuar();
             }
         }
-        else if(Input.GetKeyDown("escape"))
+        else if(Input.GetKeyDown("escape") && rebindingPanel.activeSelf == false)
         {
             if(menus.Count > 0)
             {

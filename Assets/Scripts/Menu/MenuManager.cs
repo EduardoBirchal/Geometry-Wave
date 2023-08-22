@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public GameObject gameplayOptions;
     [SerializeField] public GameObject soundOptions;
     [SerializeField] public GameObject graficoshud;
+    [SerializeField] private GameObject inputActionsHud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
 
@@ -126,6 +127,13 @@ public class MenuManager : MonoBehaviour
         toggle_AutoFire.isOn = AutoFire();
 
         goBack.menus.Push(gameplayOptions);
+    }
+
+    public void InputActions()
+    {
+        inputActionsHud.SetActive(true);
+
+        goBack.menus.Push(inputActionsHud);
     }
 
     public void AudioReturnTiro()
