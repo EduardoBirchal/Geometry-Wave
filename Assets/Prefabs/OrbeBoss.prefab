@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 3459115289087993757}
   - component: {fileID: 5555578955336784721}
   - component: {fileID: 8942614878424403940}
+  - component: {fileID: 2305325871604116580}
+  - component: {fileID: 753878271951848194}
   m_Layer: 3
   m_Name: OrbeBoss
-  m_TagString: Untagged
+  m_TagString: LimiteTela
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +105,7 @@ MonoBehaviour:
   velVirar: 360
   viraPraFora: 0
   planeta: {fileID: 0}
-  anguloInicial: 90
+  anguloInicial: 0
   velocidadeAngular: 95
   raioOrbita: {x: 0, y: 4, z: 0}
 --- !u!114 &5555578955336784721
@@ -123,9 +125,10 @@ MonoBehaviour:
   efeitosArmas: []
   childIndex: 0
   tipoBala: 1
-  rajadaAtivada: 0
-  tempoRecarregaRajada: 2
+  rajadaAtivada: 1
+  tempoRecarregaRajada: 1
   numTirosRajada: 4
+  rajadaCarregada: 0
 --- !u!114 &8942614878424403940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +146,40 @@ MonoBehaviour:
   player: {fileID: 0}
   mudaAngulo: 1
   move: 0
+--- !u!58 &2305325871604116580
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6329273828479441967}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.50000006
+--- !u!50 &753878271951848194
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6329273828479441967}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

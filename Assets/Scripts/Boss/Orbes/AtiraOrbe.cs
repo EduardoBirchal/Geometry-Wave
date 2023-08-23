@@ -5,58 +5,62 @@ using UnityEngine;
 public class AtiraOrbe : AtiraInimigo
 {
     public bool rajadaAtivada;
+    public bool raioAtivado;
+    public int rajadasAteAgora = 0;
+
     [SerializeField] private float tempoRecarregaRajada;
     [SerializeField] private int numTirosRajada;
-    [SerializeField] private int rajadaCarregada = 0;
+    [SerializeField] private int rajadaCarregada;
 
     private const int idRajada = 1;
     private const int idRaio = 2;
 
-    // void Start() {
-    //     tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
-    //     atirador = transform.parent.gameObject;
-    //     balaCarregada = true;
+    void Start() {
+        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
+        atirador = transform.parent.gameObject;
+        balaCarregada = false;
+        rajadaCarregada = numTirosRajada;
 
-    //     GetValores();
+        GetValores();
 
-    //     //StartCoroutine(Recarrega(tempoRecarregaRajada));
+        StartCoroutine(Recarrega(tempoRecarregaRajada));
 
-    //     StartCoroutine(AtiraRajada());
-    // }
+        StartCoroutine(AtiraRajada());
+    }
 
-    // private IEnumerator AtiraRajada() {
-    //     while (true) {
-    //         print("while true deu certo");
+    void Update() {
 
-    //         if  (rajadaAtivada) {
-    //             tipoBala = idRajada;
+    }
 
-    //             rajadaCarregada = numTirosRajada;
-
-    //             print("rajadaAtivada = true");
-
-    //             while (rajadaCarregada > 0) {
-    //                 print("rajadaCarregada = " + rajadaCarregada);
-
-    //                 if (balaCarregada) {
-    //                     print("balaCarregada = AAAAGAGH");
-    //                     //AtiraServerRpc(tipoBala);
-    //                     rajadaCarregada--;
-    //                 }
-
-    //                 yield return null;
-    //             } 
+    private IEnumerator AtiraRajada() {
+        while (true) {
+            if  (rajadaAtivada) {
                 
-    //             print("recarregando");
-    //             yield return new WaitForSeconds(tempoRecarregaRajada);
-    //         }
-    //         else {
-    //             print("womp womp");
-    //             tipoBala = idRaio;
-    //             //AtiraServerRpc(tipoBala);
-    //         }
 
-    //         yield return null;
-    //     }
-    // }
+                tipoBala = idRajada;
+
+                rajadaCarregada = numTirosRajada;
+
+                while (rajadaCarregada > 0) {
+
+                    if (balaCarregada) {
+                        AtiraServerRpc(tipoBala);
+                        rajadaCarregada--;
+                    }
+
+                    yield return null;
+                } 
+                
+                rajadasAteAgora++;
+                yield return new WaitForSeconds(tempoRecarregaRajada);
+            }
+            else if (raioAtivado) {
+                rajadasAteAgora = 0;
+                tipoBala = idRaio;
+                AtiraServerRpc(tipoBala);
+            }
+
+            yield return null;
+        }
+    }
 }

@@ -9,9 +9,14 @@ public class Orbe {
     public MoveOrbitando orbt;
 }
 
-public class ControlaOrbes : MonoBehaviour
+public class ControlaOrbes : FuncoesGerais
 {
     [SerializeField] private const int numOrbes = 3;
+    [SerializeField] private const int rajadasPorRotacao = 3;
+
+    [SerializeField] private const float tempoEntreRotacoes = 1.5f;
+    [SerializeField] private const float duracaoRaio = 6f;
+
     private Orbe[] orbes;
 
     // Start is called before the first frame update
@@ -20,12 +25,15 @@ public class ControlaOrbes : MonoBehaviour
         orbes = new Orbe[numOrbes];
         GetOrbes();
         SetRajada(true);
+        SetRaio(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (orbes[0].atr.rajadasAteAgora >= rajadasPorRotacao) {
+            StartCoroutine(RotacionaModos());
+        }
     }
 
     void GetOrbes () {
@@ -43,8 +51,28 @@ public class ControlaOrbes : MonoBehaviour
     void SetRajada (bool status) {
         foreach (Orbe orbe in orbes) {
             orbe.atr.rajadaAtivada = status;
+
             orbe.mv.mudaAngulo = status;
             orbe.orbt.viraPraFora = !status;
         }
+    }
+
+    void SetRaio (bool status) {
+        foreach (Orbe orbe in orbes) {
+            orbe.atr.raioAtivado = status;
+
+            orbe.mv.mudaAngulo = !status;
+            orbe.orbt.viraPraFora = status;
+        }
+    }
+
+    private IEnumerator RotacionaModos () {
+        SetRajada (false);
+        yield return new WaitForSeconds(tempoEntreRotacoes);
+        SetRaio (true);
+        yield return new WaitForSeconds(duracaoRaio);
+        SetRaio(false);
+        yield return new WaitForSeconds(tempoEntreRotacoes);
+        SetRajada (true);
     }
 }

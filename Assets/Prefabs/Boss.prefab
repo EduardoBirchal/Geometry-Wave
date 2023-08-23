@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8919938143576646937}
   - component: {fileID: 1885773893}
   - component: {fileID: 5381171357642430500}
+  - component: {fileID: 5131474093090544501}
   m_Layer: 3
   m_Name: Boss
   m_TagString: Inimigo
@@ -291,6 +292,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924abc67837d026589b5f87dcd8116ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5131474093090544501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5010567226698321705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d571286bf38c2c80c82a335995c71fc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velGirar: -42.5
 --- !u!1001 &1963576607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: tempoRecarregaRajada
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
@@ -348,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9177768288690348636, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_RootOrder
@@ -420,18 +434,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7173218427032206414}
     m_Modifications:
-    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: anguloInicial
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
-      propertyPath: rajadaAtivada
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
       value: Orbe1
@@ -540,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: tempoRecarregaRajada
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
@@ -548,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9177768288690348636, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_RootOrder

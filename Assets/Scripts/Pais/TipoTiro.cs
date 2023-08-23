@@ -107,10 +107,10 @@ public class TipoTiro : MonoBehaviour
             new TipoBala(
                 1, // Número de balas
                 0f, // Dano
-                20f, // Velocidade da bala
+                30f, // Velocidade da bala
                 0.05f, // Cooldown Minimo (em segundos)
                 0.05f, // Cooldown Maximo (em segundos)
-                5f, // Imprecisão (em graus)
+                8f, // Imprecisão (em graus)
                 40f, // Arco de tiro (em graus)
                 1, // Perfuração (em número de inimigos)
                 "Metralhadora de Rajada",

@@ -26,7 +26,6 @@ public class MoveOrbitando : MoveAutomatico
         // a rotacionar ele RotacionaEmVoltaDoEixo "graus".
 
         if (viraPraFora)
-            print(anguloInicial + " bababooey");
             ViraPraObjeto(planeta.transform.position, true);
     }
 
