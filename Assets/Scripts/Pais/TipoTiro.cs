@@ -106,7 +106,7 @@ public class TipoTiro : MonoBehaviour
             // BOSS BURST WEAPON
             new TipoBala(
                 1, // Número de balas
-                0f, // Dano
+                3f, // Dano
                 30f, // Velocidade da bala
                 0.05f, // Cooldown Minimo (em segundos)
                 0.05f, // Cooldown Maximo (em segundos)
@@ -119,7 +119,7 @@ public class TipoTiro : MonoBehaviour
             // BOSS BEAM WEAPON
             new TipoBala(
                 1, // Número de balas
-                0f, // Dano
+                3f, // Dano
                 30f, // Velocidade da bala
                 0.005f, // Cooldown Minimo (em segundos)
                 0.005f, // Cooldown Maximo (em segundos)
