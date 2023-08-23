@@ -99,8 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae715df63c9f551faf471b2682a3654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocidade: 0
+  velVirar: 360
+  viraPraFora: 0
+  planeta: {fileID: 0}
   anguloInicial: 90
-  velocidadeAngular: 100
+  velocidadeAngular: 95
   raioOrbita: {x: 0, y: 4, z: 0}
 --- !u!114 &5555578955336784721
 MonoBehaviour:
@@ -119,6 +123,7 @@ MonoBehaviour:
   efeitosArmas: []
   childIndex: 0
   tipoBala: 1
+  rajadaAtivada: 0
   tempoRecarregaRajada: 2
   numTirosRajada: 4
 --- !u!114 &8942614878424403940

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveOrbitando : FuncoesGerais
+public class MoveOrbitando : MoveAutomatico
 {
-    private GameObject planeta;
+    public bool viraPraFora = false;
+
+    public GameObject planeta;
     private float anguloAtual;
     [SerializeField] private float anguloInicial;
     [SerializeField] private float velocidadeAngular = 5f;
@@ -22,6 +24,10 @@ public class MoveOrbitando : FuncoesGerais
         transform.position = planeta.transform.position + RotacionaEmVoltaDoEixo(velocidadeAngular) * raioOrbita;
         // Multiplicar um vetor (no caso raioOrbita) por um quaternion (no caso RotacionaEmVoltaDoEixo) é igual
         // a rotacionar ele RotacionaEmVoltaDoEixo "graus".
+
+        if (viraPraFora)
+            print(anguloInicial + " bababooey");
+            ViraPraObjeto(planeta.transform.position, true);
     }
 
     // Retorna uma rotação de anguloAtual graus em volta do eixo forward do planeta
