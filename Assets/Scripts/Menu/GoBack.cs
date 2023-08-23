@@ -34,12 +34,15 @@ public class GoBack : MonoBehaviour
                 Continuar();
             }
         }
-        else if(Input.GetKeyDown("escape") && rebindingPanel.activeSelf == false)
+        else if(Input.GetKeyDown("escape"))
         {
-            if(menus.Count > 0)
+            Debug.Log(rebindingPanel.activeSelf);
+            if(menus.Count > 0 &&  rebindingPanel.activeSelf == false)
             {
                 GoToLastMenu();
             }
+            Debug.Log(rebindingPanel.activeSelf);
+
         }
     }
 
