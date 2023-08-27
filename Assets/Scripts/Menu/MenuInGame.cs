@@ -2,12 +2,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 public class MenuInGame : MonoBehaviour
 {
     [SerializeField] public GameObject menu;
-    [SerializeField] private GameObject quitConfirmation;
-    [SerializeField] private GameObject diedScreen;
+    [SerializeField] private GameObject quitConfirmation, diedScreen;
     
     private PlayerGerenciaHP playerhp;
     private SceneFadeAnimation fade;
@@ -22,8 +20,6 @@ public class MenuInGame : MonoBehaviour
         goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
         goBack.Continuar();
     }
-
-
 
     public void QuitConfirmation()
     {
@@ -42,5 +38,4 @@ public class MenuInGame : MonoBehaviour
         GameObject.Find("Funcoes").GetComponent<TimeManager>().Resume();
         fade.FadeToMenu();
     }
-
 }

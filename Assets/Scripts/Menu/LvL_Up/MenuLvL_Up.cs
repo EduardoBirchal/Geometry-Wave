@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MenuLvL_Up : MonoBehaviour
 {
-    
     [SerializeField] public GameObject menuLvL_Up;
     private TimeManager timeManager;
     private GoBack goBack;
@@ -34,5 +33,4 @@ public class MenuLvL_Up : MonoBehaviour
                 timeManager.Pause();
         }    
     }
-
 }

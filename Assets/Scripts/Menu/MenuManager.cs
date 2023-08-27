@@ -5,19 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class MenuManager : MonoBehaviour
 {
-
-    [SerializeField] private GameObject menuInicial;
-    [SerializeField] private GameObject gameModes;
-    [SerializeField] private GameObject dificultSelector;
-    [SerializeField] private GameObject onlineModes;
-    [SerializeField] private GameObject enterOnline;
-    [SerializeField] private GameObject painelOptions;
-    [SerializeField] public GameObject gameplayOptions;
-    [SerializeField] public GameObject soundOptions;
-    [SerializeField] public GameObject graficoshud;
+    [SerializeField] private GameObject menuInicial, gameModes, dificultSelector, onlineModes, enterOnline, painelOptions;
+    [SerializeField] public GameObject gameplayOptions, soundOptions, graficoshud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
 
@@ -27,9 +18,7 @@ public class MenuManager : MonoBehaviour
     public AudioClip somTiro, somWave;
     public Slider sliderHud;
     public Slider VolGeral, VolWave, VolTiro;
-    public Toggle toggle_AutoAim;
-    public Toggle toggle_AutoFire;
-
+    public Toggle toggle_AutoAim, toggle_AutoFire;
 
     void Start()
     {
@@ -38,7 +27,6 @@ public class MenuManager : MonoBehaviour
 
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     } 
-
 
     //função que adquire o endereço de IP inserido no input field, para assim poder entrar em uma sessão online.
 
@@ -189,31 +177,6 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
 
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseOptions()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseGameModes()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseSolo()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseOnline()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseEnterOnline()
-    {
         goBack.GoToLastMenu();
     }
     
