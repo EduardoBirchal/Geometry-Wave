@@ -6,6 +6,8 @@ using TMPro;
 public class LvL_Up : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI points;
+    [SerializeField] private AcertaInimigo balaComum, balaTeleguiada;
+    
     
     private GameObject player;
     private PlayerDash playerDash;
@@ -22,7 +24,9 @@ public class LvL_Up : MonoBehaviour
 
     void Update()
     {
-        GetPlayerComponents();
+        if(playerXp == null){
+            GetPlayerComponents();
+        }
         if(MaxUpgrades())
         {
             points.text = "Pontos de level up disponíveis: " +  (playerXp.level - qntUpgrades);
@@ -71,6 +75,21 @@ public class LvL_Up : MonoBehaviour
         }
     }
 
+    public void AumentaDano()
+    {
+        if(MaxUpgrades()){
+            balaComum.dano++;
+            balaTeleguiada.dano++;
+            qntUpgrades++;
+        }
+    }
 
-
+    public void AumentaVelAtaque()
+    {
+        if(playerDash != null && MaxUpgrades()){
+            //atiraPlayer.tipos[0].cooldownMin -= 0.01f;
+            //atiraPlayer.tipos[0].cooldownMax -= 0.01f;
+            qntUpgrades++;
+        }
+    }
 }
