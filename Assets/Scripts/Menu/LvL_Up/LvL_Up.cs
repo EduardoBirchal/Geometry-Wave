@@ -13,9 +13,7 @@ public class LvL_Up : MonoBehaviour
     private PlayerGerenciaHP playerHp;
     private PlayerGerenciaXP playerXp;
     private TipoBala[] tipos;
-
-
-    private int qntUpgrades = 0;
+    private int qntUpgrades = 0, limiteVelAtaque = 0, limiteImprecisao = 0, limiteDashCooldown = 0;
 
     void Start()
     {
@@ -28,11 +26,7 @@ public class LvL_Up : MonoBehaviour
         if(playerXp == null){
             GetPlayerComponents();
         }
-        if(MaxUpgrades())
-        {
-            points.text = "Pontos de level up disponíveis: " +  (playerXp.level - qntUpgrades);
-
-        }
+        points.text = "Pontos de level up disponíveis: " +  (playerXp.level - qntUpgrades);
     }
 
     public bool MaxUpgrades()
@@ -70,9 +64,10 @@ public class LvL_Up : MonoBehaviour
 
     public void DashCooldown()
     {
-        if(playerDash != null && MaxUpgrades()){
+        if(playerDash != null && MaxUpgrades() && limiteDashCooldown <= 10){
             playerDash.tempoCarrega -= 0.05f;
             qntUpgrades++;
+            limiteDashCooldown++;
         }
     }
 
@@ -87,7 +82,7 @@ public class LvL_Up : MonoBehaviour
 
     public void AumentaVelAtaque()
     {
-        if(MaxUpgrades()){
+        if(MaxUpgrades() && limiteVelAtaque < 10){
             tipos[0].cooldownTiro_Min -= 0.01f;
             tipos[0].cooldownTiro_Max -= 0.01f;
             tipos[1].cooldownTiro_Min -= 0.05f;
@@ -97,17 +92,18 @@ public class LvL_Up : MonoBehaviour
             tipos[3].cooldownTiro_Min -= 0.02f;
             tipos[3].cooldownTiro_Max -= 0.02f;
             qntUpgrades++;
+            limiteVelAtaque++;
         }
     }
 
     public void AumentaPrecisao()
     {
-         if(MaxUpgrades()){
-            tipos[0].imprecisaoBala -= 1f;
+         if(MaxUpgrades() && limiteImprecisao < 10){
+            tipos[0].imprecisaoBala -= 1.2f;
             tipos[1].imprecisaoBala -= 0.5f;
-            // tipos[2].imprecisaoBala -= 0.05f;
-            // tipos[3].imprecisaoBala -= 0.02f;
+            tipos[2].arcoTiro -= 2f;
             qntUpgrades++;
+            limiteImprecisao++;
         }
     }
 }
