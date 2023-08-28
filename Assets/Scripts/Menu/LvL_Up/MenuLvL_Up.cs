@@ -1,14 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
+
 
 public class MenuLvL_Up : MonoBehaviour
 {
     
     [SerializeField] public GameObject menuLvL_Up;
+    [SerializeField] private InputActionReference openMenu;
     
     private GoBack goBack;
     private bool singlePlayer;
+
+    //Input Actions Functions
+
+    private void OnEnable() {
+        openMenu.action.Enable();     
+        openMenu.action.performed += OpenMenu;
+    }
+
+    private void OnDisable() {
+        openMenu.action.Disable();    
+        openMenu.action.performed -= OpenMenu;
+    }
+
+    private void OpenMenu(InputAction.CallbackContext value)
+    {
+        Menu();
+    }
 
     void Start()
     {
@@ -16,14 +37,14 @@ public class MenuLvL_Up : MonoBehaviour
         singlePlayer = NetworkStart.isSingleplayer;
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown("p"))
-        {
-            Menu();
-        }
+    // void Update()
+    // {
+    //     if(Input.GetKeyDown("p"))
+    //     {
+    //         Menu();
+    //     }
 
-    }
+    // }
 
     public void Menu()
     {

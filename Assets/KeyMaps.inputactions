@@ -175,6 +175,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "a07977bd-827d-4959-a867-08a7bbe7473c",
+            "actions": [
+                {
+                    "name": "Menu LvL Up",
+                    "type": "Button",
+                    "id": "28465cc4-e087-436b-a209-2d6c454c4f0a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "62e0ee68-fdcf-40d1-b1c4-c8b6f03be5c3",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu LvL Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
