@@ -129,13 +129,22 @@
             ]
         },
         {
-            "name": "New action map",
+            "name": "Automatics",
             "id": "b56a8e36-474f-4272-b31b-1e4da9e65a6f",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "AutoFire",
                     "type": "Button",
                     "id": "6c279dc3-f519-4c12-bff8-3ccc389b7419",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AutoAim",
+                    "type": "Button",
+                    "id": "35b19640-cef1-4b6d-9329-490480fa9f26",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -146,11 +155,22 @@
                 {
                     "name": "",
                     "id": "7925cd4b-b52c-4577-a2ad-d1a861c97a76",
-                    "path": "",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "AutoFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1a53dc4-1c48-4ce5-b232-90c6fbf09530",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AutoAim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

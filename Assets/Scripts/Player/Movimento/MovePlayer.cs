@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class MovePlayer : MoveAutomatico
 {
-
     [SerializeField] private InputActionReference movement;
 
     public float vel, velAtual;
@@ -20,11 +19,36 @@ public class MovePlayer : MoveAutomatico
         menu = GameObject.Find("GameManager").GetComponent<MenuManager>();
     }
 
+    //Input Actions Functions
+
+    private void OnEnable() 
+    {
+        movement.action.Enable();
+        movement.action.performed += MovementPerform;
+        movement.action.canceled += MovementPerform;
+    }
+    
+    private void OnDisable()
+    {
+        movement.action.Disable();
+        movement.action.performed -= MovementPerform;
+        movement.action.canceled -= MovementPerform;
+    }
+
+    private void MovementPerform(InputAction.CallbackContext value)
+    {
+        movimento = movement.action.ReadValue<Vector2>();
+    }
+
+    private void movementCanceled(InputAction.CallbackContext value)
+    {
+        movimento = Vector2.zero;
+    }
+
     void Update()
     {
         if(IsOwner && TimeManager.paused == false)
         {
-            movimento = movement.action.ReadValue<Vector2>();
             miraAutomatico = menu.AutoAim();
             
             if (move) {

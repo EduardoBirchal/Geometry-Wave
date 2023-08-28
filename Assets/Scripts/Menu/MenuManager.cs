@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
+
 
 
 public class MenuManager : MonoBehaviour
@@ -21,6 +23,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject inputActionsHud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private InputActionReference buttonAutoAim, buttonAutoFire;
 
     private GoBack goBack;
     private SceneFadeAnimation fade;
@@ -31,7 +34,6 @@ public class MenuManager : MonoBehaviour
     public Toggle toggle_AutoAim;
     public Toggle toggle_AutoFire;
 
-
     void Start()
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
@@ -40,6 +42,38 @@ public class MenuManager : MonoBehaviour
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     } 
 
+    //Input Actions functions
+
+    private void OnEnable()
+    {
+        buttonAutoAim.action.Enable();
+        buttonAutoFire.action.Enable();
+        buttonAutoFire.action.performed += ChangeAutoFire;
+        buttonAutoAim.action.performed += ChangeAutoAim;
+    }
+
+    private void OnDisable() {
+        buttonAutoAim.action.Disable();
+        buttonAutoFire.action.Disable();
+        buttonAutoFire.action.performed -= ChangeAutoFire;
+        buttonAutoAim.action.performed -= ChangeAutoAim;
+    }
+
+    public void ChangeAutoFire(InputAction.CallbackContext obj)
+    {
+        if(PlayerPrefs.GetInt("AutoFire") == 0){
+            PlayerPrefs.SetInt("AutoFire", 1);
+        }
+        else PlayerPrefs.SetInt("AutoFire", 0);
+    }
+
+    public void ChangeAutoAim(InputAction.CallbackContext obj)
+    {
+        if(PlayerPrefs.GetInt("AutoAim") == 0){
+            PlayerPrefs.SetInt("AutoAim", 1);
+        }
+        else PlayerPrefs.SetInt("AutoAim", 0);
+    }
 
     //função que adquire o endereço de IP inserido no input field, para assim poder entrar em uma sessão online.
 

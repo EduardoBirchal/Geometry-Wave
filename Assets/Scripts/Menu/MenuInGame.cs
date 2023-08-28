@@ -23,8 +23,6 @@ public class MenuInGame : MonoBehaviour
         goBack.Continuar();
     }
 
-
-
     public void QuitConfirmation()
     {
         quitConfirmation.SetActive(true);
