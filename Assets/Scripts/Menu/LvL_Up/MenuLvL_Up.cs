@@ -37,15 +37,6 @@ public class MenuLvL_Up : MonoBehaviour
         singlePlayer = NetworkStart.isSingleplayer;
     }
 
-    // void Update()
-    // {
-    //     if(Input.GetKeyDown("p"))
-    //     {
-    //         Menu();
-    //     }
-
-    // }
-
     public void Menu()
     {
         if(MenuInGame.isOpen == false && menuLvL_Up.activeSelf == false)
