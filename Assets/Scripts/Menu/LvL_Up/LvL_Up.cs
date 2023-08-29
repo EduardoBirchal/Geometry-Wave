@@ -40,6 +40,10 @@ public class LvL_Up : MonoBehaviour
             GetPlayerComponents();
         }
         points.text = "Pontos de level up disponíveis: " +  (playerXp.level - qntUpgrades);
+        if(MaxUpgrades())
+        {
+            menu.Notification("!");
+        }else menu.Notification("");
     }
 
     public bool MaxUpgrades()

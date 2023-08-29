@@ -7,6 +7,8 @@ public class MenuLvL_Up : MonoBehaviour
 {
     [SerializeField] public GameObject menuLvL_Up;
     [SerializeField] private TextMeshProUGUI [] texto;
+    [SerializeField] private TextMeshProUGUI notificacao;
+
 
     private TimeManager timeManager;
     private GoBack goBack;
@@ -28,6 +30,11 @@ public class MenuLvL_Up : MonoBehaviour
     public void MudaText(int posicao, int pontosGastos, int limite)
     {
         texto[posicao].text = pontosGastos + "/" + limite;
+    }
+
+    public void Notification(string text)
+    {
+        notificacao.text = text;
     }
 
     public void Menu()
