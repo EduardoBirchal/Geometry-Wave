@@ -4936,6 +4936,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 523134706}
     m_Modifications:
+    - target: {fileID: 1989795567, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a5304c7f393633ba9f3a9a98ee6798d, type: 3}
+    - target: {fileID: 1989795569, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3a25977c7f3d05aa80906b6601a6fae, type: 3}
+    - target: {fileID: 1989795570, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a5304c7f393633ba9f3a9a98ee6798d, type: 3}
     - target: {fileID: 1303985370852690700, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7428,8 +7440,6 @@ MonoBehaviour:
   audioGeral: {fileID: 0}
   audioTiro: {fileID: 0}
   audioWave: {fileID: 0}
-  somTiro: {fileID: 0}
-  somWave: {fileID: 0}
   sliderHud: {fileID: 1905097712}
   VolGeral: {fileID: 1713983698}
   VolWave: {fileID: 1044851967}

@@ -15,7 +15,6 @@ public class MenuManager : MonoBehaviour
     private GoBack goBack;
     private SceneFadeAnimation fade;
     public AudioSource audioGeral, audioTiro, audioWave;
-    public AudioClip somTiro, somWave;
     public Slider sliderHud;
     public Slider VolGeral, VolWave, VolTiro;
     public Toggle toggle_AutoAim, toggle_AutoFire;
@@ -140,12 +139,12 @@ public class MenuManager : MonoBehaviour
 
     public void AudioReturnTiro()
     {
-        audioTiro.PlayOneShot(somTiro);
+        if(!audioTiro.isPlaying || !audioWave.isPlaying) audioTiro.Play();
     }
 
     public void AudioReturnWave()
     {
-        audioWave.PlayOneShot(somWave);
+        if(!audioWave.isPlaying || !audioTiro.isPlaying) audioWave.Play();
     }
 
     public void SoundOptions()
