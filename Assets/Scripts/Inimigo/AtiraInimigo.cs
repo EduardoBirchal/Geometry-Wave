@@ -33,7 +33,7 @@ public class AtiraInimigo : Atirador
 
 
         //ALTERA DPS//
-        if(tipos[tipoBala].danoBala < 4 ){
+        if(tipos[tipoBala].danoBala < 4 && tipos[tipoBala].danoBala > 0.5f){
             tipos[tipoBala].danoBala *= valSpawn.multiplicadorDanoBala;
             tipos[tipoBala].velBala *= valSpawn.multiplicadorVelBala;
         }
