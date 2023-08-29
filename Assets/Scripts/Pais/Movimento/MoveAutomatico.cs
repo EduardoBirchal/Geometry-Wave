@@ -14,7 +14,7 @@ public class MoveAutomatico : FuncoesGerais
         transform.Translate(new Vector2(velocidade * Time.deltaTime, 0));
     }
 
-    protected void ViraPraObjeto(Vector3 posAlvo, bool inverter) {
+    public void ViraPraObjeto(Vector3 posAlvo, bool inverter) {
         Vector3 posInimigo = transform.position;
 
         float meuAngulo = transform.eulerAngles.z;

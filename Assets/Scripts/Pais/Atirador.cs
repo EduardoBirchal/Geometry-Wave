@@ -58,8 +58,6 @@ public class Atirador : FuncoesGerais
     // Checa se a arma está carregada e, se sim, atira, descarrega a arma e chama a função de recarregar
     protected void Atira(int balaTipo)
     {
-        print("atirador atirando");
-
         if(balaCarregada)
         {
             if (fonteAudio) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class AtiraOrbe : AtiraInimigo
 {
@@ -14,12 +15,14 @@ public class AtiraOrbe : AtiraInimigo
 
     private const int idRajada = 1;
     private const int idRaio = 2;
+    private MoveInimigo mvInimigo;
 
     void Start() {
         tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
         atirador = transform.parent.gameObject;
         balaCarregada = false;
         rajadaCarregada = numTirosRajada;
+        mvInimigo = GetComponent<MoveInimigo>();
 
         GetValores();
 
@@ -35,8 +38,6 @@ public class AtiraOrbe : AtiraInimigo
     private IEnumerator AtiraRajada() {
         while (true) {
             if  (rajadaAtivada) {
-                
-
                 tipoBala = idRajada;
 
                 rajadaCarregada = numTirosRajada;
@@ -44,7 +45,7 @@ public class AtiraOrbe : AtiraInimigo
                 while (rajadaCarregada > 0) {
 
                     if (balaCarregada) {
-                        AtiraServerRpc(tipoBala);
+                        AtiraEmTodosOsPlayersServerRpc(tipoBala);
                         rajadaCarregada--;
                     }
 
@@ -62,5 +63,27 @@ public class AtiraOrbe : AtiraInimigo
 
             yield return null;
         }
+    }
+
+    // O orbe atira uma bala em cada player
+    protected void AtiraEmTodosOsPlayers(int balaTipo)
+    {
+        if(balaCarregada)
+        {
+            balaCarregada = false;
+
+            foreach (GameObject playerAtual in GameObject.FindGameObjectsWithTag("Player")) {
+                mvInimigo.ViraPraObjeto(playerAtual.transform.position, false);
+                CriaBala(tipos[balaTipo]);
+            }
+            
+            StartCoroutine(Recarrega(Random.Range(tipos[balaTipo].cooldownTiro_Min,tipos[balaTipo].cooldownTiro_Max)));
+        }
+    }
+
+    [ServerRpc]
+    protected void AtiraEmTodosOsPlayersServerRpc(int balaTipo)
+    {   
+        AtiraEmTodosOsPlayers(balaTipo);
     }
 }
