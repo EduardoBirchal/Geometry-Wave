@@ -26,7 +26,7 @@ public class MenuLvL_Up : MonoBehaviour
         openMenu.action.performed -= OpenMenu;
     }
 
-    private void OpenMenu(InputAction.CallbackContext value)
+    private void OpenMenu(InputAction.CallbackContext obj)
     {
         Menu();
     }

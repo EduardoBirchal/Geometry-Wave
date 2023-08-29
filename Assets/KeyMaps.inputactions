@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "Movimento",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "c2e69e6f-bfbc-40fc-aeff-2a56d57592a1",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -143,12 +143,12 @@
                 },
                 {
                     "name": "AutoAim",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "35b19640-cef1-4b6d-9329-490480fa9f26",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -199,6 +199,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Menu LvL Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Guns",
+            "id": "ca976b60-9cf8-46c0-84d2-2bece819b6c3",
+            "actions": [
+                {
+                    "name": "PassaArma",
+                    "type": "Button",
+                    "id": "57e6492b-f946-4530-966f-a730c47244e3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9ab1ccea-0c5a-4ec3-a054-9a6ba3508b6b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PassaArma",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -53,13 +53,13 @@ public class MenuManager : MonoBehaviour
     }
 
     private void OnDisable() {
-        buttonAutoAim.action.Disable();
-        buttonAutoFire.action.Disable();
         buttonAutoFire.action.performed -= ChangeAutoFire;
         buttonAutoAim.action.performed -= ChangeAutoAim;
+        buttonAutoAim.action.Disable();
+        buttonAutoFire.action.Disable();
     }
 
-    public void ChangeAutoFire(InputAction.CallbackContext obj)
+    private void ChangeAutoFire(InputAction.CallbackContext obj)
     {
         if(PlayerPrefs.GetInt("AutoFire") == 0){
             PlayerPrefs.SetInt("AutoFire", 1);
@@ -67,7 +67,7 @@ public class MenuManager : MonoBehaviour
         else PlayerPrefs.SetInt("AutoFire", 0);
     }
 
-    public void ChangeAutoAim(InputAction.CallbackContext obj)
+    private void ChangeAutoAim(InputAction.CallbackContext obj)
     {
         if(PlayerPrefs.GetInt("AutoAim") == 0){
             PlayerPrefs.SetInt("AutoAim", 1);

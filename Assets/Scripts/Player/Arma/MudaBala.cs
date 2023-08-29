@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Unity.Netcode;
 
 public class MudaBala : NetworkBehaviour
 {
+    [SerializeField] private InputActionReference mudaKeyboard;
+    
     public int numTiros;
     SpriteRenderer sprRenderer;
     GameObject arma;
@@ -17,6 +20,22 @@ public class MudaBala : NetworkBehaviour
         arma = transform.GetChild(0).gameObject;
         EnviarNovoSpriteServerRpc(modoTiro.Value);
     }
+    
+    //Input System functions
+
+    private void OnEnable() {
+        mudaKeyboard.action.Enable();
+        mudaKeyboard.action.performed += GetValorTeclado;
+    }
+
+    private void OnDisable() {
+        mudaKeyboard.action.performed -= GetValorTeclado;
+        mudaKeyboard.action.Disable();
+    }
+
+    private void GetValorTeclado(InputAction.CallbackContext obj) {
+        MudaArma(1);
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,7 +43,6 @@ public class MudaBala : NetworkBehaviour
         if(!IsOwner) return;
         if(TimeManager.paused == true) return;
         GetValorScroll();
-        GetValorTeclado();
     }
 
     [ClientRpc]
@@ -50,10 +68,6 @@ public class MudaBala : NetworkBehaviour
         }
     }
 
-    void GetValorTeclado() {
-        if (Input.GetKeyDown("q") || Input.GetKeyDown("left ctrl"))
-            MudaArma(1);
-    }
 
     void MudaArma(int valorSoma) {
         int novoValor = (modoTiro.Value + valorSoma) % numTiros;

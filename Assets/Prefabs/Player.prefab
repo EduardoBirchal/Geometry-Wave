@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde8b184cfefa0addac4f5477a6a4e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mudaKeyboard: {fileID: 2352496635211373093, guid: 3dfd8bbb382c9659587cc2f49292e495, type: 3}
   numTiros: 4
   spritesPlayer:
   - {fileID: 21300000, guid: 452246a467ad73acbbb3e3602e57adfa, type: 3}
