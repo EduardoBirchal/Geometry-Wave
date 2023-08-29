@@ -31,8 +31,13 @@ public class AtiraInimigo : Atirador
     void GetValores() {
         ValoresSpawn valSpawn = atirador.GetComponent<ValoresSpawn>();
 
-        tipos[tipoBala].danoBala *= valSpawn.multiplicadorDanoBala;
-        tipos[tipoBala].velBala *= valSpawn.multiplicadorVelBala;
+
+        //ALTERA DPS//
+        if(tipos[tipoBala].danoBala < 4 ){
+            tipos[tipoBala].danoBala *= valSpawn.multiplicadorDanoBala;
+            tipos[tipoBala].velBala *= valSpawn.multiplicadorVelBala;
+        }
+
         velAtirarMin = valSpawn.velAtirarMin;
         velAtirarMax = valSpawn.velAtirarMax;
     }

@@ -70,6 +70,28 @@ public class MenuManager : MonoBehaviour
         fade.FadeScene(2);
     }
 
+    public void Facil()
+    {
+        PlayerPrefs.SetFloat("dificuldade", 0.5f);
+        NetStatus.isSingleplayer = true;
+        fade.FadeScene(2);
+    }
+
+    public void Normal()
+    {
+        PlayerPrefs.SetFloat("dificuldade", 1f);
+        NetStatus.isSingleplayer = true;
+        fade.FadeScene(2);
+    }
+
+    public void Dificil()
+    {
+        PlayerPrefs.SetFloat("dificuldade", 2f);
+        NetStatus.isSingleplayer = true;
+        fade.FadeScene(2);
+    }
+
+
     public void CriarSalaOnline()
     {
         NetStatus.isSingleplayer = false;
