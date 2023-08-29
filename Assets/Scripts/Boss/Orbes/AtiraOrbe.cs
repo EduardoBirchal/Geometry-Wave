@@ -26,9 +26,10 @@ public class AtiraOrbe : AtiraInimigo
 
         GetValores();
 
-        StartCoroutine(Recarrega(tempoRecarregaRajada));
-
-        StartCoroutine(AtiraRajada());
+        if (IsHost) {
+            StartCoroutine(Recarrega(tempoRecarregaRajada));
+            StartCoroutine(AtiraRajada());
+        }
     }
 
     void Update() {
@@ -58,6 +59,7 @@ public class AtiraOrbe : AtiraInimigo
             else if (raioAtivado) {
                 rajadasAteAgora = 0;
                 tipoBala = idRaio;
+
                 AtiraServerRpc(tipoBala);
             }
 
