@@ -109,7 +109,10 @@ public class Flock : FuncoesGerais
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
         if(inimigos.Length == 0 && NetworkStart.gameStarted == true) {
-            StartCoroutine(CriaOnda(true)); //onda/ondasEntreBoss == 1));
+            onda++;
+            bool vaiSerBoss = (onda % ondasEntreBoss == 0);
+
+            StartCoroutine(CriaOnda(vaiSerBoss)); 
         }
         else {
             // Espera 1 segundo e executa a função de novo. Não está usando Update porque só precisa rodar 1 vez por segundo em vez de 1 vez por frame.
@@ -166,7 +169,6 @@ public class Flock : FuncoesGerais
     IEnumerator CriaOnda(bool boss) {
         yield return new WaitForSeconds(2);
         int dificuldadeDisponivel = (int) dificuldadeTotal;
-        onda++;
 
         MostrarOndaClientRpc(onda, boss);
 

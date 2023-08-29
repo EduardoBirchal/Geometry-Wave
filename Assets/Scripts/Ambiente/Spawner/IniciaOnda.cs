@@ -9,12 +9,15 @@ public class IniciaOnda : FuncoesGerais
     public float tempoEspera, dificuldade, dificuldadeTotal, tamanhoMargem, alturaTela, larguraTela;
     public GameObject[] inimigosDif1, inimigosDif2, inimigosDif3;
     public AudioSource fonteAudio;
+
     private Vector2 distanciaMargem;
     private GameObject[][] listaInimigos;
     private GameObject texto;
     private FuncoesTexto funcoesTexto;
     private NetworkStart NetworkInfo;
+
     [SerializeField] private AudioClip[] efeitosOnda;
+    [SerializeField] private int ondasEntreBoss;
     
     // Start is called before the first frame update
     void Start()
@@ -77,12 +80,15 @@ public class IniciaOnda : FuncoesGerais
         if (boss) fonteAudio.PlayOneShot(efeitosOnda[1], 1);
         else fonteAudio.PlayOneShot(efeitosOnda[0], 1);
     }
+
     IEnumerator CriaOnda() {
         yield return new WaitForSeconds(2);
+
         int dificuldadeDisponivel = (int) dificuldadeTotal;
         onda++;
+        bool vaiSerBoss = (onda % ondasEntreBoss == 0);
 
-        MostrarOndaClientRpc(onda, false);
+        MostrarOndaClientRpc(onda, vaiSerBoss);
 
         while (dificuldadeDisponivel > 0) {
             // Escolhe o menor número entre numDificuldades e dificuldadeDisponivel
