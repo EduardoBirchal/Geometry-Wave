@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Collections;
-public class Atirador : NetworkBehaviour
+public class Atirador : FuncoesGerais
 {
     public GameObject atirador;
     public AudioSource fonteAudio;
     [SerializeField] private AudioClip[] efeitosArmas;
+    [SerializeField] protected int childIndex;
     protected TipoBala[] tipos;
     protected bool balaCarregada = true;
 
@@ -26,7 +27,7 @@ public class Atirador : NetworkBehaviour
             GameObject balaCriada = Instantiate(bala.prefab, transform.position, transform.rotation * Quaternion.Euler(new Vector3(0, 0, (anguloBala + Random.Range(bala.imprecisaoBala * -1, bala.imprecisaoBala))))); // Soma ou subtrai um ângulo aleatório de no máximo [imprecisaoBala]
             
             balaCriada.GetComponent<NetworkObject>().Spawn();
-            balaCriada.GetComponent<MoveConstante>().CorrectPositionClientRpc(transform.parent.GetComponent<NetworkObject>());
+            balaCriada.GetComponent<MoveConstante>().CorrectPositionClientRpc(transform.parent.GetComponent<NetworkObject>(), childIndex);
             
             ConfiguraEstatisticasBala(balaCriada, bala);
         }
