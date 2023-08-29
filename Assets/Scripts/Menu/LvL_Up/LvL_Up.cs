@@ -13,12 +13,25 @@ public class LvL_Up : MonoBehaviour
     private PlayerGerenciaHP playerHp;
     private PlayerGerenciaXP playerXp;
     private TipoBala[] tipos;
-    private int qntUpgrades = 0, limiteVelAtaque = 0, limiteImprecisao = 0, limiteDashCooldown = 0;
+    private MenuLvL_Up menu;
+    private int qntUpgrades = 0, velAtaque = 0, imprecisao = 0, dashCooldown = 0, vida = 0, dano = 0 ;
+    private int dashCooldownMax = 10, velAtaqueMax = 9, imprecisaoMax = 9, vidaMax = 10000, danoMax = 10000;
 
     void Start()
     {
         tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().player;
+        menu = GameObject.Find("GameManager").GetComponent<MenuLvL_Up>();
         GetPlayerComponents();
+        StringConstructor();
+    }
+
+    private void StringConstructor()
+    {
+        menu.MudaText(0, vida, vidaMax);
+        menu.MudaText(1, dano, danoMax);
+        menu.MudaText(2, dashCooldown, dashCooldownMax);
+        menu.MudaText(3, velAtaque,velAtaqueMax);
+        menu.MudaText(4, imprecisao, imprecisaoMax);
     }
 
     void Update()
@@ -59,15 +72,8 @@ public class LvL_Up : MonoBehaviour
             playerHp.hp +=2;
             playerHp.maxHp += 2;
             qntUpgrades++;
-        }
-    }
-
-    public void DashCooldown()
-    {
-        if(playerDash != null && MaxUpgrades() && limiteDashCooldown <= 10){
-            playerDash.tempoCarrega -= 0.05f;
-            qntUpgrades++;
-            limiteDashCooldown++;
+            vida++;
+            menu.MudaText(0, vida, vidaMax);
         }
     }
 
@@ -77,12 +83,23 @@ public class LvL_Up : MonoBehaviour
             balaComum.dano++;
             balaTeleguiada.dano++;
             qntUpgrades++;
+            menu.MudaText(1, dano, danoMax);
+        }
+    }
+    public void DashCooldown()
+    {
+        if(playerDash != null && MaxUpgrades() && dashCooldown <= dashCooldownMax){
+            playerDash.tempoCarrega -= 0.05f;
+            qntUpgrades++;
+            dashCooldown++;
+            menu.MudaText(2, dashCooldown, dashCooldownMax);
         }
     }
 
+
     public void AumentaVelAtaque()
     {
-        if(MaxUpgrades() && limiteVelAtaque < 10){
+        if(MaxUpgrades() && velAtaque <= velAtaqueMax){
             tipos[0].cooldownTiro_Min -= 0.01f;
             tipos[0].cooldownTiro_Max -= 0.01f;
             tipos[1].cooldownTiro_Min -= 0.05f;
@@ -92,18 +109,20 @@ public class LvL_Up : MonoBehaviour
             tipos[3].cooldownTiro_Min -= 0.02f;
             tipos[3].cooldownTiro_Max -= 0.02f;
             qntUpgrades++;
-            limiteVelAtaque++;
+            velAtaque++;
+            menu.MudaText(3, velAtaque,velAtaqueMax);
         }
     }
 
     public void AumentaPrecisao()
     {
-         if(MaxUpgrades() && limiteImprecisao < 10){
+         if(MaxUpgrades() && imprecisao <= imprecisaoMax){
             tipos[0].imprecisaoBala -= 1.2f;
             tipos[1].imprecisaoBala -= 0.5f;
             tipos[2].arcoTiro -= 2f;
             qntUpgrades++;
-            limiteImprecisao++;
+            imprecisao++;
+            menu.MudaText(4, imprecisao, imprecisaoMax);
         }
     }
 }
