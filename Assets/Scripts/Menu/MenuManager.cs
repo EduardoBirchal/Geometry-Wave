@@ -6,21 +6,10 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 
-
-
 public class MenuManager : MonoBehaviour
 {
-
-    [SerializeField] private GameObject menuInicial;
-    [SerializeField] private GameObject gameModes;
-    [SerializeField] private GameObject dificultSelector;
-    [SerializeField] private GameObject onlineModes;
-    [SerializeField] private GameObject enterOnline;
-    [SerializeField] private GameObject painelOptions;
-    [SerializeField] public GameObject gameplayOptions;
-    [SerializeField] public GameObject soundOptions;
-    [SerializeField] public GameObject graficoshud;
-    [SerializeField] private GameObject inputActionsHud;
+    [SerializeField] private GameObject menuInicial, gameModes, dificultSelector, onlineModes, enterOnline, painelOptions;
+    [SerializeField] public GameObject gameplayOptions, soundOptions, graficoshud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
     [SerializeField] private InputActionReference buttonAutoAim, buttonAutoFire;
@@ -28,11 +17,9 @@ public class MenuManager : MonoBehaviour
     private GoBack goBack;
     private SceneFadeAnimation fade;
     public AudioSource audioGeral, audioTiro, audioWave;
-    public AudioClip somTiro, somWave;
     public Slider sliderHud;
     public Slider VolGeral, VolWave, VolTiro;
-    public Toggle toggle_AutoAim;
-    public Toggle toggle_AutoFire;
+    public Toggle toggle_AutoAim, toggle_AutoFire;
 
     void Start()
     {
@@ -117,6 +104,28 @@ public class MenuManager : MonoBehaviour
         fade.FadeScene(2);
     }
 
+    public void Facil()
+    {
+        PlayerPrefs.SetFloat("dificuldade", 0.5f);
+        NetStatus.isSingleplayer = true;
+        fade.FadeScene(2);
+    }
+
+    public void Normal()
+    {
+        PlayerPrefs.SetFloat("dificuldade", 1f);
+        NetStatus.isSingleplayer = true;
+        fade.FadeScene(2);
+    }
+
+    public void Dificil()
+    {
+        PlayerPrefs.SetFloat("dificuldade", 2f);
+        NetStatus.isSingleplayer = true;
+        fade.FadeScene(2);
+    }
+
+
     public void CriarSalaOnline()
     {
         NetStatus.isSingleplayer = false;
@@ -172,12 +181,12 @@ public class MenuManager : MonoBehaviour
 
     public void AudioReturnTiro()
     {
-        audioTiro.PlayOneShot(somTiro);
+        if(!audioTiro.isPlaying || !audioWave.isPlaying) audioTiro.Play();
     }
 
     public void AudioReturnWave()
     {
-        audioWave.PlayOneShot(somWave);
+        if(!audioWave.isPlaying || !audioTiro.isPlaying) audioWave.Play();
     }
 
     public void SoundOptions()
@@ -191,16 +200,22 @@ public class MenuManager : MonoBehaviour
         goBack.menus.Push(soundOptions);
     }
 
+    public void SaveHudSize()
+    {
+        sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
+        PlayerPrefs.Save();
+    }
+
     public void GraficosHud()
     {
         graficoshud.SetActive(true);
 
-        sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
-        
+        SaveHudSize();
+
         goBack.menus.Push(graficoshud);
     }
 
-    public void CloseGamePlayOptions()
+    public void SaveAutomatics()
     {
         if(toggle_AutoAim.isOn == false){
             PlayerPrefs.SetInt("AutoAim", 0);
@@ -212,17 +227,26 @@ public class MenuManager : MonoBehaviour
         }
         else PlayerPrefs.SetInt("AutoFire", 1);
 
+        PlayerPrefs.Save();
+    }
+
+    public void CloseGamePlayOptions()
+    {
+        SaveAutomatics();
         goBack.GoToLastMenu();
     }
 
-    public void CloseSoundOptions()
+    public void SaveVolume()
     {
-
         PlayerPrefs.SetFloat("SliderVolGeral", VolGeral.value);
         PlayerPrefs.SetFloat("SliderVolTiro", VolTiro.value);
         PlayerPrefs.SetFloat("SliderVolWave", VolWave.value);
         PlayerPrefs.Save();
+    }
 
+    public void CloseSoundOptions()
+    {
+        SaveVolume();
         goBack.GoToLastMenu();
     }
 
@@ -231,31 +255,6 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
 
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseOptions()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseGameModes()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseSolo()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseOnline()
-    {
-        goBack.GoToLastMenu();
-    }
-
-    public void CloseEnterOnline()
-    {
         goBack.GoToLastMenu();
     }
     

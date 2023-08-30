@@ -23,20 +23,26 @@ public class GoBack : MonoBehaviour
 
     void Update()
     {
-        if(GameObject.Find("GameManager").GetComponent<MenuInGame>() != null && menus.Count <= 1){
-            if(Input.GetKeyDown("escape") && gameMenu.menu.activeSelf == false && lvl_UpMenu.menuLvL_Up.activeSelf == false)
+        bool isPressionadoEsc = Input.GetKeyDown("escape");
+        bool menuInGameExist = GameObject.Find("GameManager").GetComponent<MenuInGame>() != null;
+
+        if(menuInGameExist && menus.Count <= 1){
+
+            bool menusDisable = gameMenu.menu.activeSelf == false && lvl_UpMenu.menuLvL_Up.activeSelf == false;
+
+            if(isPressionadoEsc && menusDisable)
             {
                 MenuInGame.isOpen = true;
                 timeManager.Pause();
                 menus.Push(gameMenu.menu);
                 gameMenu.menu.SetActive(true);
             }
-            else if(Input.GetKeyDown("escape") )
+            else if(isPressionadoEsc )
             {
                 Continuar();
             }
         }
-        else if(Input.GetKeyDown("escape"))
+        else if(isPressionadoEsc)
         {
             Debug.Log(rebindingPanel.activeSelf);
             if(menus.Count > 0 &&  rebindingPanel.activeSelf == false)
@@ -52,27 +58,15 @@ public class GoBack : MonoBehaviour
     {
         if(menus.Peek() == menuGeral.gameplayOptions)
         {
-            if(menuGeral.toggle_AutoAim.isOn == false){
-                PlayerPrefs.SetInt("AutoAim", 0);
-            }
-            else PlayerPrefs.SetInt("AutoAim", 1); 
-
-            if(menuGeral.toggle_AutoFire.isOn == false){
-                PlayerPrefs.SetInt("AutoFire", 0);
-            }
-            else PlayerPrefs.SetInt("AutoFire", 1);
+            menuGeral.SaveAutomatics();
         }
         else if(menus.Peek() == menuGeral.graficoshud)
         {
-            PlayerPrefs.SetFloat("HudSizeValue", menuGeral.sliderHud.value);
-            PlayerPrefs.Save();
+            menuGeral.SaveHudSize();
         }
         else if(menus.Peek() == menuGeral.soundOptions)
         {
-            PlayerPrefs.SetFloat("SliderVolGeral", menuGeral.VolGeral.value);
-            PlayerPrefs.SetFloat("SliderVolTiro", menuGeral.VolTiro.value);
-            PlayerPrefs.SetFloat("SliderVolWave", menuGeral.VolWave.value);
-            PlayerPrefs.Save();
+            menuGeral.SaveVolume();
         }
     }
 

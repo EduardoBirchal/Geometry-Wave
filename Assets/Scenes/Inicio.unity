@@ -1983,8 +1983,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1508623303}
-        m_TargetAssemblyTypeName: Menus.MenuManager, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: Normal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2481,8 +2481,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1508623303}
-        m_TargetAssemblyTypeName: Menus.MenuManager, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: Dificil
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2982,7 +2982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0.000091552734}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672509100
@@ -6489,8 +6489,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1508623303}
-        m_TargetAssemblyTypeName: Menus.MenuManager, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: Facil
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8776,6 +8776,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 191817375}
     m_Modifications:
+    - target: {fileID: 1989795567, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a5304c7f393633ba9f3a9a98ee6798d, type: 3}
+    - target: {fileID: 1989795569, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b3a25977c7f3d05aa80906b6601a6fae, type: 3}
+    - target: {fileID: 1989795570, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a5304c7f393633ba9f3a9a98ee6798d, type: 3}
     - target: {fileID: 1303985370852690700, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

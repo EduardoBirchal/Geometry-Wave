@@ -32,6 +32,7 @@ public class PlayerGerenciaXP : MonoBehaviour
     void checaXp() {
         if (xp >= maxXp) {
             xp = 0;
+            maxXp *= 2;
             level++;
         }
     }
