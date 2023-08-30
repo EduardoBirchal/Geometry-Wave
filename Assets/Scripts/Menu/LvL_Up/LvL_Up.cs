@@ -19,7 +19,7 @@ public class LvL_Up : MonoBehaviour
 
     void Start()
     {
-        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().player;
+        tipos = GameObject.Find("GameManager").GetComponent<TipoTiro>().player;
         menu = GameObject.Find("GameManager").GetComponent<MenuLvL_Up>();
         GetPlayerComponents();
         StringConstructor();
@@ -56,11 +56,16 @@ public class LvL_Up : MonoBehaviour
         else return false;
     }
 
-    public void GetPlayerComponents(GameObject player)
+    public void GetPlayerComponents()
     {
-        playerHp = player.GetComponent<PlayerGerenciaHP>();
-        playerXp = player.GetComponent<PlayerGerenciaXP>();
-        playerDash = player.GetComponent<PlayerDash>();
+        if(player == null){
+            player = GameObject.Find("Player");
+        }
+        if(player != null){
+            playerHp = player.GetComponent<PlayerGerenciaHP>();
+            playerXp = player.GetComponent<PlayerGerenciaXP>();
+            playerDash = player.GetComponent<PlayerDash>();
+        }
     }
 
     public void AumentaHP()
