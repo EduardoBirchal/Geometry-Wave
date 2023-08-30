@@ -34,7 +34,7 @@ public class NetHandler : NetworkBehaviour
     public void OnClientConnectedCallback(ulong obj)
     {
         NetStatus.status = ConnectionResponse.Connected;
-        if(!IsHost) return;
+        if(!IsServer) return;
 
         if(NetManager.ConnectedClientsIds.Count > NetStatus.MaxNumPlayers)
             Debug.LogError("Numero de players exedido. Revise seu código!");
@@ -46,11 +46,12 @@ public class NetHandler : NetworkBehaviour
         NetStatus.status = ConnectionResponse.Offline;
         if (IsClient && NetManager.DisconnectReason != string.Empty)
         {
-            screen_Error.GetComponent<Error>().state = Error.PopupState.Error;
+            Error script_Error = screen_Error.GetComponent<Error>();
+            script_Error.state = Error.PopupState.Error;
             script_Error.text = NetManager.DisconnectReason;
-            screen_Error.SetActive(true);
+            script_Error.UpdateState();
         }
-        if(!IsHost) return;
+        if(!IsServer) return;
 
         if(NetManager.ConnectedClientsIds.Count < 0)
             Debug.LogError("Numero negativo de players. Revise seu código!");
