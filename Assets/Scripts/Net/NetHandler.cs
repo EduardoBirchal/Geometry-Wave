@@ -47,6 +47,7 @@ public class NetHandler : NetworkBehaviour
         if (IsClient && NetManager.DisconnectReason != string.Empty)
         {
             screen_Error.GetComponent<Error>().state = Error.PopupState.Error;
+            script_Error.text = NetManager.DisconnectReason;
             screen_Error.SetActive(true);
         }
         if(!IsHost) return;
