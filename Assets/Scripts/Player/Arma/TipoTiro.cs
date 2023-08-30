@@ -3,7 +3,7 @@ using Unity.Netcode;
 using Unity.Collections;
 using System.Collections.Generic;
 
-public struct TipoBala
+public class TipoBala
 {
     public int numBalas, perfuracao;
     public float velBala, cooldownTiro_Min, cooldownTiro_Max, imprecisaoBala, arcoTiro, danoBala;

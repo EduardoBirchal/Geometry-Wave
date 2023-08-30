@@ -7352,6 +7352,7 @@ GameObject:
   - component: {fileID: 6}
   - component: {fileID: 10}
   - component: {fileID: 8916536697208165622}
+  - component: {fileID: 8916536697208165623}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7462,6 +7463,22 @@ MonoBehaviour:
   points: {fileID: 614298337}
   balaComum: {fileID: 5936803030163731997, guid: bd06418c4902fd040ad53f31cef93c30, type: 3}
   balaTeleguiada: {fileID: -1157766661186971356, guid: 10df45d1dcb682b6fa2917cdf9e9e66a, type: 3}
+--- !u!114 &8916536697208165623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2340701520318260501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f4ceeba0ed764708ae3d38dc4d1cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aumentoDificuldade: 0
+  bonusDanoBala: 0
+  bonusVelBala: 0
+  dificuldade: 0
 --- !u!1001 &9095538916316106276
 PrefabInstance:
   m_ObjectHideFlags: 0

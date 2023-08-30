@@ -7,13 +7,14 @@ using Unity.Netcode;
 public class Flock : FuncoesGerais
 {
     public int onda = 0, numDificuldades;
-    public float tempoEspera, dificuldade, dificuldadeTotal, tamanhoMargem, alturaTela, larguraTela;
+    public float tempoEspera, dificuldadeTotal, tamanhoMargem, alturaTela, larguraTela;
     public GameObject[] inimigosDif1, inimigosDif2, inimigosDif3;
     public AudioSource fonteAudio;
     private Vector2 distanciaMargem;
     private GameObject[][] listaInimigos;
     private GameObject texto;
     private FuncoesTexto funcoesTexto;
+    private DifficultyManager difficultyManager;
     [SerializeField] private AudioClip[] efeitosOnda;
 
     public FlockAgent agentPrefab;
@@ -38,18 +39,22 @@ public class Flock : FuncoesGerais
     // Start is called before the first frame update
     void Start()
     {
-        dificuldade = PlayerPrefs.GetFloat("dificuldade");
+        difficultyManager = GameObject.Find("GameManager").GetComponent<DifficultyManager>();
+
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
 
         gameObject.name = "SpawnerInimigo";
         distanciaMargem = new Vector2(larguraTela - tamanhoMargem, alturaTela - tamanhoMargem);
-        dificuldadeTotal *= dificuldade;
+        dificuldadeTotal *= difficultyManager.dificuldade;
         listaInimigos = new GameObject[][] {inimigosDif1};
         
         texto = GameObject.Find("TextoGrandeMapa");
         funcoesTexto = texto.GetComponent<FuncoesTexto>();
+
+        
+
         if(IsHost)
             IniciarChecaInimigosServerRpc();
     }
@@ -102,6 +107,7 @@ public class Flock : FuncoesGerais
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
         if(inimigos.Length == 0 && NetStatus.gameStarted == true) {
+            difficultyManager.AumentaDificuldade();
             StartCoroutine(CriaOnda());
         }
         else {
