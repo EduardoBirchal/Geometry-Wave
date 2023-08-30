@@ -16,6 +16,21 @@ public class NetHandler : NetworkBehaviour
         NetManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         net_Status = GameObject.Find("Network").GetComponent<NetStatus>();
     }
+    public void ShutdownServer()
+    {
+        if(IsHost)
+        {
+            for (int i = NetworkManager.ConnectedClientsIds.Count - 1; i >= 0; i--)
+            {
+                var id = NetworkManager.ConnectedClientsIds[i];
+                if (id != NetworkManager.LocalClientId)
+                    NetworkManager.DisconnectClient(id, "Jogo encerrado pelo host");
+            }
+        }
+        NetworkManager.Singleton.Shutdown();
+        if(NetworkManager.Singleton != null) Destroy(NetworkManager.Singleton.gameObject);
+    }
+
     public void OnClientConnectedCallback(ulong obj)
     {
         NetStatus.status = ConnectionResponse.Connected;
@@ -42,6 +57,7 @@ public class NetHandler : NetworkBehaviour
         if(net_Status.PlayersAlive.Value < 0)
             Debug.LogWarning("Todos os players estão mortos!");
     }
+
     public void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
     {
         var clientId = request.ClientNetworkId;

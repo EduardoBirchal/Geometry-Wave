@@ -4065,7 +4065,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2340701520318260498}
         m_TargetAssemblyTypeName: MenuInGame, Assembly-CSharp
         m_MethodName: Inicio
         m_Mode: 1
@@ -6439,6 +6439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 5657181454398760757, guid: 25572ce4fd4f78def8eb5adb671fd87f, type: 3}
   btn_Start: {fileID: 591063873}
+  screen_Error: {fileID: 737920863}
 --- !u!114 &2340701520318260498
 MonoBehaviour:
   m_ObjectHideFlags: 0

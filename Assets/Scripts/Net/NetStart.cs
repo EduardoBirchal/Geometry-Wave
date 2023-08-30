@@ -9,6 +9,7 @@ public class NetStart : MonoBehaviour
 {
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject btn_Start;
+    [SerializeField] private GameObject screen_Error;
     private NetStatus netStatus;
     private NetworkManager netManager;
     private NetHandler connectHandler;
@@ -56,7 +57,7 @@ public class NetStart : MonoBehaviour
     {
         const int TRIES = 5;
         const int WAIT_TIME = 1 * 1000;
-        Error script_Error = GameObject.Find("Error(Hud)").GetComponent<Error>();
+        Error script_Error = screen_Error.GetComponent<Error>();
         script_Error.state = Error.PopupState.Waiting;
         script_Error.UpdateState();
         
