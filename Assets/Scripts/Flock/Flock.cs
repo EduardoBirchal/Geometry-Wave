@@ -154,10 +154,14 @@ public class Flock : FuncoesGerais
     [ClientRpc]
     void MostrarOndaClientRpc(int onda, bool boss)
     {
-        funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
-
-        if (boss) fonteAudio.PlayOneShot(efeitosOnda[1]);
-        else fonteAudio.PlayOneShot(efeitosOnda[0]);
+        if (boss) {
+            funcoesTexto.MostraFade(1.5f, 1.5f, "CHEFÃO");
+            fonteAudio.PlayOneShot(efeitosOnda[1]);
+        } 
+        else {
+            funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
+            fonteAudio.PlayOneShot(efeitosOnda[0]);
+        }
     }
 
     IEnumerator CriaOnda(bool boss) {
@@ -167,6 +171,7 @@ public class Flock : FuncoesGerais
         MostrarOndaClientRpc(onda, boss);
 
         if (boss) {
+            yield return new WaitForSeconds(2f);
             SpawnaBoss();
         }
         else {
