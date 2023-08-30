@@ -40,8 +40,8 @@ public class LvL_Up : MonoBehaviour
     public void AumentaHP()
     {
         if(playerHp != null && MaxUpgrades()){
-            playerHp.hp +=2;
-            playerHp.maxHp += 2;
+            playerHp.hp.Value += 2;
+            playerHp.maxHp.Value += 2;
             qntUpgrades++;
         }
     }

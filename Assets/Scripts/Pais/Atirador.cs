@@ -14,7 +14,6 @@ public class Atirador : NetworkBehaviour
     // Calcula o ângulo da bala e cria ela no ângulo
     protected void CriaBala(TipoBala bala)
     {
-        // GameObject prefab = Resources.Load<GameObject>("Assets/Prefabs/" + bala.prefab + ".prefab", typeof(GameObject)) as GameObject;
         for (int i=0; i<bala.numBalas; i++) { // Repete pra cada bala
             float anguloBala = 1f; 
             // Se numBalas=1, o trecho "arcoTiro/(bala.numBalas-1)" vai tentar dividir por 0, então quando numBalas=1, o ângulo vira 1 sem fazer o cálculo
