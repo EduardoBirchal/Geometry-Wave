@@ -13,7 +13,8 @@ public class MorreInimigo : NetworkBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        playerXp = player.GetComponent<PlayerGerenciaXP>();
+        
+        if(player) playerXp = player.GetComponent<PlayerGerenciaXP>();
 
         valorXp = GetComponent<ValoresSpawn>().valorXp;
     }
