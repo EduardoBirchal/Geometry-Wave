@@ -25,14 +25,14 @@ public class MovePlayer : MoveAutomatico
     {
         movement.action.Enable();
         movement.action.performed += MovementPerform;
-        movement.action.canceled += MovementPerform;
+        movement.action.canceled += movementCanceled;
     }
     
     private void OnDisable()
     {
-        movement.action.Disable();
         movement.action.performed -= MovementPerform;
-        movement.action.canceled -= MovementPerform;
+        movement.action.canceled -= movementCanceled;
+        movement.action.Disable();
     }
 
     private void MovementPerform(InputAction.CallbackContext value)

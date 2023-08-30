@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "Movimento",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c2e69e6f-bfbc-40fc-aeff-2a56d57592a1",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
