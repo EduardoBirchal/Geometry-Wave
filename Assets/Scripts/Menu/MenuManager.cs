@@ -174,6 +174,7 @@ public class MenuManager : MonoBehaviour
         gameplayOptions.SetActive(true);
         
         toggle_AutoFire.isOn = AutoFire();
+        toggle_AutoAim.isOn = AutoAim();
 
         goBack.menus.Push(gameplayOptions);
     }
@@ -206,17 +207,11 @@ public class MenuManager : MonoBehaviour
         goBack.menus.Push(soundOptions);
     }
 
-    public void SaveHudSize()
-    {
-        sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
-        PlayerPrefs.Save();
-    }
-
     public void GraficosHud()
     {
         graficoshud.SetActive(true);
 
-        SaveHudSize();
+        sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
 
         goBack.menus.Push(graficoshud);
     }
@@ -256,11 +251,14 @@ public class MenuManager : MonoBehaviour
         goBack.GoToLastMenu();
     }
 
-    public void CloseGraficosHud()
+    public void SaveHudSize()
     {
         PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
-
+    }
+    public void CloseGraficosHud()
+    {
+        SaveHudSize();
         goBack.GoToLastMenu();
     }
     
