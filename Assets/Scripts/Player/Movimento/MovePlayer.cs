@@ -86,7 +86,7 @@ public class MovePlayer : MoveAutomatico
         if (miraAutomatico) {
             GameObject inimigoMaisProximo = ProcuraObjMaisProximo("Inimigo");
 
-            if (inimigoMaisProximo) ViraPraObjeto(inimigoMaisProximo.transform.position); 
+            if (inimigoMaisProximo) ViraPraObjeto(inimigoMaisProximo.transform.position, false); 
         } 
         else {
             SegueMouse();
@@ -95,7 +95,7 @@ public class MovePlayer : MoveAutomatico
 
     void SegueMouse() {
         if(!IsOwner) return;
-        ViraPraObjeto(Camera.main.ScreenToWorldPoint(Input.mousePosition)); 
+        ViraPraObjeto(Camera.main.ScreenToWorldPoint(Input.mousePosition), false); 
 
         /*
         Vector3 posMouse = Input.mousePosition;

@@ -16,7 +16,11 @@ public class MoveAutomatico : FuncoesGerais
         transform.Translate(new Vector2(0, velocidade.Value * Time.deltaTime));
     }
 
-    protected void ViraPraObjeto(Vector3 posAlvo) {
+    protected void MoveDireita() {
+        transform.Translate(new Vector2(velocidade.Value * Time.deltaTime, 0));
+    }
+
+    public void ViraPraObjeto(Vector3 posAlvo, bool inverter) {
         Vector3 posInimigo = transform.position;
 
         float meuAngulo = transform.eulerAngles.z;
@@ -25,6 +29,9 @@ public class MoveAutomatico : FuncoesGerais
         anguloAlvo = ConvertePra360(anguloAlvo); 
         // O jeito que os ângulos existem na Unity é que os valores deles não são de 0 a 360, mas sim de -179 a 180.
         // Isso torna todos os cálculos um pesadelo e essa função desfaz isso.
+
+        if (inverter)
+            anguloAlvo += 180;
         
         float diferencaAngulo = anguloAlvo - meuAngulo;
         float diferencaAnguloInvertida = (Mathf.Abs(diferencaAngulo) - 360) * Mathf.Sign(diferencaAngulo);

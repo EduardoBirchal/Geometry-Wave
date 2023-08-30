@@ -5,16 +5,14 @@ using Unity.Netcode;
 
 public class AtiraInimigo : Atirador
 {
-    public float velAtirarMax, velAtirarMin;
-    public string nomeBala;
-    private int tipoBala;
+    private float velAtirarMax, velAtirarMin;
+    [SerializeField] protected int tipoBala;
 
     void Start() 
     {
         tipos = GameObject.Find("GameManager").GetComponent<TipoTiro>().inimigo;
         atirador = transform.parent.gameObject;
         balaCarregada = false;
-        tipoBala = 0;
 
         GetValores();
 
@@ -28,7 +26,7 @@ public class AtiraInimigo : Atirador
     }
 
 
-    void GetValores() {
+    protected void GetValores() {
         ValoresSpawn valSpawn = atirador.GetComponent<ValoresSpawn>();
 
 
