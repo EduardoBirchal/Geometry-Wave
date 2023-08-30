@@ -132,6 +132,12 @@ public class MenuManager : MonoBehaviour
         texto_ip = NetHandler.GetLocalIPv4();
         fade.FadeScene(2);
     }
+    
+    public void MenuInicial()
+    {
+        menuInicial.SetActive(true);
+        goBack.menus.Push(menuInicial);
+    }
 
     public void GameModes()
     {

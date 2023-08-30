@@ -27,12 +27,6 @@ public class MenuInGame : MonoBehaviour
         goBack.menus.Push(quitConfirmation);
     }
 
-    public void CloseQuitConfirmation()
-    {
-        menu.SetActive(true);
-        goBack.GoToLastMenu();
-    }
-
     public void Inicio()
     {
         GameObject.Find("GameManager").GetComponent<TimeManager>().Resume();
