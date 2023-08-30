@@ -32,7 +32,7 @@ public class TipoTiro : MonoBehaviour
     public TipoBala[] player;
     public TipoBala[] inimigo;
     
-    public void Start()
+    public void Awake()
     {
         player = new TipoBala[]{
             // METRALHADORA
@@ -64,7 +64,7 @@ public class TipoTiro : MonoBehaviour
             // SHOTGUN
             new TipoBala(
                 5, // Número de balas
-                5f, // Dano
+                2f, // Dano
                 9f, // Velocidade da bala
                 0.75f, // Cooldown Minimo (em segundos)
                 0.75f, // Cooldown Maximo (em segundos)

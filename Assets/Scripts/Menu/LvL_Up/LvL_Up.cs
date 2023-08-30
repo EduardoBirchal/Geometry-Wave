@@ -102,6 +102,7 @@ public class LvL_Up : MonoBehaviour
     public void AumentaVelAtaque()
     {
         if(MaxUpgrades() && velAtaque <= velAtaqueMax){
+            Debug.Log(tipos);
             tipos[0].cooldownTiro_Min -= 0.01f;
             tipos[0].cooldownTiro_Max -= 0.01f;
             tipos[1].cooldownTiro_Min -= 0.05f;
