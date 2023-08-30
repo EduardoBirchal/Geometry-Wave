@@ -44,7 +44,7 @@ public class NetHandler : NetworkBehaviour
     public void OnClientDisconnectCallback(ulong obj)
     {
         NetStatus.status = ConnectionResponse.Offline;
-        if (IsClient && NetManager.DisconnectReason != string.Empty)
+        if (!IsServer && NetManager.DisconnectReason != string.Empty)
         {
             Error script_Error = screen_Error.GetComponent<Error>();
             script_Error.state = Error.PopupState.Error;
