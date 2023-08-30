@@ -27,11 +27,11 @@ public class LvL_Up : MonoBehaviour
 
     private void StringConstructor()
     {
-        menu.MudaText(0, vida, vidaMax);
-        menu.MudaText(1, dano, danoMax);
-        menu.MudaText(2, dashCooldown, dashCooldownMax);
-        menu.MudaText(3, velAtaque,velAtaqueMax);
-        menu.MudaText(4, imprecisao, imprecisaoMax);
+        menu.MudaTextoPontosGastos(0, vida, vidaMax);
+        menu.MudaTextoPontosGastos(1, dano, danoMax);
+        menu.MudaTextoPontosGastos(2, dashCooldown, dashCooldownMax);
+        menu.MudaTextoPontosGastos(3, velAtaque,velAtaqueMax);
+        menu.MudaTextoPontosGastos(4, imprecisao, imprecisaoMax);
     }
 
     void Update()
@@ -39,11 +39,12 @@ public class LvL_Up : MonoBehaviour
         if(playerXp == null){
             GetPlayerComponents();
         }
-        points.text = "Pontos de level up disponíveis: " +  (playerXp.level - qntUpgrades);
-        if(MaxUpgrades())
-        {
-            menu.Notification("!");
-        }else menu.Notification("");
+
+        menu.MudaTextoPontosDisponiveis((playerXp.level - qntUpgrades));
+
+        if(MaxUpgrades()) menu.Notification("!");
+        else menu.Notification("");
+        
     }
 
     public bool MaxUpgrades()
@@ -77,7 +78,7 @@ public class LvL_Up : MonoBehaviour
             playerHp.maxHp += 2;
             qntUpgrades++;
             vida++;
-            menu.MudaText(0, vida, vidaMax);
+            menu.MudaTextoPontosGastos(0, vida, vidaMax);
         }
     }
 
@@ -87,19 +88,19 @@ public class LvL_Up : MonoBehaviour
             balaComum.dano++;
             balaTeleguiada.dano++;
             qntUpgrades++;
-            menu.MudaText(1, dano, danoMax);
+            menu.MudaTextoPontosGastos(1, dano, danoMax);
         }
     }
+
     public void DashCooldown()
     {
         if(playerDash != null && MaxUpgrades() && dashCooldown <= dashCooldownMax){
             playerDash.tempoCarrega -= 0.05f;
             qntUpgrades++;
             dashCooldown++;
-            menu.MudaText(2, dashCooldown, dashCooldownMax);
+            menu.MudaTextoPontosGastos(2, dashCooldown, dashCooldownMax);
         }
     }
-
 
     public void AumentaVelAtaque()
     {
@@ -112,9 +113,10 @@ public class LvL_Up : MonoBehaviour
             tipos[2].cooldownTiro_Max -= 0.05f;
             tipos[3].cooldownTiro_Min -= 0.02f;
             tipos[3].cooldownTiro_Max -= 0.02f;
+
             qntUpgrades++;
             velAtaque++;
-            menu.MudaText(3, velAtaque,velAtaqueMax);
+            menu.MudaTextoPontosGastos(3, velAtaque,velAtaqueMax);
         }
     }
 
@@ -124,9 +126,10 @@ public class LvL_Up : MonoBehaviour
             tipos[0].imprecisaoBala -= 1.2f;
             tipos[1].imprecisaoBala -= 0.5f;
             tipos[2].arcoTiro -= 2f;
+
             qntUpgrades++;
             imprecisao++;
-            menu.MudaText(4, imprecisao, imprecisaoMax);
+            menu.MudaTextoPontosGastos(4, imprecisao, imprecisaoMax);
         }
     }
 }

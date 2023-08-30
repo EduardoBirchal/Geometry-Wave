@@ -6694,6 +6694,7 @@ MonoBehaviour:
   - {fileID: 649400407}
   - {fileID: 158515207}
   notificacao: {fileID: 931731685}
+  points: {fileID: 614298337}
 --- !u!1 &2009797696
 GameObject:
   m_ObjectHideFlags: 0

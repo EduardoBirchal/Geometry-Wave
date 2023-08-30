@@ -158,16 +158,22 @@ public class MenuManager : MonoBehaviour
         goBack.menus.Push(soundOptions);
     }
 
+    public void SaveHudSize()
+    {
+        sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
+        PlayerPrefs.Save();
+    }
+
     public void GraficosHud()
     {
         graficoshud.SetActive(true);
 
-        sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
-        
+        SaveHudSize();
+
         goBack.menus.Push(graficoshud);
     }
 
-    public void CloseGamePlayOptions()
+    public void SaveAutomatics()
     {
         if(toggle_AutoAim.isOn == false){
             PlayerPrefs.SetInt("AutoAim", 0);
@@ -179,17 +185,26 @@ public class MenuManager : MonoBehaviour
         }
         else PlayerPrefs.SetInt("AutoFire", 1);
 
+        PlayerPrefs.Save();
+    }
+
+    public void CloseGamePlayOptions()
+    {
+        SaveAutomatics();
         goBack.GoToLastMenu();
     }
 
-    public void CloseSoundOptions()
+    public void SaveVolume()
     {
-
         PlayerPrefs.SetFloat("SliderVolGeral", VolGeral.value);
         PlayerPrefs.SetFloat("SliderVolTiro", VolTiro.value);
         PlayerPrefs.SetFloat("SliderVolWave", VolWave.value);
         PlayerPrefs.Save();
+    }
 
+    public void CloseSoundOptions()
+    {
+        SaveVolume();
         goBack.GoToLastMenu();
     }
 
