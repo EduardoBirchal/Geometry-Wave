@@ -10,6 +10,7 @@ public class GoBack : MonoBehaviour
     private MenuManager menuGeral;
     private TimeManager timeManager;
 
+    [SerializeField] private GameObject rebindingPanel;
     public Stack<GameObject> menus = new Stack<GameObject>();
 
     void Start()
@@ -37,10 +38,13 @@ public class GoBack : MonoBehaviour
         }
         else if(Input.GetKeyDown("escape"))
         {
-            if(menus.Count > 0)
+            Debug.Log(rebindingPanel.activeSelf);
+            if(menus.Count > 0 &&  rebindingPanel.activeSelf == false)
             {
                 GoToLastMenu();
             }
+            Debug.Log(rebindingPanel.activeSelf);
+
         }
     }
 
