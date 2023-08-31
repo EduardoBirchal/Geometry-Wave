@@ -12,11 +12,13 @@ public class MovePlayer : MoveAutomatico
     public Vector3 vetorMove;
     private Vector2 movimento;
     private MenuManager menu;
+    private GameObject playerMove;
 
     void Start() 
     {
         velAtual = vel;
         menu = GameObject.Find("GameManager").GetComponent<MenuManager>();
+        playerMove = gameObject.GetComponent<PlayerInput>();
     }
 
     //Input Actions Functions
@@ -51,6 +53,8 @@ public class MovePlayer : MoveAutomatico
         {
             miraAutomatico = menu.AutoAim();
             
+            if(playerMove.activeSelf == false) playerMove.SetActive(true);
+
             if (move) {
                 velAtual = vel;
             }
