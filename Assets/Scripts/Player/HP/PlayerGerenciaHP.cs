@@ -28,16 +28,17 @@ public class PlayerGerenciaHP : NetworkBehaviour
     Collider2D colisor;
     [SerializeField] private GameObject death_Screen;
 
-    // Start is called before the first frame update
+    void OnNetworkStart()
+    {
+        maxHp.Value = 10;
+        hp.Value = maxHp.Value;
+        tempoInvulneravel.Value = 2.0f;
+    }
     void Start()
     {
         barra = GameObject.Find("VidaBarra").GetComponent<Image>();
         sprRenderer = GetComponent<SpriteRenderer>();
         colisor = GetComponent<Collider2D>();
-
-        maxHp.Value = 10;
-        hp.Value = maxHp.Value;
-        tempoInvulneravel.Value = 2.0f;
     }
 
     void Update()
