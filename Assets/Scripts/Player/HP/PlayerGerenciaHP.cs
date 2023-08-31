@@ -40,7 +40,9 @@ public class PlayerGerenciaHP : NetworkBehaviour
         tempoInvulneravel.Value = 2.0f;
     }
 
-    void Update() {
+    void Update()
+    {
+        if(!IsOwner) return;
         EsticaBarraHP();
     }
 
