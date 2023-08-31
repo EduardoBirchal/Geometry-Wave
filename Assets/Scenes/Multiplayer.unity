@@ -5827,8 +5827,61 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2032754213169284665, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
+--- !u!1 &1743683215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2032754212260316549, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
+  m_PrefabInstance: {fileID: 1743683214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743683216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743683215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NotificationBehavior: 0
+  m_MaxPlayerCount: -1
+  m_AllowJoining: 1
+  m_JoinBehavior: 0
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 4976682552676660537, guid: 7c290e61c32fb4041a384fadf5286577, type: 3}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &1797029128
 GameObject:
   m_ObjectHideFlags: 0
