@@ -2534,8 +2534,8 @@ MonoBehaviour:
   objMessage: {fileID: 1655415348}
   objButton: {fileID: 1256668902}
   objFlag: {fileID: 1037468658}
-  sucessSprite: {fileID: 21300000, guid: 138c1252a1b03658a82c3c96481302f6, type: 3}
-  failSprite: {fileID: 21300000, guid: c8e7d66e9e1b8d249ba7c5df2ed2691f, type: 3}
+  sucessSprite: {fileID: 21300000, guid: 0fde87a0de64c440e8d5900e65d05fe1, type: 3}
+  failSprite: {fileID: 21300000, guid: 1447b94bf3277da88aa38932c175b6d4, type: 3}
   text: 
   state: 4
 --- !u!1 &758405421
@@ -5909,7 +5909,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd7d79b744c178a49b498615acc9f72f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7f8b039200f99b25bac9e3977e467bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5985,7 +5985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5f1184813a19f18459d23dacc47800e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7f8b039200f99b25bac9e3977e467bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
