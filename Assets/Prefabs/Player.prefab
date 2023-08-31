@@ -342,7 +342,27 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2e69e6f-bfbc-40fc-aeff-2a56d57592a1
+    m_ActionName: Player/Movimento[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6c279dc3-f519-4c12-bff8-3ccc389b7419
+    m_ActionName: Automatics/AutoFire[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 35b19640-cef1-4b6d-9329-490480fa9f26
+    m_ActionName: Automatics/AutoAim[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 28465cc4-e087-436b-a209-2d6c454c4f0a
+    m_ActionName: UI/Menu LvL Up[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 57e6492b-f946-4530-966f-a730c47244e3
+    m_ActionName: Guns/PassaArma[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: KeyBoard
   m_DefaultActionMap: Player
