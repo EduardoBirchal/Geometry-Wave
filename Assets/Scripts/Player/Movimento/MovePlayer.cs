@@ -53,7 +53,7 @@ public class MovePlayer : MoveAutomatico
         {
             miraAutomatico = menu.AutoAim();
             
-            if(playerMove == null) movement.action.Enable();
+            if(playerMove.enabled != true) playerMove.enabled = true;
 
             if (move) {
                 velAtual = vel;
