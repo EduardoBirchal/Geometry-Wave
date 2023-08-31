@@ -12,7 +12,7 @@ public class MovePlayer : MoveAutomatico
     public Vector3 vetorMove;
     private Vector2 movimento;
     private MenuManager menu;
-    private GameObject playerMove;
+    private PlayerInput playerMove;
 
     void Start() 
     {
@@ -53,7 +53,7 @@ public class MovePlayer : MoveAutomatico
         {
             miraAutomatico = menu.AutoAim();
             
-            if(playerMove.activeSelf == false) playerMove.SetActive(true);
+            if(playerMove == null) movement.action.Enable();
 
             if (move) {
                 velAtual = vel;
