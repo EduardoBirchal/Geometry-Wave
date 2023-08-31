@@ -5779,6 +5779,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 327702395, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032754211920696594, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2032754212260316548, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5827,6 +5835,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2032754212523444299, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032754212523444301, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2032754213169284665, guid: d8f8aeea1e2eafeac9463d144dd6b97b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -5853,7 +5869,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: -1
   m_AllowJoining: 1
-  m_JoinBehavior: 2
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
