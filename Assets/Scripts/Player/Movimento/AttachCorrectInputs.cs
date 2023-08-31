@@ -7,10 +7,10 @@ using Unity.Netcode;
 
 public class AttachCorrectInputs : NetworkBehaviour
 {
-    // Get "Player Input" component which sould be attached to player prefab
-    private PlayerInput playerInput;
     // Assign correct InputActionAsset in the player's prefab inspector
     [SerializeField] private InputActionAsset inputActionAsset;
+    // Get "Player Input" component which sould be attached to player prefab
+    private PlayerInput playerInput;
     
     private void Start()
     {
@@ -23,7 +23,8 @@ public class AttachCorrectInputs : NetworkBehaviour
    {
         base.OnNetworkSpawn();
         // Make sure this belongs to us
-        if (!IsOwner) { return; }
+        if (!IsOwner) playerInput.enabled = false;
+        
         playerInput.enabled = true;
    }
 }
