@@ -28,7 +28,7 @@ public class MoveTeleguiado : MoveConstante
             }
         }
         else {
-            ViraPraObjeto(alvoAtual.transform.position);
+            ViraPraObjeto(alvoAtual.transform.position, false);
         }
     }
 }

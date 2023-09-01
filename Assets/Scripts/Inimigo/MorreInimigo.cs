@@ -33,8 +33,9 @@ public class MorreInimigo : NetworkBehaviour
         GivePlayerXpClientRpc(valorXp);
 
         inimigoFlock = gameObject.GetComponent<FlockAgent>();
-          
-        inimigoFlock.AgentFlock.removeAgents(inimigoFlock);    
+        
+        if (inimigoFlock.AgentFlock)
+            inimigoFlock.AgentFlock.removeAgents(inimigoFlock);    
 
         Destroy(gameObject);
     }
