@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: -7036750520366414107}
   - component: {fileID: 9017880253087090154}
   - component: {fileID: 4272031463330856990}
-  - component: {fileID: 5730442288189745084}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -366,22 +365,9 @@ MonoBehaviour:
     m_ActionName: Guns/PassaArma[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: KeyBoard
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: d04db9ad-0b54-4d55-919b-cf18b19e40df
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1571977715038104471, guid: 64600f199e185ebfba62b8592f7a62e0, type: 3}
---- !u!114 &5730442288189745084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976682552676660537}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a747f7c5b08cc9e4dbdf959785e7a75f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputActionAsset: {fileID: -944628639613478452, guid: 3dfd8bbb382c9659587cc2f49292e495, type: 3}
 --- !u!1001 &8937601226480865316
 PrefabInstance:
   m_ObjectHideFlags: 0
