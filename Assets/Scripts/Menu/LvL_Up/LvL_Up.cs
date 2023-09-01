@@ -39,12 +39,12 @@ public class LvL_Up : MonoBehaviour
         if(playerXp == null){
             GetPlayerComponents();
         }
-        if(playerXp != null)
+        if(playerXp != null){
             menu.MudaTextoPontosDisponiveis((playerXp.level - qntUpgrades));
 
-        if(MaxUpgrades()) menu.Notification("!");
-        else menu.Notification("");
-        
+            if(MaxUpgrades()) menu.Notification("!");
+            else menu.Notification("");
+        }
     }
 
     public bool MaxUpgrades()
