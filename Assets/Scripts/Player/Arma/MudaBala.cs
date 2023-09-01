@@ -39,6 +39,7 @@ public class MudaBala : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        mudaKeyboard.action.Enable();
         UpdateSprite();
         if(!IsOwner) return;
         if(TimeManager.localPause == true) return;
