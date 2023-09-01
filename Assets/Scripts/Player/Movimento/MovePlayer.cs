@@ -51,6 +51,8 @@ public class MovePlayer : MoveAutomatico
     {
         if(IsOwner && TimeManager.localPause == false)
         {
+            movement.action.Enable();
+
             miraAutomatico = menu.AutoAim();
             
             if(playerMove.enabled != true) playerMove.enabled = true;
