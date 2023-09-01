@@ -21,7 +21,7 @@ public class AttachCorrectInputs : NetworkBehaviour
    // On spawn
    public override void OnNetworkSpawn()
    {
-        base.OnNetworkSpawn();
+        //base.OnNetworkSpawn();
         // Make sure this belongs to us
         if (!IsOwner) playerInput.enabled = false;
         
