@@ -28,8 +28,9 @@ public class PlayerGerenciaHP : NetworkBehaviour
     Collider2D colisor;
     [SerializeField] private GameObject death_Screen;
 
-    void OnNetworkStart()
+    public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
         maxHp.Value = 10;
         hp.Value = maxHp.Value;
         tempoInvulneravel.Value = 2.0f;
