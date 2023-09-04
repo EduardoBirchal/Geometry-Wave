@@ -123,11 +123,20 @@ Temos mais 3 botões:
 <h3>Mecânicas</h3>
 <p>Mecânicas do jogo</p>
 
+**Movimentação do Player**: O player se movimenta baseando nas teclas pressionadas, 'w' para cima, 'a' para esquerda, 's' para baixo, 'd' para direita, além de possuir o dash que é uma habilidade de impulso para onde o player está se movendo. 
+
+**Movimentação dos inimigos**: Os inimigos possuem uma movimentação baseada no algoritmo de flocking, onde os inimigos se movimentam com base no contexto atual, levando em consideração os inimigos próximos e o player, fazendo com que os inimigos não se movimentem diretamente para o player.
+
+**Boss**: O boss é um inimigo especial spawnado a cada 10
+
+**Gameplay**:
+vida, vel, prc, dano, coo
+
 <br>
 <br>
 
 <h2 id="status">Status do Projeto</h2>
-<p>O projeto se encontra concluído e está atualmente na sua versão 1.1 .</p>
+<p>O projeto se encontra concluído e está atualmente na sua versão 1.2 .</p>
 
 <br>
 <br>
