@@ -98,9 +98,15 @@ Além disso, nele temos um video de fundo, em loop, da gameplay do jogo.
 
 <img src="https://github.com/EduardoBirchal/Geometry-Wave/assets/85091282/3c93aa62-5111-4640-a1e9-7f7b06e91bae" width="650px"/>
 
-<h4>Menu jogar</h4>
-No menu de jogo, 
 
+<h4>Menu jogar</h4>
+No menu de jogo, temos 2 botões:
+
+**Solo**: Permite que selecionemos a dificuldade do jogo entre quatro dificuldades e inicia o jogo single-player.
+
+**Online**: Permite que o jogador escolha entre criar uma sala ou entrar em uma sala para jogar multi-player.
+
+<br>
 <h4>As Opções</h4>
 
 Temos mais 3 botões:
