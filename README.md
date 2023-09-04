@@ -120,8 +120,7 @@ Temos mais 3 botões:
 <br>
 
 
-<h3>Mecânicas</h3>
-<p>Mecânicas do jogo</p>
+<h3>Mecânicas do jogo</h3>
 
 **Movimentação do Player**: O player se movimenta baseando nas teclas pressionadas, 'w' para cima, 'a' para esquerda, 's' para baixo, 'd' para direita, além de possuir o dash que é uma habilidade de impulso para onde o player está se movendo. 
 
