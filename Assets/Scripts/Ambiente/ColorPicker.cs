@@ -20,14 +20,25 @@ public class ColorPicker : MonoBehaviour
     [SerializeField] private GameObject[] currentColor_Backg;
     [SerializeField] private GameObject[] currentColor_Button;
     [SerializeField] private GameObject[] currentColor_Menu;
-    [SerializeField] private GameObject[] currentColor_Text;
+    //[SerializeField] private GameObject[] currentColor_Text;
     [SerializeField] private GameObject[] currentColor_Player;
     [SerializeField] private GameObject[] currentColor_Ally;
     [SerializeField] private GameObject[] currentColor_Enemy;
 
+    [SerializeField] private GameObject[] Previews;
+
+    private TextMeshProUGUI[] texts;
+    private Image[] images;
+
     private Slider Red;
     private Slider Green;
     private Slider Blue;
+
+    void Start()
+    {
+        texts = FindObjectsOfType<TextMeshProUGUI>(true);
+        texts = FindObjectsOfType<TextMeshProUGUI>(true);
+    }
 
     static Dictionary<ColorCode, Color> baseColor = new Dictionary<ColorCode, Color>()
     {
@@ -40,11 +51,13 @@ public class ColorPicker : MonoBehaviour
         { ColorCode.Inimigo, new Color(1, 1, 1) }    
     };
 
-    private void Start() {
+    public void Constructor()
+    {
         Red = GameObject.Find("ColorSlider_R").GetComponent<Slider>();
         Green = GameObject.Find("ColorSlider_G").GetComponent<Slider>();
         Blue = GameObject.Find("ColorSlider_B").GetComponent<Slider>();
     }
+
     private ColorCode currentCategory = ColorCode.Fundo;
 
     public void OnCategoryButtonClick(TMP_Dropdown category)
@@ -58,11 +71,16 @@ public class ColorPicker : MonoBehaviour
         Debug.Log($"{baseColor[currentCategory].r} {baseColor[currentCategory].g} {baseColor[currentCategory].b}");
     }
 
+
     public void OnApplyButtonClick()
     {
-        for(int i = 0; i < currentColor_Text.Length; i++)
-            currentColor_Text[i].GetComponent<TextMeshProUGUI>().color = baseColor[ColorCode.Texto];
-        
+        //texts = GameObject.FindWithTag("text");
+
+        foreach (TextMeshProUGUI txt in texts)
+            txt.color = baseColor[ColorCode.Texto];
+
+        // for(int i = 0; i < currentColor_Text.Length; i++)
+        //     currentColor_Text[i].GetComponent<TextMeshProUGUI>().color = baseColor[ColorCode.Texto];
         for(int i = 0; i < currentColor_Menu.Length; i++)
             currentColor_Menu[i].GetComponent<Image>().color = baseColor[ColorCode.Menu];
 

@@ -18,10 +18,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] public GameObject gameplayOptions;
     [SerializeField] public GameObject soundOptions;
     [SerializeField] public GameObject graficoshud;
+    [SerializeField] private GameObject colors;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
 
     private GoBack goBack;
+    private ColorPicker colorPicker;
     private SceneFadeAnimation fade;
     public AudioSource audioGeral, audioTiro, audioWave;
     public AudioClip somTiro, somWave;
@@ -35,6 +37,7 @@ public class MenuManager : MonoBehaviour
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
+        colorPicker = GameObject.Find("GameManager").GetComponent<ColorPicker>();
 
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     } 
@@ -156,6 +159,14 @@ public class MenuManager : MonoBehaviour
         sliderHud.value = PlayerPrefs.GetFloat("HudSizeValue");
         
         goBack.menus.Push(graficoshud);
+    }
+
+    public void Colors(){
+        colors.SetActive(true);
+
+        colorPicker.Constructor();
+
+        goBack.menus.Push(colors);
     }
 
     public void CloseGamePlayOptions()
