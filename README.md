@@ -127,10 +127,9 @@ Temos mais 3 botões:
 
 **Movimentação dos inimigos**: Os inimigos possuem uma movimentação baseada no algoritmo de flocking, onde os inimigos se movimentam com base no contexto atual, levando em consideração os inimigos próximos e o player, fazendo com que os inimigos não se movimentem diretamente para o player.
 
-**Boss**: O boss é um inimigo especial spawnado a cada 10
+**Boss**: O boss é um inimigo especial spawnado a cada 10 levels, possuindo algumas mecânicas especiais como: ele possui três barreiras giratórias que o defendem, em seu 1° padrão de ataque ele atira uma rajada de balas direcionada aos players próximos, já no segundo ele atira uma linha de balas de forma circular.
 
-**Gameplay**:
-vida, vel, prc, dano, coo
+**Sistema de Level-Up**: O player adquire experiência ao matar os inimigos, após uma determinada quantidade de experiência o player pode upar de nível, permitindo que ele selecione uma melhoria dentre as seguintes: aumento de vida, cooldown das balas, precisão da arma, dano da bala, cooldown do dash.
 
 <br>
 <br>
