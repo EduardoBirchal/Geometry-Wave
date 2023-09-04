@@ -1,3 +1,5 @@
+using System;
+using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +20,8 @@ enum ColorCode
 public class ColorPicker : MonoBehaviour
 {
     [SerializeField] private GameObject[] currentColor_Backg;
-    [SerializeField] private GameObject[] currentColor_Button;
-    [SerializeField] private GameObject[] currentColor_Menu;
+    //[SerializeField] private GameObject[] currentColor_Button;
+    //[SerializeField] private GameObject[] currentColor_Menu;
     //[SerializeField] private GameObject[] currentColor_Text;
     [SerializeField] private GameObject[] currentColor_Player;
     [SerializeField] private GameObject[] currentColor_Ally;
@@ -28,7 +30,8 @@ public class ColorPicker : MonoBehaviour
     [SerializeField] private GameObject[] Previews;
 
     private TextMeshProUGUI[] texts;
-    private Image[] images;
+    private Image[] menus;
+    private GameObject[] interativos;
 
     private Slider Red;
     private Slider Green;
@@ -37,7 +40,8 @@ public class ColorPicker : MonoBehaviour
     void Start()
     {
         texts = FindObjectsOfType<TextMeshProUGUI>(true);
-        texts = FindObjectsOfType<TextMeshProUGUI>(true);
+        menus = FindObjectsOfType<Image>(true);
+        interativos = GameObject.FindGameObjectsWithTag("interativos"); 
     }
 
     static Dictionary<ColorCode, Color> baseColor = new Dictionary<ColorCode, Color>()
@@ -78,17 +82,20 @@ public class ColorPicker : MonoBehaviour
 
         foreach (TextMeshProUGUI txt in texts)
             txt.color = baseColor[ColorCode.Texto];
+        foreach(Image menu in menus)
+            menu.color = baseColor[ColorCode.Menu];
+        foreach(GameObject interativo in interativos)
+            interativo.GetComponent<Image>().color = baseColor[ColorCode.Interativo];
 
         // for(int i = 0; i < currentColor_Text.Length; i++)
         //     currentColor_Text[i].GetComponent<TextMeshProUGUI>().color = baseColor[ColorCode.Texto];
-        for(int i = 0; i < currentColor_Menu.Length; i++)
-            currentColor_Menu[i].GetComponent<Image>().color = baseColor[ColorCode.Menu];
+        // for(int i = 0; i < currentColor_Menu.Length; i++)
+        //     currentColor_Menu[i].GetComponent<Image>().color = baseColor[ColorCode.Menu];
+        // for(int i = 0; i < currentColor_Button.Length; i++)
+        //     currentColor_Button[i].GetComponent<Image>().color = baseColor[ColorCode.Interativo];
 
-        for(int i = 0; i < currentColor_Button.Length; i++)
-            currentColor_Button[i].GetComponent<Image>().color = baseColor[ColorCode.Interativo];
-
-        for(int i = 0; i < currentColor_Backg.Length; i++)
-            currentColor_Backg[i].GetComponent<Image>().color = baseColor[ColorCode.Fundo];
+        // for(int i = 0; i < currentColor_Backg.Length; i++)
+        //     currentColor_Backg[i].GetComponent<Image>().color = baseColor[ColorCode.Fundo];
 
         for(int i = 0; i < currentColor_Player.Length; i++)
             currentColor_Player[i].GetComponent<Image>().color = baseColor[ColorCode.Jogador];

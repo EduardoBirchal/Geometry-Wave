@@ -1164,7 +1164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &291313825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1760,7 +1760,7 @@ GameObject:
   - component: {fileID: 386939367}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: interativos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6683,7 +6683,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508623302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 895.3244, y: 353.24936, z: -5.467775}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6715,23 +6715,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColor_Backg: []
-  currentColor_Button:
-  - {fileID: 1765375695}
-  - {fileID: 794807075}
-  currentColor_Menu:
-  - {fileID: 7532685793602718917}
-  currentColor_Text:
-  - {fileID: 7532685793261087321}
-  - {fileID: 7532685794518501739}
-  - {fileID: 1984855078}
-  - {fileID: 8838065850942277057}
-  - {fileID: 1338515702385959358}
   currentColor_Player: []
   currentColor_Ally: []
   currentColor_Enemy: []
-  Previews:
-  - {fileID: 727404220}
-  - {fileID: 7532685793602718917}
+  Previews: []
 --- !u!1 &1564583492
 GameObject:
   m_ObjectHideFlags: 0
@@ -9839,6 +9826,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 167940324510363063, guid: 3bb32f5dbbf1a9db8ae956352a44652c, type: 3}
+      propertyPath: m_TagString
+      value: interativos
+      objectReference: {fileID: 0}
     - target: {fileID: 167940325047527472, guid: 3bb32f5dbbf1a9db8ae956352a44652c, type: 3}
       propertyPath: m_Name
       value: Options(Hud)
@@ -10777,15 +10768,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570555213951571263, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3570555213951571263, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3570555213951571263, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3570555214372628422, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -10805,7 +10796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570555214739888406, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3570555214739888425, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_Pivot.x
@@ -10893,11 +10884,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570555215298643407, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3570555215298643407, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
@@ -11514,6 +11505,10 @@ PrefabInstance:
     - target: {fileID: 6387421456752672403, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387421457075337066, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
+      propertyPath: m_TagString
+      value: interativos
       objectReference: {fileID: 0}
     - target: {fileID: 6387421457075337068, guid: 4c64960cfe57cef0a85b67877bcfbff9, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12295,7 +12290,7 @@ GameObject:
   - component: {fileID: 7532685793765292143}
   m_Layer: 5
   m_Name: ColorSlider_R
-  m_TagString: Untagged
+  m_TagString: interativos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
