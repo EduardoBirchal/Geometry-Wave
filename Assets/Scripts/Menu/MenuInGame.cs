@@ -11,6 +11,7 @@ public class MenuInGame : MonoBehaviour
     private SceneFadeAnimation fade;
     private GameObject player;
     private GoBack goBack;
+    private TimeManager timeManager;
     public static bool isOpen = false;
 
     void Start()
@@ -18,7 +19,16 @@ public class MenuInGame : MonoBehaviour
         player = GameObject.Find("Player");
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
+        timeManager = GameObject.Find("GameManager").GetComponent<TimeManager>();
         goBack.Continuar();
+    }
+
+    public void OpenMenu()
+    {
+        isOpen = true;
+        timeManager.Pause();
+        goBack.menus.Push(menu);
+        menu.SetActive(true);
     }
 
     public void QuitConfirmation()
