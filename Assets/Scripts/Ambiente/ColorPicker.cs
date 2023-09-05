@@ -19,16 +19,14 @@ public enum ColorCode
 
 public class ColorPicker : MonoBehaviour
 {
-    [SerializeField] private GameObject[] currentColor_Backg;
+    [SerializeField] private Camera[] currentColor_Backg;
     [SerializeField] private GameObject[] currentColor_Player;
     [SerializeField] private GameObject[] currentColor_Ally;
     [SerializeField] private GameObject[] currentColor_Enemy;
 
-    [SerializeField] private GameObject[] Previews;
+    [SerializeField] private Image preview;
 
-    private TextMeshProUGUI[] texts;
-    private Image[] menus;
-    private GameObject[] interativos;
+    // private TextMeshProUGUI[] texts;
 
     private Slider Red;
     private Slider Green;
@@ -36,27 +34,20 @@ public class ColorPicker : MonoBehaviour
 
     void Start()
     {
-        texts = FindObjectsOfType<TextMeshProUGUI>(true);
-        menus = FindObjectsOfType<Image>(true);
-        interativos = GameObject.FindGameObjectsWithTag("interativos"); 
+        //texts = FindObjectsOfType<TextMeshProUGUI>(true);
+        SetTexts(); 
     }
 
     public static Dictionary<ColorCode, Color> baseColor = new Dictionary<ColorCode, Color>()
     {
         { ColorCode.Fundo, new Color(1, 1, 1) },   
         { ColorCode.Texto, new Color(1, 1, 1) },   
-        { ColorCode.Menu, new Color(1, 1, 1) },   
+        { ColorCode.Menu, new Color(45, 50, 65) },   
         { ColorCode.Interativo, new Color(1, 1, 1) },  
         { ColorCode.Jogador, new Color(1, 1, 1) },   
         { ColorCode.Aliado, new Color(1, 1, 1) },   
         { ColorCode.Inimigo, new Color(1, 1, 1) }    
     };
-
-    private void SetSavedValues()
-    {
-        for(int i = 0; i < currentColor_Player.Length; i++)
-            currentColor_Player[i].GetComponent<Image>().color = baseColor[ColorCode.Jogador];
-    }
 
     public void Constructor()
     {
@@ -70,6 +61,10 @@ public class ColorPicker : MonoBehaviour
     public void OnCategoryButtonClick(TMP_Dropdown category)
     {
         currentCategory = (ColorCode) category.value;
+        Red.value = baseColor[currentCategory].r;
+        Green.value = baseColor[currentCategory].g;
+        Blue.value = baseColor[currentCategory].b;
+        PreviewColorValues();
     }
 
     public void OnColorSliderClick()
@@ -78,18 +73,22 @@ public class ColorPicker : MonoBehaviour
         Debug.Log($"{baseColor[currentCategory].r} {baseColor[currentCategory].g} {baseColor[currentCategory].b}");
     }
 
+    private void SetTexts()
+    {
+        //  foreach (TextMeshProUGUI txt in texts)
+        //      txt.color = baseColor[ColorCode.Texto];
+        for(int i = 0; i < currentColor_Backg.Length; i++)
+            currentColor_Backg[i].backgroundColor = baseColor[ColorCode.Fundo];
+    }
+
+    public void PreviewColorValues()
+    {
+        preview.color =new Color(Red.value, Green.value, Blue.value);
+    }
+
     public void OnApplyButtonClick()
     {
-        //texts = GameObject.FindWithTag("text");
-
-        foreach (TextMeshProUGUI txt in texts)
-            txt.color = baseColor[ColorCode.Texto];
-
-        foreach(Image menu in menus)
-            menu.color = baseColor[ColorCode.Menu];
-
-        foreach(GameObject interativo in interativos)
-            interativo.GetComponent<Image>().color = baseColor[ColorCode.Interativo];
+        SetTexts();
 
         for(int i = 0; i < currentColor_Player.Length; i++)
             currentColor_Player[i].GetComponent<Image>().color = baseColor[ColorCode.Jogador];

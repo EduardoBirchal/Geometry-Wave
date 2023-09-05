@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.UI;
 
 public class Flock : FuncoesGerais
 {
@@ -128,6 +129,7 @@ public class Flock : FuncoesGerais
         FlockAgent novoInimigo = Instantiate(agentPrefab, posicaoSpawn, Quaternion.identity);
         novoInimigo.GetComponent<NetworkObject>().Spawn();
 
+        novoInimigo.GetComponent<SpriteRenderer>().material.SetColor("_Color", ColorPicker.baseColor[ColorCode.Inimigo]);
         novoInimigo.name = "Agent " + i;
         novoInimigo.Initialize(this);
         agents.Add(novoInimigo);
