@@ -8,13 +8,14 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject menuInicial, gameModes, dificultSelector, onlineModes, enterOnline, painelOptions,inputActionsHud;
+    [SerializeField] private GameObject menuInicial, gameModes, dificultSelector, onlineModes, enterOnline, painelOptions,inputActionsHud, colors;
     [SerializeField] public GameObject gameplayOptions, soundOptions, graficoshud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
     [SerializeField] private InputActionReference buttonAutoAim, buttonAutoFire;
 
     private GoBack goBack;
+    private ColorPicker colorPicker;
     private SceneFadeAnimation fade;
     public AudioSource audioGeral, audioTiro, audioWave;
     public Slider sliderHud;
@@ -25,6 +26,7 @@ public class MenuManager : MonoBehaviour
     {
         fade = GameObject.Find("Scene_Animation").GetComponent<SceneFadeAnimation>();
         goBack = GameObject.Find("GameManager").GetComponent<GoBack>();
+        colorPicker = GameObject.Find("GameManager").GetComponent<ColorPicker>();
 
         canvas.scaleFactor = PlayerPrefs.GetFloat("HudSizeValue");
     } 
@@ -101,28 +103,28 @@ public class MenuManager : MonoBehaviour
     public void Tutorial()
     {
         NetStatus.isSingleplayer = true;
-        fade.FadeScene(2);
+        fade.FadeScene(1);
     }
 
     public void Facil()
     {
         PlayerPrefs.SetFloat("dificuldade", 0.5f);
         NetStatus.isSingleplayer = true;
-        fade.FadeScene(2);
+        fade.FadeScene(1);
     }
 
     public void Normal()
     {
         PlayerPrefs.SetFloat("dificuldade", 1f);
         NetStatus.isSingleplayer = true;
-        fade.FadeScene(2);
+        fade.FadeScene(1);
     }
 
     public void Dificil()
     {
         PlayerPrefs.SetFloat("dificuldade", 2f);
         NetStatus.isSingleplayer = true;
-        fade.FadeScene(2);
+        fade.FadeScene(1);
     }
 
 
@@ -130,7 +132,7 @@ public class MenuManager : MonoBehaviour
     {
         NetStatus.isSingleplayer = false;
         texto_ip = NetHandler.GetLocalIPv4();
-        fade.FadeScene(2);
+        fade.FadeScene(1);
     }
     
     public void MenuInicial()
@@ -216,6 +218,13 @@ public class MenuManager : MonoBehaviour
         goBack.menus.Push(graficoshud);
     }
 
+    public void Colors(){
+        colors.SetActive(true);
+
+        colorPicker.Constructor();
+
+        goBack.menus.Push(colors);
+    }
     public void SaveAutomatics()
     {
         if(toggle_AutoAim.isOn == false){
@@ -256,6 +265,7 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("HudSizeValue", sliderHud.value);
         PlayerPrefs.Save();
     }
+
     public void CloseGraficosHud()
     {
         SaveHudSize();

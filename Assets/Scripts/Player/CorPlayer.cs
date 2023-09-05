@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class CorPlayer : MonoBehaviour
+public class CorPlayer : NetworkBehaviour
 {
     private SpriteRenderer sprRenderer;
     [SerializeField] private Color color;
@@ -10,11 +11,7 @@ public class CorPlayer : MonoBehaviour
     void Start()
     {
         sprRenderer = GetComponent<SpriteRenderer>();
-        color = new Color(
-            (float) Random.Range(0.3f, 1.0f),   // Red
-            (float) Random.Range(0.3f, 1.0f),   // Green
-            (float) Random.Range(0.3f, 1.0f)    // Blue
-        ); 
+        color = IsOwner ? ColorPicker.baseColor[ColorCode.Jogador] : ColorPicker.baseColor[ColorCode.Aliado];
         sprRenderer.material.SetColor("_Color", color); 
     }
 }

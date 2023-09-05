@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Inimigo
   - BalaPlayer
+  - LimiteTela
+  - interativos
+  - Menus
   layers:
   - Default
   - TransparentFX
