@@ -2013,18 +2013,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2034123256}
     m_Modifications:
-    - target: {fileID: 486612227005554798, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8916536697208165622}
-    - target: {fileID: 486612227005554798, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AumentaDano
-      objectReference: {fileID: 0}
-    - target: {fileID: 486612227005554798, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LvL_Up, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 486612227069674925, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2040,18 +2028,6 @@ PrefabInstance:
     - target: {fileID: 486612227069674925, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
       propertyPath: m_Color.r
       value: 0.13995194
-      objectReference: {fileID: 0}
-    - target: {fileID: 486612227276863356, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8916536697208165622}
-    - target: {fileID: 486612227276863356, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AumentaVelAtaque
-      objectReference: {fileID: 0}
-    - target: {fileID: 486612227276863356, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LvL_Up, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 486612227640960802, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
       propertyPath: m_Sprite
@@ -2176,18 +2152,6 @@ PrefabInstance:
     - target: {fileID: 486612227938818973, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: AumentaHP
-      objectReference: {fileID: 0}
-    - target: {fileID: 486612228038498661, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8916536697208165622}
-    - target: {fileID: 486612228038498661, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AumentaPrecisao
-      objectReference: {fileID: 0}
-    - target: {fileID: 486612228038498661, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LvL_Up, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 486612228062362126, guid: e34c8eaed7cf4e64cb0669582236e5d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6697,7 +6661,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099140613
 GameObject:
@@ -7051,7 +7015,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2340701520318260501
 GameObject:
@@ -7088,7 +7052,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3999310243645879496, guid: d7e7ed30b9db4c9118f669e0e73c12aa, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3999310243645879496, guid: d7e7ed30b9db4c9118f669e0e73c12aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7232,7 +7196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9095538915635075500, guid: 487925ecf3a6789e395f6ef129655b5f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9095538915635075500, guid: 487925ecf3a6789e395f6ef129655b5f, type: 3}
       propertyPath: m_LocalPosition.x

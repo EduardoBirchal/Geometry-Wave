@@ -44,7 +44,7 @@ public class ColorPicker : MonoBehaviour
         { ColorCode.Texto, new Color(1, 1, 1) },   
         { ColorCode.Menu, new Color(45, 50, 65) },   
         { ColorCode.Interativo, new Color(1, 1, 1) },  
-        { ColorCode.Jogador, new Color(50, 150, 50) },   
+        { ColorCode.Jogador, new Color(1, 1, 1) },   
         { ColorCode.Aliado, new Color(1, 1, 1) },   
         { ColorCode.Inimigo, new Color(1, 1, 1) }    
     };
@@ -83,7 +83,7 @@ public class ColorPicker : MonoBehaviour
 
     public void PreviewColorValues()
     {
-        preview.color = new Color(Red.value, Green.value, Blue.value);
+        preview.color =new Color(Red.value, Green.value, Blue.value);
     }
 
     public void OnApplyButtonClick()

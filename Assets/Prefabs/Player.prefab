@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecce0d5853d68ea99c7dbc66b092eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.19607843, g: 0.5882353, b: 0.1966002, a: 0}
+  color: {r: 0.8867924, g: 0.1966002, b: 0.1966002, a: 0}
 --- !u!114 &4272031463330856990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
     m_ActionName: Guns/PassaArma[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: KeyBoard
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: d04db9ad-0b54-4d55-919b-cf18b19e40df
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1571977715038104471, guid: 64600f199e185ebfba62b8592f7a62e0, type: 3}
 --- !u!1001 &8937601226480865316
