@@ -40,7 +40,7 @@ public class ColorPicker : MonoBehaviour
 
     public static Dictionary<ColorCode, Color> baseColor = new Dictionary<ColorCode, Color>()
     {
-        { ColorCode.Fundo, new Color(53, 53, 53) },   
+        { ColorCode.Fundo, new Color(1, 1, 1) },   
         { ColorCode.Texto, new Color(1, 1, 1) },   
         { ColorCode.Menu, new Color(45, 50, 65) },   
         { ColorCode.Interativo, new Color(1, 1, 1) },  

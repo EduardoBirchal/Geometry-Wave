@@ -32,7 +32,10 @@ public class GoBack : MonoBehaviour
 
             if(isPressionadoEsc && menusDisable)
             {
-                gameMenu.OpenMenu();
+                MenuInGame.isOpen = true;
+                timeManager.Pause();
+                menus.Push(gameMenu.menu);
+                gameMenu.menu.SetActive(true);
             }
             else if(isPressionadoEsc )
             {
@@ -50,8 +53,6 @@ public class GoBack : MonoBehaviour
 
         }
     }
-
-    
 
     public void SaveSettings()
     {
