@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AcertaPlayer : AcertaAlvo
 {
+    [SerializeField] private bool destroi;
     private void Start() {
         tagAlvo = "Player";
     }
@@ -17,6 +18,8 @@ public class AcertaPlayer : AcertaAlvo
 
     private void HandleAlvo(GameObject alvo) {
         alvo.GetComponent<PlayerGerenciaHP>().TomaDano(dano);
-        DestroiBala();
+        
+        if (destroi)
+            DestroiBala();
     }
 }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 16477367626699769}
   - component: {fileID: 2141430399126801725}
   - component: {fileID: 7820561505437167773}
-  - component: {fileID: -8007100860045381306}
   - component: {fileID: 5761722282151913987}
+  - component: {fileID: -1533293376173550287}
   m_Layer: 3
   m_Name: EscudoBoss
   m_TagString: LimiteTela
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4552768007829218174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7456695, y: 0.09749461, z: 1}
+  m_LocalScale: {x: 3.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,14 +99,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae715df63c9f551faf471b2682a3654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 0
   velVirar: 120
+  velocidade:
+    m_InternalValue: 1
   viraPraFora: 1
   planeta: {fileID: 0}
   anguloInicial: 60
   velocidadeAngular: -42.5
   raioOrbita: {x: 0, y: 2.4, z: 0}
---- !u!61 &-8007100860045381306
+--- !u!50 &5761722282151913987
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552768007829218174}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &-1533293376173550287
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,24 +154,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &5761722282151913987
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4552768007829218174}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
