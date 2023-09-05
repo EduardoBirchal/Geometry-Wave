@@ -32,10 +32,7 @@ public class GoBack : MonoBehaviour
 
             if(isPressionadoEsc && menusDisable)
             {
-                MenuInGame.isOpen = true;
-                timeManager.Pause();
-                menus.Push(gameMenu.menu);
-                gameMenu.menu.SetActive(true);
+                gameMenu.OpenMenu();
             }
             else if(isPressionadoEsc )
             {
