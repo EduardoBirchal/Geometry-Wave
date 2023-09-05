@@ -35,16 +35,16 @@ public class ColorPicker : MonoBehaviour
     void Start()
     {
         //texts = FindObjectsOfType<TextMeshProUGUI>(true);
-        SetTexts(); 
+        //SetValues(); 
     }
 
     public static Dictionary<ColorCode, Color> baseColor = new Dictionary<ColorCode, Color>()
     {
-        { ColorCode.Fundo, new Color(1, 1, 1) },   
+        { ColorCode.Fundo, new Color(50, 50, 50) },   
         //{ ColorCode.Texto, new Color(1, 1, 1) },   
         //{ ColorCode.Menu, new Color(45, 50, 65) },   
         //{ ColorCode.Interativo, new Color(1, 1, 1) },  
-        { ColorCode.Jogador, new Color(1, 1, 1) },   
+        { ColorCode.Jogador, new Color(50, 150, 50) },   
         { ColorCode.Aliado, new Color(1, 1, 1) },   
         { ColorCode.Inimigo, new Color(1, 1, 1) }    
     };
@@ -73,23 +73,23 @@ public class ColorPicker : MonoBehaviour
         Debug.Log($"{baseColor[currentCategory].r} {baseColor[currentCategory].g} {baseColor[currentCategory].b}");
     }
 
-    private void SetTexts()
-    {
-        //  foreach (TextMeshProUGUI txt in texts)
-        //      txt.color = baseColor[ColorCode.Texto];
-        for(int i = 0; i < currentColor_Backg.Length; i++)
-            currentColor_Backg[i].backgroundColor = baseColor[ColorCode.Fundo];
-    }
+    // private void SetValues()
+    // {
+    //     //  foreach (TextMeshProUGUI txt in texts)
+    //     //      txt.color = baseColor[ColorCode.Texto];
+
+    // }
 
     public void PreviewColorValues()
     {
-        preview.color =new Color(Red.value, Green.value, Blue.value);
+        preview.color = new Color(Red.value, Green.value, Blue.value);
     }
 
     public void OnApplyButtonClick()
     {
-        SetTexts();
-
+        //SetValues();
+        for(int i = 0; i < currentColor_Backg.Length; i++)
+            currentColor_Backg[i].backgroundColor = baseColor[ColorCode.Fundo];
         for(int i = 0; i < currentColor_Player.Length; i++)
             currentColor_Player[i].GetComponent<Image>().color = baseColor[ColorCode.Jogador];
 
