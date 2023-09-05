@@ -1,25 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovePlayer : MoveAutomatico
 {
+    [SerializeField] private InputActionReference movement;
+
     public float vel, velAtual;
     public bool move = true, miraAutomatico;
     public Vector3 vetorMove;
+    private Vector2 movimento;
     private MenuManager menu;
+    private PlayerInput playerMove;
 
     void Start() 
     {
         velAtual = vel;
         menu = GameObject.Find("GameManager").GetComponent<MenuManager>();
+        playerMove = gameObject.GetComponent<PlayerInput>();
+    }
+
+    //Input Actions Functions
+
+    private void OnEnable() 
+    {
+        movement.action.Enable();
+        movement.action.performed += MovementPerform;
+        movement.action.canceled += movementCanceled;
+    }
+    
+    private void OnDisable()
+    {
+        movement.action.performed -= MovementPerform;
+        movement.action.canceled -= movementCanceled;
+        movement.action.Disable();
+    }
+
+    private void MovementPerform(InputAction.CallbackContext value)
+    {
+        movimento = movement.action.ReadValue<Vector2>();
+    }
+
+    private void movementCanceled(InputAction.CallbackContext value)
+    {
+        movimento = Vector2.zero;
     }
 
     void Update()
     {
         if(IsOwner && TimeManager.localPause == false)
         {
+            movement.action.Enable();
+
             miraAutomatico = menu.AutoAim();
+            
+            if(playerMove.enabled != true) playerMove.enabled = true;
 
             if (move) {
                 velAtual = vel;
@@ -35,7 +71,7 @@ public class MovePlayer : MoveAutomatico
     }
 
     float MoveVertical() {
-        float dir = Input.GetAxis("Vertical");
+        float dir = movimento.y;
         float eixoMove = dir * Time.deltaTime * velAtual;
 
         transform.Translate(new Vector2(0, eixoMove), Space.World);
@@ -44,7 +80,7 @@ public class MovePlayer : MoveAutomatico
     }
 
     float MoveHorizontal() {
-        float dir = Input.GetAxis("Horizontal");
+        float dir = movimento.x;
         float eixoMove = dir * Time.deltaTime * velAtual;
         
         transform.Translate(new Vector2(eixoMove, 0), Space.World);

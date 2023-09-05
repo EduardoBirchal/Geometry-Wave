@@ -6,30 +6,54 @@ using Unity.Netcode;
 
 public class PlayerGerenciaHP : NetworkBehaviour
 {
-    public float maxHp, hp, tempoIvulneravel;
+    public NetworkVariable<float> maxHp = new(
+        value: 0,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
+    public NetworkVariable<float> hp = new(
+        value: 0,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
+    public NetworkVariable<float> tempoInvulneravel = new(
+        value: 0,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
+
     public Image barra;
     SpriteRenderer sprRenderer;
     public bool tomaDano = true;
     Collider2D colisor;
     [SerializeField] private GameObject death_Screen;
 
-
-    // Start is called before the first frame update
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        maxHp.Value = 10;
+        hp.Value = maxHp.Value;
+        tempoInvulneravel.Value = 2.0f;
+    }
     void Start()
     {
         barra = GameObject.Find("VidaBarra").GetComponent<Image>();
-        hp = maxHp;
         sprRenderer = GetComponent<SpriteRenderer>();
         colisor = GetComponent<Collider2D>();
     }
 
-    void Update() {
+    void Update()
+    {
+        if(!IsOwner) return;
         EsticaBarraHP();
     }
 
-    public async void TomaDano(float dano) {
-        hp -= dano;
-        if(hp <= 0 && IsOwner)
+    public async void TomaDano(float dano)
+    {
+        if(!IsOwner) return;
+        
+        hp.Value -= dano;
+        if(hp.Value <= 0)
         {
             RemovePlayerServerRpc();
             await GameObject.Find("GameManager").GetComponent<DeathManager>().KillPlayer();
@@ -45,7 +69,7 @@ public class PlayerGerenciaHP : NetworkBehaviour
     }
 
     void EsticaBarraHP() {
-        barra.fillAmount = Mathf.Clamp(hp/maxHp, 0, 1f); 
+        barra.fillAmount = Mathf.Clamp(hp.Value/maxHp.Value, 0, 1f); 
     }
 
     IEnumerator Invulneravel() {
@@ -56,7 +80,7 @@ public class PlayerGerenciaHP : NetworkBehaviour
 
         colisor.isTrigger = true; // Deixa de ter colisão com rigidbodies
 
-        yield return new WaitForSeconds(tempoIvulneravel);
+        yield return new WaitForSeconds(tempoInvulneravel.Value);
 
         // Torna objeto opaco
         temp.a = 1f;

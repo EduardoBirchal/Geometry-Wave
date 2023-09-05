@@ -18,7 +18,7 @@ public class AtiraOrbe : AtiraInimigo
     private MoveInimigo mvInimigo;
 
     void Start() {
-        tipos = GameObject.Find("Funcoes").GetComponent<TipoTiro>().inimigo;
+        tipos = GameObject.Find("GameManager").GetComponent<TipoTiro>().inimigo;
         atirador = transform.parent.gameObject;
         balaCarregada = false;
         rajadaCarregada = numTirosRajada;

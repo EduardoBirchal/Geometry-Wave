@@ -40,6 +40,7 @@ public class Flock : FuncoesGerais
     // Start is called before the first frame update
     void Start()
     {
+        dificuldade = PlayerPrefs.GetFloat("dificuldade");
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;

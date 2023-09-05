@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Netcode;
 
-public class SceneFadeAnimation : MonoBehaviour
+public class SceneFadeAnimation : NetworkBehaviour
 {
     public Animator animator;
     public int levelToLoad;
@@ -21,8 +21,7 @@ public class SceneFadeAnimation : MonoBehaviour
 
     public void FadeToMenu()
     {
-        NetworkManager.Singleton.Shutdown();
-        if(NetworkManager.Singleton != null) Destroy(NetworkManager.Singleton.gameObject);
+        GameObject.Find("Network").GetComponent<NetHandler>().ShutdownServer();
         FadeScene(0);
     }
 
