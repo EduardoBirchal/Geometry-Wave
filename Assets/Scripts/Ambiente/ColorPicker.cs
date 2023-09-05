@@ -9,12 +9,12 @@ using TMPro;
 public enum ColorCode
     {
         Fundo = 0,
-        Texto = 1,
-        Menu = 2,
-        Interativo = 3,
-        Jogador = 4,
-        Aliado = 5,
-        Inimigo = 6
+        //Texto = 1,
+        //Menu = 2,
+        //Interativo = 3,
+        Jogador = 1,
+        Aliado = 2,
+        Inimigo = 3
 };
 
 public class ColorPicker : MonoBehaviour
@@ -41,9 +41,9 @@ public class ColorPicker : MonoBehaviour
     public static Dictionary<ColorCode, Color> baseColor = new Dictionary<ColorCode, Color>()
     {
         { ColorCode.Fundo, new Color(1, 1, 1) },   
-        { ColorCode.Texto, new Color(1, 1, 1) },   
-        { ColorCode.Menu, new Color(45, 50, 65) },   
-        { ColorCode.Interativo, new Color(1, 1, 1) },  
+        //{ ColorCode.Texto, new Color(1, 1, 1) },   
+        //{ ColorCode.Menu, new Color(45, 50, 65) },   
+        //{ ColorCode.Interativo, new Color(1, 1, 1) },  
         { ColorCode.Jogador, new Color(1, 1, 1) },   
         { ColorCode.Aliado, new Color(1, 1, 1) },   
         { ColorCode.Inimigo, new Color(1, 1, 1) }    
