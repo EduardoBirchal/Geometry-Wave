@@ -56,7 +56,7 @@ public class MenuLvL_Up : MonoBehaviour
 
     public void Menu()
     {
-        if(MenuInGame.isOpen == false && menuLvL_Up.activeSelf == false)
+        if(MenuInGame.isOpen == false && menuLvL_Up.activeSelf == false && !PlayerGerenciaHP.isDead)
         {
             goBack.menus.Push(menuLvL_Up);
             menuLvL_Up.SetActive(true);

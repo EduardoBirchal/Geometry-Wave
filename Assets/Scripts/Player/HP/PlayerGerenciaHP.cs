@@ -25,6 +25,7 @@ public class PlayerGerenciaHP : NetworkBehaviour
     public Image barra;
     SpriteRenderer sprRenderer;
     public bool tomaDano = true;
+    public static bool isDead;
     Collider2D colisor;
     [SerializeField] private GameObject death_Screen;
 
@@ -53,9 +54,12 @@ public class PlayerGerenciaHP : NetworkBehaviour
         if(!IsOwner) return;
         
         hp.Value -= dano;
-        if(hp.Value <= 0)
+        isDead = hp.Value <= 0;
+        if(isDead)
         {
             RemovePlayerServerRpc();
+            hp.Value = 0;
+            EsticaBarraHP();
             await GameObject.Find("GameManager").GetComponent<DeathManager>().KillPlayer();
         }
         else StartCoroutine(Invulneravel());
