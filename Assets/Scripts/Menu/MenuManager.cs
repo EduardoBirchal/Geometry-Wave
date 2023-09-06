@@ -71,7 +71,7 @@ public class MenuManager : MonoBehaviour
         GameObject a = GameObject.Find("TextIP");
         texto_ip = a.GetComponent<TMP_InputField>().text;
         NetStatus.isSingleplayer = false;
-        fade.FadeScene(2);
+        fade.FadeScene(1);
     }
 
     //Funções que alteram os PlayerPrefs
