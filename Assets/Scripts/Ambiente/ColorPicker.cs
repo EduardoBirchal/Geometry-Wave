@@ -7,16 +7,16 @@ using UnityEngine.UI;
 using TMPro;
 
 public enum ColorCode
-    {
-        Fundo = 0,
-        Jogador = 1,
-        Aliado = 2,
-        Inimigo = 3
+{
+    Fundo = 0,
+    Jogador = 1,
+    Aliado = 2,
+    Inimigo = 3
 };
 
 public class ColorPicker : MonoBehaviour
 {
-    [SerializeField] private Camera[] currentColor_Backg;
+    [SerializeField] private Camera currentColor_Backg;
     [SerializeField] private GameObject[] currentColor_Player;
     [SerializeField] private GameObject[] currentColor_Ally;
     [SerializeField] private GameObject[] currentColor_Enemy;
@@ -26,11 +26,11 @@ public class ColorPicker : MonoBehaviour
     private Slider Red;
     private Slider Green;
     private Slider Blue;
-
+    
     public static Dictionary<ColorCode, Color> baseColor = new Dictionary<ColorCode, Color>()
     {
-        { ColorCode.Fundo, new Color(50, 50, 50) },   
-        { ColorCode.Jogador, new Color(50, 150, 50) },   
+        { ColorCode.Fundo, new Color(0.2078f, 0.2078f, 0.2078f) },   
+        { ColorCode.Jogador, new Color(0.1960f, 0.5868f, 0.1960f) },   
         { ColorCode.Aliado, new Color(1, 1, 1) },   
         { ColorCode.Inimigo, new Color(1, 1, 1) }    
     };
@@ -66,8 +66,8 @@ public class ColorPicker : MonoBehaviour
 
     public void OnApplyButtonClick()
     {
-        for(int i = 0; i < currentColor_Backg.Length; i++)
-            currentColor_Backg[i].backgroundColor = baseColor[ColorCode.Fundo];
+        currentColor_Backg.backgroundColor = baseColor[ColorCode.Fundo];
+
         for(int i = 0; i < currentColor_Player.Length; i++)
             currentColor_Player[i].GetComponent<Image>().color = baseColor[ColorCode.Jogador];
 
