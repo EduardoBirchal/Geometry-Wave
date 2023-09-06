@@ -16,7 +16,12 @@ public class MoveConstante : MoveAutomatico
     {
         if(parent.TryGet(out NetworkObject dereferParent))
         {
+            Color newColor = dereferParent.gameObject.GetComponent<SpriteRenderer>().color;
             transform.position = dereferParent.gameObject.transform.GetChild(myIndex).transform.position;
+            Debug.Log($"{newColor.r} {newColor.g} {newColor.b}");
+            GetComponent<SpriteRenderer>().material.SetColor("_Color",
+                dereferParent.gameObject.GetComponent<SpriteRenderer>().material.color
+            );
         }
     }
 }

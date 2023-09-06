@@ -10,6 +10,11 @@ public class CorPlayer : NetworkBehaviour
     
     void Start()
     {
+        AlterarCor();
+    }
+
+    public void AlterarCor()
+    {
         sprRenderer = GetComponent<SpriteRenderer>();
         color = IsOwner ? ColorPicker.baseColor[ColorCode.Jogador] : ColorPicker.baseColor[ColorCode.Aliado];
         sprRenderer.material.SetColor("_Color", color); 

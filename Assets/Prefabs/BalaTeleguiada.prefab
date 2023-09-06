@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.5647059, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102,8 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822fb2f9d1d1ac8a199ef4dafec5e001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 6
   velVirar: 150
+  velocidade:
+    m_InternalValue: 1
   tagAlvo: Inimigo
   velVirarBugado: 300
 --- !u!114 &-1157766661186971356
@@ -118,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7186095f03fead168298f1876122576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impacto: 500
   dano: 2
+  perfuracaoBala: 0
 --- !u!58 &4621906328334712321
 CircleCollider2D:
   m_ObjectHideFlags: 0
