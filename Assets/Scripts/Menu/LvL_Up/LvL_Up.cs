@@ -85,6 +85,7 @@ public class LvL_Up : MonoBehaviour
             balaComum.dano++;
             balaTeleguiada.dano++;
             qntUpgrades++;
+            dano++;
             menu.MudaTextoPontosGastos(1, dano, danoMax);
         }
     }
