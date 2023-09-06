@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 7029141786953404993}
   - component: {fileID: 4359165456613868317}
   - component: {fileID: 8919938143576646937}
-  - component: {fileID: 1885773893}
   - component: {fileID: 5381171357642430500}
   - component: {fileID: 5131474093090544501}
   - component: {fileID: 9101995704286695765}
@@ -62,13 +61,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce1757f0153a38dda32d2039e604926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valorXp: 1
-  maxHp: 50
+  valorXp: 8
+  maxHp: 100
   multiplicadorDanoBala: 0
   multiplicadorVelBala: 0
   velAtirarMax: 2
   velAtirarMin: 3
-  velMovimento: 3
+  velMovimento: 0
 --- !u!114 &1030447648128241332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16df1a96c331bce8ba25a2980c88f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valorXp: 10
+  valorXp: 250
 --- !u!114 &4359165456613868317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,25 +229,6 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &1885773893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5010567226698321705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce1757f0153a38dda32d2039e604926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valorXp: 1
-  maxHp: 1
-  multiplicadorDanoBala: 1
-  multiplicadorVelBala: 1
-  velAtirarMax: 1
-  velAtirarMin: 1
-  velMovimento: 1
 --- !u!114 &5381171357642430500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forcaEmpurrar: 3000
-  dano: 1
+  dano: 0.25
 --- !u!1001 &1963576607
 PrefabInstance:
   m_ObjectHideFlags: 0
