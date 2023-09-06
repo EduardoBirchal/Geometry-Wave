@@ -36,7 +36,7 @@ public class NetStart : MonoBehaviour
         }
         else if(MenuManager.texto_ip == ip)
         {
-            Debug.LogWarning("IP para conectar: " + ip);
+            GameObject.Find("DeathText").GetComponent<FuncoesTexto>().SetText("Contecte com:    " + ip);
             NetworkManager.Singleton.StartHost();
             btn_Start.SetActive(true);
         }
@@ -47,6 +47,7 @@ public class NetStart : MonoBehaviour
         }
 
         btn_Start.GetComponent<Button>().onClick.AddListener(() => {
+            GameObject.Find("DeathText").GetComponent<FuncoesTexto>().SetText("");
             NetStatus.gameStarted = true;
             Instantiate(spawner).GetComponent<NetworkObject>().Spawn();
             btn_Start.SetActive(false);
