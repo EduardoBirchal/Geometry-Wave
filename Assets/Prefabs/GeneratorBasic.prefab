@@ -78,7 +78,7 @@ MonoBehaviour:
   inimigosDif3: []
   fonteAudio: {fileID: 5716477507142774386}
   prefabBoss: {fileID: 5010567226698321705, guid: 175d711e1874bd15385a0cea4adae0b6, type: 3}
-  ondasEntreBoss: 2
+  ondasEntreBoss: 7
   efeitosOnda:
   - {fileID: 8300000, guid: ed1ddab47489e5143a950c123c09f230, type: 3}
   - {fileID: 8300000, guid: 8e912e341636b9222a519ccf0278a4bd, type: 3}
