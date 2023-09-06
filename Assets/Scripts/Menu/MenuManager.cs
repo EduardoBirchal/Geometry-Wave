@@ -68,6 +68,7 @@ public class MenuManager : MonoBehaviour
 
     public void GetIP()
     {
+        PlayerPrefs.SetFloat("dificuldade", 2f);
         GameObject a = GameObject.Find("TextIP");
         texto_ip = a.GetComponent<TMP_InputField>().text;
         NetStatus.isSingleplayer = false;
@@ -130,6 +131,7 @@ public class MenuManager : MonoBehaviour
 
     public void CriarSalaOnline()
     {
+        PlayerPrefs.SetFloat("dificuldade", 2f);
         NetStatus.isSingleplayer = false;
         texto_ip = NetHandler.GetLocalIPv4();
         fade.FadeScene(1);
