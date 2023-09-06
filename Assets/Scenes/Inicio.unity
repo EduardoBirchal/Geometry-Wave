@@ -5520,6 +5520,10 @@ PrefabInstance:
       value: TMPro.TMP_Dropdown, Unity.TextMeshPro
       objectReference: {fileID: 0}
     - target: {fileID: 4264590674001926885, guid: 6b30e751bfffc3f77ba1d510562c7efe, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264590674001926885, guid: 6b30e751bfffc3f77ba1d510562c7efe, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1508623306}
@@ -5627,6 +5631,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1508623305}
+    - target: {fileID: 8395810848028957672, guid: 6b30e751bfffc3f77ba1d510562c7efe, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8395810848028957672, guid: 6b30e751bfffc3f77ba1d510562c7efe, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6155,10 +6163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2004bb8b86dbb8842ae244c21c1bae81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentColor_Backg: {fileID: 519420031}
-  currentColor_Player: []
-  currentColor_Ally: []
-  currentColor_Enemy: []
   preview: {fileID: 1368403180}
 --- !u!1 &1601802672
 GameObject:
@@ -8794,14 +8798,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1508623303}
-    - target: {fileID: 3570555214372628422, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 191817374}
+    - target: {fileID: 616153196247626978, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Colors
+      objectReference: {fileID: 0}
     - target: {fileID: 3570555214548659556, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1508623305}
+    - target: {fileID: 3570555214548659556, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToLastMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 3570555214739888406, guid: 47d187c4f9a919182adecf5ee7c9a3f7, type: 3}
       propertyPath: m_Name
       value: Graficos(Hud)

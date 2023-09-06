@@ -145,6 +145,7 @@ public class Flock : FuncoesGerais
     void SpawnaBoss() {
         Vector3 posicaoSpawn = new Vector3 (0, 0, 0);
         GameObject novoInimigo = Instantiate(prefabBoss, posicaoSpawn, Quaternion.identity);
+        novoInimigo.GetComponent<SpriteRenderer>().material.SetColor("_Color", ColorPicker.baseColor[ColorCode.Inimigo]);
         novoInimigo.GetComponent<NetworkObject>().Spawn();
     }
 
