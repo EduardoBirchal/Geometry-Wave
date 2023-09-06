@@ -333,7 +333,7 @@ Transform:
   m_GameObject: {fileID: 8580050235917763354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12, y: 12, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7173218427032206414}
@@ -475,7 +475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: velocidadeAngular
-      value: 95
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: tipoBala
@@ -707,6 +707,10 @@ PrefabInstance:
       propertyPath: raioOrbita.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
+      propertyPath: velocidadeAngular
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6329273828479441967, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: m_Name
       value: Orbe1
@@ -803,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3459115289087993757, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: velocidadeAngular
-      value: 95
+      value: 88
       objectReference: {fileID: 0}
     - target: {fileID: 5555578955336784721, guid: f03336f77f32c3f1d937fdaf174599f8, type: 3}
       propertyPath: tipoBala
