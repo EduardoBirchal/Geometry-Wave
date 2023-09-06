@@ -38,6 +38,7 @@ public class PlayerGerenciaHP : NetworkBehaviour
     }
     void Start()
     {
+        isDead = false;
         barra = GameObject.Find("VidaBarra").GetComponent<Image>();
         sprRenderer = GetComponent<SpriteRenderer>();
         colisor = GetComponent<Collider2D>();
