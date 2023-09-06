@@ -8,4 +8,10 @@ public class DestruirForaDaTela : FuncoesBala
             DestroiBala();
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "LimiteTela") {
+            DestroiBala();
+        }
+    }
 }
