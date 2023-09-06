@@ -80,7 +80,7 @@ MonoBehaviour:
   prefabBoss: {fileID: 5010567226698321705, guid: 175d711e1874bd15385a0cea4adae0b6, type: 3}
   ondasEntreBoss: 2
   efeitosOnda:
-  - {fileID: 8300000, guid: b3a25977c7f3d05aa80906b6601a6fae, type: 3}
+  - {fileID: 8300000, guid: ed1ddab47489e5143a950c123c09f230, type: 3}
   - {fileID: 8300000, guid: 8e912e341636b9222a519ccf0278a4bd, type: 3}
   agentPrefab: {fileID: 1030447648128241332, guid: c987e7a7634bd599a94defc9b47f6746, type: 3}
   behavior: {fileID: 11400000, guid: 690b5de5a60571f3db53ca405a4150dd, type: 2}
