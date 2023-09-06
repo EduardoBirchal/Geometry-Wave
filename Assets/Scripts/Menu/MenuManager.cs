@@ -8,7 +8,7 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject menuInicial, gameModes, dificultSelector, onlineModes, enterOnline, painelOptions,inputActionsHud, colors;
+    [SerializeField] private GameObject menuInicial, gameModes, dificultSelector, onlineModes, enterOnline, painelOptions,inputActionsHud, colors, tutorial;
     [SerializeField] public GameObject gameplayOptions, soundOptions, graficoshud;
     [SerializeField] public static string texto_ip;
     [SerializeField] private Canvas canvas;
@@ -102,8 +102,8 @@ public class MenuManager : MonoBehaviour
     //Funções dos butões para carregar os menus
     public void Tutorial()
     {
-        NetStatus.isSingleplayer = true;
-        fade.FadeScene(1);
+        tutorial.SetActive(true);
+        goBack.menus.Push(tutorial);
     }
 
     public void Facil()
