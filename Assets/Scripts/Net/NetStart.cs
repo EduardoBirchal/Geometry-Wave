@@ -36,7 +36,7 @@ public class NetStart : MonoBehaviour
         }
         else if(MenuManager.texto_ip == ip)
         {
-            GameObject.Find("DeathText").GetComponent<FuncoesTexto>().SetText("Contecte com:    " + ip);
+            GameObject.Find("DeathText").GetComponent<FuncoesTexto>().SetText("IP da sala:             " + ip);
             NetworkManager.Singleton.StartHost();
             btn_Start.SetActive(true);
         }
