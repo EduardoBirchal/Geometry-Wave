@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   limiteVertical: 10
-  limiteHorizontal: 20.6
+  limiteHorizontal: 17.8
 --- !u!1001 &8937601226480865316
 PrefabInstance:
   m_ObjectHideFlags: 0
