@@ -32,9 +32,7 @@ public class MoveAutomatico : FuncoesGerais
         Num círculo existem duas diferenças entre dois ângulos. diferencaAnguloInvertida (d.A.I.) representa a segunda diferença.
         Para representar que é a segunda diferença, ele sempre vai ter o sinal inverso da diferencaAngulo (d.A.).
         Já que d.A.I. é [d.A. - 360], e d.A. nunca pode ser maior que 360, d.A.I vai sempre ser negativo. Para ele ser o oposto
-        do sinal de d.A., nós multiplicamos ele pelo sinal de d.A. Se d.A. é positivo, estaremos multiplicando d.A.I. por 1,
-        deixando o sinal dele inalterado. Já que d.A.I. é sempre negativo, o sinal inalterado dele é -1. Se d.A. for negativo,
-        estaremos multiplicando ele por -1, transformando o sinal dele em +1.
+        do sinal de d.A., nós multiplicamos ele pelo sinal de d.A.
 
         Esse provavelmente é o maior comentário que eu já escrevi.
         */
