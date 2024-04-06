@@ -24,7 +24,7 @@ public class MoveInimigo : MoveAutomatico
         if(player == null)
         player = this.gameObject;
 
-        if (mudaAngulo) ViraPraObjeto(player.transform.position);
+        if (mudaAngulo) ViraPraObjeto(player.transform.position, false);
         if (move) MoveFrente();
     }
 

@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.3137255, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c7dec8bbfd1c84a83626442d65aef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 13
   velVirar: 0
+  velocidade:
+    m_InternalValue: 1
 --- !u!114 &8861695862764348011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dano: 2
   perfuracaoBala: 1
+  destroi: 1
 --- !u!58 &-72603878344901959
 CircleCollider2D:
   m_ObjectHideFlags: 0

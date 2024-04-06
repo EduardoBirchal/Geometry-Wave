@@ -16,10 +16,25 @@ public class NetHandler : NetworkBehaviour
         NetManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         net_Status = GameObject.Find("Network").GetComponent<NetStatus>();
     }
+    public void ShutdownServer()
+    {
+        if(IsHost)
+        {
+            for (int i = NetworkManager.ConnectedClientsIds.Count - 1; i >= 0; i--)
+            {
+                var id = NetworkManager.ConnectedClientsIds[i];
+                if (id != NetworkManager.LocalClientId)
+                    NetworkManager.DisconnectClient(id, "Jogo encerrado pelo host");
+            }
+        }
+        NetworkManager.Singleton.Shutdown();
+        if(NetworkManager.Singleton != null) Destroy(NetworkManager.Singleton.gameObject);
+    }
+
     public void OnClientConnectedCallback(ulong obj)
     {
         NetStatus.status = ConnectionResponse.Connected;
-        if(!IsHost) return;
+        if(!IsServer) return;
 
         if(NetManager.ConnectedClientsIds.Count > NetStatus.MaxNumPlayers)
             Debug.LogError("Numero de players exedido. Revise seu código!");
@@ -29,12 +44,14 @@ public class NetHandler : NetworkBehaviour
     public void OnClientDisconnectCallback(ulong obj)
     {
         NetStatus.status = ConnectionResponse.Offline;
-        if (IsClient && NetManager.DisconnectReason != string.Empty)
+        if (!IsServer && NetManager.DisconnectReason != string.Empty)
         {
-            screen_Error.GetComponent<Error>().state = Error.PopupState.Error;
-            screen_Error.SetActive(true);
+            Error script_Error = screen_Error.GetComponent<Error>();
+            script_Error.state = Error.PopupState.Error;
+            script_Error.text = NetManager.DisconnectReason;
+            script_Error.UpdateState();
         }
-        if(!IsHost) return;
+        if(!IsServer) return;
 
         if(NetManager.ConnectedClientsIds.Count < 0)
             Debug.LogError("Numero negativo de players. Revise seu código!");
@@ -42,6 +59,7 @@ public class NetHandler : NetworkBehaviour
         if(net_Status.PlayersAlive.Value < 0)
             Debug.LogWarning("Todos os players estão mortos!");
     }
+
     public void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
     {
         var clientId = request.ClientNetworkId;

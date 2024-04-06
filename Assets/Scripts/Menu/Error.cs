@@ -43,6 +43,7 @@ public class Error : MonoBehaviour
                 break;
             case PopupState.Error:
             case PopupState.Timeout:
+                GameObject.Find("GameManager").GetComponent<TimeManager>().Pause();
                 this.gameObject.SetActive(true);
                 objFlag.SetActive(true);
                 objFlag.GetComponent<Image>().sprite = failSprite; 

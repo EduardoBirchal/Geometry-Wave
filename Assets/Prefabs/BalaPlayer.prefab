@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7341521081720741390}
   - component: {fileID: 6524909381898329318}
   - component: {fileID: 2235560352039561470}
-  - component: {fileID: 9084313238536961442}
   - component: {fileID: 5936803030163731997}
   - component: {fileID: 597872689269665172}
+  - component: {fileID: 1363734698395539767}
   m_Layer: 0
   m_Name: BalaPlayer
   m_TagString: BalaPlayer
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6308696435084019001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.00064730644, y: 0.6459813, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.065, y: 0.065, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dbde74a6b6c364c4683cdebbb0e870ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 91c8b4a3b99c6b81a93a6bb9bd06f8a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c7dec8bbfd1c84a83626442d65aef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 13
   velVirar: 0
+  velocidade:
+    m_InternalValue: 1
 --- !u!114 &2235560352039561470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,22 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cce392301de9b84894aba11cc0219ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &9084313238536961442
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6308696435084019001}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.175
 --- !u!114 &5936803030163731997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +149,19 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!58 &1363734698395539767
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308696435084019001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.56

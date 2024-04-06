@@ -33,6 +33,7 @@ public class DeathManager : NetworkBehaviour
             bool passedWave = await WaitForWave();
             if(passedWave == true)
             {
+                PlayerGerenciaHP.isDead = false;
                 text_Obj.GetComponent<FuncoesTexto>().MostraFade(0.1f, 0.1f, "");
                 RespawnServerRpc(NetworkManager.Singleton.LocalClientId);
                 return;

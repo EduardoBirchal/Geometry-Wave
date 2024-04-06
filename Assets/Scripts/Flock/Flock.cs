@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.UI;
 
 public class Flock : FuncoesGerais
 {
@@ -10,6 +11,8 @@ public class Flock : FuncoesGerais
     public float tempoEspera, dificuldade, dificuldadeTotal, tamanhoMargem, alturaTela, larguraTela;
     public GameObject[] inimigosDif1, inimigosDif2, inimigosDif3;
     public AudioSource fonteAudio;
+    public GameObject prefabBoss;
+    public int ondasEntreBoss;
     private Vector2 distanciaMargem;
     private GameObject[][] listaInimigos;
     private GameObject texto;
@@ -38,6 +41,7 @@ public class Flock : FuncoesGerais
     // Start is called before the first frame update
     void Start()
     {
+        dificuldade = PlayerPrefs.GetFloat("dificuldade");
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighborRadius = neighborRadius * neighborRadius;
         squareAvoidanceRadius = squareNeighborRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
@@ -101,7 +105,10 @@ public class Flock : FuncoesGerais
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
         if(inimigos.Length == 0 && NetStatus.gameStarted == true) {
-            StartCoroutine(CriaOnda());
+            onda++;
+            bool vaiSerBoss = (onda % ondasEntreBoss == 0);
+
+            StartCoroutine(CriaOnda(vaiSerBoss)); 
         }
         else {
             // Espera 1 segundo e executa a função de novo. Não está usando Update porque só precisa rodar 1 vez por segundo em vez de 1 vez por frame.
@@ -128,10 +135,18 @@ public class Flock : FuncoesGerais
         FlockAgent novoInimigo = Instantiate(agentPrefab, posicaoSpawn, Quaternion.identity);
         novoInimigo.GetComponent<NetworkObject>().Spawn();
 
+        novoInimigo.GetComponent<SpriteRenderer>().material.SetColor("_Color", ColorPicker.baseColor[ColorCode.Inimigo]);
         novoInimigo.name = "Agent " + i;
         novoInimigo.Initialize(this);
         agents.Add(novoInimigo);
 
+    }
+
+    void SpawnaBoss() {
+        Vector3 posicaoSpawn = new Vector3 (0, 0, 0);
+        GameObject novoInimigo = Instantiate(prefabBoss, posicaoSpawn, Quaternion.identity);
+        novoInimigo.GetComponent<SpriteRenderer>().material.SetColor("_Color", ColorPicker.baseColor[ColorCode.Inimigo]);
+        novoInimigo.GetComponent<NetworkObject>().Spawn();
     }
 
     [ServerRpc]
@@ -143,33 +158,43 @@ public class Flock : FuncoesGerais
     [ClientRpc]
     void MostrarOndaClientRpc(int onda, bool boss)
     {
-        funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
-
-        if (boss) fonteAudio.PlayOneShot(efeitosOnda[1]);
-        else fonteAudio.PlayOneShot(efeitosOnda[0]);
+        if (boss) {
+            funcoesTexto.MostraFade(1.5f, 1.5f, "CHEFÃO");
+            fonteAudio.PlayOneShot(efeitosOnda[1]);
+        } 
+        else {
+            funcoesTexto.MostraFade(1.5f, 1.5f, "Onda " + onda);
+            fonteAudio.PlayOneShot(efeitosOnda[0]);
+        }
     }
-    IEnumerator CriaOnda() {
+
+    IEnumerator CriaOnda(bool boss) {
         yield return new WaitForSeconds(2);
         int dificuldadeDisponivel = (int) dificuldadeTotal;
-        onda++;
 
-        MostrarOndaClientRpc(onda, false);
-        
-        int i = 0;
-        while (dificuldadeDisponivel > 0) {
-            // Escolhe o menor número entre numDificuldades e dificuldadeDisponivel
-            int dificuldadeAtual = Random.Range(1, dificuldadeDisponivel > numDificuldades ? numDificuldades : dificuldadeDisponivel); 
+        MostrarOndaClientRpc(onda, boss);
 
-            // Escolhe um inimigo aleatório na dificuldade escolhida
-            int indexInimigo = Random.Range(0, listaInimigos[dificuldadeAtual-1].Length - 1);
+        if (boss) {
+            yield return new WaitForSeconds(2f);
+            SpawnaBoss();
+        }
+        else {
+            int i = 0;
+            while (dificuldadeDisponivel > 0) {
+                // Escolhe o menor número entre numDificuldades e dificuldadeDisponivel
+                int dificuldadeAtual = Random.Range(1, dificuldadeDisponivel > numDificuldades ? numDificuldades : dificuldadeDisponivel); 
 
-            SpawnaInimigo(i);
-            dificuldadeDisponivel -= dificuldadeAtual;
+                // Escolhe um inimigo aleatório na dificuldade escolhida
+                int indexInimigo = Random.Range(0, listaInimigos[dificuldadeAtual-1].Length - 1);
 
-            i++;
+                SpawnaInimigo(i);
+                dificuldadeDisponivel -= dificuldadeAtual;
 
-            yield return new WaitForSeconds(0.5f);
-        }   
+                i++;
+
+                yield return new WaitForSeconds(0.5f);
+            }   
+        }
 
         dificuldadeTotal++;
         StartCoroutine(ChecaInimigos());                                                                         
